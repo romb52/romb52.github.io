@@ -1,0 +1,28 @@
+*{	
+	box-sizing: border-box; /*размеры без отступов*/
+}
+body {
+	font-family: sans-serif; /*шрифт*/
+	color: #333333 ;
+	line-height: 1.5;      /*междустрочный*/
+     }
+h1, h2 {
+	margin-bottom: 10px;  
+   }
+p {
+	margin-top: 10px;
+  }
+  .introduсe {
+  	border-bottom: 2px solid grey; /*рамка снизу первого блока*/
+  	padding: 10px 15px; /*отступ рамки*/
+  }
+.about_me, .my_photo{
+	/*background-color: blue;*/
+	height: 500px;
+	width: 70%;
+	display: inline-block;  /*блочно-строчный*/
+	vertical-align: top;     /*выравнивание по верхней линии*/
+           }
+.my_photo {
+		width: 28%; /*это не работает*/
+	      }
