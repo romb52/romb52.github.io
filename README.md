@@ -19,4 +19,5 @@
 
 [Урок 15-16](https://romb52.github.io/DZ_15-16_Flex/) - Flex. Адаптация портфолио на разных экранах.
 
-[Урок 17-18](https://romb52.github.io/DZ_17-18_Flex/) - Flex. Продолжение адаптации портфолио на разных экранах.
+[Урок 19-20](https://romb52.github.io/DZ_FlexLanding/) - Flex landing. Адаптация на 3х экранах.
+
