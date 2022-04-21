@@ -1,0 +1,153 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;	
+	max-width: 1920px;
+}
+
+.goToMobileApp  {
+	max-width: 1920px;
+	height: 1080px;	
+	background-color: #FFC59E;
+}
+
+
+.container {
+	margin: 0 auto;
+	padding-left: 230px;
+	padding-right: 275px;
+
+}
+
+.row {
+	display: flex;
+	/*max-height: 100vh;*/
+	/*flex-wrap: wrap;*/
+
+	justify-content: space-evenly;
+	align-content: center;
+	align-items: start;
+}
+.column-2 {
+	display: flex;
+	/*height: 100vh;*/
+	height: 100%;
+
+	border:1px solid red;
+	flex: 0 0 50%;
+	align-items: center;
+}
+.goToMobileApp__tags{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 1080px;
+}
+
+.goToMobileApp__pictureTags{
+	display: flex;
+	align-items: center;
+	min-height: 1080px;
+}
+
+.goToMobileApp__linkTags {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.goToMobileApp__linkTags a:hover {
+	cursor: pointer;
+}
+
+.goToMobileApp__linkGooglePlay {
+	margin-left: 10px;
+}
+
+
+.goToMobileApp__pictureTag1 {
+
+	transform: rotate(2deg);
+}
+.goToMobileApp__textTags span{
+	font-size: 30px;
+	line-height: 20px;
+	color: #fff;
+}
+.goToMobileApp__textTags p{
+	font-size: 80px;
+	line-height: 110px;
+	color: #fff;
+}
+
+/**********************************************************/
+.contactMe {
+	max-width: 1920px;
+	height: 1080px;	
+	background-color: #FFFEFE;
+	border: 1px solid green;
+}
+
+.contactMe__header h2{
+	font-weight: 400;
+	font-size: 40px;
+	line-height: 40px;
+	color: #080606;
+}
+
+.contact__tags {
+
+}
+
+.contact__tag h3{
+	font-weight: 400;
+	font-size: 30px;
+	line-height: 40px;
+	color: #080606;
+	margin: 0;
+}
+.contact__tag p{
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 30px;
+	color: #59443F;
+
+	margin-left: 33px;
+}
+
+.contact__tag ul {
+	display: flex;
+	flex-direction: row;
+	margin: 0;
+}
+
+/***********************************************************/
+footer {
+	height: 470px;
+	background-color: #59443F;
+}
+
+.footer__header {	
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+.footer__header_wrap {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.footer__header span {
+	font-weight: 700;
+	font-size: 50px;
+	line-height: 46px;
+	color: #FFFFFF;
+}
+.footer__header p {
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 20px;
+	color: #FFFFFF;
+}
