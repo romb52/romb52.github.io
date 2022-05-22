@@ -23,3 +23,4 @@
 
 [Урок 19-20](https://romb52.github.io/DZ_FlexLanding/) - Flex landing. Адаптация на 3х экранах.
 
+[Урок 29-30](https://romb52.github.io/DZ_29-30_JS/) - Разработка клиентских сценариев с использованием JavaScript. Циклы.
