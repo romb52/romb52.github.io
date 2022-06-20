@@ -32,3 +32,6 @@
 [Урок 35-36](https://romb52.github.io/DZ_JS_Array/) - Разработка клиентских сценариев с использованием JavaScript. Задачи на массивы. 
 
 [Урок 37-38](https://romb52.github.io/DZ_JS_Calculator/) - Разработка клиентских сценариев с использованием JavaScript. Функции. 
+
+[Урок 41-42](https://romb52.github.io/DZ_JS_Function/) - Разработка клиентских сценариев с использованием JavaScript. Ещё функции. 
+
