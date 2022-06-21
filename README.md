@@ -37,6 +37,8 @@
 
 [Урок 43-44](https://romb52.github.io/DZ_JS_Object/) - Разработка клиентских сценариев с использованием JavaScript. Обьекты, конструкторы. 
 
-[Урок 45](romb52.github.io/DZ_JS_Object_Date/) - Разработка клиентских сценариев с использованием JavaScript. Date. Обратный отчет до НГ. 
+[Урок 45](https://romb52.github.io/DZ_JS_Object_Date/) - Разработка клиентских сценариев с использованием JavaScript. Date. Обратный отчет до НГ. 
+
+[Урок 47-48](https://romb52.github.io/DZ_JS_Class/) - Разработка клиентских сценариев с использованием JavaScript. Class. Расширить класс String. 
 
 
