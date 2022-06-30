@@ -45,7 +45,6 @@
 
 [Урок 49](https://romb52.github.io/DZ_Event_clickToMoveOneDiv/) - Разработка клиентских сценариев с использованием JavaScript. Event. click left button
 
-romb52.github.io/DZ_Event_clickToMoveThreeDiv/
 [Урок 50](https://romb52.github.io/DZ_Event_clickToMoveThreeDiv/) - Разработка клиентских сценариев с использованием JavaScript. Event; click left, wheel, right  button
 
 
