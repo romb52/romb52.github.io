@@ -42,3 +42,6 @@
 [Урок 47-48](https://romb52.github.io/DZ_JS_Class/) - Разработка клиентских сценариев с использованием JavaScript. Class. Расширить класс String. 
 
 [Урок 46](https://romb52.github.io/DZ_JS_Object_Hamlet/) - Разработка клиентских сценариев с использованием JavaScript. Таймеры. setTimeout()
+
+[Урок 49](https://romb52.github.io/DZ_Event_clickToMoveOneDiv/) - Разработка клиентских сценариев с использованием JavaScript. Event. click left button
+
