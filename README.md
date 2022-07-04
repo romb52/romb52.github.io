@@ -47,5 +47,5 @@
 
 [Урок 50](https://romb52.github.io/DZ_Event_clickToMoveThreeDiv/) - Разработка клиентских сценариев с использованием JavaScript. Event; click left, wheel, right  button
 
-[Урок 51](https://romb52.github.io/DZ_JS_tic-tac-toe/) - Разработка клиентских сценариев с использованием JavaScript. Бот для игры Крестики и Нолики
+[Урок 51](https://romb52.github.io/DZ_JS_tic-tac-toe/krectNull.html) - Разработка клиентских сценариев с использованием JavaScript. Бот для игры Крестики и Нолики
 
