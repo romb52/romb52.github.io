@@ -1,71 +1,126 @@
-let firstNumber ='';
-let secondNumber ='';
-let arithmeticOperation;
-let indexArithmeticOperation;
-let result;
-let str = prompt('Введите математическую операцию с двумя числами (например: x+y; x-y; x*y; x/y) '); 
-//Функции для арифметических операций
-function addition(first, second){
-  return first + second;
-}
-function subtraction(first, second){
-  return first - second;
-}
-function multiplication(first, second){
-  return first * second;
-}
-function division(first, second){
-  return first / second;
-}
+let firstNumber = '';
+let lastNumber = '';
+let mathSign = '';
 
-function enterMe(){
-  str = prompt('Введите математическую операцию с двумя числами (например: x+y; x-y; x*y; x/y) '); 
-}
 
-//Функция вывода на экран
-function showMe(first, oper, second, res){
-  alert(first + oper + second + ' = ' + res);
-}
+document.querySelector('.buttons').addEventListener('click', clickEvent);      //отслеживаем клики в классе .buttons
+const out = document.querySelector('.calc-screen p');                         //экран калькулятора
 
-//поиск знака арифметической операции в полученной от пользователя строке str
-for (let i=0; i<str.length; i++){
-  //console.log(str[i]);
-  if(str[i] ==  '+' || str[i] ==  '-' || str[i] ==  '*' ||str[i] ==  '/'){
-    arithmeticOperation = str[i];
-    indexArithmeticOperation = i;
-  }
-}
-//поиск первого числа
-for (let i=0; i<indexArithmeticOperation; i++){
-  firstNumber += str[i];
-}
-//поиск второго числа
-for (let i=indexArithmeticOperation+1; i<str.length; i++){
-  secondNumber += str[i];
-}
-//приводим число из строки к int
-firstNumber = parseInt(firstNumber);
-secondNumber = parseInt(secondNumber);
-//console.log(typeof firstNumber);
-//console.log(firstNumber);
-//console.log(arithmeticOperation);
-//console.log(secondNumber);
 
-//в зависимости от знака арифметической операции вызываем соответствующие функции для расчета выражения и для вывода на экран 
+function clickEvent (e){
+	if (e.target.className === "line") { //если кликнул между кнопками
+		//console.log('return');
+		return;
+	}
+	if (e.target.classList.contains('clearAll')){       //если нажал очистку
+		//console.log('clearAll');
+		clickClearAllEvent (e);
+		return;
+	}
+	if (e.target.classList.contains('oddEven')){              //кнопка +/-
+		//console.log('oddEven');
+		clickOddEven (e);
+		return;
+	}
+	if (e.target.classList.contains('deletelastSymbol')){       //удаление последнего символа в строке
+		//console.log('deletelastSymbol');
+		clickDeletelastSymbol (e);
+		return;
+	}
 
-switch (arithmeticOperation){
-  case '+':
-   showMe(firstNumber, arithmeticOperation, secondNumber, addition(firstNumber, secondNumber));     
+	
+	if (!e.target.classList.contains('mathOpSign') || !e.target.classList.contains('equals')){			//если вводят числа, то посимвольно добавляем в строку вывода
+		if(out.innerHTML === mathSign){out.innerHTML = ''};		
+		if(e.target.innerHTML == 0 && out.innerHTML[0] == 0 ){                           //заморочки, чтоб оставить ноль, когда его вводим сами
+			//console.log('zeroooo');
+			return;}
+		out.innerHTML += e.target.innerHTML;
+
+	}                                                                               //заморочки, чтоб убрать первый ноль когда он не нужен
+	
+	 if (out.innerHTML.length > 1 && out.innerHTML[0] == 0 && !e.target.classList.contains('mathOpSign') && !e.target.classList.contains('equals') ){
+	 	//console.log(out.innerHTML.length);
+	 	//console.log(out.innerHTML[0] + out.innerHTML[1]);	 
+		out.innerHTML = out.innerHTML.substring(1);
+		//console.log(out.innerHTML[0] );
+	}
+
+	//как только пользователь нажал математический знак + - / * то фиксируем значение первого введенного числа и самого знака 
+
+	if (e.target.classList.contains('mathOpSign') && firstNumber == ''){
+		firstNumber = out.innerHTML.substring(0, out.innerHTML.length - 1);
+		mathSign = e.target.innerHTML;	
+		out.innerHTML = mathSign;
+	}
+	//в случае если первое число - это результат предыдущего вычисления 
+	if (e.target.classList.contains('mathOpSign') && firstNumber !== ''){
+		console.log(firstNumber);
+		mathSign = e.target.innerHTML;	
+		out.innerHTML = mathSign;
+		return;
+		//при нажатии знака = фиксируем значение второго числа и производим необходимое вычисление 
+	}else if (e.target.classList.contains('equals') || e.target.classList.contains('mathOpSign') && firstNumber !== ''){
+		lastNumber = out.innerHTML.substring(0, out.innerHTML.length - 1);
+		console.log(lastNumber);
+		out.innerHTML = '';		
+		switch (mathSign) {
+  case "+":
+  	firstNumber = parseInt(firstNumber) + parseInt(lastNumber);
+    //console.log("+ plus");
     break;
-  case '-':
-    showMe(firstNumber, arithmeticOperation, secondNumber, subtraction(firstNumber, secondNumber));     
-    break; 
-    case '*':
-    showMe(firstNumber, arithmeticOperation, secondNumber,multiplication(firstNumber, secondNumber));      
+  case "-":
+    //console.log("- minus");
+    firstNumber = parseInt(firstNumber) - parseInt(lastNumber);
     break;
-    case '/':
-    showMe(firstNumber, arithmeticOperation, secondNumber, division(firstNumber, secondNumber)); 
+  case "÷":
+    //console.log("÷ divide");
+    if(lastNumber === '0' || lastNumber === 0){
+    	firstNumber = 'Error!'
+    	//console.log("Error");
+    }else
+    firstNumber = parseInt(firstNumber) / parseInt(lastNumber);
     break;
+  case "×":
+    //console.log("× mult");
+    firstNumber = parseInt(firstNumber) * parseInt(lastNumber);
+    break;  
   default:
-    alert( "Arithmetic operation doesn't exist" );
+    console.log("FuckUp!");
 }
+	out.innerHTML = firstNumber;  //результат вычисления становится первым числом
+	lastNumber = '';
+	mathSign = '';
+	}
+
+//console.log(firstNumber + ' ' + lastNumber + ' ' + mathSign);
+}
+
+//функция очистить все
+function clickClearAllEvent (e){
+	out.innerHTML = "0";
+	firstNumber = '';
+	lastNumber = '';
+	mathSign = '';
+	//console.log(firstNumber + ' ' + lastNumber + ' ' + mathSign);
+
+}
+ 
+ //функция поменять знак на противоположный
+function clickOddEven (e){
+	out.innerHTML = -out.innerHTML;
+	//console.log(firstNumber + ' ' + lastNumber + ' ' + mathSign);
+
+}
+
+//функция удаления последнего символа(числа) в строке
+function clickDeletelastSymbol (e){
+	const temp = out.innerHTML;
+	out.innerHTML = temp.substring(0, temp.length - 1);
+	//console.log(out.innerHTML );
+
+}
+
+
+
+
+
