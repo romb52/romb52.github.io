@@ -49,3 +49,5 @@
 
 [Урок 51](https://romb52.github.io/DZ_JS_tic-tac-toe/krectNull.html) - Разработка клиентских сценариев с использованием JavaScript. Бот для игры Крестики и Нолики
 
+[Урок 52](https://romb52.github.io/DZ_JS_Calculator/) - Калькулятор с интерфейсом. Events
+
