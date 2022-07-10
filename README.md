@@ -51,3 +51,5 @@
 
 [Урок 52](https://romb52.github.io/DZ_JS_Calculator/) - Калькулятор с интерфейсом. Events
 
+[Урок 53](https://romb52.github.io/DZ_JS_ToDoList/) - To do list. Events, createElement, appendChild
+
