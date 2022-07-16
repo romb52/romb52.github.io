@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BOM</title>
+	<link rel="stylesheet" href="css/style.css">
+	
+</head>
+<body> 
+<div class="container">
+    <div class="solution">
+        <h3>Exercise 1:</h3>
+      	<button class="btnOpen" id="btnOpen">Open IT-Step</button>
+        <button class="btnClose" id="btnClose">Close IT-Step</button>
+
+        <br><br><br>
+
+        <div class="languages_list">
+                <h3>Exercise 2:</h3>
+                <h2>List of setted languages:</h2>      
+               <div class="wrapper">
+                   <ul class="setLanguages" id="ul-lang"></ul>
+               </div>
+        </div>
+
+        <br><br><br>
+
+        <div class="browser_history">
+                <h3>Exercise 3:</h3>
+                <button class="show_history" id="btnShowHistory">Show History</button>
+                <button class="btnToPage2" onclick="window.location.href = 'Page2.html'">To Page 2 </button>        
+                <h2>Number of browser history entries:</h2>      
+               <div class="wrapper">
+                   <ul class="setEntries" id="ul-entr"></ul>
+               </div>
+        </div>
+  </div>
+  <div class="exercise">
+    <img src="img/dz.png" alt="exercises" >
+  </div>
+</div>
+
+
+
+
+<script >
+
+//////////////////////////Exercise 1//////////////////////////
+let itStepWin;
+let windowFeatures = "left=150,top=150,width=640,height=480";       //свойства нового окна
+
+let btnOp = document.getElementById('btnOpen');
+btnOp.addEventListener('click', openPage);              
+function openPage (){
+  itStepWin = window.open('https://od.itstep.org/', 'itStepWindow', windowFeatures);
+  //console.log(itStepWin);
+}
+
+let btnCl = document.getElementById('btnClose');
+btnCl.addEventListener('click', closePage);              
+function closePage (){
+  itStepWin.close();
+}
+
+/////////////////////Exercise 2////////////////////////////
+
+let langs = navigator.languages;
+let lang = navigator.language;
+let ul = document.getElementById('ul-lang');
+//console.log(langs);
+//console.log(lang);
+
+for(i = 0; i < langs.length; i++){
+  if(langs[i] == lang){
+  let tempLi = document.createElement('li');  
+  //console.log( tempLi);  
+  tempLi.innerHTML = langs[i].bold();
+  ul.appendChild(tempLi); 
+   //console.log((langs[i]).bold());
+  }else{
+    let tempLi = document.createElement('li'); 
+    tempLi.innerHTML = langs[i];
+    ul.appendChild(tempLi);
+    //console.log(langs[i]);
+  }
+}
+
+/////////////////////Exercise 3////////////////////////////
+let ulEnt = document.getElementById('ul-entr');
+let btnSH = document.getElementById('btnShowHistory');
+btnSH.addEventListener('click', addLi); 
+function addLi (){ 
+  let tempLi = document.createElement('li');   
+  console.log( history); 
+  tempLi.innerHTML = history.length;
+  ulEnt.appendChild(tempLi);                     
+}
+
+
+
+
+
+
+</script>
+</body>
+</html>

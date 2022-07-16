@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BOM</title>
+	<link rel="stylesheet" href="css/style.css">
+	
+</head>
+<body> 
+
+<div class="browser_history">
+        <h3>Page 3</h3>
+        <h3>Exercise 3:</h3>
+        <button class="show_history" id="btnShowHistory">Show History</button>
+        <button class="btnToPage2" onclick="window.location.href = 'index.html'">To Page 1 </button>
+        <button class="btnToPage2" onclick="window.location.href = 'Page2.html'">To Page 2 </button>
+        <h2>Number of browser history entries:</h2>      
+       <div class="wrapper">
+           <ul class="setEntries" id="ul-entr"></ul>
+       </div>
+</div>
+
+<script >
+
+/////////////////////Exercise 3////////////////////////////
+let ulEnt = document.getElementById('ul-entr');
+let btnSH = document.getElementById('btnShowHistory');
+btnSH.addEventListener('click', addLi); 
+function addLi (){ 
+  let tempLi = document.createElement('li');   
+  console.log( history); 
+  tempLi.innerHTML = history.length;
+  ulEnt.appendChild(tempLi);                     
+}
+
+</script>
+
+</body>
+</html>
