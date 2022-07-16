@@ -53,3 +53,6 @@
 
 [Урок 53](https://romb52.github.io/DZ_JS_ToDoList/) - To do list. Events, createElement, appendChild
 
+[Урок 54](https://romb52.github.io/DZ_JS_BOM/) - BOM.
+
+
