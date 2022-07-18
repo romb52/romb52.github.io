@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sea battle</title>
+	<link rel="stylesheet" href="css/style.css">
+	
+</head>
+<body> 
+	<div id="wrapper">
+    <!-- 
+    <div id="left">
+      <h2 id="username-place">Player </h2>
+      <table id="playerField">
+        <tr>
+          <th ></th>
+          <th>А</th>
+          <th>Б</th>
+          <th>В</th>
+          <th>Г</th>
+          <th>Д</th>
+          <th>Е</th>
+          <th>Ж</th>
+          <th>З</th>
+          <th>И</th>
+          <th>К</th>
+        </tr>
+        <tr>
+          <th>1</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>2</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>3</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>4</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>5</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>6</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>7</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>8</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>9</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>10</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </table>
+    </div> -->
+    <div id="center">
+      <p id="current-turn">Ваш ход!</p>
+      <p id="general-status"></p>
+    </div>
+    <div id="right">
+      <h2>AI</h2>
+      <table id="computerField">
+        <tr>
+          <th></th>
+          <th>А</th>
+          <th>Б</th>
+          <th>В</th>
+          <th>Г</th>
+          <th>Д</th>
+          <th>Е</th>
+          <th>Ж</th>
+          <th>З</th>
+          <th>И</th>
+          <th>К</th>
+        </tr>
+          <tr>
+          <th>1</th>
+          <th onclick="game(this);" id="td0"></th>
+          <th onclick="game(this);" id="td1"></th>
+          <th onclick="game(this);" id="td2"></th>
+          <th onclick="game(this);" id="td3"></th>
+          <th onclick="game(this);" id="td4"></th>
+          <th onclick="game(this);" id="td5"></th>
+          <th onclick="game(this);" id="td6"></th>
+          <th onclick="game(this);" id="td7"></th>
+          <th onclick="game(this);" id="td8"></th>
+          <th onclick="game(this);" id="td9"></th>
+        </tr>
+        <tr>
+          <th>2</th>
+          <th onclick="game(this);" id="td10"></th>
+          <th onclick="game(this);" id="td11"></th>
+          <th onclick="game(this);" id="td12"></th>
+          <th onclick="game(this);" id="td13"></th>
+          <th onclick="game(this);" id="td14"></th>
+          <th onclick="game(this);" id="td15"></th>
+          <th onclick="game(this);" id="td16"></th>
+          <th onclick="game(this);" id="td17"></th>
+          <th onclick="game(this);" id="td18"></th>
+          <th onclick="game(this);" id="td19"></th>
+        </tr>
+        <tr>
+          <th>3</th>
+          <th onclick="game(this);" id="td20"></th>
+          <th onclick="game(this);" id="td21"></th>
+          <th onclick="game(this);" id="td22"></th>
+          <th onclick="game(this);" id="td23"></th>
+          <th onclick="game(this);" id="td24"></th>
+          <th onclick="game(this);" id="td25"></th>
+          <th onclick="game(this);" id="td26"></th>
+          <th onclick="game(this);" id="td27"></th>
+          <th onclick="game(this);" id="td28"></th>
+          <th onclick="game(this);" id="td29"></th>
+        </tr>
+        <tr>
+          <th>4</th>
+          <th onclick="game(this);" id="td30"></th>
+          <th onclick="game(this);" id="td31"></th>
+          <th onclick="game(this);" id="td32"></th>
+          <th onclick="game(this);" id="td33"></th>
+          <th onclick="game(this);" id="td34"></th>
+          <th onclick="game(this);" id="td35"></th>
+          <th onclick="game(this);" id="td36"></th>
+          <th onclick="game(this);" id="td37"></th>
+          <th onclick="game(this);" id="td38"></th>
+          <th onclick="game(this);" id="td39"></th>
+        </tr>
+        <tr>
+          <th>5</th>
+          <th onclick="game(this);" id="td40"></th>
+          <th onclick="game(this);" id="td41"></th>
+          <th onclick="game(this);" id="td42"></th>
+          <th onclick="game(this);" id="td43"></th>
+          <th onclick="game(this);" id="td44"></th>
+          <th onclick="game(this);" id="td45"></th>
+          <th onclick="game(this);" id="td46"></th>
+          <th onclick="game(this);" id="td47"></th>
+          <th onclick="game(this);" id="td48"></th>
+          <th onclick="game(this);" id="td49"></th>
+        </tr>
+        <tr>
+          <th>6</th>
+          <th onclick="game(this);" id="td50"></th>
+          <th onclick="game(this);" id="td51"></th>
+          <th onclick="game(this);" id="td52"></th>
+          <th onclick="game(this);" id="td53"></th>
+          <th onclick="game(this);" id="td54"></th>
+          <th onclick="game(this);" id="td55"></th>
+          <th onclick="game(this);" id="td56"></th>
+          <th onclick="game(this);" id="td57"></th>
+          <th onclick="game(this);" id="td58"></th>
+          <th onclick="game(this);" id="td59"></th>
+        </tr>
+        <tr>
+          <th>7</th>
+          <th onclick="game(this);" id="td60"></th>
+          <th onclick="game(this);" id="td61"></th>
+          <th onclick="game(this);" id="td62"></th>
+          <th onclick="game(this);" id="td63"></th>
+          <th onclick="game(this);" id="td64"></th>
+          <th onclick="game(this);" id="td65"></th>
+          <th onclick="game(this);" id="td66"></th>
+          <th onclick="game(this);" id="td67"></th>
+          <th onclick="game(this);" id="td68"></th>
+          <th onclick="game(this);" id="td69"></th>
+        </tr>
+        <tr>
+          <th>8</th>
+          <th onclick="game(this);" id="td70"></th>
+          <th onclick="game(this);" id="td71"></th>
+          <th onclick="game(this);" id="td72"></th>
+          <th onclick="game(this);" id="td73"></th>
+          <th onclick="game(this);" id="td74"></th>
+          <th onclick="game(this);" id="td75"></th>
+          <th onclick="game(this);" id="td76"></th>
+          <th onclick="game(this);" id="td77"></th>
+          <th onclick="game(this);" id="td78"></th>
+          <th onclick="game(this);" id="td79"></th>
+        </tr>
+        <tr>
+          <th>9</th>
+          <th onclick="game(this);" id="td80"></th>
+          <th onclick="game(this);" id="td81"></th>
+          <th onclick="game(this);" id="td82"></th>
+          <th onclick="game(this);" id="td83"></th>
+          <th onclick="game(this);" id="td84"></th>
+          <th onclick="game(this);" id="td85"></th>
+          <th onclick="game(this);" id="td86"></th>
+          <th onclick="game(this);" id="td87"></th>
+          <th onclick="game(this);" id="td88"></th>
+          <th onclick="game(this);" id="td89"></th>          
+        </tr>
+        <tr>
+          <th>10</th>
+          <th onclick="game(this);" id="td90"></th>
+          <th onclick="game(this);" id="td91"></th>
+          <th onclick="game(this);" id="td92"></th>
+          <th onclick="game(this);" id="td93"></th>
+          <th onclick="game(this);" id="td94"></th>
+          <th onclick="game(this);" id="td95"></th>
+          <th onclick="game(this);" id="td96"></th>
+          <th onclick="game(this);" id="td97"></th>
+          <th onclick="game(this);" id="td98"></th>
+          <th onclick="game(this);" id="td99"></th>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
