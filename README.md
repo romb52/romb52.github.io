@@ -58,3 +58,6 @@
 [Урок 55](https://romb52.github.io/DZ_JS_ToDoListLocalStorage/) - To do list with saving on localStorage.
 
 [Урок 56](https://romb52.github.io/DZ_JS_seaBattleRandomShips/) - Sea battle. Random location ships
+
+[Урок 57](https://romb52.github.io/DZ_JS_seaBattleRandomShipsMargin/) - Sea battle. + Margin around ships
+
