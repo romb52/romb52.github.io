@@ -61,3 +61,4 @@
 
 [Урок 57](https://romb52.github.io/DZ_JS_seaBattleRandomShipsMargin/) - Sea battle. + Margin around ships
 
+[Урок 58](https://romb52.github.io/DZ_JS_Pyatnashki/) - Game Pyatnashki
