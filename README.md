@@ -63,5 +63,5 @@
 
 [Урок 58](https://romb52.github.io/DZ_JS_Pyatnashki/) - Game Pyatnashki
 
-[Урок 59](romb52.github.io/DZ_JS_KnightMove/) - Knight's Move - Recurcion
+[Урок 59](https://romb52.github.io/DZ_JS_KnightMove/) - Knight's Move - Recurcion
 
