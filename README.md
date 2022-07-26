@@ -62,3 +62,6 @@
 [Урок 57](https://romb52.github.io/DZ_JS_seaBattleRandomShipsMargin/) - Sea battle. + Margin around ships
 
 [Урок 58](https://romb52.github.io/DZ_JS_Pyatnashki/) - Game Pyatnashki
+
+[Урок 59](romb52.github.io/DZ_JS_KnightMove/) - Knight's Move - Recurcion
+
