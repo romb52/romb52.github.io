@@ -65,3 +65,4 @@
 
 [Урок 59](https://romb52.github.io/DZ_JS_KnightMove/) - Knight's Move - Recurcion
 
+[Урок 60](https://romb52.github.io/DZ_JS_FormValidation/) - My portfolio. Add Form Validation.
