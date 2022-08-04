@@ -68,3 +68,6 @@
 [Урок 60](https://romb52.github.io/DZ_JS_FormValidation/) - My portfolio. Add Form Validation.
 
 [Урок 21-22](https://romb52.github.io/DZ_ProjectFigma_flex_landing/) - Flex landing. Free project Figma
+
+[Урок 23-24](https://romb52.github.io/DZ_PortfolioLandingCSSGrid/) - Grid. Portfolio landing page
+
