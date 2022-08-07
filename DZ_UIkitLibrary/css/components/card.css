@@ -1,0 +1,32 @@
+.card-items {
+	display: flex;
+	justify-content: space-around;
+}
+
+.card-item {
+	flex:0 0 30%;
+	height: 200px;
+	width: 350px;
+	color: white;
+	background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.1)100%),url('../../img/card-image.jpg');
+	background-size: cover;
+	position: relative;
+}
+
+.card-category {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.card-description {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+}
+
+.card-image {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}

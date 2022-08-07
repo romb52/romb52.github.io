@@ -1,0 +1,14 @@
+.badge {
+	line-height: 20px;
+	width: 20px;
+	display: inline-block;	
+	font-size: 12px;
+	font-weight: 700;
+	color: #fff;
+	text-align: center;
+	background-color: #EF5350;
+	border-radius: 20px;
+	position: relative;
+	top: -40px;
+	left: -15px;
+}

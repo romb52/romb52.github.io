@@ -1,0 +1,43 @@
+.img-rounded {
+	border-radius: 3px;
+}
+
+.product {
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+	padding: 10px;
+	transition: 0.3s;
+}
+
+.product:hover {
+	background: #F2F3F4 ;	
+}
+
+.product-description {
+	flex: 1 0 auto;
+	padding: 0 10px;
+}
+.product-upvote {
+	text-align: center;
+	padding: 20px;
+}
+
+.product-upvote p {
+	margin-top: 5px;
+}
+.product-controls  a{
+	font-size: 20px;
+	color: #8A9CA3;
+	opacity: 0.8;
+}
+.product-controls  a:hover{	
+	color: #8A9CA3;
+	opacity: 1;
+}
+
+.list-inline {
+	list-style: none;	
+}
+
+

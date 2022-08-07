@@ -1,0 +1,26 @@
+.color-items {
+	margin-top: 30px;
+}
+
+.color-item {
+	margin: 5px;	
+	border-radius: 30px;
+	padding: 20px 30px;
+	text-decoration: none;
+}
+
+.color-item.red {
+	background-color: red;
+}
+.color-item.ligtred {
+	background-color: #EF5350;
+}
+.color-item.grey {
+	background-color: #8A9CA3;
+}
+.color-item.brown {
+	background-color: #534540;
+}
+.color-item.lightbrown {
+	background-color: #756A66;
+}

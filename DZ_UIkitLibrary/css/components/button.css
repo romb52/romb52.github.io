@@ -1,0 +1,27 @@
+.btn-madium {
+	color: #808080;
+	border: 1px solid #808080;
+	border-radius: 50px;
+	padding: 10px 15px;
+	font-weight: lighter;
+	opacity: 0.8;	
+	text-decoration: none;
+}
+.btn-madium:hover {
+	opacity: 1;
+	text-decoration: none;
+}
+
+.btn-twitter {
+	color: white;	
+	border-radius: 3px;
+	padding: 10px 15px;
+	font-weight: bold;	
+	text-decoration: none;
+	background-color: #EF5350;
+}
+.btn-twitter:hover {
+	background-color: red;
+	text-decoration: none;
+}
+
