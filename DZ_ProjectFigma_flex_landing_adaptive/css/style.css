@@ -1,0 +1,461 @@
+* {
+	box-sizing: border-box;
+	
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color:;
+	font-family: ;
+	font-weight:;
+	line-height: ;    
+}
+
+img {
+	max-width: 100%;
+}
+
+.container {
+	max-width: 940px;
+	margin: 0 auto;	
+	/*padding-left: 15px;
+	padding-right: 15px;*/
+}
+
+.row {
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	flex-wrap: wrap;	
+	justify-content: space-around;
+	align-content: center;
+}
+
+[class*='column-'] {
+	/*padding-left: 15px;
+	padding-right: 15px;*/
+	min-width: 1px;
+	max-width: 100%;
+}
+
+.column-2 {
+	flex: 0 0 50%;
+}
+
+.column-3 {
+	flex: 0 0 33.33%;
+}
+.column-4 {
+	flex: 0 0 25%;
+}
+
+
+/*--- Menu ---*/
+
+.main-nav {
+	position: fixed;	
+	top: 0px;
+	z-index: 10;
+	width: 100%;
+	min-height: 10vh;
+	background: #fff;	
+	line-height: 2.5;	
+	border-bottom: 2px solid #828282;
+	box-shadow: 0 0 12px rgba(0, 0, 0, 0.38);
+	align-items: center;
+
+}
+
+nav ul {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	padding: 0;
+}
+
+nav ul a {
+	font-size: 18px;
+	font-family: Gilroy bold, sans-serif;
+	line-height: 22px;
+	color: #828282;
+;
+	text-decoration: none;
+	transition: 0.3s;
+}
+nav ul a:hover {
+	color: #070707;
+}
+.mobile-toggle {
+	display: none;
+	cursor: pointer;
+	font-size: 20px;
+	position: absolute;
+	right: 22px;
+	top: 20px;
+	width: 30px;
+} 
+
+header {
+	height: 80vh;
+	padding-top: 10vh;
+}
+
+.img-header{
+	/*max-width: 100%;*/
+	height: 400px;
+	background: url(../img/BSPP2266.png) no-repeat;
+	background-size: cover;	
+}
+.header-items{
+	display: flex;
+	align-content: center;
+	justify-content: space-between;
+	align-items: flex-end;
+	height: 20vh;
+}
+.left-header-item {
+	font-family: 'Gilroy-Bold';
+	font-size: 47px;
+	line-height: 59px;
+}
+.middle-header-item {
+	font-family: 'Gilroy-Medium';
+	font-size: 18px;
+	line-height: 22px;
+	text-align: center;
+	margin-bottom: 50px;
+	color: #070707;
+}
+.right-header-item {
+	font-family: 'Gilroy-Bold';
+	font-size: 16px;
+	line-height: 20px;
+	text-align: end;
+	/*margin-left: 70%;*/
+	margin-bottom: 50px;
+
+
+	color: #828282;
+
+	/*transform: rotate(-90deg);*/
+}
+.rotate-item {
+	/*transform: rotate(-90deg);*/
+
+}
+header span{
+	color: #000;
+}
+
+/*about*/
+
+.about{
+	background-color: #F6F6F6;
+	height: 60vh;
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.about h4{
+	font-family: 'Gilroy-Bold';
+	font-size: 34px;
+	line-height: 42px;
+	text-align: center;
+	margin-bottom: 30px;
+
+	color: #070707;
+}
+
+.about p{
+	font-family: 'Gilroy-Medium';
+	font-size: 18px;
+	line-height: 22px;
+	text-align: center;
+
+	color: #070707;
+}
+
+/*skills*/
+
+.skills {
+	height: 60vh;
+	width: 100%;
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.skills h2{
+	font-family: 'Gilroy-Bold';
+	font-size: 34px;
+	line-height: 42px;
+	text-align: center;
+	margin: 0;
+
+	color: #070707;
+}
+
+.skills p{
+	font-family: 'Gilroy-Medium';
+	font-size: 18px;
+	line-height: 22px;
+	text-align: center;
+
+
+	color: #070707;
+}
+
+.skills-items{
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+	padding: 0 35px;
+}
+.skills-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+.skills-item p{
+	font-family: 'Gilroy-Bold';
+	font-size: 14px;
+	line-height: 17px;
+	text-align: center;
+	color: #828282;
+}
+.clr-grey-star {
+	color: lightgrey;
+}
+
+/*Portfolio*/
+
+/*.portfolio-wrap{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+*/
+.portfolio-header{
+	width: 100%;
+	height: 20vh;
+	background-color: #F6F6F6;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+.portfolio-header h1{
+	font-family: 'Gilroy-Bold';
+	font-size: 34px;
+	line-height: 42px;
+	text-align: center;	
+
+	color: #070707;
+
+}
+
+
+
+.img-FashionStore, .img-Reebok, .img-Braun{
+	width: 100%;
+	cursor: pointer;	
+}
+
+/*убираем чудо-отступ между блоками*/
+.reebok-wrap, .FashionStore-wrap, .Braun-wrap{
+	line-height: 0;
+
+}
+
+.FashionStore-href, .Reebok-href, .Braun-href{
+	height: 15vh;
+	background-color: #F6F6F6;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 30px;
+}
+
+.FashionStore-href a,.Reebok-href a, .Braun-href a{
+	font-family: 'Gilroy-Medium';
+	font-size: 18px;
+	line-height: 22px;	
+	text-decoration-line: underline;
+	color: #070707;
+}
+
+/*contacts*/
+
+.contacts{
+	height: 50vh;
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.contacts h1{
+	.font-family: 'Gilroy-Bold';
+	font-size: 34px;
+	line-height: 42px;
+	/*text-align: center;*/
+
+
+}
+.contacts p{
+	font-family: 'Gilroy-Medium';
+	font-size: 18px;
+	line-height: 22px;
+	/*text-align: center;*/
+}
+
+.contacts button{
+	font-family: 'Gilroy-Bold';
+	height: 42px;
+	padding: 0 30px;
+	font-size: 18px;
+	line-height: 22px;
+	background: #070707;
+	text-align: center;
+	color: #FFFFFF;
+	border-radius: 20px;
+	cursor: pointer;
+	transition:0.2s;
+}
+
+button:hover {        /*Обработка наведения на кнопки*/
+	box-shadow: 6px 6px 10px #a7a7a7; /*добавляем эфект тени на кнопку*/
+	cursor: pointer; 
+	-webkit-filter:  brightness(0.9); /*затемняем наведенную кнопку*/
+	filter: brightness(0.9);
+}
+button:active {             /*обработка нажатия на кнопку*/
+	box-shadow: none;                 /*убираем тень*/
+	cursor: pointer; 
+	transform: scale(0.99);           /*визуально уменьшаем размер нажатой кнопки*/
+	-webkit-filter:  brightness(0.5); /*затемняем нажатую кнопку*/
+	filter: brightness(0.5);
+}
+
+.contacts span{
+	font-family: 'Gilroy-Medium';
+	font-size: 14px;
+	line-height: 17px;
+	color: #828282;
+}
+
+.icons-items{
+	display: flex;
+}
+.icons-item{
+	margin: 0 15px;
+	margin-top: 40px;
+	transition:0.2s;
+}
+
+.icons-item:hover {        /*Обработка действий с иконками соцсетей*/
+	transform: scale(1.2);
+	/*конвертируем hex color code to a CSS filter. На выходе получаем синюю подсветку иконки при наведении */
+	-webkit-filter:invert(8%) sepia(100%) saturate(6620%) hue-rotate(247deg) brightness(107%) contrast(142%);
+	filter: invert(8%) sepia(100%) saturate(6620%) hue-rotate(247deg) brightness(107%) contrast(142%);
+}
+
+
+@media (max-width: 768px) {
+	header {
+		height: 130vh;
+		padding-top: 13vh;
+		text-align: center;
+	}
+	.img-header{
+	/*max-width: 100%;*/
+	height: 900px;
+	background: url(../img/mobile-image.png) ;
+	background-size: cover;	
+	margin:0 40px;
+
+}
+	.row {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+
+	.column-2 {
+		flex-basis: 100%;
+	}
+	
+	.skills-items {
+		flex-direction: column;
+		
+	}
+
+	.mobile-toggle {
+		display: block;
+	}
+
+	.mobile-toggle span {
+		width: 30px;
+		height: 4px;
+		margin-bottom: 6px;
+		background: #000000;
+		display: block;
+	}
+
+	.main-nav {
+		display: none;
+	}
+	.right-header-item {
+		display: none;
+	}
+	.mobile-wraper {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.main-nav.open nav {
+		display: block;
+	}
+
+	nav ul {
+		display: block;
+	}
+
+	nav ul li {
+		width: 100%;
+		padding: 7px 0;
+		margin: 0;
+		text-align: center;
+	}
+
+	nav ul li:first-child {
+		margin-top: 30px;
+	}
+	.column-3 {
+		flex-basis: 50%;
+	}
+	.header-items {
+		display: flex;
+	}
+	.skills {
+		height: 100vh;
+	}
+	.skills-item {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	
+}
+
+
+
+
+
