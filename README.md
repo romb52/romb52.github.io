@@ -75,3 +75,5 @@
 
 [Урок 27](https://romb52.github.io/DZ_ProjectFigma_flex_landing_adaptive/) - Flex landing. Free project Figma. Add addaptive
 
+[Урок 28](https://romb52.github.io/DZ_UIkitLibrary_Mirro_landing/) - Flex landing. Figma Mirro. Kit library
+
