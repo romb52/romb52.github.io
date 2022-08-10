@@ -1,0 +1,26 @@
+/*Google Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Serif+Pro&display=swap');
+
+
+/*Components design*/
+@import url("components/logo.css");
+@import url("components/button.css");
+@import url("components/card.css");
+@import url("components/banner.css");
+
+/*Colors*/
+@import url("components/colors.css");
+
+/*Fonts*/
+body {
+	font-family: 'Roboto', sans-serif;
+}
+h1, h2, h3 {
+	font-family: 'Source Serif Pro', serif;
+}
+
+h2 {
+	margin-top: 40px;
+}
+
+

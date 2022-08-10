@@ -1,0 +1,15 @@
+
+
+.btn-green {
+	color: white;	
+	border-radius: 6px;
+	padding: 10px 18px;
+	font-weight: normal;	
+	text-decoration: none;
+	background-color: #3A5F56;
+}
+.btn-green:hover {
+	background-color: #365951;
+	text-decoration: none;
+}
+
