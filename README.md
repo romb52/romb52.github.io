@@ -23,7 +23,7 @@
 
 [Урок 19-20](https://romb52.github.io/DZ_FlexLanding/) - Flex landing. Адаптация на 3х экранах.
 
-[Урок 29-30](https://romb52.github.io/DZ_29-30_JS/) - Разработка клиентских сценариев с использованием JavaScript. Циклы.
+[Урок 30](https://romb52.github.io/DZ_29-30_JS/) - Разработка клиентских сценариев с использованием JavaScript. Циклы.
 
 [Урок 31-32](https://romb52.github.io/DZ_31-32_JS/) - Разработка клиентских сценариев с использованием JavaScript. Циклы. Игра "Быки и коровы".
 
@@ -76,4 +76,6 @@
 [Урок 27](https://romb52.github.io/DZ_ProjectFigma_flex_landing_adaptive/) - Flex landing. Free project Figma. Add addaptive
 
 [Урок 28](https://romb52.github.io/DZ_UIkitLibrary_Mirro_landing/) - Flex landing. Figma Mirro. Kit library
+
+[Урок 29](https://romb52.github.io/DZ_Mirro_landing/) - Flex landing. Figma Mirro. Addaptive
 
