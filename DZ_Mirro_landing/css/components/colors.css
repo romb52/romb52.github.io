@@ -1,0 +1,29 @@
+.color-items {
+	margin-top: 30px;
+}
+
+.color-item {
+	margin: 5px;	
+	border-radius: 30px;
+	padding: 20px 30px;
+	text-decoration: none;
+}
+
+.color-item.green {
+	background-color: #3A5F56;
+}
+.color-item.text_green {
+	background-color: #292C32;
+}
+.color-item.item_beige {
+	background-color: #F4F3F0;
+}
+.color-item.footer_dark {
+	background-color: #292C32;
+}
+.color-item.footer_header_orange {
+	background-color: #B87D58;
+}
+.color-item.store_header_red {
+	background-color: #DB343B;
+}
