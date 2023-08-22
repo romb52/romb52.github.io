@@ -79,3 +79,7 @@
 
 [Урок 29](https://romb52.github.io/DZ_Mirro_landing/) - Flex landing. Figma Mirro. Addaptive
 
+# Roman Chertilin FrontEnd27 
+JavaScript
+
+[Урок JS 1](https://romb52.github.io//DZ_Events_2//) - Events. 
