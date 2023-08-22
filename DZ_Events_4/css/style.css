@@ -1,0 +1,72 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif; 	
+}
+
+.container {
+	margin: 20px auto;
+	max-width: 60vw;
+	height: auto;
+	background-color: #ebddc1;
+	display: flex;
+	justify-content: space-between;
+	padding: 5px;
+}
+
+.tarfficLights {	
+	display: flex;
+	justify-content: space-between;
+	width: 75%;	
+	padding: 5px;
+	border-radius: 4px;
+	border: 2px solid #c4b18e;
+}
+
+.tarfficLight {
+	margin: 5px;
+	width: 30%;
+	height: 0;
+    padding-bottom: 30%;
+	border-radius: 50%;
+	background-color: grey;
+}
+
+button {
+	 margin: 1px; 
+	width: 20%;
+	border: none;
+	border-radius: 5px;
+	text-decoration: none;
+}
+
+button:hover {        /*Обработка наведения на кнопки*/
+	box-shadow: 4px 4px 10px #a7a7a7; /*добавляем эфект тени на кнопку*/
+	cursor: pointer; 
+	-webkit-filter:  brightness(0.95); /*затемняем наведенную кнопку*/
+	filter: brightness(0.95);
+}
+
+button:active {             /*обработка нажатия на кнопку*/
+	box-shadow: none;                 /*убираем тень*/
+	cursor: pointer; 
+	transform: scale(0.99);           /*визуально уменьшаем размер нажатой кнопки*/
+	-webkit-filter:  brightness(0.9); /*затемняем нажатую кнопку*/
+	filter: brightness(0.9);
+}
+
+.red {
+	background-color: red;
+}
+
+.orange {
+	background-color: orange;
+}
+
+.green {
+	background-color: green;
+}
+
+.grey {
+	background-color: grey;
+}
