@@ -1,0 +1,28 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif; 	
+}
+
+button {
+	padding: 5px;
+	margin: 20px;	
+}
+.openModalBlock {
+	max-width: 50%;
+	margin: 0 auto;
+	/* display: flex; */
+	flex-direction: column;
+	background-color: #ccdaf5;
+	text-align: center;
+	padding: 5px;
+	display: none;
+}
+ h2 {
+	margin-top: 10px;
+	font-size: 17px;
+ }
+
+ .active {
+	display:flex;
+ }
