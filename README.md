@@ -82,6 +82,6 @@
 # Roman Chertilin FrontEnd27 
 JavaScript
 
-[Урок JS 1](https://romb52.github.io//DZ_Events_2//) - Events. 
+[Урок JS 1](https://romb52.github.io/DZ_Events_2/) - Events. add close modal by bg click
 
 [Урок JS 2](https://romb52.github.io//DZ_Events_4//) - Events. 
