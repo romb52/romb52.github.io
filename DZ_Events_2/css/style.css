@@ -4,6 +4,10 @@
 	font-family: sans-serif; 	
 }
 
+body{
+  height: 100vh;
+}
+
 button {
 	padding: 5px;
 	margin: 20px;	
