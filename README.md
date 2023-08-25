@@ -86,6 +86,6 @@ JavaScript
 
 [Урок JS 2](https://romb52.github.io//DZ_Events_4//) - Events. 
 
-[Урок JS 2](https://romb52.github.io/DZ_Events_clickFootball/) - Events. Style. Footbal game
+[Урок JS 3](https://romb52.github.io/DZ_Events_clickFootball/) - Events. Style. Footbal game
 
 
