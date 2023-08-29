@@ -90,6 +90,9 @@ JavaScript
 
 [Урок JS 4](https://romb52.github.io/DZ_citySearch/) - Events. Life search.
 
+[Урок JS 5](https://romb52.github.io/DZ_scrollToBeginning/) - Events. Smooth scroll to ancors.
+
+
 
 
 
