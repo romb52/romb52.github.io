@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", "sans-serif";
+}
+
+.wraper {
+  width: 60vw;
+  padding: 10px;
+  background-color: rgb(226, 195, 155);
+  margin: 100px auto 0;
+}
+
+.content {
+  margin: 10px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.content .search {
+  position: relative;
+}
+
+.search input {
+  height: 50px;
+  width: 100%;
+  outline: none;
+  padding: 0 15px 0 40px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  font-size: 21px;
+}
+.search input:focus {
+  outline: 1px solid gray;
+}
+
+.search i {
+  position: absolute;
+  line-height: 50px;
+  left: 15px;
+  color: #999;
+}
+
+.content .citiesList {
+  margin-top: 15px;
+}
+
+.content li {
+  height: 40px;
+  /* border: 1px solid #999; */
+  font-size: 21px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.citiesList li:hover{
+  background-color: #ECECEC;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.content .citiesList{
+  max-height: 390px;
+  overflow-y: hidden;
+  /* display: none; */
+}
