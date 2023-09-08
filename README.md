@@ -92,6 +92,10 @@ JavaScript
 
 [Урок JS 5](https://romb52.github.io/DZ_scrollToBeginning/) - Events. Smooth scroll to ancors.
 
+[Урок JS 6](https://romb52.github.io/DZ_JS_GenerateCalendar/) - Data. Events. BOM. Generate calendar
+
+
+
 
 
 
