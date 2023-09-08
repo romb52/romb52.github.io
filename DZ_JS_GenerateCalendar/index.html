@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Generate calendar</title>
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+	<div class="wraper">
+		<div class="content">
+			<div class="inputForm">
+				<div class="inputs">
+					<div>
+						<span>Month:</span>
+						<input type="number" class="inputMonth" id="inputMonth" placeholder="input number of month"
+							min="1" max="12">
+					</div>
+					<div class="errorsMonth" style="height: 15px; color: red"></div>
+				</div>
+
+				<div class="inputs">
+					<div><span>Year:</span>
+						<input type="number" class="inputYear" id="inputYear" placeholder="input year" min="1900"
+							max="2100">
+					</div>
+					<div class="errorsYear" style="height: 15px; color: red"></div>
+				</div>
+
+			</div>
+			<button class="btn" id="btn">Generate</button>
+			<div class="showDate" id="showDate"></div>
+			<div id="calendarField">
+				<table id="tableCalendar">
+					<tr>
+						<td><span>MON</span></td>
+						<td><span>TUE</span></td>
+						<td><span>WED</span></td>
+						<td><span>THU</span></td>
+						<td><span>FRI</span></td>
+						<td><span>SUT</span></td>
+						<td><span>SUN</span></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="js/script.js"></script>
+</body>
+
+</html>
