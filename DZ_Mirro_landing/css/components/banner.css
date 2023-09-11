@@ -3,11 +3,11 @@
 	height: 100vh;	
 	
 	background: radial-gradient(at 0% 100%, rgba(184, 125, 88, 0.8) 0%, rgba(184, 125, 88, 0) 30%),					
-				radial-gradient(at 100% 0%, rgba(58, 95, 86, 0.55) 0%, rgba(58, 95, 86, 0) 30%) #F4F3F0;
+				radial-gradient(at 100% 0%, rgba(58, 95, 86, 0.55) 0%, rgba(58, 95, 86, 0) 30%) var(--white_darkgrey-color);
 	background-size: cover;
 	display: flex;
 	/*text-align: center;*/
-	
+	transition: background 0.9s;
 }
 .banner-contens {
 	display: flex;
@@ -28,16 +28,17 @@
 .banner h1 {
 	font-size: 48px;
 	line-height: 58px;
-	color: #3A5F56;
+	color: 	var(--darkgreen_lightgreen-color);
 	margin: 0;
 }
 
 .banner p {
 	font-size: 16px;
 	line-height: 22px;
-	opacity: 0.8;
-	color: #292C32;
+	/* opacity: 0.8; */
+	color: var(--dark_white_text-color);
 	margin: 15px 0;
+	
 }
 .banner-image {
 	width: 550px;

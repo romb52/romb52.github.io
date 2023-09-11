@@ -8,7 +8,7 @@
 	font-size: 16px;
 	line-height: 22px;	
 	text-decoration: none;
-	background-color: #3A5F56;
+	background-color: var(--darkgreen_lightgreen-color);
 }
 .btn-green:hover {
 	background-color: #365951;
@@ -21,7 +21,7 @@
 	display: inline-block;	
 	font-size: 14px;
 	font-weight: 400;
-	color:  #3A5F56;
+	color:  var(--darkgreen_lightgreen-color);
 	text-align: center;
 	background-color: #fff;
 	border-radius: 18px;
@@ -31,10 +31,13 @@
 	left: 0;*/
 }
 
-.fa-cart-shopping,  .fa-moon  {
+.fa-cart-shopping,  .fa-moon, .fa-sun {
 	color: #000;
 	margin-right: 5px;
 }
+/* .fa-sun {
+	margin-right: 5px;
+} */
 
 .btn-input {	
 	background: #292C32;
