@@ -64,7 +64,7 @@
 .store-item {
 	display: flex;
 	flex-direction: column;
-	height: 590px;
+	height: 610px;
 	width: 380px;	
 	margin: 5px;
 	border-radius: 0 0 16px 16px;
@@ -93,6 +93,22 @@
 	line-height: 22px;
 	margin: 0 0 15px 0;
 }
+
+.store-description-footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;	
+}
+.store-description-footer  p{
+	font-size: 21px;
+	margin: 0;
+}
+
+.item-price {
+	margin-right: 5px;
+}
+
 /* .addToCart {
 	font-size: 17px;
 	line-height: 24px;
