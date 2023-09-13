@@ -18,7 +18,8 @@ window.onload = function(){
 	} else {console.log('light')}
 }
 
-btnToggleDarkLight.onclick = function (){
+btnToggleDarkLight.onclick = function (e){
+	e. preventDefault();
 	document.body.classList.toggle('dark-mode');          //на клик кнопки светлой-темной темы добавляем или убираем класс .dark-mode
 	// console.log('dark mode')
 	if (document.body.classList.contains('dark-mode')){
