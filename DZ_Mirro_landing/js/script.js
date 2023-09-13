@@ -4,7 +4,7 @@ let isDarkTheme = false;
 
 let menu_item = document.querySelectorAll('.menu-item');            
 
-console.log(menu_item);
+// console.log(menu_item);
 menu_item.forEach(item => item.addEventListener('click', event => {                      //на кажлый элемент меню навешиваем слушатель клика, при нажатии элемент становится активным, а все остальные элементы меню нет
 	menu_item.forEach(element => element.classList.remove('active-menu'));
 	item.classList.add('active-menu');
@@ -15,7 +15,7 @@ window.onload = function(){
 	isDarkTheme = localStorage.getItem("isDark");             // при загрузке проверяем предыдущие настройки темы 
 	if(isDarkTheme === "true") {
 		document.body.classList.toggle('dark-mode');
-	} else {console.log('light')}
+	} 
 }
 
 btnToggleDarkLight.onclick = function (e){
@@ -37,4 +37,33 @@ btnToggleDarkLight.onclick = function (e){
 		iconToggleMoonSun.nextElementSibling.textContent = 'Dark theme';	
 	}
 
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Shoping/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//открыть модальное окно 
+const modalContainer = document.getElementById('modal_container');
+const modalBackground = document.getElementById('modal_background');
+
+function openCartModal() { //відкривається модальне вікно
+	modalBackground.classList.add('active');
+	modalContainer.classList.add('active');
+}
+
+function closeCartModal() { // зачиняється модальне вікно
+	modalContainer.classList.remove('active');
+	modalBackground.classList.remove('active');
+}
+
+
+
+modalBackground.onclick = closeModalByClickBg;
+
+function closeModalByClickBg(e) { //      якщо клікнули на бекграунд  модальне вікно зникає, якщо є
+   if (modalContainer.classList.contains('active') && e.target.id === 'modal_background') {
+    closeCartModal();
+   }
 }

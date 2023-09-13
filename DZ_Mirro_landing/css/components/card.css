@@ -91,9 +91,9 @@
 .store-description p{
 	font-size: 16px;
 	line-height: 22px;
-	margin: 0 0 10px 0;
+	margin: 0 0 15px 0;
 }
-.addToCart {
+/* .addToCart {
 	font-size: 17px;
 	line-height: 24px;
 	text-decoration: none;	
@@ -101,13 +101,13 @@
 	border: 1px solid #3A5F56;
 	border-radius: 3px;
 	padding: 4px 10px;
-}
+} */
 .addToCart::after {
 	content: " \0024";
 }
-.addToCart:hover {
+/* .addToCart:hover {
 	color: #29453f;
-}
+} */
 
 
 
