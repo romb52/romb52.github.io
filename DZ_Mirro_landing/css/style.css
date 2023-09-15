@@ -282,6 +282,10 @@ nav {
 	color: #292C32;	
 }
 
+.cart-counter-increment i:hover{
+	color:#60bf81;
+}
+
 .cart-product_counter input:focus   {
 	/* border: 1px solid #3a5f56; */
 	outline: 1px solid #60bf81;
@@ -301,6 +305,7 @@ nav {
 	justify-content: space-between;
 	align-items: center;
 	padding: 15px;
+	border-top: 1px solid #3a5f56;
 } 
 .cart-product-coast, .cart-receipt_sum-price {
 	width: 30%;
