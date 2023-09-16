@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Some chat</title>
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+	<div class="wraper">
+		<div class="content">
+			<h2 id="beginning">Створіть HTML-сторінку зі списком повідомлень на форумі
+				і формою для додавання нового повідомлення. Після заповнення
+				форми додайте повідомлення до списку на екрані.</h1>
+				<ul class="messageBox">
+					<li>
+						<div class="article">
+							<div class="title_message"><span id="name">Name</span><span id="time_date">time&date</span>
+							</div>
+							<div class="content_message">
+								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam, voluptatibus.
+									Adipisci iusto
+									possimus, quos repellat voluptas laudantium tempore amet molestiae, cumque
+									reiciendis obcaecati
+									dicta. Molestiae porro sit ab at deleniti totam voluptates dolores odit facere, nam
+									suscipit quo
+									ipsum reiciendis inventore. Eveniet ipsa .</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+
+				<div class="new_message">
+					<h2>Add new message</h2>
+					<form class="form" onsubmit="addNewMessage(event)">
+						<div class="inputYourName"><span>Your name:</span> <input type="text" name="name"></div>
+						<div class="errors" style="height: 15px; color: red"></div>
+						<div class="inputYourMessage"><span>Your message:</span><textarea placeholder="" name="message"></textarea></div>
+						<div class="errors" style="height: 15px; color: red"></div>
+						<input class="submit" type="submit" value="Send">
+					</form>
+				</div>
+
+		</div>
+		<a href="#beginning" class="row"><i class="fa-solid fa-arrow-up rowUp active"></i></a>
+	</div>
+
+
+	<script src="https://kit.fontawesome.com/8025aae949.js" crossorigin="anonymous"></script>
+	<script src="js/script.js"></script>
+</body>
+
+</html>
