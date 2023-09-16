@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Open+Sans:wght@300;400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", "sans-serif";
+  color:#0D0D0D;
+}
+
+h1,
+h2 {
+  font-family: "Montserrat", "sans-serif";
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.wraper {
+  padding: 20px;
+  width: 100%;
+  height: 100vh;
+  background-color: #d9d9d91a;
+}
+
+.content{
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column; 
+  margin: 0 auto;
+  background-color: #D9D3C1;
+}
+.name-test {
+  padding: 10px;
+}
+
+.text-question {
+  margin: 20px;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-check-input{
+  cursor: pointer;
+  width: 17px;
+  height: 17px;
+  border-color: #A6A194;
+  accent-color: #14548C;
+}
+
+
+.form-check-label {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+}
+
+.form-check-input {
+  margin: 20px;
+}
+
+.footer-question {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.list ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.list li{
+  margin: 10px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 17px;
+  color: #A6A194;
+}
+
+.list .active{
+border-radius:100%;
+background-color: rgba(128, 128, 128, 0.362);
+color: #0D0D0D;
+}
+
+
+ button{
+  font-size: 17px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  border:none;
+  background-color: #14548C;
+  color: #fff;
+  height: 100%;
+}
+
+button:disabled{
+  background-color: #A6A194;
+  pointer-events: none;
+}
+
+
+.block{
+  display: none;
+}
+
+.active-block{
+  display: block;
+}
