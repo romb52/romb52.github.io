@@ -94,7 +94,10 @@ JavaScript
 
 [Урок JS 6](https://romb52.github.io/DZ_JS_GenerateCalendar/) - Data. Events. BOM. Generate calendar
 
-[Урок JS 7](https://romb52.github.io/DZ_Add_new_message/) - Form. Events.
+[Урок JS 7](https://romb52.github.io/DZ_Add_new_message/) - Form. Events. Add new message to chat
+
+[Урок JS 8](https://romb52.github.io/DZ_Test/) - Form. Events. Test
+
 
 
 
