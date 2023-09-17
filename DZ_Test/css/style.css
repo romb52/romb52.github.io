@@ -29,12 +29,28 @@ h2 {
   margin: 0 auto;
   background-color: #D9D3C1;
 }
+
+ .name {
+  font-style: italic;
+  padding: 15px; 
+}
 .name-test {
   padding: 10px;
+  text-align: justify;
 }
 
 .text-question {
   margin: 20px;
+  text-align: center;
+}
+.text-question span{
+  font-weight: bold;
+  display: block;
+}
+.text-question img{
+  width: 100%;
+  max-width: 600px;
+  margin-top: 10px;
 }
 
 .answers {
@@ -117,4 +133,18 @@ button:disabled{
 
 .active-block{
   display: block;
+}
+
+.result {
+  max-width: 1200px;
+
+  flex-direction: column; 
+  margin: 20px auto;
+  background-color: #D9D3C1;
+  align-items: center;
+  display: none;
+}
+
+.resultActive {
+  display: flex;
 }

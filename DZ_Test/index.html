@@ -18,252 +18,283 @@
 						тесту мають два варіанти відповіді (тільки 1 правильний). Після
 						проходження тесту виведіть кількість правильних відповідей.</span></div>
 			</div>
-			<div class="row">
-				<div class="content-test-block">
-					<div id="block-1" class="block active-block">
-						<div class="question ">
-							<div class="text-question">
-								<p> 1) Question </p>
+			<form class="form" onsubmit="showResult(event)">
+				<div class="row">
+					<div class="content-test-block">
+						<div id="block-1" class="block active-block" data-page="1">
+							<div class="question ">
+								<div class="text-question">
+									<p> <span>Білет №91. Питання №2688</span>									
+										Чи дозволяється перевезення організованих груп дітей у темну пору доби? </p>
+								</div>
+							</div>
+							<div class="answers">
+								<label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-1" id="answer-101" value="101"><span
+										class="checkmarks button"></span>
+									<p class="text-answers">Дозволяється, якщо стаж водія становить 5 років і більше.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-1" id="answer-102" value="102"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Забороняється.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-1" id="answer-103" value="103"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Дозволяється, якщо ввімкнути аварійну світову сигналізацію.</p>
+								</label>
 							</div>
 						</div>
-						<div class="answers">
-							<label class="form-check-label"><input class="form-check-input" type="radio"
-									name="answer-41297" id="answer-186449"><span class="checkmarks button"></span>
-								<p class="text-answers"> 12</p>
-							</label><label class="form-check-label"><input class="form-check-input" type="radio"
-									name="answer-41297" id="answer-186455"><span class="checkmarks button"></span>
-								<p class="text-answers"> 10</p>
-							</label><label class="form-check-label"><input class="form-check-input" type="radio"
-									name="answer-41297" id="answer-186452"><span class="checkmarks button"></span>
-								<p class="text-answers"> 2</p>
-							</label><label class="form-check-label"><input class="form-check-input" type="radio"
-									name="answer-41297" id="answer-186446"><span class="checkmarks button"></span>
-								<p class="text-answers"> 5</p>
-							</label>
+						<div id="block-2" class="block" data-page="2">
+							<div class="question">
+								<div class="text-question">
+									<p><span>Білет №67. Питання №1296</span> 
+										Чи дозволений розворот у технологічних розривах розділювальної смуги на автомагістралі? </p>
+								</div>
+							</div>
+							<div class="answers">
+								<label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-2" id="answer-105" value="105"><span
+										class="checkmarks button"></span>
+									<p class="text-answers">Дозволений, якщо дорога добре проглядається в обидві сторони.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-2" id="answer-106" value="106"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Дозволений.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-2" id="answer-107" value="107"><span
+										class="checkmarks button"></span>
+									<p class="text-answers">Заборонений.</p>
+								</label>
+							</div>
 						</div>
-					</div>
-					<div id="block-2" class="block">
-					<div class="question">
-						<div class="text-question">
-							<p> 2) Question </p>
+						<div id="block-3" class="block" data-page="3">
+							<div class="question">
+								<div class="text-question">
+									<p><span>Білет №93. Питання №996</span> 
+										Яку величину повинні перевищувати габарити вантажу, що перевозиться, за шириною, щоб його перевезення здійснювалося за спеціальними правилами? </p>
+								</div>
+							</div>
+							<div class="answers">
+								<label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-3" id="answer-109" value="109"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> 0,4 м</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-3" id="answer-110" value="110"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> 1 м</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-3" id="answer-111" value="111"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> 2 м</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-3" id="answer-112" value="112"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> 2,6 м</p>
+								</label>
+							</div>
 						</div>
-					</div>
-					<div class="answers">
-						<label class="form-check-label"><input class="form-check-input" type="radio" name="answer-41297"
-								id="answer-186449"><span class="checkmarks button"></span>
-							<p class="text-answers"> 99</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186455"><span class="checkmarks button"></span>
-							<p class="text-answers"> 100</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186452"><span class="checkmarks button"></span>
-							<p class="text-answers"> 22</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186446"><span class="checkmarks button"></span>
-							<p class="text-answers"> 55</p>
-						</label>
-					</div>
-				</div>
-				<div id="block-3" class="block">
-					<div class="question">
-						<div class="text-question">
-							<p> 3) Question </p>
+						<div id="block-4" class="block" data-page="4">
+							<div class="question">
+								<div class="text-question">
+									<p><span>Білет №93. Питання №996</span>
+										На транспортному засобі з розпізнавальним знаком «Діти» під час посадки або висадки пасажирів із нього повинні бути ввімкнені: </p>
+								</div>
+							</div>
+							<div class="answers">
+								<label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-4" id="answer-113" value="1113"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Аварійна сигналізація.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-4" id="answer-114" value="114"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Габаритні вогні.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-4" id="answer-115" value="115"><span
+										class="checkmarks button"></span>
+									<p class="text-answers">Проблискові маячки оранжевого кольору та (або) аварійна світлова сигналізація.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-4" id="answer-116" value="116"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Проблискові маячки оранжевого кольору.</p>
+								</label>
+							</div>
 						</div>
-					</div>
-					<div class="answers">
-						<label class="form-check-label"><input class="form-check-input" type="radio" name="answer-41297"
-								id="answer-186449"><span class="checkmarks button"></span>
-							<p class="text-answers"> 152</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186455"><span class="checkmarks button"></span>
-							<p class="text-answers"> 510</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186452"><span class="checkmarks button"></span>
-							<p class="text-answers"> 52</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186446"><span class="checkmarks button"></span>
-							<p class="text-answers"> 85</p>
-						</label>
-					</div>
-				</div>
-				<div id="block-4" class="block">
-					<div class="question">
-						<div class="text-question">
-							<p> 3) Question </p>
+						<div id="block-5" class="block" data-page="5">
+							<div class="question">
+								<div class="text-question">
+									<p><span>Білет №55. Питання №2958</span> 
+										Що першочергово потрібно зробити при наданні домедичної допомоги постраждалому при ДТП?</p>
+								</div>
+							</div>
+							<div class="answers">
+								<label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-5" id="answer-117" value="117"><span
+										class="checkmarks button"></span>
+									<p class="text-answers">Переконатися у відсутності небезпеки.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-5" id="answer-118" value="118"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Спочатку необхідно впевнитись в наявності дихання у постраждалого.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-5" id="answer-119" value="119"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Спочатку треба відновити прохідність дихальних шляхів.</p>
+								</label>
+							</div>
 						</div>
-					</div>
-					<div class="answers">
-						<label class="form-check-label"><input class="form-check-input" type="radio" name="answer-41297"
-								id="answer-186449"><span class="checkmarks button"></span>
-							<p class="text-answers"> 152</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186455"><span class="checkmarks button"></span>
-							<p class="text-answers"> 510</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186452"><span class="checkmarks button"></span>
-							<p class="text-answers"> 52</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186446"><span class="checkmarks button"></span>
-							<p class="text-answers"> 85</p>
-						</label>
-					</div>
-				</div>
-				<div id="block-5" class="block">
-					<div class="question">
-						<div class="text-question">
-							<p> 3) Question </p>
+						<div id="block-6" class="block" data-page="6">
+							<div class="question">
+								<div class="text-question">
+									<p><span>Білет №38. Питання №207</span> 
+										Як повинні вчинити водії транспортних засобів у даній ситуації? </p>
+										<img src="img/207___.jpg" alt="Білет №38. Питання №207">
+								</div>
+							</div>
+							<div class="answers">
+								<label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-6" id="answer-121" value="121"><span
+										class="checkmarks button"></span>
+									<p class="text-answers">Дочекавшись дозвільного сигналу світлофора, розпочати рух.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-6" id="answer-122" value="122"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Керуючись сигналом регулювальника, продовжити рух.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-6" id="answer-123" value="123"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Керуючись сигналом регулювальника, рух повинен продовжити тільки мотоцикл.</p>
+								</label>
+							</div>
 						</div>
-					</div>
-					<div class="answers">
-						<label class="form-check-label"><input class="form-check-input" type="radio" name="answer-41297"
-								id="answer-186449"><span class="checkmarks button"></span>
-							<p class="text-answers"> 152</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186455"><span class="checkmarks button"></span>
-							<p class="text-answers"> 510</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186452"><span class="checkmarks button"></span>
-							<p class="text-answers"> 52</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186446"><span class="checkmarks button"></span>
-							<p class="text-answers"> 85</p>
-						</label>
-					</div>
-				</div>
-				<div id="block-6" class="block">
-					<div class="question">
-						<div class="text-question">
-							<p> 3) Question </p>
+						<div id="block-7" class="block" data-page="7">
+							<div class="question">
+								<div class="text-question">
+									<p><span> Білет №102. Питання №2437</span>							
+										Для чого служить стартер? </p>
+								</div>
+							</div>
+							<div class="answers">
+								<label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-7" id="answer-125" value="125"><span
+										class="checkmarks button"></span>
+									<p class="text-answers">Для запуску двигуна.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-7" id="answer-126" value="126"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Для пересування автомобіля на невелику відстань.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-7" id="answer-127" value="127"><span
+										class="checkmarks button"></span>
+									<p class="text-answers">Для старту автомобіля.</p>
+								</label>								
+							</div>
 						</div>
-					</div>
-					<div class="answers">
-						<label class="form-check-label"><input class="form-check-input" type="radio" name="answer-41297"
-								id="answer-186449"><span class="checkmarks button"></span>
-							<p class="text-answers"> 152</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186455"><span class="checkmarks button"></span>
-							<p class="text-answers"> 510</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186452"><span class="checkmarks button"></span>
-							<p class="text-answers"> 52</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186446"><span class="checkmarks button"></span>
-							<p class="text-answers"> 85</p>
-						</label>
-					</div>
-				</div>
-				<div id="block-7" class="block">
-					<div class="question">
-						<div class="text-question">
-							<p> 3) Question </p>
+						<div id="block-8" class="block" data-page="8">
+							<div class="question">
+								<div class="text-question">
+									<p><span> Білет №102. Питання №2437</span>  
+										Який із зображених дорожніх знаків скасовує право першочергового проїзду нерегульованих перехресть? </p>
+										<img src="img/65__.jpg" alt="Білет №65. Питання №1338">
+								</div>
+							</div>
+							<div class="answers">
+								<label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-8" id="answer-129" value="129"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Знак 1.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-8" id="answer-130" value="130"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Знак 2.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-8" id="answer-131" value="131"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Знак 3.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-8" id="answer-132" value="132"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Знак 4.</p>
+								</label>
+							</div>
 						</div>
-					</div>
-					<div class="answers">
-						<label class="form-check-label"><input class="form-check-input" type="radio" name="answer-41297"
-								id="answer-186449"><span class="checkmarks button"></span>
-							<p class="text-answers"> 152</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186455"><span class="checkmarks button"></span>
-							<p class="text-answers"> 510</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186452"><span class="checkmarks button"></span>
-							<p class="text-answers"> 52</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186446"><span class="checkmarks button"></span>
-							<p class="text-answers"> 85</p>
-						</label>
-					</div>
-				</div>
-				<div id="block-8" class="block">
-					<div class="question">
-						<div class="text-question">
-							<p> 3) Question </p>
+						<div id="block-9" class="block" data-page="9">
+							<div class="question">
+								<div class="text-question">
+									<p><span>Білет №43. Питання №2140</span> 
+										У якому випадку легковий автомобіль більш стійкий проти перекидання на повороті? </p>
+										
+								</div>
+							</div>
+							<div class="answers">
+								<label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-9" id="answer-133" value="133"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Без вантажу і пасажирів.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-9" id="answer-134" value="134"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Без пасажирів, але з вантажем на верхньому багажнику.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-9" id="answer-135" value="135"><span
+										class="checkmarks button"></span>
+									<p class="text-answers">З пасажирами, але без вантажу.</p>
+								</label>
+							</div>
 						</div>
-					</div>
-					<div class="answers">
-						<label class="form-check-label"><input class="form-check-input" type="radio" name="answer-41297"
-								id="answer-186449"><span class="checkmarks button"></span>
-							<p class="text-answers"> 152</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186455"><span class="checkmarks button"></span>
-							<p class="text-answers"> 510</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186452"><span class="checkmarks button"></span>
-							<p class="text-answers"> 52</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186446"><span class="checkmarks button"></span>
-							<p class="text-answers"> 85</p>
-						</label>
-					</div>
-				</div>
-				<div id="block-9" class="block">
-					<div class="question">
-						<div class="text-question">
-							<p> 3) Question </p>
+						<div id="block-10" class="block" data-page="10">
+							<div class="question">
+								<div class="text-question">
+									<p> Білет №111. Питання №2477
+										Чи дозволено перевищувати рівень моторної оливи під час її заміни? </p>
+								</div>
+							</div>
+							<div class="answers">
+								<label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-10" id="answer-137" value="137"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Дозволено після капремонту двигуна.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-10" id="answer-138" value="138"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Дозволено в будь-якому випадку.</p>
+								</label><label class="form-check-label"><input class="form-check-input" type="radio"
+										name="answer-10" id="answer-139" value="139"><span
+										class="checkmarks button"></span>
+									<p class="text-answers"> Ні, не дозволено.</p>								
+								</label>
+							</div>
 						</div>
-					</div>
-					<div class="answers">
-						<label class="form-check-label"><input class="form-check-input" type="radio" name="answer-41297"
-								id="answer-186449"><span class="checkmarks button"></span>
-							<p class="text-answers"> 152</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186455"><span class="checkmarks button"></span>
-							<p class="text-answers"> 510</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186452"><span class="checkmarks button"></span>
-							<p class="text-answers"> 52</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186446"><span class="checkmarks button"></span>
-							<p class="text-answers"> 85</p>
-						</label>
-					</div>
-				</div>
-				<div id="block-10" class="block">
-					<div class="question">
-						<div class="text-question">
-							<p> 3) Question </p>
-						</div>
-					</div>
-					<div class="answers">
-						<label class="form-check-label"><input class="form-check-input" type="radio" name="answer-41297"
-								id="answer-186449"><span class="checkmarks button"></span>
-							<p class="text-answers"> 152</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186455"><span class="checkmarks button"></span>
-							<p class="text-answers"> 510</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186452"><span class="checkmarks button"></span>
-							<p class="text-answers"> 52</p>
-						</label><label class="form-check-label"><input class="form-check-input" type="radio"
-								name="answer-41297" id="answer-186446"><span class="checkmarks button"></span>
-							<p class="text-answers"> 85</p>
-						</label>
-					</div>
-				</div>
-					<div class="footer-question">
-						<div class="next"><button type="button" id="next"> NEXT </button>
-						</div>
-						<div class="list" id="list">
-							<ul>
-								<li class="active"> 1 </li>
-								<li> 2 </li>
-								<li> 3 </li>
-								<li> 4 </li>
-								<li> 5 </li>
-								<li> 6 </li>
-								<li> 7 </li>
-								<li> 8 </li>
-								<li> 9 </li>
-								<li> 10 </li>
+						<div class="footer-question">
+							<div class="next"><button type="button" id="next"> NEXT </button>
+							</div>
+							<div class="list" id="list">
+								<ul>
+									<li class="active"> 1 </li>
+									<li> 2 </li>
+									<li> 3 </li>
+									<li> 4 </li>
+									<li> 5 </li>
+									<li> 6 </li>
+									<li> 7 </li>
+									<li> 8 </li>
+									<li> 9 </li>
+									<li> 10 </li>
 
-							</ul>
-						</div>
-						<div class="finish" id="finish"><button type="button"> FINISH </button>
+								</ul>
+							</div>
+							<div class="finish" id="finish"><button type="submit"> FINISH </button>
+							</div>
 						</div>
 					</div>
-				</div>
 
-			</div>
+				</div>
+			</form>
+		</div>
+		<div class="result" id="result">
+			<h2>Result</h2>
+			<p id="resultText"></p>
 		</div>
 	</div>
 
