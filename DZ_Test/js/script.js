@@ -58,7 +58,7 @@ const answerArr = ['102', '107', '112', '115', '117', '122', '125', '130', '133'
 let resultBlock = document.getElementById('result');
 let resultText = document.getElementById('resultText');
 let correctAnswerCouter = 0;
-
+let allAnswerCouter = 0;
 
 function showResult(event) {                                        //обработка submit формы. 
   event.preventDefault();
@@ -68,10 +68,10 @@ function showResult(event) {                                        //обраб
     const answer = item[0];                         // атрибуты name
     const value = item[1];                           //         value input
     // console.log(form);
+    allAnswerCouter++;
     for (let i = 0; i < answerArr.length; i++) {                              //при совпадении value нажатой радиокнопки с правильным ответом в массиве - добавляем + 1 правильный ответ
       if (answer === `answer-${i+1}` && value === answerArr[i]) {
-        correctAnswerCouter++;
-                                                                               //доработать, чтоб подсвечивались правильные и неправильные ответы
+        correctAnswerCouter++;                                                                               //доработать, чтоб подсвечивались правильные и неправильные ответы
         // console.log(answer, value, correctAnswerCouter);
       }else {
 
@@ -80,7 +80,7 @@ function showResult(event) {                                        //обраб
     submitButton.disabled = true;                           //деактивируем кнопку submit
     // checkAllAnswers;
     resultBlock.classList.add('resultActive');                                    // показываем результаты теста
-    resultText.textContent = `${correctAnswerCouter} correct answers`;
+    resultText.textContent = `${correctAnswerCouter} correct answers in ${allAnswerCouter} questions`;
   });
 
 }
