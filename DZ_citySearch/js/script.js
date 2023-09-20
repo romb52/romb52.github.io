@@ -29708,13 +29708,13 @@ const citiesArr = [
 ];
 
 
-// function addCity() {
-//   citiesArr.forEach(city => {
-//     let li = `<li onclick = "updateName(this)">${city}</li>`
-//     citiesList.insertAdjacentHTML("beforeend", li);
-//   })
-// }
-// addCity();
+function addCity() {
+  citiesArr.forEach(city => {
+    let li = `<li onclick = "updateName(this)">${city}</li>`
+    citiesList.insertAdjacentHTML("beforeend", li);
+  })
+}
+addCity();
 
 
 function updateName(selectedLi) {
@@ -29731,3 +29731,33 @@ input.addEventListener("keyup",() => {
   if(!searchedCity){arr =[];}
   citiesList.innerHTML = arr;
 });
+
+/*
+  const getData = async (url) => {
+
+    const response = await fetch(url);
+  
+    if (!response.ok) {
+      throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response.status}`);
+    }
+  
+    return await response.json();
+  
+  };
+  
+  const sendData = async (url, data) => {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: data,
+    });
+  
+    if (!response.ok) {
+      throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response.status}`);
+    }
+  
+    return await response.json();
+  }
+
+  console.log(getData('https://www.onetwotrip.com/_api/rzd/suggestStations?searchText=%D0%BE%D0%B4%D0%B5&type=station&callback=jsonp_1695152883968'));
+  
+  */
