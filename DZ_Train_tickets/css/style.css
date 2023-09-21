@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Open+Sans:wght@300;400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", "sans-serif";
+  color: #111C26;
+}
+
+h1,
+h2 {
+  font-family: "Montserrat", "sans-serif";
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.wraper {
+  padding: 20px;
+  width: 100%;
+  height: 100vh;
+  background-color: #d6d9c51e;
+}
+
+.content {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: #f2d1944c;
+}
+.title {
+  padding: 10px;
+  text-align: justify;
+  font-style: italic;
+}
+
+.btn {
+  color: white;
+  border-radius: 3px;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #F23030;
+  margin-left: 10px;
+}
+.btn:hover {
+  background-color: #bf212e;
+  text-decoration: none;
+}
+.btn-cart i{
+  color: #fff;
+  padding-right: 4px;
+}
+.btn-cart .btn-cart-items{
+  color: #fff;
+  padding-left: 4px;
+}
+
+.btn-cart {
+ background-color: #2c6a8c;
+}
+.btn-cart:hover {
+  background-color: #134c6b;
+  text-decoration: none;
+}
+
+
+.directionForm {
+  display: flex;  
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.directionForm>div{
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+
+.directionForm input, select {
+  flex-grow: 1;
+  margin: 10px 0 10px 10px;
+  padding: 6px;
+  font-size: 17px;
+  font-weight: bold;
+}
+.search-block {
+  padding: 25px 0;
+  border-bottom: 1px solid #D6D9C5;
+  border-top: 1px solid #D6D9C5;
+}
+
+.seatsForm {
+  display: none;
+}
+.seatsForm.active{
+  display: block;
+}
+
+.wagon {
+  min-width: 950px;
+  width: 90%;
+  margin: 20px auto;
+  border: 3px solid #2c6a8c;
+  border-radius: 15px;
+
+}
+.wagon-floor {
+  display: flex;
+  justify-content: center;
+}
+
+.compartment {
+  /* border-top: 3px solid #2c6a8c; */
+  border-right: 3px solid #2c6a8c; 
+  margin-bottom: 15px;
+  padding: 2px;
+}
+
+.compartment:first-child {
+  border-left: 3px solid #2c6a8c;
+}
+
+label:has(input[type='checkbox']) {
+  background-color: #2c6a8c;
+  width: 38px;
+  border-radius: 3px;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 2px;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+label:has(input[type='checkbox']:checked) {
+  background-color: #F23030;
+}
+label:has(input[type='checkbox']:disabled) {
+  background-color: #9b9d91d8;
+}
+
+.topShelf label::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+}
+
+.bottomShelf label::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+}
+
+.submit-block {
+  display: flex;
+  justify-content: end;
+  align-items: center; 
+}
+.submit-block .total-price{
+  margin-right: 10px;
+}
+
+/* .wagon-wraper::-webkit-scrollbar { 
+  width: 0 !important;
+} */
+
+.openModalBlockWraper {
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	max-height: 100vh;
+	padding: 24px;
+	background: #d6d9c5e7;
+	border: 1px solid grey;
+	display: none;
+}
+
+.openModalBlock {
+  border: 3px solid #2c6a8c;
+  border-radius: 15px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background-color: #F2D194;
+	width: 50vw;
+  min-width: 500px;
+  font-size: 17px;
+  padding: 10px;
+  display: flex;
+}
+
+.openModalBlockHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+.openModalBlockHeader i {
+	font-size: 21px;
+	font-weight: bold;
+	color: #3A5F56;
+	padding: 5px; 
+}
+.openModalBlockHeader i:hover {
+	color: #F23030;;
+
+}
+.openModalBlockHeader button{
+  border:none;
+  background-color:#F2D194;
+}
+.openModalBlockHeader button:hover{
+cursor: pointer;
+}
+
+.openModalBlock li{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.openModalBlock h2{
+  padding: 10px;
+}
+
+.openModalBlock .btn{
+  margin: 10px;
+}
+
+
+.openModalBlock li>div{
+width: 32%;
+padding: 5px;
+border:1px solid #111C26;
+text-align: center;
+}
+
+.openModalBlock li span{
+  font-weight: bold;
+}
+
+.openModalBlockWraper.active, .openModalBlock.active  {
+	display: flex;
+}
+
+
+
+
+@media (max-width: 1040px) {
+  .wagon-wraper{
+    overflow-x: scroll;
+  }
+}
+@media (max-width: 768px) {
+
+}
