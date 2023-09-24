@@ -6,6 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Mirro Figma</title>
 	<script src="https://kit.fontawesome.com/8025aae949.js" crossorigin="anonymous"></script>
+	<!-- <link rel="stylesheet" href="slick-1.8.1/slick/slick.css"> -->
+	<!-- cтили slick slider -->
+	<link rel="stylesheet" href="slick-1.8.1/slick/slick.css">
+	<link rel="stylesheet" href="slick-1.8.1/slick/slick-theme.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -13,7 +17,7 @@
 	<!-- Menu Navigation -->
 	<div class="navigation">
 		<div class="main-nav">
-			<!-- <div class="container">	 -->			
+			<!-- <div class="container">	 -->
 			<div class="logo">
 				<img src="img/logo.png" alt="logo_mirro">
 			</div>
@@ -78,7 +82,7 @@
 					<h3>Wedding Photography</h3>
 					<p>Wedding photography is often called the bread and butter of photographers — but that doesn't mean
 						it has to be boring. Quite the opposite!</p>
-					<a href="#" class="more">Read more</a>
+					<a href="#" class="more" onclick="openSliderModal(event)">Read more</a>
 				</div>
 				<div class="services-item">
 					<img src="img/sports.png" alt="sports" class="services-image">
@@ -125,6 +129,33 @@
 				</div>
 			</div>
 		</div> <!-- /.container -->
+
+		<div class="modalSlider_background" id="modalSlider_background">
+			<div class="modalSlider_container" id="modalSlider_container">
+				<div class="modalSlider_header">
+					<h3>Photos</h3>
+					<button class="close-modal border-not" onclick="closeSliderModal ()"><i
+							class="fa-solid fa-xmark"></i></button>
+				</div>
+				<div class="modalSlider_content">
+					<img src="https://picsum.photos/210" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/211" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/212" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/213" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/214" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/215" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/216" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/217" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/218" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/219" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/220" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/221" alt="store1" class="slider-image">
+				</div>
+			</div>
+		</div>
+
+
+
 	</section>
 
 	<section id="Store">
@@ -143,7 +174,9 @@
 						<h3>Mirro Preset Pack Vol. 01</h3>
 						<p>The first volume is my go-to presets when shooting action sports. Just the right amount of
 							contrast and highlights to make your photo (literally) pop!</p>
-						<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a> <p><span class="item-price">78</span>₴</p></div>
+						<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a>
+							<p><span class="item-price">78</span>₴</p>
+						</div>
 					</div>
 				</div>
 				<div class="store-item">
@@ -152,7 +185,9 @@
 						<h3>Mirro Preset Pack Vol. 02</h3>
 						<p>The first volume is my go-to presets when shooting action sports. Just the right amount of
 							contrast and highlights to make your photo (literally) pop!</p>
-							<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a> <p><span class="item-price">55</span>₴</p></div>
+						<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a>
+							<p><span class="item-price">55</span>₴</p>
+						</div>
 					</div>
 				</div>
 				<div class="store-item">
@@ -161,7 +196,9 @@
 						<h3>Mirro Preset Pack Vol. 03</h3>
 						<p>The first volume is my go-to presets when shooting action sports. Just the right amount of
 							contrast and highlights to make your photo (literally) pop!</p>
-							<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a> <p><span class="item-price">99</span>₴</p></div>
+						<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a>
+							<p><span class="item-price">99</span>₴</p>
+						</div>
 					</div>
 				</div>
 				<div class="store-item">
@@ -170,7 +207,9 @@
 						<h3>Mirro Preset Pack Vol. 04</h3>
 						<p>The first volume is my go-to presets when shooting action sports. Just the right amount of
 							contrast and highlights to make your photo (literally) pop!</p>
-							<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a> <p><span class="item-price">71</span>₴</p></div>
+						<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a>
+							<p><span class="item-price">71</span>₴</p>
+						</div>
 					</div>
 				</div>
 				<div class="store-item">
@@ -179,7 +218,9 @@
 						<h3>Mirro Preset Pack Vol. 05</h3>
 						<p>The first volume is my go-to presets when shooting action sports. Just the right amount of
 							contrast and highlights to make your photo (literally) pop!</p>
-							<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a> <p><span class="item-price">52</span>₴</p></div>
+						<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a>
+							<p><span class="item-price">52</span>₴</p>
+						</div>
 					</div>
 				</div>
 				<div class="store-item">
@@ -188,7 +229,9 @@
 						<h3>Mirro Preset Pack Vol. 06</h3>
 						<p>The first volume is my go-to presets when shooting action sports. Just the right amount of
 							contrast and highlights to make your photo (literally) pop!</p>
-							<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a> <p><span class="item-price">112</span>₴</p></div>
+						<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a>
+							<p><span class="item-price">112</span>₴</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -370,6 +413,18 @@
 
 
 	<script src="js/script.js"></script>
+	
+
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	
+	<!-- библиотека slick slider-->
+	<script src="slick-1.8.1/slick/slick.min.js"></script>
+	<script src="js/sliders.js"></script>
+
+	<!-- <script>
+	
+	</script> -->
+
 </body>
 
 </html>

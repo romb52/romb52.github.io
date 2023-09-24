@@ -19,7 +19,7 @@ window.onload = function () {
 	if (isDarkTheme === "true") {
 		document.body.classList.toggle('dark-mode');
 	}
-	console.log(JSON.parse(localStorage.getItem("cart")));
+	// console.log(JSON.parse(localStorage.getItem("cart")));
 let cartLocStorItemsArray = JSON.parse(localStorage.getItem("cart"));
 // addItemToCart(imageSrc, title, price)
 for ( let i= 0 ;i < cartLocStorItemsArray.length; i ++ ){

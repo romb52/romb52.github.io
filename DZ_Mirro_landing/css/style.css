@@ -7,6 +7,7 @@
 @import url("components/button.css");
 @import url("components/card.css");
 @import url("components/banner.css");
+@import url("components/slider.css");
 
 /*Colors*/
 @import url("components/colors.css");
@@ -340,7 +341,7 @@ input::-webkit-inner-spin-button {
 }
 
 .contact-item {
-	width: 800px;
+	/* width: 800px; */
 	height: 260px;
 	margin: 0 auto;
 	text-align: center;
