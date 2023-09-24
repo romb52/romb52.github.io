@@ -2,7 +2,7 @@
 /*Services*/
 .services-items {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	/*background: radial-gradient( at 0% 100%, rgba(58, 95, 86, 0.376) 0%, rgba(58, 95, 86, 0) 30%);*/
 	padding: 10px;
 	flex-wrap: wrap;

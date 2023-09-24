@@ -70,7 +70,7 @@ h3 {
 }
 
 nav {
-	width: 60%;
+	width: 70%;
 	/*flex:1 0 60%;	*/
 }
 
@@ -98,9 +98,9 @@ nav {
 	display: none;
 	cursor: pointer;
 	font-size: 20px;
-	position: absolute;
+	/* position: absolute;
 	right: 22px;
-	top: 20px;
+	top: 20px; */
 	width: 30px;
 }
 
@@ -474,6 +474,7 @@ input::-webkit-inner-spin-button {
 }
 
 @media (max-width: 768px) {
+
 	.mobile-toggle {
 		display: block;
 	}
@@ -522,7 +523,7 @@ input::-webkit-inner-spin-button {
 	}
 
 	.banner-image {
-		width: 550px;
+		/* width: 550px; */
 	}
 
 	.footer-downline {
