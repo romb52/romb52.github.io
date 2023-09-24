@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Train tickets </title>
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+	<div class="wraper">
+		<div class="content">
+			<div class="header">
+				<div class="title"><span class="title-name">Створіть HTML-сторінку з можливістю забронювати квитки
+						на поїзд. Спочатку користувач вибирає напрямок поїзда і дату
+						поїздки, далі відмічає місця для броні. Додайте також можливість
+						переглянути вже заброньовані квитки. Зберігайте інформацію у
+						заздалегідь підготовлених масивах.</span></div>
+			</div>
+			<div class="row">
+				<div class="search-block">
+					<form name="directionDate" class="directionForm" onsubmit="submitDirectionDate(event)">
+						<div>
+							<label for="direction">Direction:</label>
+							<select type="text" id="direction" required>
+								<option value="Odessa-Lviv">Odessa-Lviv</option>
+								<option value="Lviv-Odessa">Lviv-Odessa</option>
+								<option value="Odessa-Kyiv">Odessa-Kyiv</option>
+								<option value="Kyiv-Odessa">Kyiv-Odessa</option>
+							</select>
+						</div>
+						<div>
+							<label for="date">Date:</label>
+							<input type="date" id="date" min="2023-09-19" max="2023-10-19" />
+							<button class="btn" type="submit">Search</button>
+							<button class=" btn btn-cart" href="#" onclick="openModal ()"><i class="fa-solid fa-train"></i>
+								My tickets <span class="btn-cart-items">0</span>
+							</button>
+						</div>
+					</form>
+				</div>
+				<form name="seats" class="seatsForm" onsubmit="submitSeats(event)">
+					<div class="wagon-wraper">
+						<div class="wagon">
+							<div class="wagon-floor">
+								<div class="compartment">
+									<div class="topShelf">
+										<label><input type="checkbox" name="2">2</label>
+										<label><input type="checkbox" name="4">4</label>
+									</div>
+									<div class="bottomShelf">
+										<label><input type="checkbox" name="1">1</label>
+										<label><input type="checkbox" name="3">3</label>
+									</div>
+								</div>
+								<div class="compartment">
+									<div class="topShelf">
+										<label><input type="checkbox" name="6">6</label>
+										<label><input type="checkbox" name="8">8</label>
+									</div>
+									<div class="bottomShelf">
+										<label><input type="checkbox" name="5">5</label>
+										<label><input type="checkbox" name="7">7</label>
+									</div>
+								</div>
+								<div class="compartment">
+									<div class="topShelf">
+										<label><input type="checkbox" name="10">10</label>
+										<label><input type="checkbox" name="12">12</label>
+									</div>
+									<div class="bottomShelf">
+										<label><input type="checkbox" name="9">9</label>
+										<label><input type="checkbox" name="11" disabled>11</label>
+									</div>
+								</div>
+								<div class="compartment">
+									<div class="topShelf">
+										<label><input type="checkbox" name="14">14</label>
+										<label><input type="checkbox" name="16">16</label>
+									</div>
+									<div class="bottomShelf">
+										<label><input type="checkbox" name="13">13</label>
+										<label><input type="checkbox" name="15">15</label>
+									</div>
+								</div>
+								<div class="compartment">
+									<div class="topShelf">
+										<label><input type="checkbox" name="18">18</label>
+										<label><input type="checkbox" name="20">20</label>
+									</div>
+									<div class="bottomShelf">
+										<label><input type="checkbox" name="17">17</label>
+										<label><input type="checkbox" name="19">19</label>
+									</div>
+								</div>
+								<div class="compartment">
+									<div class="topShelf">
+										<label><input type="checkbox" name="22">22</label>
+										<label><input type="checkbox" name="24" disabled>26</label>
+									</div>
+									<div class="bottomShelf">
+										<label><input type="checkbox" name="21">21</label>
+										<label><input type="checkbox" name="23">23</label>
+									</div>
+								</div>
+								<div class="compartment">
+									<div class="topShelf">
+										<label><input type="checkbox" name="26">26</label>
+										<label><input type="checkbox" name="28">28</label>
+									</div>
+									<div class="bottomShelf">
+										<label><input type="checkbox" name="25" disabled>25</label>
+										<label><input type="checkbox" name="27" disabled>27</label>
+									</div>
+								</div>
+								<div class="compartment">
+									<div class="topShelf">
+										<label><input type="checkbox" name="30">30</label>
+										<label><input type="checkbox" name="32">32</label>
+									</div>
+									<div class="bottomShelf">
+										<label><input type="checkbox" name="29">29</label>
+										<label><input type="checkbox" name="31">31</label>
+									</div>
+								</div>
+								<div class="compartment">
+									<div class="topShelf">
+										<label><input type="checkbox" name="34">34</label>
+										<label><input type="checkbox" name="36">36</label>
+									</div>
+									<div class="bottomShelf">
+										<label><input type="checkbox" name="33">33</label>
+										<label><input type="checkbox" name="35">35</label>
+									</div>
+								</div>
+								<div class="compartment">
+									<div class="topShelf">
+										<label><input type="checkbox" name="38">38</label>
+										<label><input type="checkbox" name="40">40</label>
+									</div>
+									<div class="bottomShelf">
+										<label><input type="checkbox" name="37">37</label>
+										<label><input type="checkbox" name="39">39</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="submit-block">
+						<div class="total-price">Total price: <span id="totalPriceSpan"></span> $</div>
+						<button class="btn" type="submit">Book</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="openModalBlockWraper" id="openModalBlockWraper">
+		<div class="openModalBlock" id="openModalBlock">
+			<div class="openModalBlockHeader">
+				<h2>My tickets:</h2>
+				<button class="close-modal border-not" onclick="closeModal ()"><i
+						class="fa-solid fa-xmark"></i></button>
+			</div>
+			<ul id="tickets_list">
+				<li>
+					<div><span>Direction</span></div>
+					<div><span>Date</span></div>
+					<div><span>Seat</span></div>
+				</li>
+				<!-- <li>
+					<div></div>
+					<div></div>
+					<div></div>
+				</li> -->
+
+			</ul>
+		</div>
+	</div>
+
+
+	<script src="https://kit.fontawesome.com/8025aae949.js" crossorigin="anonymous"></script>
+	<script src="js/script.js"></script>
+</body>
+
+</html>
