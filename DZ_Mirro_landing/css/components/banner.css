@@ -1,11 +1,8 @@
 .banner {
 	margin-top: 10vh;
-	height: 100vh;	
-	
-	background: radial-gradient(at 0% 100%, rgba(184, 125, 88, 0.8) 0%, rgba(184, 125, 88, 0) 30%),					
-				radial-gradient(at 100% 0%, rgba(58, 95, 86, 0.55) 0%, rgba(58, 95, 86, 0) 30%) var(--white_darkgrey-color);
-	background-size: cover;
+	height: 100vh;		
 	display: flex;
+	justify-content: space-around;
 	/*text-align: center;*/
 	transition: background 0.9s;
 }

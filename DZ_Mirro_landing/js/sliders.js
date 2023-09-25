@@ -27,7 +27,7 @@ function closeModalSliderByClickBg(e) { //      якщо клікнули на �
 /////////////////////////////////////////////////////////////////////////////////
 
 $(document).ready(function () {
-    $('.modalSlider_content').slick({
+    $('.modalSlider_content').slick({       
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
