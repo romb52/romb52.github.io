@@ -64,6 +64,15 @@
 .slider-image {
     padding: 5px;
 }
+
+/* .slick-initialized .slick-slide {
+    display: none;
+} */
+
+.slick-initialized .active{
+    display: block;
+} 
+
 .arrow{
     position: absolute;
     z-index: 150;

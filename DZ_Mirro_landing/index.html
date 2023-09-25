@@ -84,35 +84,35 @@
 					<h3>Wedding Photography</h3>
 					<p>Wedding photography is often called the bread and butter of photographers — but that doesn't mean
 						it has to be boring. Quite the opposite!</p>
-					<a href="#" class="more" onclick="openSliderModal(event)">Read more</a>
+					<a href="#" class="more" id="href-wedding" onclick="openSliderModal(event)">See the works</a>
 				</div>
 				<div class="services-item">
 					<img src="img/sports.png" alt="sports" class="services-image">
 					<h3>Sports Photographyy</h3>
 					<p>Sports photography is awesome. Sitting on the sidelines with a massive telephoto allows me to get
 						right into the action — I love shooting sports where there's a lot of explosive movement.</p>
-					<a href="#" class="more">Read more</a>
+					<a href="#" class="more" id="href-sports" onclick="openSliderModal(event)">See the works</a>
 				</div>
 				<div class="services-item">
 					<img src="img/portrait.png" alt="portrait" class="services-image">
 					<h3>Portrait Photography</h3>
 					<p>Who doesn't love portrait photography? I love being able to capture that expression, quirk, smile
 						or whatever, that sort of defines a person.</p>
-					<a href="#" class="more">Read more</a>
+					<a href="#" class="more" id="href-portrait" onclick="openSliderModal(event)">See the works</a>
 				</div>
 				<div class="services-item">
 					<img src="img/architecture.png" alt="architecture" class="services-image">
 					<h3>Architecture Photography</h3>
 					<p>The nice thing about shooting architecture (in my opinion) is that it's so easy to do. Seriously,
 						just pick up your camera and get out there.</p>
-					<a href="#" class="more">Read more</a>
+					<a href="#" class="more" id="href-architecture" onclick="openSliderModal(event)">See the works</a>
 				</div>
 				<div class="services-item">
 					<img src="img/animal.png" alt="animal" class="services-image">
 					<h3>Animal Photography</h3>
 					<p>Whenever I'm travelling I always make sure to pack gear that allows me to capture the local
 						wildlife. The eagle that takes flight in this picture is probably my most prized image.</p>
-					<a href="#" class="more">Read more</a>
+					<a href="#" class="more" id="href-animal" onclick="openSliderModal(event)">See the works</a>
 				</div>
 				<div class="services-item">
 					<img src="img/food.png" alt="food" class="services-image">
@@ -120,46 +120,116 @@
 					<p>I do food photography for blogs, restaurants, influencers, YouTube channels — but most
 						importantly (if I manage to cook something that looks good) — I do food photography for myself.
 					</p>
-					<a href="#" class="more">Read more</a>
+					<a href="#" class="more" id="href-food" onclick="openSliderModal(event)">See the works</a>
 				</div>
 				<div class="services-item">
 					<img src="img/nature.png" alt="nature" class="services-image">
 					<h3>Nature Photography</h3>
 					<p>Landscape photography just never gets old. Someone told me that those are the kinds of pictures
 						you never look. Well, I don't agree.</p>
-					<a href="#" class="more">Read more</a>
+					<a href="#" class="more" id="href-nature" onclick="openSliderModal(event)">See the works</a>
 				</div>
 			</div>
-		</div> <!-- /.container -->
-              <!-- модальное окно со слайдером картинок -->
-		<div class="modalSlider_background" id="modalSlider_background">
+		</div> <!-- /.container -->              
+		<div class="modalSlider_background" id="modalSlider_background"><!-- модальное окно со слайдером картинок -->
 			<div class="modalSlider_container" id="modalSlider_container">
 				<div class="modalSlider_header">
 					<h3>Photos</h3>
 					<button class="close-modal border-not" onclick="closeSliderModal ()"><i
 							class="fa-solid fa-xmark"></i></button>
-				</div>
-				<div class="modalSlider_content">
-					<img src="https://picsum.photos/210" alt="store1" class="slider-image">
-					<img src="https://picsum.photos/211" alt="store1" class="slider-image">
-					<img src="https://picsum.photos/212" alt="store1" class="slider-image">
-					<img src="https://picsum.photos/213" alt="store1" class="slider-image">
-					<img src="https://picsum.photos/214" alt="store1" class="slider-image">
-					<img src="https://picsum.photos/215" alt="store1" class="slider-image">
-					<img src="https://picsum.photos/216" alt="store1" class="slider-image">
-					<img src="https://picsum.photos/217" alt="store1" class="slider-image">
-					<img src="https://picsum.photos/218" alt="store1" class="slider-image">
-					<img src="https://picsum.photos/219" alt="store1" class="slider-image">
-					<img src="https://picsum.photos/220" alt="store1" class="slider-image">
-					<img src="https://picsum.photos/221" alt="store1" class="slider-image">
+				</div>				
+				<div class="modalSlider_content"> <!-- коллекция картинок с атрибутами по темам -->
+					<img src="https://picsum.photos/id/815/200" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/1013/200" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/640/640/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/641/641/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/642/642/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/643/643/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/644/644/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/645/645/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/646/646/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/647/647/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/648/648/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/649/649/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/841/200" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/845/200" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/640/640/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/650/650/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/600/600/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/601/601/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/602/602/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/603/603/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/604/604/sports"data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/605/605/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/606/606/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/607/607/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/777/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/778/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/804/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/822/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/823/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/832/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/836/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/838/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/839/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/978/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/996/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/1027/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/43/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/49/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/57/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/58/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/61/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/78/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/84/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/101/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/122/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/134/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/142/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/164/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/188/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/193/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/214/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/40/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/169/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/200/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/219/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/237/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/244/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/433/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/577/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/582/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/584/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/593/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/659/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/63/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/75/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/102/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/225/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/292/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/312/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/326/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/429/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/431/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/488/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/490/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/493/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/37/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/46/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/54/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/55/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/62/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/66/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/67/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/70/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/71/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/81/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/82/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/83/200" data-img="href-nature" alt="store1" class="slider-image">
 				</div>
 			</div>
 		</div>
-
-
-
 	</section>
-
 	<section id="Store">
 		<div class="container">
 			<div class="store-header">

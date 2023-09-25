@@ -22,12 +22,13 @@ window.onload = function () {
 	// console.log(JSON.parse(localStorage.getItem("cart")));
 let cartLocStorItemsArray = JSON.parse(localStorage.getItem("cart"));
 // addItemToCart(imageSrc, title, price)
-for ( let i= 0 ;i < cartLocStorItemsArray.length; i ++ ){
+if(cartLocStorItemsArray){for ( let i= 0 ;i < cartLocStorItemsArray.length; i ++ ){
 	addItemToCart(cartLocStorItemsArray[i].img, cartLocStorItemsArray[i].name, cartLocStorItemsArray[i].cost, cartLocStorItemsArray[i].quantity)
 	counter++; 
 }
 updateCartTotal();
-updateCartButton();
+updateCartButton();}
+
 
 }
 
