@@ -100,6 +100,9 @@ JavaScript
 
 [Урок JS 9](https://romb52.github.io/DZ_Train_tickets/) - Form. Events. Booking train tickets
 
+[Урок JS 9](https://romb52.github.io/DZ_RandomString/) - Jquery. Generate some random string
+
+
 
 
 
