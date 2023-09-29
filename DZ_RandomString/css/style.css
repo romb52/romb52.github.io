@@ -96,6 +96,7 @@ cursor: pointer;
 .btn:hover {
   background-color: #0262d6;
   text-decoration: none;
+  cursor: pointer;
 }
 
 #ResultString{
