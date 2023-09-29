@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.wrap{
+    display: flex;   
+    width: 100vw;
+    height: 100vh;    
+}
+
+.row-1{
+    display: flex;
+    flex-direction: column;
+    width: 300px; 
+    /* flex-grow: 1; */
+}
+
+.row-1 > .blue-box{
+    background-color: lightblue;
+    flex-grow: 1;
+    width: 100%;
+    min-height: 100px;
+}
+
+.row-1 > .pink-box{
+    background-color: pink;
+    width: 100%;
+    flex-grow: 1;
+    min-height: 100px;
+}
+
+.row-1 > .grey-horizontal-row{
+    background-color: rgba(128, 128, 128, 0.596);
+    height: 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;  
+    justify-content: center;
+
+  
+}
+.row-1 > .grey-horizontal-row >i{
+    font-size: 35px;
+    /* line-height: 20px; */
+	color: #000;  
+    cursor: pointer;
+}
+.row-2 {    
+    width: 15px;
+    /* flex-grow: 1; */
+    background-color: rgba(128, 128, 128, 0.596);
+    display: flex;
+    align-items: center;  
+    justify-content: center;
+}
+.row-2 > i{ 
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.row-3{
+    display: flex;
+    flex-direction: column;
+    /* width: 60%; */
+    flex-grow: 1;    
+}
+
+
+.row-3 > .azur-box {
+    background-color: rgb(86, 224, 224);
+    width: 100%;
+    flex-grow: 1;
+    min-height: 100px;
+}
+
+.row-3 > .grey-horizontal-row {
+    background-color: rgba(128, 128, 128, 0.596);
+    height: 15px;
+    display: flex;
+    align-items: center;  
+    justify-content: center;
+}
+.row-3 > .grey-horizontal-row > i {
+    font-size: 35px;
+    /* line-height: 20px; */
+	color: #000;  
+    cursor: pointer;
+}
+
+.row-3 > .orange-box {
+    background-color: orange;
+    width: 100%;
+    flex-grow: 1;
+    min-height: 100px;
+}
