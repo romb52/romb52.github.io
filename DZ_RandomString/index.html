@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Train tickets </title>
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+	<div class="wraper">
+		<div class="content">
+			<div class="header">
+				<div class="title"><span class="title-name">Завдання 1
+						Реалізуйте генератор випадкових рядків.
+						Користувач повинен мати можливість вказати:
+						■ довжину рядка;
+						■ з яких символів може складатися рядок:
+						• цифри;
+						• латинські літери у верхньому регістрі;
+						• латинські літери у нижньому регістрі.
+						При натисканні на кнопку Generate необхідно вивести згене-
+						рований за критеріями користувача рядок у текстове поле.</span></div>
+			</div>
+			<div class="row">
+				<div class="data-block">
+					<h1>Random String Generator</h1>
+					<form class="dataForm" >
+					<div>
+						<p>String should be <span> <input id="charLong" name="charLong" type="number" value="10"></span>charecters long</p>
+					</div>
+					<div class="characters">
+						<p>Which characters are allowed to occur in the string?</p>
+						<label><input name="numbers" type="checkbox" /> Numeric digits (0-9)</label>
+						<label><input name="UpLetters" type="checkbox" /> Uppercase letters (A-Z)</label>
+						<label><input name="LowLetters" type="checkbox" /> Lowercase letters (a-z)</label>
+					</div>
+					<button class="btn" type="submit">Generate</button>
+					</form>
+				</div>
+				<div class="result-block">
+					<label for="ResultString">Result:</label>
+					<input id="ResultString" type="text">
+					<i id="copyToClipboard" class="fa-regular fa-copy" ></i>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<script src="https://kit.fontawesome.com/8025aae949.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="js/script.js"></script>
+</body>
+
+</html>
