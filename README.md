@@ -102,6 +102,9 @@ JavaScript
 
 [Урок JS 9](https://romb52.github.io/DZ_RandomString/) - Jquery. Generate some random string
 
+[Урок JS 9](https://romb52.github.io/DZ-JS_Jquery_flex-box/) - Jquery. Resizing div content
+
+
 
 
 
