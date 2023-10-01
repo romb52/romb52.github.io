@@ -1,0 +1,131 @@
+
+/*Services*/
+.services-items {
+	display: flex;
+	justify-content: space-around;
+	/*background: radial-gradient( at 0% 100%, rgba(58, 95, 86, 0.376) 0%, rgba(58, 95, 86, 0) 30%);*/
+	padding: 10px;
+	flex-wrap: wrap;
+}
+
+.services-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: start;
+	height: 305px;
+	width: 100%;
+	max-width: 380px;
+	color: #3A5F56;
+	background-color: #F4F3F0;	
+	padding: 30px;
+	border-radius: 16px;
+	box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.03);
+	margin: 5px;
+}
+
+.services-image {
+	width: 48px;
+}
+
+.services-item h3 {
+	font-size: 24px;
+	line-height: 29px;
+	margin: 0;
+}
+.services-item p {
+	font-size: 16px;
+	line-height: 22px;
+	color: #292C32;
+	margin: 0;
+}
+.more {
+	font-size: 17px;
+	line-height: 24px;
+	text-decoration: none;	
+	color: #3A5F56;
+}
+.more::after {
+	content: " \279C";
+}
+.more:hover {
+	color: #29453f;
+}
+
+/*Preset store */
+.store-items {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	/*background: #F4F3F0;*/
+	/*background: radial-gradient( at 100% 100%, rgba(219, 52, 59, 0.296) 0%, rgba(219, 52, 59, 0) 30%)#F4F3F0;*/
+	padding: 10px;
+}
+
+.store-item {
+	display: flex;
+	flex-direction: column;
+	height: 610px;
+	width: 380px;	
+	margin: 5px;
+	border-radius: 0 0 16px 16px;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* .store-item img {
+	width: 100%;
+	object-fit: cover;
+} */
+
+.store-description {
+	background: white;
+	flex: 1 0 auto;
+	border-radius: 0 0 16px 16px;
+	padding: 25px;
+	color: #3A5F56;
+}
+.store-description h3{
+	font-size: 24px;
+	line-height: 34px;
+	margin: 0;
+}
+.store-description p{
+	font-size: 16px;
+	line-height: 22px;
+	margin: 0 0 15px 0;
+}
+
+.store-description-footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;	
+}
+.store-description-footer  p{
+	font-size: 21px;
+	margin: 0;
+}
+
+.item-price {
+	margin-right: 5px;
+}
+
+/* .addToCart {
+	font-size: 17px;
+	line-height: 24px;
+	text-decoration: none;	
+	color: #3A5F56;
+	border: 1px solid #3A5F56;
+	border-radius: 3px;
+	padding: 4px 10px;
+} */
+.addToCart::after {
+	content: " \0024";
+}
+/* .addToCart:hover {
+	color: #29453f;
+} */
+
+
+
+

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mirro Figma</title>
+	<script src="https://kit.fontawesome.com/8025aae949.js" crossorigin="anonymous"></script>	
+	<!-- cтили slick slider -->
+	<link rel="stylesheet" href="slick-1.8.1/slick/slick.css">
+	<link rel="stylesheet" href="slick-1.8.1/slick/slick-theme.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<!-- Menu Navigation -->
+	<div class="navigation">
+		<div class="main-nav">
+			<!-- <div class="container">	 -->
+			<div class="logo">
+				<img src="img/logo.png" alt="logo_mirro">
+			</div>
+			<div class="mobile-toggle">
+				<span></span><span></span><span></span>
+			</div>
+			<nav>
+				<ul class="menu-items">
+					<li><a class="menu-item active-menu" href="#header">
+							Presents</a></li>
+					<li><a class="menu-item" href="#Prints">
+							Prints</a></li>
+					<li><a class="menu-item" href="#Store">
+							Store</a></li>
+					<li><a class="menu-item" href="#About">
+							About</a></li>
+					<li><a class="menu-item" href="#Contact">
+							Contact</a></li>
+					<li><a class=" btn-green btn-cart" href="#Cart" id="openCartModal"><i
+								class="fa-solid fa-cart-shopping"></i>
+							Cart <span class="btn-cart-items">0</span></a></li>
+					<li><a class="dark-theme btn-green" href="#" id="dark-theme"> <i class="fa-solid fa-moon"
+								id="icon"></i><span>Dark theme</span></a></li>
+				</ul>
+			</nav>
+			<!--  </div> -->
+			<!-- /.container -->
+		</div><!-- /.main-nav -->
+	</div>
+	<!-- /.container -->
+
+	<section id="header">
+		<div class="container">
+		<div class="banner">
+			
+				<div class="banner-contens">
+					<div class="banner-description">
+						<h1>Hi, I'm James Mirro & I'm a photographer.</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
+							elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
+							commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem
+							imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+						<a href="#" class="btn-green">Read more</a>
+					</div>
+					<div><img src="img/banner-img.png" alt="image" class="banner-image">
+					</div>
+					
+				</div>
+			</div><!-- /.container -->
+		</div>
+	</section>
+
+	<section id="Prints">
+		<div class="container">
+			<div class="services-header">
+				<img src="img/broken-line.svg" alt="line">
+				<h2>Services</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum
+					tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.</p>
+			</div>
+
+			<div class="services-items">
+				<div class="services-item">
+					<img src="img/wedding.png" alt="wedding" class="services-image">
+					<h3>Wedding Photography</h3>
+					<p>Wedding photography is often called the bread and butter of photographers — but that doesn't mean
+						it has to be boring. Quite the opposite!</p>
+					<a href="#" class="more" id="href-wedding" onclick="openSliderModal(event)">See the works</a>
+				</div>
+				<div class="services-item">
+					<img src="img/sports.png" alt="sports" class="services-image">
+					<h3>Sports Photographyy</h3>
+					<p>Sports photography is awesome. Sitting on the sidelines with a massive telephoto allows me to get
+						right into the action — I love shooting sports where there's a lot of explosive movement.</p>
+					<a href="#" class="more" id="href-sports" onclick="openSliderModal(event)">See the works</a>
+				</div>
+				<div class="services-item">
+					<img src="img/portrait.png" alt="portrait" class="services-image">
+					<h3>Portrait Photography</h3>
+					<p>Who doesn't love portrait photography? I love being able to capture that expression, quirk, smile
+						or whatever, that sort of defines a person.</p>
+					<a href="#" class="more" id="href-portrait" onclick="openSliderModal(event)">See the works</a>
+				</div>
+				<div class="services-item">
+					<img src="img/architecture.png" alt="architecture" class="services-image">
+					<h3>Architecture Photography</h3>
+					<p>The nice thing about shooting architecture (in my opinion) is that it's so easy to do. Seriously,
+						just pick up your camera and get out there.</p>
+					<a href="#" class="more" id="href-architecture" onclick="openSliderModal(event)">See the works</a>
+				</div>
+				<div class="services-item">
+					<img src="img/animal.png" alt="animal" class="services-image">
+					<h3>Animal Photography</h3>
+					<p>Whenever I'm travelling I always make sure to pack gear that allows me to capture the local
+						wildlife. The eagle that takes flight in this picture is probably my most prized image.</p>
+					<a href="#" class="more" id="href-animal" onclick="openSliderModal(event)">See the works</a>
+				</div>
+				<div class="services-item">
+					<img src="img/food.png" alt="food" class="services-image">
+					<h3>Food Photography</h3>
+					<p>I do food photography for blogs, restaurants, influencers, YouTube channels — but most
+						importantly (if I manage to cook something that looks good) — I do food photography for myself.
+					</p>
+					<a href="#" class="more" id="href-food" onclick="openSliderModal(event)">See the works</a>
+				</div>
+				<div class="services-item">
+					<img src="img/nature.png" alt="nature" class="services-image">
+					<h3>Nature Photography</h3>
+					<p>Landscape photography just never gets old. Someone told me that those are the kinds of pictures
+						you never look. Well, I don't agree.</p>
+					<a href="#" class="more" id="href-nature" onclick="openSliderModal(event)">See the works</a>
+				</div>
+			</div>
+		</div> <!-- /.container -->              
+		<div class="modalSlider_background" id="modalSlider_background"><!-- модальное окно со слайдером картинок -->
+			<div class="modalSlider_container" id="modalSlider_container">
+				<div class="modalSlider_header">
+					<h3>Photos</h3>
+					<button class="close-modal border-not" onclick="closeSliderModal ()"><i
+							class="fa-solid fa-xmark"></i></button>
+				</div>				
+				<div class="modalSlider_content"> <!-- коллекция картинок с атрибутами по темам -->
+					<img src="https://picsum.photos/id/815/200" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/1013/200" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/640/640/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/641/641/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/642/642/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/643/643/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/644/644/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/645/645/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/646/646/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/647/647/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/648/648/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/649/649/wedding" data-img="href-wedding" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/841/200" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/845/200" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/640/640/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/650/650/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/600/600/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/601/601/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/602/602/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/603/603/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/604/604/sports"data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/605/605/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/606/606/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://loremflickr.com/607/607/sports" data-img="href-sports" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/777/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/778/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/804/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/822/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/823/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/832/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/836/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/838/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/839/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/978/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/996/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/1027/200" data-img="href-portrait" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/43/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/49/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/57/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/58/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/61/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/78/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/84/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/101/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/122/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/134/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/142/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/164/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/188/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/193/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/214/200" data-img="href-architecture" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/40/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/169/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/200/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/219/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/237/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/244/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/433/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/577/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/582/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/584/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/593/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/659/200" data-img="href-animal" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/63/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/75/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/102/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/225/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/292/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/312/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/326/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/429/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/431/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/488/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/490/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/493/200" data-img="href-food" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/37/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/46/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/54/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/55/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/62/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/66/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/67/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/70/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/71/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/81/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/82/200" data-img="href-nature" alt="store1" class="slider-image">
+					<img src="https://picsum.photos/id/83/200" data-img="href-nature" alt="store1" class="slider-image">
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="Store">
+		<div class="container">
+			<div class="store-header">
+				<img src="img/broken-line.svg" alt="line">
+				<h2>Services</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum
+					tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.</p>
+			</div>
+
+			<div class="store-items">
+				<div class="store-item">
+					<img src="https://picsum.photos/200" alt="store1" class="store-image">
+					<div class="store-description">
+						<h3>Mirro Preset Pack Vol. 01</h3>
+						<p>The first volume is my go-to presets when shooting action sports. Just the right amount of
+							contrast and highlights to make your photo (literally) pop!</p>
+						<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a>
+							<p><span class="item-price">78</span>₴</p>
+						</div>
+					</div>
+				</div>
+				<div class="store-item">
+					<img src="https://picsum.photos/201" alt="store1" class="store-image">
+					<div class="store-description">
+						<h3>Mirro Preset Pack Vol. 02</h3>
+						<p>The first volume is my go-to presets when shooting action sports. Just the right amount of
+							contrast and highlights to make your photo (literally) pop!</p>
+						<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a>
+							<p><span class="item-price">55</span>₴</p>
+						</div>
+					</div>
+				</div>
+				<div class="store-item">
+					<img src="https://picsum.photos/202" alt="store1" class="store-image">
+					<div class="store-description">
+						<h3>Mirro Preset Pack Vol. 03</h3>
+						<p>The first volume is my go-to presets when shooting action sports. Just the right amount of
+							contrast and highlights to make your photo (literally) pop!</p>
+						<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a>
+							<p><span class="item-price">99</span>₴</p>
+						</div>
+					</div>
+				</div>
+				<div class="store-item">
+					<img src="https://picsum.photos/203" alt="store1" class="store-image">
+					<div class="store-description">
+						<h3>Mirro Preset Pack Vol. 04</h3>
+						<p>The first volume is my go-to presets when shooting action sports. Just the right amount of
+							contrast and highlights to make your photo (literally) pop!</p>
+						<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a>
+							<p><span class="item-price">71</span>₴</p>
+						</div>
+					</div>
+				</div>
+				<div class="store-item">
+					<img src="https://picsum.photos/204" alt="store1" class="store-image">
+					<div class="store-description">
+						<h3>Mirro Preset Pack Vol. 05</h3>
+						<p>The first volume is my go-to presets when shooting action sports. Just the right amount of
+							contrast and highlights to make your photo (literally) pop!</p>
+						<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a>
+							<p><span class="item-price">52</span>₴</p>
+						</div>
+					</div>
+				</div>
+				<div class="store-item">
+					<img src="https://picsum.photos/205" alt="store1" class="store-image">
+					<div class="store-description">
+						<h3>Mirro Preset Pack Vol. 06</h3>
+						<p>The first volume is my go-to presets when shooting action sports. Just the right amount of
+							contrast and highlights to make your photo (literally) pop!</p>
+						<div class="store-description-footer"><a href="#" class="addToCart btn-green">Add to cart</a>
+							<p><span class="item-price">112</span>₴</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="modal_background" id="modal_background">
+			<div class="modal_container" id="modal_container">
+				<div class="modal_header">
+					<h3>Cart</h3>
+					<button class="close-modal border-not" id="closeCartModal"><i
+							class="fa-solid fa-xmark"></i></button>
+				</div>
+				<div class="modal_content">
+					<div class="added_store-items">
+						<ul class="cart-list">
+							<!-- <li class="cart-list-item">
+								<div class="cart-product">
+									<div class="cart-product_body">
+										<a class="cart-product_picture" href="#Store">
+											<img src="https://picsum.photos/200" alt="vol.1">
+										</a>
+										<div class="cart-product_main">
+											<a class="cart-product_title" href="#Store">Mirro Preset Pack Vol. 01</a>
+										</div>
+										<div class="cart-product_remover"> <button class="border-not"><i
+													class="fa-solid fa-trash"></i></button></div>
+									</div>
+									<div class="cart-product_footer">
+										<div class="cart-product_counter">
+											<button class="cart-counter-decrement border-not"><i
+													class="fa-solid fa-minus"></i></button>
+											<input type="number" class="cart-counter-input" value="1">
+											<button class="cart-counter-increment border-not"><i
+													class="fa-solid fa-plus"></i></button>
+										</div>
+										<div class="cart-product-coast">
+											<p>777 <span>₴</span></p>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="cart-list-item">
+								<div class="cart-product">
+									<div class="cart-product_body">
+										<a class="cart-product_picture" href="#Store">
+											<img src="https://picsum.photos/201" alt="vol.2">
+										</a>
+										<div class="cart-product_main">
+											<a class="cart-product_title" href="#Store">Mirro Preset Pack Vol. 02</a>
+										</div>
+										<div class="cart-product_remover"><button class="border-not"><i
+													class="fa-solid fa-trash"></i></button></div>
+									</div>
+									<div class="cart-product_footer">
+										<div class="cart-product_counter">
+											<button class="cart-counter-decrement border-not"><i
+													class="fa-solid fa-minus"></i></button>
+											<input type="number" class="cart-counter-input" value="1">
+											<button class="cart-counter-increment border-not"><i
+													class="fa-solid fa-plus"></i></button>
+										</div>
+										<div class="cart-product-coast">
+											<p>777<span> ₴</span></p>
+										</div>
+									</div>
+								</div>
+							</li> -->
+						</ul>
+					</div>
+					<div class="cart-footer">
+						<a href="#Store" class="btn-green" id="continueShopping">Continue shopping</a>
+						<button class="make-order btn-green">Submit</button>
+						<div class="cart-receipt_sum-price">
+							<p>Total: <span class="total-price">0</span>₴</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="Contact">
+		<div class="container">
+			<div class="contact-item">
+				<div class="contact-item-text">
+					<p>Wan't to work together? Follow the link and let's get in touch.</p>
+				</div>
+				<div class="contact-item-btn">
+					<a href="#" class="btn-green">Contact</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="Footer">
+		<div class="container">
+			<div class="footer-items">
+				<div class="footer-logo">
+					<img src="img/footer-logo.png" alt="footer-logo">
+				</div>
+
+				<div class="footer-main">
+					<div class="col-wrap">
+						<ul class="pages">
+							<li class="list-header">Pages</li>
+							<li>Home</li>
+							<li>Store</li>
+							<li>About</li>
+							<li>Contact</li>
+						</ul>
+						<ul class="store-category">
+							<li class="list-header">Store categories</li>
+							<li>Presets</li>
+							<li>Prints</li>
+						</ul>
+					</div>
+
+					<div class="col-wrap preset-pack">
+						<ul class="preset-packs">
+							<li class="list-header">Preset packs</li>
+							<li>Mirro Preset Pack Vol. 01</li>
+							<li>Mirro Preset Pack Vol. 02</li>
+							<li>Mirro Preset Pack Vol. 03</li>
+							<li>Mirro Preset Pack Vol. 04</li>
+						</ul>
+						<ul class="business-areas">
+							<li class="list-header">Business Areas</li>
+							<li>Wedding Photography</li>
+							<li>Sports Photography</li>
+							<li>Portrait Photography</li>
+							<li>Architecture Photography</li>
+							<li>Animal Photography</li>
+							<li>Food Photography</li>
+							<li>Food Photography</li>
+						</ul>
+					</div>
+
+					<div class="col-wrap utility-page">
+						<ul class="utility-pages">
+							<li class="list-header">Utility Pages</li>
+							<li>Instructions</li>
+							<li>Style guide</li>
+							<li>Licenses</li>
+							<li>Changelog</li>
+							<li>404</li>
+						</ul>
+					</div>
+
+					<div class="col-wrap col-input">
+						<h3 class="list-header">Newsletter</h3>
+						<p>Subscribe to my newsletter where I share news about upcoming printings and preset sales.</p>
+						<form>
+							<input class="email-input" type="email" placeholder="Email address">
+							<a href="#" class="btn-input">Submit</a>
+						</form>
+					</div>
+
+				</div>
+
+				<div class="footer-downline">
+					<div class="footer-downline-left">
+						<span> © Mirro Photography, LLC. All rights reserved. Powered by Webflow.</span>
+					</div>
+					<div class="footer-downline-right">
+						<ul>
+							<li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+							<li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+							<li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+							<li><a href="#"><i class="fa-brands fa-square-twitter"></i></a></li>
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+
+
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	
+	<!-- библиотека slick slider-->	
+	<script src="slick-1.8.1/slick/slick.min.js"></script>
+	<script src="js/sliders.js"></script>
+	<script src="js/script.js"></script>	
+
+</body>
+
+</html>
