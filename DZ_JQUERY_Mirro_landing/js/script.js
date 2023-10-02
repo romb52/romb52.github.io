@@ -140,8 +140,8 @@ $(document).ready(function () {
 		cartListItem.find('.cart-counter-decrement').on('click', quantityDecreased);
 		cartListItem.find('.cart-counter-decrement').on("mouseenter", colorLightDecreased).on("mouseleave", colorDarkDecreased).on('mouseup', colorDecreased);
 
-		cartListItem.find('.cart-counter-decrement').mouseenter(colorLightDecreased);
-		cartListItem.find('.cart-counter-decrement').mouseleave(colorDarkDecreased);
+		// cartListItem.find('.cart-counter-decrement').mouseenter(colorLightDecreased);
+		// cartListItem.find('.cart-counter-decrement').mouseleave(colorDarkDecreased);
 	}
 
 	function removeCartItem(event) {                                                           //удалить товар из корзины
