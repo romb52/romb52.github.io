@@ -104,6 +104,9 @@ JavaScript
 
 [Урок JS 9](https://romb52.github.io/DZ-JS_Jquery_flex-box/) - Jquery. Resizing div content
 
+[Урок JS 9](https://romb52.github.io/DZ_JQUERY_Mirro_landing) - Mirro landing on Jquery
+
+
 
 
 
