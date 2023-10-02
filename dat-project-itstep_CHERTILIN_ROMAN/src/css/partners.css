@@ -1,0 +1,40 @@
+.partners-items{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.partners-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.partners-item{
+  flex: 0 0 46%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.partners-item:nth-child(odd){
+  margin-right: 20px;
+}
+
+.partners-text{
+text-align: justify;
+padding-top: 17px;
+}
+
+.partners-logo{
+  padding: 40px;
+  background-color:#fff;
+  border-radius:20px;
+}
+
+.partners-title{
+  font-weight: 600;
+  font-size: 20px;
+  padding-left: 20px;
+}
