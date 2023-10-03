@@ -74,7 +74,7 @@ margin-bottom: 15px;
   color: #999;
 }
 .result-block i:hover{
-cursor: pointer;
+cursor: copy;
   color: #0070f6;
 }
 

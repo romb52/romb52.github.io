@@ -100,7 +100,16 @@ JavaScript
 
 [Урок JS 9](https://romb52.github.io/DZ_Train_tickets/) - Form. Events. Booking train tickets
 
-[Урок JS 9](https://romb52.github.io/DZ_RandomString/) - Jquery. Generate some random string
+[Урок JS 10](https://romb52.github.io/DZ_RandomString/) - Jquery. Generate some random string
+
+[Урок JS 11](https://romb52.github.io/DZ-JS_Jquery_flex-box/) - Jquery. Resizing div content
+
+[Урок JS 12](https://romb52.github.io/DZ_JQUERY_Mirro_landing) - Mirro landing on Jquery
+
+[Урок JS 13](https://romb52.github.io/dat-project-itstep_CHERTILIN_ROMAN/) - DAT project ItStep
+
+
+
 
 
 

@@ -1,0 +1,54 @@
+:root {
+	--darkgreen_lightgreen-color: #3A5F56;
+	--darkgreen_white-color: #3A5F56;
+	--dark_white_text-color: #292C32;
+	--white_darkgrey-color: #fff;
+	--white_lightgrey-color: #fff;
+	--darkgreen_orange-color:#292C32;
+	--active_menu-color: #F4F3F0;
+}
+
+.dark-mode {
+	--darkgreen_lightgreen-color: #60bf81;
+	--darkgreen_white-color: #fff;
+	--dark_white_text-color: #fff;
+	--white_darkgrey-color: #292C32;
+	--white_lightgrey-color:#292c3225;
+	--darkgreen_orange-color:#B87D58;
+	--active_menu-color: #2c2e32;
+}
+
+.color-items {
+	margin-top: 30px;
+}
+
+.color-item {
+	margin: 5px;
+	border-radius: 30px;
+	padding: 20px 30px;
+	text-decoration: none;
+}
+
+.color-item.green {
+	background-color: #3A5F56;
+}
+
+.color-item.text_green {
+	background-color: #292C32;
+}
+
+.color-item.item_beige {
+	background-color: #F4F3F0;
+}
+
+.color-item.footer_dark {
+	background-color: #292C32;
+}
+
+.color-item.footer_header_orange {
+	background-color: #B87D58;
+}
+
+.color-item.store_header_red {
+	background-color: #DB343B;
+}
