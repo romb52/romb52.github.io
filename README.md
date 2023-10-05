@@ -106,6 +106,9 @@ JavaScript
 
 [Урок JS 12](https://romb52.github.io/DZ_JQUERY_Mirro_landing) - Mirro landing on Jquery
 
+[Урок JS 13](https://romb52.github.io/dat-project-itstep_CHERTILIN_ROMAN/) - DAT project ItStep
+
+
 
 
 
