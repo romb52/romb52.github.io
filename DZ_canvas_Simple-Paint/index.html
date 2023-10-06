@@ -14,50 +14,57 @@
             <h2>Paint</h2>
         </div>
 
-        <div class="select-block">
-            <label><input name="figure" type="radio" name="rectangle">
+        <div class="select-block" id="selectBlock">
+            <label><input name="figure" type="radio" checked data-atr="rectangle">
                 <canvas id="rect" width="70px" height="70px">
                     rectangle
                 </canvas>
             </label>
-            <label><input name="figure" type="radio" name="circle">
+            <label><input name="figure" type="radio" data-atr="circle">
                 <canvas id="circle" width="70px" height="70px">
                     circle
                 </canvas>
             </label>
-            <label><input name="figure" type="radio" name="romb">
+            <label><input name="figure" type="radio" data-atr="romb">
                 <canvas id="romb" width="70px" height="70px">
                     romb
                 </canvas>
             </label>
-            <label><input name="figure" type="radio" name="trainangle">
+            <label><input name="figure" type="radio" data-atr="triangle">
                 <canvas id="triangle" width="70px" height="70px">
                     triangle
                 </canvas>
             </label>
             <div class="color-palete">
-                <div class="row-1">
-                    <button class="btn-color btn-white" value="#fff"></button>
-                    <button class="btn-color btn-lightgray" value="#D3D3D3"></button>
-                    <button class="btn-color btn-yellow" value="#ffeb3b"></button>
-                    <button class="btn-color btn-lightblue" value="#80d8ff"></button>
-                    <button class="btn-color btn-pink" value="#ffafc1"></button>
-                    <button class="btn-color btn-lightgreen" value="#76ff03"></button>
-                    <button class="btn-color btn-lightpurple" value="#dda0dd"></button>
+                <div class="selectedColor" id="selectedColor">
                 </div>
-                <div class="row-2">
-                    <button class="btn-color btn-black" value="#000"></button>
-                    <button class="btn-color btn-gray" value="#666666"></button>
-                    <button class="btn-color btn-orange" value="#ff8a00"></button>
-                    <button class="btn-color btn-blue" value="#2962ff"></button>
-                    <button class="btn-color btn-red" value="#f44336"></button>
-                    <button class="btn-color btn-green" value="	#008000"></button>
-                    <button class="btn-color btn-purple" value="#9c27b0"></button>
+                <div>
+                    <div class="row-1">
+                        <button class="btn-color btn-white" value="#fff"></button>
+                        <button class="btn-color btn-lightgray" value="#D3D3D3"></button>
+                        <button class="btn-color btn-yellow" value="#ffeb3b"></button>
+                        <button class="btn-color btn-lightblue" value="#80d8ff"></button>
+                        <button class="btn-color btn-pink" value="#ffafc1"></button>
+                        <button class="btn-color btn-lightgreen" value="#76ff03"></button>
+                        <button class="btn-color btn-lightpurple" value="#dda0dd"></button>
+                    </div>
+                    <div class="row-2">
+                        <button class="btn-color btn-black" value="#000"></button>
+                        <button class="btn-color btn-gray" value="#666666"></button>
+                        <button class="btn-color btn-orange" value="#ff8a00"></button>
+                        <button class="btn-color btn-blue" value="#2962ff"></button>
+                        <button class="btn-color btn-red" value="#f44336"></button>
+                        <button class="btn-color btn-green" value="	#008000"></button>
+                        <button class="btn-color btn-purple" value="#9c27b0"></button>
+                    </div>
                 </div>
+
             </div>
         </div>
         <div class="draw-block">
-            <div class="draw-window">2</div>
+            <div class="draw-window">
+                <canvas id="drawWindow">drawWindow</canvas>
+            </div>
         </div>
         <div class="footer-block"></div>
     </div>
