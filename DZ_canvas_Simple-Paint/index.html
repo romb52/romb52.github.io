@@ -13,28 +13,35 @@
         <div class="header-block"><i class="fa-solid fa-palette"></i>
             <h2>Paint</h2>
         </div>
-
         <div class="select-block" id="selectBlock">
-            <label><input name="figure" type="radio" checked data-atr="rectangle">
-                <canvas id="rect" width="70px" height="70px">
-                    rectangle
-                </canvas>
-            </label>
-            <label><input name="figure" type="radio" data-atr="circle">
-                <canvas id="circle" width="70px" height="70px">
-                    circle
-                </canvas>
-            </label>
-            <label><input name="figure" type="radio" data-atr="romb">
-                <canvas id="romb" width="70px" height="70px">
-                    romb
-                </canvas>
-            </label>
-            <label><input name="figure" type="radio" data-atr="triangle">
-                <canvas id="triangle" width="70px" height="70px">
-                    triangle
-                </canvas>
-            </label>
+            <div class="tabs">
+                <label><input name="figure" type="radio" checked data-atr="rectangle">
+                    <canvas id="rect" width="70px" height="70px">
+                        rectangle
+                    </canvas>
+                </label>
+            </div>
+            <div class="tabs">
+                <label><input name="figure" type="radio" data-atr="circle">
+                    <canvas id="circle" width="70px" height="70px">
+                        circle
+                    </canvas>
+                </label>
+            </div>
+            <div class="tabs">
+                <label><input name="figure" type="radio" data-atr="romb">
+                    <canvas id="romb" width="70px" height="70px">
+                        romb
+                    </canvas>
+                </label>
+            </div>
+            <div class="tabs last-tab">
+                <label><input name="figure" type="radio" data-atr="triangle">
+                    <canvas id="triangle" width="70px" height="70px">
+                        triangle
+                    </canvas>
+                </label>
+            </div>
             <div class="color-palete">
                 <div class="selectedColor" id="selectedColor">
                 </div>
