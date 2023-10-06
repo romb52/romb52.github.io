@@ -2,6 +2,9 @@ const colorItems = document.querySelectorAll('.btn-color');
 let rotated = false;
 const figureWidth = 70;
 const figureHeight = 70;
+let newFigureWidth = figureWidth;
+let newFigureHeight = figureHeight;
+
 
 //разрисовываем палитру цветов
 const defaultColor = document.getElementById('selectedColor').style.backgroundColor = "#000";
@@ -137,86 +140,158 @@ canvasDrawWindow.width = canvasWidth;
 canvasDrawWindow.height = canvasHeight;
 
 // if (getDC("drawWindow")==false)return;
-canvasDrawWindow.addEventListener('click', (e) => {
-    let startPointX = e.clientX - canvasDrawWindow.getBoundingClientRect().left;;
-    let startPointY = e.clientY - canvasDrawWindow.getBoundingClientRect().top;
-    console.log(e.clientX, e.clientY);
-    console.log(canvasDrawWindow.width, canvasDrawWindow.height);
-    for (let item of figureItems) {
-        if (item.checked == true) {
-            let dc = getDC("drawWindow");
-            let color = document.getElementById('selectedColor').style.backgroundColor;
-            if (dc == false) return;
-            const atr = item.getAttribute("data-atr");
-            console.log(item.getAttribute("data-atr"));
-            if (atr === 'rectangle') {
-                dc.beginPath();
-                dc.fillStyle = color;
-                dc.rect(startPointX, startPointY, figureWidth, figureHeight);
-                dc.fill();
-                console.log(startPointX, startPointY, color);
+// canvasDrawWindow.addEventListener('click', (e) => {
+//     let startPointX = e.clientX - canvasDrawWindow.getBoundingClientRect().left;;
+//     let startPointY = e.clientY - canvasDrawWindow.getBoundingClientRect().top;
+//     console.log(e.clientX, e.clientY);
+//     console.log(canvasDrawWindow.width, canvasDrawWindow.height);
+//     for (let item of figureItems) {
+//         if (item.checked == true) {
+//             let dc = getDC("drawWindow");
+//             let color = document.getElementById('selectedColor').style.backgroundColor;
+//             if (dc == false) return;
+//             const atr = item.getAttribute("data-atr");
+//             console.log(item.getAttribute("data-atr"));
+//             if (atr === 'rectangle') {
+//                 dc.beginPath();
+//                 dc.fillStyle = color;
+//                 dc.rect(startPointX, startPointY, figureWidth, figureHeight);
+//                 dc.fill();
+//                 console.log(startPointX, startPointY, color);
 
-            }
-            if (atr === 'circle') {
-                dc.beginPath();
-                dc.fillStyle = color;
-                dc.arc(startPointX, startPointY, figureWidth / 2, 0, 2 * Math.PI);
-                dc.fill();
-                console.log(startPointX, startPointY, color);
-            }
-            if (atr === 'romb') {
-                let x1 = startPointX;
-                let y1 = startPointY;
-                let x2 = startPointX + figureWidth / 2;
-                let y2 = startPointY - figureWidth / 2;
-                let x3 = startPointX + figureWidth ;
-                let y3 = startPointY;
-                let x4 = startPointX + figureWidth / 2;
-                let y4 = startPointY + figureWidth / 2;
-                dc.beginPath();
-                dc.moveTo(x1, y1);
-                dc.lineTo(x2, y2);
-                dc.lineTo(x3, y3);
-                dc.lineTo(x4, y4);
-                dc.closePath();
-                dc.fillStyle = color;
-                dc.fill();
-            }
-            if (atr === 'triangle') {
-                dc.fillStyle = color;
-                dc.lineWidth = 3;
-                let x1 = startPointX;
-                let y1 = startPointY;
-                let x2 = startPointX;
-                let y2 = startPointY - figureWidth;
-                let x3 = startPointX + figureWidth;
-                let y3 = startPointY;
-                dc.beginPath();
-                dc.moveTo(x1, y1);
-                dc.lineTo(x2, y2);
-                dc.lineTo(x3, y3);
-                dc.closePath();
-                dc.fill();
-            }
-        }
-    };
-});
+//             }
+//             if (atr === 'circle') {
+//                 dc.beginPath();
+//                 dc.fillStyle = color;
+//                 dc.arc(startPointX, startPointY, figureWidth / 2, 0, 2 * Math.PI);
+//                 dc.fill();
+//                 console.log(startPointX, startPointY, color);
+//             }
+//             if (atr === 'romb') {
+//                 let x1 = startPointX;
+//                 let y1 = startPointY;
+//                 let x2 = startPointX + figureWidth / 2;
+//                 let y2 = startPointY - figureWidth / 2;
+//                 let x3 = startPointX + figureWidth;
+//                 let y3 = startPointY;
+//                 let x4 = startPointX + figureWidth / 2;
+//                 let y4 = startPointY + figureWidth / 2;
+//                 dc.beginPath();
+//                 dc.moveTo(x1, y1);
+//                 dc.lineTo(x2, y2);
+//                 dc.lineTo(x3, y3);
+//                 dc.lineTo(x4, y4);
+//                 dc.closePath();
+//                 dc.fillStyle = color;
+//                 dc.fill();
+//             }
+//             if (atr === 'triangle') {
+//                 dc.fillStyle = color;
+//                 dc.lineWidth = 3;
+//                 let x1 = startPointX;
+//                 let y1 = startPointY;
+//                 let x2 = startPointX;
+//                 let y2 = startPointY - figureWidth;
+//                 let x3 = startPointX + figureWidth;
+//                 let y3 = startPointY;
+//                 dc.beginPath();
+//                 dc.moveTo(x1, y1);
+//                 dc.lineTo(x2, y2);
+//                 dc.lineTo(x3, y3);
+//                 dc.closePath();
+//                 dc.fill();
+//             }
+//         }
+//     };
+// });
 
 canvasDrawWindow.addEventListener('mousedown', (e) => {
-    let startPointX = e.clientX ;
-    let startPointY = e.clientY ;
+    let startPointX = e.clientX;
+    let startPointY = e.clientY;
     console.log(e.clientX, e.clientY);
     console.log(canvasDrawWindow.width, canvasDrawWindow.height);
     let isDragging = true;
     canvasDrawWindow.addEventListener('mousemove', (e) => {
         if (isDragging) {
-            let deltaX = e.clientX - startPointX; 
-            let deltaY = e.clientY - startPointY; 
-        let newFigureWidth = figureWidth + 
+            let deltaX = e.clientX - startPointX;
+            let deltaY = e.clientY - startPointY;
+            newFigureWidth = deltaX;
+            newFigureHeight = deltaY;
             console.log(deltaX, deltaY);
         }
     });
- 
+    canvasDrawWindow.addEventListener('mouseup', (e) => {
+        isDragging = false;
+        canvasDrawWindow.removeEventListener('mousemove', (e));
+        canvasDrawWindow.removeEventListener('mouseup', (e));
+
+        startPointX = startPointX - canvasDrawWindow.getBoundingClientRect().left;;
+        startPointY = startPointY - canvasDrawWindow.getBoundingClientRect().top;
+        // console.log(e.clientX, e.clientY);
+        // console.log(canvasDrawWindow.width, canvasDrawWindow.height);
+        for (let item of figureItems) {
+            if (item.checked == true) {
+                let dc = getDC("drawWindow");
+                let color = document.getElementById('selectedColor').style.backgroundColor;
+                if (dc == false) return;
+                const atr = item.getAttribute("data-atr");
+                console.log(item.getAttribute("data-atr"));
+                if (atr === 'rectangle') {
+                    dc.beginPath();
+                    dc.fillStyle = color;
+                    dc.rect(startPointX, startPointY, newFigureWidth, newFigureHeight);
+                    dc.fill();
+                    console.log(startPointX, startPointY, color);
+    
+                }
+                if (atr === 'circle') {
+                    dc.beginPath();
+                    dc.fillStyle = color;
+                    dc.arc(startPointX, startPointY, newFigureWidth / 2, 0, 2 * Math.PI);
+                    dc.fill();
+                    console.log(startPointX, startPointY, color);
+                }
+                if (atr === 'romb') {
+                    let x1 = startPointX;
+                    let y1 = startPointY;
+                    let x2 = startPointX + newFigureWidth ;
+                    let y2 = startPointY - newFigureWidth ;
+                    let x3 = startPointX + newFigureWidth*2;
+                    let y3 = startPointY;
+                    let x4 = startPointX + newFigureWidth ;
+                    let y4 = startPointY + newFigureWidth ;
+                    dc.beginPath();
+                    dc.moveTo(x1, y1);
+                    dc.lineTo(x2, y2);
+                    dc.lineTo(x3, y3);
+                    dc.lineTo(x4, y4);
+                    dc.closePath();
+                    dc.fillStyle = color;
+                    dc.fill();
+                }
+                if (atr === 'triangle') {
+                    dc.fillStyle = color;
+                    dc.lineWidth = 3;
+                    let x1 = startPointX;
+                    let y1 = startPointY;
+                    let x2 = startPointX;
+                    let y2 = startPointY - newFigureWidth;
+                    let x3 = startPointX + newFigureWidth;
+                    let y3 = startPointY;
+                    dc.beginPath();
+                    dc.moveTo(x1, y1);
+                    dc.lineTo(x2, y2);
+                    dc.lineTo(x3, y3);
+                    dc.closePath();
+                    dc.fill();
+                }
+            }
+        };
+    
+    });
+
+   
+
 });
 
 
