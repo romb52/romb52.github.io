@@ -25,7 +25,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0px 5%;
-    height: 100px;
+    /* height: 100px; */
     background-color: #333333;
 }
 .tabs{
@@ -34,7 +34,7 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    padding-left: 10px;
+    padding: 10px;
     margin-top: 10px;
 }
 .tabs:first-child {
@@ -129,3 +129,20 @@ input[type='radio'] {
 /* label:has(input[type='radio']):hover{
     background-color: #2626267e;
 } */
+
+/*Media*/
+@media (max-width: 660px) {
+	.select-block{
+        flex-wrap: wrap;
+    }
+    .color-palete {
+        flex-grow: 1; 
+        justify-content: center;  
+    }
+    /* .select-block{
+        height: 100px;
+    } */
+    .tabs:has(input[type='radio']:checked) {
+        background-color: #333333;
+    }
+}
