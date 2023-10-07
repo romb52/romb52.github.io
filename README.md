@@ -108,6 +108,9 @@ JavaScript
 
 [Урок JS 13](https://romb52.github.io/dat-project-itstep_CHERTILIN_ROMAN/) - DAT project ItStep
 
+[Урок JS 14](https://romb52.github.io/DZ_canvas_Simple-Paint/) - Using canvas. Simple paint
+
+
 
 
 
