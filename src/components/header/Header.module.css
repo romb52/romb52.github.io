@@ -1,0 +1,11 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
