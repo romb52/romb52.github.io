@@ -17,5 +17,34 @@ code {
 }
 header,
 footer {
-  background-color: #ffffd5;
+  background-color: #f5f5ad;
+  padding: 20px 0;
+}
+section {
+  padding: 40px 0;
+}
+/* header[data-theme='dark'],
+footer[data-theme='dark'],
+section[data-theme='dark'] {
+  background-color: #000;
+  color: #fff;
+} */
+body[data-theme='dark'],
+body[data-theme='dark'] header,
+body[data-theme='dark'] footer {
+  background-color: #000;
+  color: #fff;
+}
+body[data-theme='dark'] button {
+  background-color: aquamarine;
+  color: blue;
+}
+.flex {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+p {
+  margin: 0;
 }

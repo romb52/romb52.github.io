@@ -1,43 +1,42 @@
+import { useState } from 'react';
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
-import Layout from '../layout/Layout';
-import List from '../list/List';
 import styles from './App.module.css';
 
 function App() {
-  const title = 'Hello, User';
-  const headerTitle = 'Header!!!!';
-  const menu = 'Menu';
+  const [isDark, setIsDark] = useState(false);
+  const [list, setList] = useState(['apple', 'banana', 'orange']);
 
-  const arr = ['apple', 'android', 'samsung'];
-  const items = [
-    { title: 'Apple', desc: 'Apple desc', id: 1, price: 10 },
-    { title: 'Orange', desc: 'Orange desc', id: 2, price: 20 },
-    { title: 'Peach', desc: 'Peach desc', id: 3, price: 30 },
-    { title: 'Lemon', desc: 'Lemon desc', id: 4, price: 40 },
-    { title: 'Grape', desc: 'Grape desc', id: 5, price: 50 },
-  ];
+  document.body.setAttribute('data-theme', `${isDark ? 'dark' : ''}`);
+
+  const changeTheme = () => {
+    setIsDark((prev) => !prev);
+    document.body.setAttribute('data-theme', `${isDark ? 'dark' : ''}`);
+  };
+
+  const deleteItem = (item) => {
+    const updatedList = list.filter((el) => el !== item);
+    setList(() => updatedList);
+  };
+
+  console.log(document.documentElement.lang)
+
   return (
     <>
-      <Header headerTitle={headerTitle} headerMenu={menu} />
-      <div className='container'>
-        <List arr={arr} objArr={items} />
-        <div className={styles['app-wrap']} id='app'>
-          {title}
+      <Header changeTheme={changeTheme} />
+      <section>
+        <div className='container'>
+          <div className={styles.list}>
+            {list.map((item, i) => (
+              <div key={`item-${i + 1}`}>
+                <p>{item}</p>
+                <button onClick={() => deleteItem(item)}>Delete</button>
+              </div>
+            ))}
+          </div>
         </div>
-        <Layout>
-          <p>Lorem lorem lorem</p>
-        </Layout>
-
-        <Layout>
-          <span>SPAN SPAN</span>
-        </Layout>
-
-        <Layout>
-          <h1>Page Title</h1>
-        </Layout>
-      </div>
-      <Footer isAqua={true} />
+      </section>
+      <Footer isDark={isDark} />
     </>
   );
 }
