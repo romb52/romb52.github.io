@@ -1,42 +1,86 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
-import styles from './App.module.css';
+import Modal from '../modal/Modal';
+import Posts from '../posts/Posts';
+// import styles from './App.module.css';
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
-  const [list, setList] = useState(['apple', 'banana', 'orange']);
+  const [isModalOpen, setModal] = useState(false);
+  const [modalContent, setModalContent] = useState('contact');
 
-  document.body.setAttribute('data-theme', `${isDark ? 'dark' : ''}`);
+  const [isDark, setIsDark] = useState(false);
+
+  const [lang, setLang] = useState(
+    localStorage.getItem('lang')
+      ? localStorage.getItem('lang')
+      : document.documentElement.lang
+  );
+  const changeLang = () => {
+    const newLang = lang === 'uk' ? 'en' : 'uk';
+    setLang(() => newLang);
+  };
 
   const changeTheme = () => {
     setIsDark((prev) => !prev);
+  };
+
+
+  const openModal = (content = 'contact') => {
+    setModal((prev) => !prev);
+    switch (content) {
+      case 'sale':
+        setModalContent('sale');
+        break;
+      case 'posts':
+        setModalContent('posts');
+        break;
+      default:
+        setModalContent('contact');
+    }
+  };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [isModalOpen]);
+
+  useEffect(() => {
     document.body.setAttribute('data-theme', `${isDark ? 'dark' : ''}`);
-  };
+  }, [isDark]);
 
-  const deleteItem = (item) => {
-    const updatedList = list.filter((el) => el !== item);
-    setList(() => updatedList);
-  };
-
-  console.log(document.documentElement.lang)
+  useEffect(() => {
+    localStorage.setItem('lang', lang);
+  }, [lang]);
 
   return (
     <>
-      <Header changeTheme={changeTheme} />
+      <Header
+        changeTheme={changeTheme}
+        openModal={openModal}
+        lang={lang}
+        changeLang={changeLang}
+      />
       <section>
         <div className='container'>
-          <div className={styles.list}>
-            {list.map((item, i) => (
-              <div key={`item-${i + 1}`}>
-                <p>{item}</p>
-                <button onClick={() => deleteItem(item)}>Delete</button>
-              </div>
-            ))}
-          </div>
+          {/* <button onClick={() => openModal('sale')}>
+            {translate[lang]['sale-prop']}
+          </button> */}
+          <Posts />          
         </div>
       </section>
       <Footer isDark={isDark} />
+      <Modal
+        isModalOpen={isModalOpen}
+        openModal={openModal}
+        modalPosition={modalContent !== 'contact' && 'right'}
+      >
+        {modalContent === 'contact' ? <h2>Contact Form</h2> : <h2>Sale</h2>}
+      </Modal>
     </>
   );
 }
