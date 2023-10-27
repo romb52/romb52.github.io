@@ -1,4 +1,5 @@
 // import styles from './App.module.css';
+import { withLayout } from '../layout/Layout';
 
 function App() {
   return (
@@ -10,4 +11,4 @@ function App() {
   );
 }
 
-export default App;
+export default withLayout(App);

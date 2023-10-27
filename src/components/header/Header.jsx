@@ -38,7 +38,14 @@ export default function Header({
             />
             <span>uk</span>
           </div>
-          <Button onClick={()=> navigate('/')}>Logout</Button>
+          <Button
+            onClick={() => {
+              localStorage.removeItem('token');
+              navigate('/');
+            }}
+          >
+            Logout
+          </Button>
         </div>
       </div>
     </header>

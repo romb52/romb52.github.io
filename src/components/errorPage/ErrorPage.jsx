@@ -1,15 +1,7 @@
-import { useEffect } from 'react';
-import { Link, useRouteError, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { withLayout } from '../layout/Layout';
 
-export default function ErrorPage() {
-  const error = useRouteError();
-  const location = useLocation();
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (location.pathname !== '/404') {
-      navigate('/404')
-    }
-  }, [navigate, location])
+function ErrorPage() {
   return (
     <section>
       <div className='container'>
@@ -17,8 +9,9 @@ export default function ErrorPage() {
         <Link to='/'>
           <h3>Go to Home Page</h3>
         </Link>
-        <p>error message: {error.statusText || error.message}</p>
       </div>
     </section>
   );
 }
+
+export default withLayout(ErrorPage);

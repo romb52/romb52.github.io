@@ -3,7 +3,7 @@ import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import Modal from '../modal/Modal';
 
-export default function Layout({ children }) {
+function Layout({ children }) {
   const [isModalOpen, setModal] = useState(false);
   const [modalContent, setModalContent] = useState('contact');
 
@@ -62,7 +62,7 @@ export default function Layout({ children }) {
         changeLang={changeLang}
         isDark={isDark}
       />
-      {cloneElement(children, {lang})}
+       {cloneElement(children, {lang})}
       <Footer isDark={isDark} />
       <Modal
         isModalOpen={isModalOpen}
@@ -73,4 +73,10 @@ export default function Layout({ children }) {
       </Modal>
     </>
   );
+}
+
+export const withLayout = (Component) => {
+  return function layoutComponent (props) {
+    return <Layout><Component {...props} /></Layout>
+  }
 }
