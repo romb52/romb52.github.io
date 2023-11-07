@@ -1,22 +1,36 @@
 import { useEffect, useState } from 'react';
-import { data, result, listPerPage } from '../../share/data';
+import { listPerPage, sortData, countResult } from '../../share/data';
 import styles from './App.module.css';
 import Pag from '../Pag/Pag';
 import TitleParTable from '../TitleParTable/TitleParTable';
 import SubTable from '../SubTable/SubTable';
 import TableItem from '../TableItem/TableItem';
+import Search from '../Search/Search';
 
 export default function App() {
+  const [search, setSearch] = useState('');
+  const [sortColumn, setSortColumn] = useState('');
+  const [isAZ, setIsAZ] = useState(true);
   const [startindex, setStartIndex] = useState(0);
+
+  const data =
+    sortColumn === ''
+      ? countResult(search)
+      : sortData(isAZ, sortColumn, search);
   const [list, setList] = useState(
-    data.slice(startindex, startindex + listPerPage)
+    data.newData.slice(startindex, startindex + listPerPage)
   );
+
   const [activePage, setActivePage] = useState(1);
   const [openShop, setOpenShop] = useState({ isOpen: false, productName: '' });
 
   useEffect(() => {
-    setList(data.slice(startindex, startindex + listPerPage));
-  }, [startindex]);
+    const data =
+      sortColumn === ''
+        ? countResult(search)
+        : sortData(isAZ, sortColumn, search);
+    setList(data.newData.slice(startindex, startindex + listPerPage));
+  }, [startindex, sortColumn, isAZ, search]);
 
   const changePage = (item) => {
     setStartIndex((item - 1) * listPerPage);
@@ -39,17 +53,29 @@ export default function App() {
     });
   };
 
+  const changeSort = (isAZ, name) => {
+    setSortColumn(name);
+    setIsAZ(isAZ);
+  };
+
+  const getSearch = (value) => {
+    setSearch(value);
+  };
   return (
-    <div className='App'>
+    <div className='container'>
+      <Search getSearch={getSearch} />
       <div className={styles.wrap} key='d1'>
-        <TitleParTable />
+        <TitleParTable
+          changeSort={changeSort}
+          sortColumn={sortColumn}
+          isAZ={isAZ}
+        />
         {list.map((item, i) => {
           return (
             <div key={`${item.name}${item.articule}`}>
               <TableItem
                 item={item}
                 i={i}
-                res={result(item.shop)}
                 showShop={showShop}
                 startindex={startindex}
                 openShop={openShop}
@@ -59,7 +85,7 @@ export default function App() {
           );
         })}
       </div>
-      <Pag activePage={activePage} changePage={changePage} />
+      <Pag activePage={activePage} changePage={changePage} pag={data.pagList} />
     </div>
   );
 }

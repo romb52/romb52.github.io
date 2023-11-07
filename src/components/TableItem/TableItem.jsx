@@ -3,7 +3,6 @@ import styles from '../App/App.module.css';
 export default function TableItem({
   item,
   i,
-  res,
   showShop,
   startindex,
   openShop,
@@ -21,9 +20,9 @@ export default function TableItem({
       <p>{startindex + i + 1}</p>
       <p>{item.name}</p>
       <p>{item.articule}</p>
-      <p>{res.count}</p>
-      <p>{res.avg}</p>
-      <p>{res.sum}</p>
+      <p>{item.count}</p>
+      <p>{item.avg}</p>
+      <p>{item.sum}</p>
     </div>
   );
 }
