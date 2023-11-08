@@ -1,0 +1,16 @@
+
+
+.imgBlock{
+    display: flex;
+    /* flex-direction: row;     */
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow: hidden;
+}
+.imgBlock img{       
+    max-width: 100%;
+    width: 48%;
+    height: auto;
+    padding: 10px;
+}
