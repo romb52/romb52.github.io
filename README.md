@@ -1,127 +1,70 @@
-# Roman Chertilin FrontEnd21
-Мои домашки
+# Getting Started with Create React App
 
-[Урок 1,2](https://romb52.github.io/DZ_1-2/) - Тема "Знакомство с HTML и CSS"
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-[Урок 3,4](https://romb52.github.io/DZ_3-4/) - Добавление хедера и футера, работа со якорными ссылками, картинками.
+## Available Scripts
 
-[Урок 5,6](https://romb52.github.io/DZ_5-6/) - Корректировка хедера, наполнение боди, использование псевдоклассов и псевдоєлементов.
+In the project directory, you can run:
 
-[Урок 7.8](https://romb52.github.io/DZ_7-8/) - Добавление анимации.
+### `npm start`
 
-[Урок 9](https://romb52.github.io/DZ_9_chess/) - Таблицы. Задание шахматная доска с фигурами.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-[Урок 10](https://romb52.github.io/DZ_10_form/) - Верстка блока обратной связи. Визуальные эфекты при наведении.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-[Урок 11-12](https://romb52.github.io/DZ_11-12/) - Валидация на input. Hover на элементы.
+### `npm test`
 
-[Урок 13-14](https://romb52.github.io/DZ_13-14/) - Работа с блочными элементами.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-[Урок 15-16](https://romb52.github.io/DZ_15-16_Flex/) - Flex. Адаптация портфолио на разных экранах.
+### `npm run build`
 
-[Урок 17-18](https://romb52.github.io/DZ_17-18_Flex) - Flex. Продолжение адаптации портфолио на разных экранах.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-[Урок 19-20](https://romb52.github.io/DZ_FlexLanding/) - Flex landing. Адаптация на 3х экранах.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-[Урок 30](https://romb52.github.io/DZ_29-30_JS/) - Разработка клиентских сценариев с использованием JavaScript. Циклы.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-[Урок 31-32](https://romb52.github.io/DZ_31-32_JS/) - Разработка клиентских сценариев с использованием JavaScript. Циклы. Игра "Быки и коровы".
+### `npm run eject`
 
-[Урок 33-34](https://romb52.github.io/DZ_33_34_JS/) - Разработка клиентских сценариев с использованием JavaScript. Циклы, массивы. Калькулятор выражений.
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-[Урок 35-36](https://romb52.github.io/DZ_JS_Array/) - Разработка клиентских сценариев с использованием JavaScript. Задачи на массивы. 
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-[Урок 37-38](https://romb52.github.io/DZ_JS_Calculator/) - Разработка клиентских сценариев с использованием JavaScript. Функции. 
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-[Урок 41-42](https://romb52.github.io/DZ_JS_Function/) - Разработка клиентских сценариев с использованием JavaScript. Ещё функции. 
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-[Урок 43-44](https://romb52.github.io/DZ_JS_Object/) - Разработка клиентских сценариев с использованием JavaScript. Обьекты, конструкторы. 
+## Learn More
 
-[Урок 45](https://romb52.github.io/DZ_JS_Object_Date/) - Разработка клиентских сценариев с использованием JavaScript. Date. Обратный отчет до НГ. 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-[Урок 47-48](https://romb52.github.io/DZ_JS_Class/) - Разработка клиентских сценариев с использованием JavaScript. Class. Расширить класс String. 
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-[Урок 46](https://romb52.github.io/DZ_JS_Object_Hamlet/) - Разработка клиентских сценариев с использованием JavaScript. Таймеры. setTimeout()
+### Code Splitting
 
-[Урок 49](https://romb52.github.io/DZ_Event_clickToMoveOneDiv/) - Разработка клиентских сценариев с использованием JavaScript. Event. click left button
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-[Урок 50](https://romb52.github.io/DZ_Event_clickToMoveThreeDiv/) - Разработка клиентских сценариев с использованием JavaScript. Event; click left, wheel, right  button
+### Analyzing the Bundle Size
 
-[Урок 51](https://romb52.github.io/DZ_JS_tic-tac-toe/krectNull.html) - Разработка клиентских сценариев с использованием JavaScript. Бот для игры Крестики и Нолики
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-[Урок 52](https://romb52.github.io/DZ_JS_Calculator/) - Калькулятор с интерфейсом. Events
+### Making a Progressive Web App
 
-[Урок 53](https://romb52.github.io/DZ_JS_ToDoList/) - To do list. Events, createElement, appendChild
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-[Урок 54](https://romb52.github.io/DZ_JS_BOM/) - BOM.
+### Advanced Configuration
 
-[Урок 55](https://romb52.github.io/DZ_JS_ToDoListLocalStorage/) - To do list with saving on localStorage.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-[Урок 56](https://romb52.github.io/DZ_JS_seaBattleRandomShips/) - Sea battle. Random location ships
+### Deployment
 
-[Урок 57](https://romb52.github.io/DZ_JS_seaBattleRandomShipsMargin/) - Sea battle. + Margin around ships
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-[Урок 58](https://romb52.github.io/DZ_JS_Pyatnashki/) - Game Pyatnashki
+### `npm run build` fails to minify
 
-[Урок 59](https://romb52.github.io/DZ_JS_KnightMove/) - Knight's Move - Recurcion
-
-[Урок 60](https://romb52.github.io/DZ_JS_FormValidation/) - My portfolio. Add Form Validation.
-
-[Урок 21-22](https://romb52.github.io/DZ_ProjectFigma_flex_landing/) - Flex landing. Free project Figma
-
-[Урок 23-24](https://romb52.github.io/DZ_PortfolioLandingCSSGrid/) - Grid. Portfolio landing page
-
-[Урок 25-26](https://romb52.github.io/DZ_UIkitLibrary/) - UI kit library
-
-[Урок 27](https://romb52.github.io/DZ_ProjectFigma_flex_landing_adaptive/) - Flex landing. Free project Figma. Add addaptive
-
-[Урок 28](https://romb52.github.io/DZ_UIkitLibrary_Mirro_landing/) - Flex landing. Figma Mirro. Kit library
-
-[Урок 29](https://romb52.github.io/DZ_Mirro_landing/) - Flex landing. Figma Mirro. Addaptive
-
-# Roman Chertilin FrontEnd27 
-JavaScript
-
-[Урок JS 1](https://romb52.github.io/DZ_Events_2/) - Events. add close modal by bg click
-
-[Урок JS 2](https://romb52.github.io//DZ_Events_4//) - Events. 
-
-[Урок JS 3](https://romb52.github.io/DZ_Events_clickFootball/) - Events. Style. Footbal game
-
-[Урок JS 4](https://romb52.github.io/DZ_citySearch/) - Events. Life search.
-
-[Урок JS 5](https://romb52.github.io/DZ_scrollToBeginning/) - Events. Smooth scroll to ancors.
-
-[Урок JS 6](https://romb52.github.io/DZ_JS_GenerateCalendar/) - Data. Events. BOM. Generate calendar
-
-[Урок JS 7](https://romb52.github.io/DZ_Add_new_message/) - Form. Events. Add new message to chat
-
-[Урок JS 8](https://romb52.github.io/DZ_Test/) - Form. Events. Test
-
-[Урок JS 9](https://romb52.github.io/DZ_Train_tickets/) - Form. Events. Booking train tickets
-
-[Урок JS 10](https://romb52.github.io/DZ_RandomString/) - Jquery. Generate some random string
-
-[Урок JS 11](https://romb52.github.io/DZ-JS_Jquery_flex-box/) - Jquery. Resizing div content
-
-[Урок JS 12](https://romb52.github.io/DZ_JQUERY_Mirro_landing) - Mirro landing on Jquery
-
-[Урок JS 13](https://romb52.github.io/dat-project-itstep_CHERTILIN_ROMAN/) - DAT project ItStep
-
-[Урок JS 14](https://romb52.github.io/DZ_canvas_Simple-Paint/) - Using canvas. Simple paint
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
