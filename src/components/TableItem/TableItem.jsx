@@ -1,4 +1,4 @@
-import styles from '../App/App.module.css';
+import styles from '../app/App.module.css';
 
 export default function TableItem({
   item,

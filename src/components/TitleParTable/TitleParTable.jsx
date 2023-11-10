@@ -1,4 +1,4 @@
-import styles from '../App/App.module.css';
+import styles from '../app/App.module.css';
 import Arrows from '../Arrows/Arrows';
 
 export default function TitleParTable() {

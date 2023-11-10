@@ -1,4 +1,4 @@
-import App from '../App/App';
+import App from '../app/App';
 import { useLayoutEffect, useState, useMemo } from 'react';
 import { GlobalContext } from '../../share/context';
 

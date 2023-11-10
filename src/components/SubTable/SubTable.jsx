@@ -1,5 +1,5 @@
 import TitleSubTable from '../TitleSubTable/TitleSubTable';
-import styles from '../App/App.module.css';
+import styles from '../app/App.module.css';
 
 export default function SubTable({ item, i, openShop }) {
   return (
