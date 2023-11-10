@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useMemo } from 'react';
 import { listPerPage, sortData, countResult } from '../../share/data';
 import styles from './App.module.css';
 import Pag from '../Pag/Pag';
@@ -9,7 +9,7 @@ import Search from '../Search/Search';
 import { Button } from 'react-bootstrap';
 import { GlobalContext, LocalContext } from '../../share/context';
 
-export default function App() {
+export default function App({ res }) {
   const { changeTheme } = useContext(GlobalContext);
 
   const [search, setSearch] = useState('');
@@ -17,10 +17,13 @@ export default function App() {
   const [isAZ, setIsAZ] = useState(true);
   const [startindex, setStartIndex] = useState(0);
 
-  const data =
-    sortColumn === ''
-      ? countResult(search)
-      : sortData(isAZ, sortColumn, search);
+  const data = useMemo(
+    () =>
+      sortColumn === ''
+        ? countResult(search)
+        : sortData(isAZ, sortColumn, search),
+    [search, isAZ, sortColumn]
+  );
   const [list, setList] = useState(
     data.newData.slice(startindex, startindex + listPerPage)
   );
