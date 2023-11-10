@@ -1,54 +1,29 @@
 import styles from '../App/App.module.css';
 import Arrows from '../Arrows/Arrows';
 
-export default function TitleParTable({ changeSort, sortColumn, isAZ }) {
+export default function TitleParTable() {
   return (
     <div key='abcde' className={`${styles.item} ${styles.itemTitle}`}>
       <p>#</p>
       <p>
         Name
-        <Arrows
-          changeSort={changeSort}
-          name='Name'
-          isActive={sortColumn === 'Name'}
-          isAZ={isAZ}
-        />
+        <Arrows name='Name' />
       </p>
       <p>
         Articule
-        <Arrows
-          changeSort={changeSort}
-          name='Articule'
-          isActive={sortColumn === 'Articule'}
-          isAZ={isAZ}
-        />
+        <Arrows name='Articule' />
       </p>
       <p>
         Count
-        <Arrows
-          changeSort={changeSort}
-          name='Count'
-          isActive={sortColumn === 'Count'}
-          isAZ={isAZ}
-        />
+        <Arrows name='Count' />
       </p>
       <p>
         AVG Price
-        <Arrows
-          changeSort={changeSort}
-          name='AVG Price'
-          isActive={sortColumn === 'AVG Price'}
-          isAZ={isAZ}
-        />
+        <Arrows name='AVG Price' />
       </p>
       <p>
         Sum
-        <Arrows
-          changeSort={changeSort}
-          name='Sum'
-          isActive={sortColumn === 'Sum'}
-          isAZ={isAZ}
-        />
+        <Arrows name='Sum' />
       </p>
     </div>
   );

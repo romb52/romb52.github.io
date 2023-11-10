@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { listPerPage, sortData, countResult } from '../../share/data';
 import styles from './App.module.css';
 import Pag from '../Pag/Pag';
@@ -6,8 +6,12 @@ import TitleParTable from '../TitleParTable/TitleParTable';
 import SubTable from '../SubTable/SubTable';
 import TableItem from '../TableItem/TableItem';
 import Search from '../Search/Search';
+import { Button } from 'react-bootstrap';
+import { GlobalContext, LocalContext } from '../../share/context';
 
 export default function App() {
+  const { changeTheme } = useContext(GlobalContext);
+
   const [search, setSearch] = useState('');
   const [sortColumn, setSortColumn] = useState('');
   const [isAZ, setIsAZ] = useState(true);
@@ -63,13 +67,14 @@ export default function App() {
   };
   return (
     <div className='container'>
+      <Button className='my-3' onClick={() => changeTheme()}>
+        ChaneTheme
+      </Button>
       <Search getSearch={getSearch} />
       <div className={styles.wrap} key='d1'>
-        <TitleParTable
-          changeSort={changeSort}
-          sortColumn={sortColumn}
-          isAZ={isAZ}
-        />
+        <LocalContext.Provider value={{ changeSort, sortColumn, isAZ }}>
+          <TitleParTable />
+        </LocalContext.Provider>
         {list.map((item, i) => {
           return (
             <div key={`${item.name}${item.articule}`}>
