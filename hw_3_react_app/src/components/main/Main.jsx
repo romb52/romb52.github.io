@@ -1,14 +1,7 @@
-import { useState } from 'react';
 import styles from './Main.module.css';
 
 
-const Main = ({ lang, changeLang }) => {
-    const data = {
-        'uk': ["Яблуко", "Банан", "Апельсин"],
-        'en': ["Apple", "Banana", "Orange"]
-    }
-    const [list, setList] = useState(data[lang]);
-    
+const Main = ({ lang,list }) => {    
 
     return (
         <>

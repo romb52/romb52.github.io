@@ -6,16 +6,23 @@ import { useState } from "react";
 
 function App() {
   const [lang, setLang] = useState(document.documentElement.lang);
-  const changeLang = () => {
-      const newLang = lang === 'uk' ? 'en' : 'uk';
-      setLang(() => newLang);
+  const data = {
+    'uk': ["Яблуко", "Банан", "Апельсин"],
+    'en': ["Apple", "Banana", "Orange"]
   }
-  
+  const [list, setList] = useState(data[lang]);
+
+  const changeLang = () => {
+    const newLang = lang === 'uk' ? 'en' : 'uk';
+    setLang(() => newLang);
+    setList(() => data[newLang]);
+  }
+
   return (
     <div className={`container ${styles.page}`}>
-    <Header lang={lang} changeLang={changeLang}/>
-    <Main lang={lang} changeLang={changeLang}/>
-    <Footer/>    
+      <Header lang={lang} changeLang={changeLang} />
+      <Main lang={lang} changeLang={changeLang} list={list} />
+      <Footer />
     </div>
   );
 }
