@@ -1,0 +1,16 @@
+.header{
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightyellow;
+}
+.header h2{
+    padding:0px 15px;
+    margin: 0;
+}
+.header button{
+    font-weight: bold;
+    padding: 3px 7px;  
+}
