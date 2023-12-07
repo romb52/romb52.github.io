@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import ChildComponent from './components/ChildComponent/ChildComponent';
 
-function App() {
+function App(): JSX.Element {
+  const [count, setCount] = useState<number>(0);
+  const changeFunc = (a: number): void => {
+    if (a < 10) {
+      setCount(count + 1)
+    } else {
+      setCount(count - 1)
+    }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1>Hello</h1>
+      <p>{ count}</p>
+      
+      <ChildComponent changeFunc={changeFunc} count={count} />
     </div>
   );
 }
