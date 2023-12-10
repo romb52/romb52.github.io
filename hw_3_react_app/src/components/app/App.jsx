@@ -19,7 +19,7 @@ function App() {
   }
 
   return (
-    <div className={`container ${styles.page}`}>
+    <div className={` ${styles.page}`}>
       <Header lang={lang} changeLang={changeLang} />
       <Main lang={lang} changeLang={changeLang} list={list} />
       <Footer />

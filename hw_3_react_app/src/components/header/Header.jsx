@@ -1,13 +1,14 @@
-import styles from './Header.module.css'
+import styles from './Header.module.css';
+import { Button } from 'react-bootstrap';
 
 
 const Header = ({lang, changeLang}) => {   
 
     return (
-        <header className='container' >
+        <header  >
             <div className={styles.header}>
-                <button onClick={() => changeLang()}>{lang==='en'?'Change Lang': 'Змінити мову'}</button>
-                <h2>{lang}</h2>
+                <Button onClick={() => changeLang()}>{lang==='en'?'Change Lang': 'Змінити мову'}</Button>
+                <h2>{lang}</h2>                
             </div>
         </header>
     )
