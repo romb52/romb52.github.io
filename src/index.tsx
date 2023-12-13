@@ -10,6 +10,7 @@ import Auth from './components/Auth/Auth';
 import { Provider } from 'react-redux';
 import { store } from './share/store';
 
+
 const router = createBrowserRouter([
   {
     path: "/",
