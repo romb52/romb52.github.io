@@ -1,0 +1,18 @@
+.productRev>span {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.productRev>ul {
+    list-style: none;
+}
+
+.productRev p {
+    margin: 0;
+    text-align: justify;
+    font-style: italic;
+}
+
+.productRev h4 {
+    margin-bottom: 5px;
+}

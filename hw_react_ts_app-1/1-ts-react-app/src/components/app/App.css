@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 80vw;
+  height: 100vh;
+  margin: 0 auto; 
+}
+
+
