@@ -1,0 +1,56 @@
+p {
+    margin: 0;   
+  }
+
+  main {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;   
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 3rem;
+  }
+
+  .content h1 {
+    margin-top: 1.75rem;
+    border-bottom: 1px solid grey;
+    text-align: center;
+  }
+
+  .content p {
+    margin-top: 1.5rem;
+    font-size: 17px;
+    line-height: 25px;
+  }
+  .content ul {
+    margin-top: 10px;
+   }
+  
+  .content li {
+   font-size: 18px;
+   font-style: italic;
+  }
+  .content h3 {
+    margin: 0;
+    border-bottom: 1px solid grey;
+   }
+.biography {
+    margin: 5px 0 15px 0;
+}
+.biography-content img{
+    float: left;
+    margin-right: 15px;
+}
+
