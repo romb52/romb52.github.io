@@ -38,7 +38,7 @@ p {
     margin-top: 10px;
    }
   
-  .content li {
+  .content .quotes li {
    font-size: 18px;
    font-style: italic;
   }
@@ -53,4 +53,17 @@ p {
     float: left;
     margin-right: 15px;
 }
+
+.links li {
+    margin: 5px;
+    }
+
+.links li a{
+text-decoration: none;
+color: #000;
+}
+.links li a:hover{   
+     font-weight: bold; 
+    }
+
 
