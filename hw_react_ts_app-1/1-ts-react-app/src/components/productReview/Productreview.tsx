@@ -1,4 +1,4 @@
-//import styles from './Productreview.module.css';
+import styles from './Productreview.module.css';
 import React from 'react';
 
 
@@ -14,8 +14,7 @@ interface ReviewItem {
   
   const Productreview: React.FC<ProductReviewProps> = ({ productReview }) => {
     return (
-        <div>
-      {/* <div className={styles.productRev}> */}
+     <div className={styles.productRev}>
         <span>Рецензії:</span>
         <ul>
           {productReview.map((item, i) => (
