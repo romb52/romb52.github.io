@@ -29,7 +29,7 @@ export const withLayout = <Props extends Object>(
 ) =>
   function wLC(props: Props) {
     return (
-      <Layout>
+      <Layout >
         <Component {...props} />
       </Layout>
     );

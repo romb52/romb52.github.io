@@ -13,11 +13,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 header {
-  background-color: aquamarine;
+  background-color: #CEDEF2;
   padding: 10px 0;
 }
+
 .h-container {
   display: flex;
   gap: 20px;
 }
+
+.h-container a {
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #111BD9;
+  /* font-weight: ; */
+}
+
+.h-container a:hover {
+  background-color: #3876f227;
+}
+.active-link {
+  background-color: #3876f227;
+}
+
