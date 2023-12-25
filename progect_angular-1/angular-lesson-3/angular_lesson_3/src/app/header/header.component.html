@@ -1,0 +1,13 @@
+<header [attr.dataTheme]="theme">
+    <div class="container">
+        <button mat-icon-button color="primary"
+            aria-label="Example icon button with a home icon"><mat-icon>home</mat-icon>
+        </button>
+        <button mat-button color="accent" (click)="changeTheme()">{{theme}}
+        </button>
+        <!-- <button (click)="changeTheme()">{{theme}}</button> -->
+        <button mat-mini-fab disabled aria-label="Example icon button with a home icon">
+            <mat-icon>home</mat-icon>
+        </button>
+    </div>
+</header>

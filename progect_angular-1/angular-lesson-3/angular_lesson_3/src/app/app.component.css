@@ -1,0 +1,20 @@
+* {
+    width: 100%;
+    height: 85vh ;
+}
+
+.content button{
+    width: 50px;
+    height: 20px;
+    margin: 5px;
+}
+
+.container {
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+.main{
+    background-color: rgba(211, 211, 211, 0.601);
+}

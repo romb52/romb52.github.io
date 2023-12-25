@@ -1,0 +1,15 @@
+<app-header [theme]="themeUp" (dataTheme)="changeTheme($event)"></app-header>
+<main class="main" [attr.dataTheme]="themeUp">
+  <div class="content">
+    <button (click)="changeCounter($event)">{{counter}}</button>
+    <mat-tab-group>
+      <mat-tab label="First"> <app-component-1 [title]="titleComp1"></app-component-1> </mat-tab>
+      <mat-tab label="Second"> <app-component-1 [title]="titleComp2"></app-component-1> </mat-tab>
+      <mat-tab label="Third"> <app-component-1 [title]="titleComp3"></app-component-1> </mat-tab>
+    </mat-tab-group>
+  </div>
+</main>
+<app-foooter [themeFooter]="themeUp" ></app-foooter>
+
+
+<router-outlet></router-outlet>
