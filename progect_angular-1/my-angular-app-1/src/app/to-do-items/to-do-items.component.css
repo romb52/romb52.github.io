@@ -1,0 +1,7 @@
+.items li.selected {
+    background-color: rgb(143, 187, 130);
+    color: white;
+    }
+    .items li.selected:hover {
+    background-color: rgb(118, 155, 106);
+    }

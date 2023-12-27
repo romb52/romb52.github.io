@@ -1,0 +1,41 @@
+<h2>Transportation Models</h2>
+
+<div class="columns">
+  <div class="column">
+    <h3>Cars</h3>
+    <ul class="items">
+      <li *ngFor="let item of cars">
+        {{ item.name }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="column">
+    <h3>Planes</h3>
+    <ul class="items">
+      <li *ngFor="let item of planes">
+        {{ item.name }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="column">
+    <h3>Ships</h3>
+    <ul class="items">
+      <li *ngFor="let item of ships">
+        {{ item.name }} 
+      </li>
+    </ul>
+  </div>
+</div>
+
+<button (click)="ShowInfo('car')">The biggest one car</button>
+<button (click)="ShowInfo('plane')">The biggest one plane</button>
+<button (click)="ShowInfo('ship')">The biggest one ship</button>
+
+<div *ngIf="largestVehicleInfo" class="vechInfo">
+  <h3>Largest Vehicle Information</h3>
+  <p>Name: {{ largestVehicleInfo.name }}</p>
+  <p>Description: {{ largestVehicleInfo.desc }}</p>
+  <p>Size: {{ largestVehicleInfo.size }} meters</p>
+</div>
