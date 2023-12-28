@@ -1,0 +1,29 @@
+.app-wrap {
+  background-color: aqua;
+}
+
+.dark {
+  background-color: #000;
+  color: #fff;
+}
+
+.dark * {
+  color: #fff;
+}
+
+.dark button {
+  background-color: aquamarine;
+  color: blue;
+}
+.list {
+  display: grid;
+  margin-top: 40px;
+  width: 400px;
+}
+.list > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  border-bottom: 1px solid blue;
+  padding: 10px 20px;
+}
