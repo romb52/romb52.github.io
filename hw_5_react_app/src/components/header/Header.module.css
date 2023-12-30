@@ -1,0 +1,18 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.form-switch{
+  display: flex !important;;
+  justify-content: center;
+  align-items: center;
+}
