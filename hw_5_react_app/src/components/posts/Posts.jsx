@@ -5,6 +5,7 @@ import { AiFillLike } from "react-icons/ai";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { translate } from '../../share/translate';
+import { Link } from 'react-router-dom';
 
 export default function Posts({lang}) {
   const [posts, setPosts] = useState([]);
@@ -38,7 +39,8 @@ export default function Posts({lang}) {
                   ))}
                 </Card.Text>
                 <Card.Text className={styles.likes}><AiFillLike size={20} />{item.reactions}</Card.Text>
-                <Button variant="primary">{translate[lang]['more']}</Button>
+                <Link to={`/post/${item.id}`}><Button  variant="primary">{translate[lang]['more']}</Button></Link>
+                
               </Card.Body>
             </Card>
           ))}
