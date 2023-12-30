@@ -7,6 +7,7 @@ export const translate = {
       'delete': 'Delete',
       'dark':'dark',
       'light': 'light',
+      'more':'More...',
     },
     uk: {
       'contact-me': "Зв'язатись зі мною",
@@ -15,5 +16,6 @@ export const translate = {
       'delete': 'Видалити',
       'dark':'темна',
       'light': 'світла',
+      'more':'Детальніше...',
     },
   };

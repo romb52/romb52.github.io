@@ -51,3 +51,13 @@ p {
 .icon{
   cursor: pointer;
 }
+
+ul{
+  list-style: none; 
+}
+ul a{
+  text-decoration: none;
+}
+ul a.active{
+  font-weight: bold;
+}
