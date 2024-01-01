@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
 }
 
 .switch {
@@ -11,8 +12,8 @@
 
 }
 
-.form-switch{
-  display: flex !important;;
+.formSwitch{
+  display: flex;
   justify-content: center;
   align-items: center;
 }

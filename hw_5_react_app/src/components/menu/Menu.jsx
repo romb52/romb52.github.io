@@ -4,7 +4,7 @@ export default function Menu() {
     const location = useLocation();
     return (
         <nav > 
-            <ul className="d-flex gap-3">
+            <ul className="d-flex gap-3 align-items-center m-0 p-0">
                 <li key='home'><Link to='/'  className={location.pathname==='/'&& 'active'} >Home</Link></li>
                 <li key='posts'><Link to='/posts' className={location.pathname==='/posts'&& 'active'}>Posts</Link></li>
             </ul>

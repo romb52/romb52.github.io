@@ -61,3 +61,8 @@ ul a{
 ul a.active{
   font-weight: bold;
 }
+
+section{
+  height: calc(100vh - 160px);
+  overflow-y: auto;
+}

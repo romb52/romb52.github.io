@@ -12,7 +12,7 @@ export default function Header({ changeTheme, openModal, lang, changeLang, isDar
         <div className='d-flex gap-4 align-items-center'>
           <div className={styles.switch}>
             <span>{translate[lang]['dark']}</span>
-            <Form.Check onChange={() => changeTheme()} type="switch" checked={!isDark} />
+            <Form.Check className={styles.formSwitch} onChange={() => changeTheme()} type="switch" checked={!isDark} />
             <span>{translate[lang]['light']}</span>
           </div>
           <Button variant="info" onClick={() => openModal()}>
@@ -20,7 +20,7 @@ export default function Header({ changeTheme, openModal, lang, changeLang, isDar
           </Button>
           <div className={styles.switch}>
             <span>en</span>
-            <Form.Check onChange={() => changeLang()} type="switch" id="custom-switch" checked={lang === 'uk'} />
+            <Form.Check className={styles.formSwitch} onChange={() => changeLang()} type="switch" id="custom-switch" checked={lang === 'uk'} />
             <span>uk</span>
           </div>
         </div>
