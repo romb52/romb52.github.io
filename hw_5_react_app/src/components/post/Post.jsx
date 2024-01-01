@@ -14,7 +14,7 @@ export default function Post() {
     useEffect(() => {
         async function getPosts() {
             try {
-                const res = await axios.get(`https://dummyjson.com/postys/${id}`);
+                const res = await axios.get(`https://dummyjson.com/posts/${id}`);
                 setPost(res.data);
                 setIsLoading(false);
             } catch (error) {
