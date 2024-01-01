@@ -1,0 +1,19 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.formSwitch{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

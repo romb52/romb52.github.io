@@ -1,0 +1,27 @@
+.likes {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.post svg {
+    cursor: pointer;
+    color: #8A9CA3;
+    opacity: 0.8;
+}
+
+.post svg:hover {
+    color: #8A9CA3;
+    opacity: 1;
+}
+
+.tags {
+    color: #6c797f;
+    opacity: 0.95;
+}
+
+.tags:hover {
+    cursor: pointer;
+    color: #444d51;
+    opacity: 1;
+}
