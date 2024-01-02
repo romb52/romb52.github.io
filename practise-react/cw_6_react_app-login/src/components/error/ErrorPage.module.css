@@ -1,0 +1,19 @@
+.linkHome {
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 100px;
+}
+
+.linkHome:hover {
+    transition: background 0.7s;
+    background-color: #8a9ca33e;
+}
+
+.homeIcon {   
+    vertical-align: middle; 
+    margin-right: 5px;
+}
