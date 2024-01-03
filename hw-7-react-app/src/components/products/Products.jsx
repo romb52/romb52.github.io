@@ -71,7 +71,7 @@ export default function Products() {
                                         <Card.Text>
                                             <RatingStars rating={item.rating} />
                                             <span className='text-decoration-line-through text-secondary'>{item.price} ₴ </span>
-                                            <h4 className='text-primary'>{item.price} ₴ </h4>
+                                            <h4 className='text-primary'>{(item.price - (item.price * item.discountPercentage * 0.01)).toFixed(2)} ₴ </h4>
                                         </Card.Text>
 
                                         <Link to={`/product/${item.id}`}><Button variant="primary">More...</Button></Link>
