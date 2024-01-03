@@ -5,7 +5,7 @@ const RatingStars = ({ rating }) => {
   //const [stars, setStars] = useState(0);
 
   const roundedRating = parseFloat(rating.toFixed(1));
-  console.log(roundedRating);
+
   const starIcons = [];
   for (let i = 0; i < 5; i++) {
     if (i < Math.round(roundedRating)) {

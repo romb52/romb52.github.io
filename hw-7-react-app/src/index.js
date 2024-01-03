@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Layout from './components/layout/layout';
 import Product from './components/product/Product';
+import Errorpage from './components/error/ErrorPage';
 
 
 
@@ -17,7 +18,8 @@ import Product from './components/product/Product';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout><App /></Layout>,    
+    element: <Layout><App /></Layout>,   
+    errorElement:<Layout><Errorpage/></Layout> 
   },
   {
     path: "product/:id",

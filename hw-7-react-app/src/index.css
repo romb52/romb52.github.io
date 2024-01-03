@@ -21,3 +21,11 @@ section{
 
 }
 
+li.active{
+  color: blue;
+}
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
