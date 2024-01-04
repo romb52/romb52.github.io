@@ -34,7 +34,7 @@ const DataProductComponent = ({ handleCategoryClick }) => {
     <ul>
       {category.map((item, index) => (
         <li key={index} className={activeItem === item ? 'active' : ''}
-          onClick={() => handleItemClick(item)}>{item}</li>
+          onClick={() => handleItemClick(item)}>{item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()}</li>
       ))}
       <li className={`${styles.allCategory} ${activeItem === null ? 'active' : ''}`}  onClick={() => handleItemClick(null)}>All category</li>
     </ul>
