@@ -56,6 +56,20 @@ h1 {
     opacity: 1;
     text-decoration: none;
 }
+.error{
+    color:red;
+    font-weight: bold;
+}
+.homeIcon{
+    font-size: 35px;
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.homeIcon:hover {
+    transition: background 0.7s;
+    background-color: #8a9ca33e;
+}
 
 @media (max-width: 960px) {
     .posts {

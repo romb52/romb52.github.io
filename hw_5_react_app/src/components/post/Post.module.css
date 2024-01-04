@@ -1,27 +1,33 @@
 .likes {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
-}
-
-.post svg {
+    margin-bottom: 10px; /* Increased margin for better spacing */
+  }
+  
+  .post svg {
     cursor: pointer;
-    color: #8A9CA3;
+    color: #007bff; /* Bootstrap primary color (blue) */
     opacity: 0.8;
-}
-
-.post svg:hover {
-    color: #8A9CA3;
+    transition: opacity 0.3s ease; /* Smooth transition effect */
+  }
+  
+  .post svg:hover {
     opacity: 1;
-}
-
-.tags {
+  }
+  
+  .tags {
     color: #6c797f;
-    opacity: 0.95;
-}
-
-.tags:hover {
+    opacity: 0.8; /* Reduced opacity for initial tags */
+    transition: opacity 0.3s ease; /* Smooth transition effect */
+  }
+  
+  .tags:hover {
     cursor: pointer;
     color: #444d51;
     opacity: 1;
-}
+  }
+  
+  /* Style for the "Back to all posts" button */
+  .backButton {
+    margin-top: 20px; /* Increased top margin for separation */
+  }
