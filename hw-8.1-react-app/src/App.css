@@ -1,0 +1,171 @@
+a {
+  color: #262626c7;
+  font-weight: bolder;
+}
+a:hover {
+  color: #5464BF;
+}
+a.active {
+  color: #5464BF;
+}
+
+.App-header{
+  background-color: #BFBFBF;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #262626;
+}
+.App-main{
+  height: 90vh;
+  background: linear-gradient(135deg, rgba(242, 182, 210, 0.5) 0%, rgba(191, 191, 191, 0.1)100%),url('../src/img/bg.jpg');
+	background-size: cover;
+}
+  .container{
+    max-width: 100%;
+    width: 80vw;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+   
+  }
+
+  ul{
+    list-style: none;
+    padding-left: 0;
+  }
+  ul a {
+    text-decoration: none;
+  }
+
+  .mainMenu{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .subMenu{
+    display: none;
+    position: absolute;
+    bottom: -100;
+    left: 0;
+    z-index: 1;
+    background-color: #BFBFBF;
+    border-radius: 5px;
+    padding: 6px;
+    gap: 4px;
+    min-width: max-content;
+    margin-top: 10px;
+  }
+  .subMenu.active{
+    display: grid;
+  }
+  .menyItem{
+    display: flex;
+    gap: 4;
+    align-items: center;
+  }
+  .parent{
+    position: relative;
+  }
+  .menuBtn{
+    border: none;
+    height: 30px;
+    cursor: pointer;
+    display: none;
+  }
+
+  .mobileMenu {
+    display: none; /* По замовчуванню ховаємо мобільне меню */
+  position: absolute; /* Позиціонуємо меню абсолютно */
+  top: 50px; /* Розташовуємо меню під заголовком (змініть відповідно до вашого дизайну) */
+  left: 0;
+  background-color: #fff; /* Колір фону меню */
+  width: 100%; /* Ширина на весь екран */
+  z-index: 1000; /* Шар над іншими елементами */
+  }
+  .contactItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  .contactItem a{
+   text-decoration: none;
+  }
+  
+  @media (max-width: 850px) {
+    .contactItemNunber{
+      display: none;
+    }
+  }
+
+ 
+  /* Показуємо мобільне меню, коли ширина екрану менше або рівна 800px */
+  @media (max-width: 800px) {
+    .menuBtn{      
+      display: block;
+    }
+    .mainMenu {
+      display: none; /* Ховаємо основне меню на малих екранах */
+    }
+  
+    .mobileMenu {
+      display: none; /* По замовчуванню ховаємо мобільне меню на малих екранах */
+      position: absolute; /* Позиціонуємо меню абсолютно */
+      top: 10vh; /* Розташовуємо меню під заголовком (змініть відповідно до вашого дизайну) */
+      left: 0;
+      background-color: #ffffff9d; /* Колір фону меню */
+      width: 100%; /* Ширина на весь екран */
+      z-index: 1000; /* Шар над іншими елементами */
+    }
+  
+    .mobileMenu.active {
+      display: block; /* Показуємо активне мобільне меню */
+    }
+  
+    .mobileMenu ul {
+      list-style: none;
+      padding: 0;
+    }
+  
+    .mobileMenu li {
+      position: relative;
+    }
+  
+    .mobileMenu .menyItem {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    .mobileMenu .menyItem:hover{
+      background-color:#ffffff5a;
+    }
+  
+    .mobileMenu .menyItem a {
+      text-decoration: none;
+      color: #000; /* Колір тексту пунктів меню */
+    }
+  
+    .mobileMenu .subMenu {
+      display: none; /* По замовчуванню ховаємо підменю */
+      background-color: #ffffff9d; /* Колір фону підменю */
+      top: 30px; /* Розташовуємо меню під заголовком (змініть відповідно до вашого дизайну) */
+      left: 30%;
+      padding: 8px;  
+      width: 100%;        
+    }
+    .mobileMenu .subMenu li{
+        margin-bottom: 2px;
+
+    }
+  
+    .mobileMenu .subMenu.active {
+      display: block; /* Показуємо активне підменю */
+    }  
+    
+ 
+  }
