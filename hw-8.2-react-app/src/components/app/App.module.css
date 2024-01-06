@@ -1,0 +1,11 @@
+.item{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+.wrap{
+display: grid;
+}
+.itemTitle{
+    font-weight: bold;
+    border-bottom: 2px solid black ;
+}
