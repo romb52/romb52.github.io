@@ -77,6 +77,7 @@ function App() {
     }
   }, [location.pathname]);
 
+
   const openMenu = (link) => {
     setOpenSubMenu(prev => ({
       isOpen: prev.link !== link ? true : !prev.isOpen,
