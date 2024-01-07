@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Pag.module.css';
 import { pag } from '../../share/data';
 
+
 function Pag({ listPerPage, activePage, changePage }) {
   return (
     <div className={styles.pag}>

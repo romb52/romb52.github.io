@@ -1,8 +1,6 @@
-
 import { useState, useEffect } from 'react';
 import styles from './App.module.css';
 import { data } from "../../share/data";
-// import { result } from '../../share/data';
 import Pag from '../pag/Pag';
 import Item from '../item/item';
 
@@ -11,9 +9,7 @@ const listPerPage = 6;
 function App() {
 
   const [startindex, setStartIndex] = useState(0);
-  const [list, setList] = useState(
-    data.slice(startindex, startindex + listPerPage)
-  );
+  const [list, setList] = useState(data.slice(startindex, startindex + listPerPage));
   const [activePage, setActivePage] = useState(1);
   const [openShop, setOpenShop] = useState({ isOpen: false, productName: "" });
 
