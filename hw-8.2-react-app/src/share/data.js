@@ -10,3 +10,13 @@ export const result = (shop) => {
         sum: (data.sum.toFixed(2)),
     }
 }
+
+export const pag = (listPerPage) => {
+    const arr = [];
+    const countPages = Math.ceil(data.length / listPerPage);
+    for (let i = 1; i <= countPages; i++) {
+      arr.push(i);
+    }
+    return arr;
+  };
+  
