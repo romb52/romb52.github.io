@@ -1,0 +1,31 @@
+.pag {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.pag span {
+    border: 1px solid;
+    padding: 2px 6px;
+    cursor: pointer;
+}
+.pag span:hover {
+    background-color: rgba(211, 211, 211, 0.61)
+}
+
+.pag span:first-child {
+    border-radius: 5px 0 0 5px;
+ 
+}
+
+.pag span:last-child {
+    border-radius: 0 5px 5px 0;   
+}
+
+
+.pag span.active {
+    background-color: rgb(100, 100, 100);
+    color: white;
+}

@@ -2,8 +2,9 @@
 import { useState, useEffect } from 'react';
 import styles from './App.module.css';
 import { data } from "../../share/data";
-import { result } from '../../share/data';
-import { pag } from '../../share/data';
+// import { result } from '../../share/data';
+import Pag from '../pag/Pag';
+import Item from '../item/item';
 
 const listPerPage = 6;
 
@@ -59,63 +60,12 @@ function App() {
             <p>Sum</p>
           </div>
           {list.map((item, i) => {
-            const res = result(item.shop);
             return (
-              <div key={`${item.name}${item.articule}`}>
-                <div
-                  onClick={() => showShop(item.name)}
-                  key={`${item.name}${item.articule}`}
-                  className={styles.item}
-                >
-                  <p>{startindex + i + 1}</p>
-                  <p>{item.name}</p>
-                  <p>{item.articule}</p>
-                  <p>{res.count}</p>
-                  <p>{res.avg}</p>
-                  <p>{res.sum}</p>
-                </div>
-                <div
-                  key={item.name}
-                  className={`${styles.shop} ${item.name === openShop.productName ? styles.active : null
-                    }`}
-                >
-                  <div
-                      key={'firstlineshop'}
-                      className={`${styles.item} ${styles.itemTitle}`}
-                    >
-                      <p>#</p>
-                      <p>Name</p>
-                      <p>Count</p>
-                      <p>Price</p>
-                      <p>Sum</p>
-                    </div>
-                  {item.shop.map((el, i) => (
-                    <div
-                      key={i + 1}
-                      className={styles.item}
-                    >
-                      <p>{i + 1}</p>
-                      <p>{el.shop_name}</p>
-                      <p>{el.count}</p>
-                      <p>{el.price}</p>
-                      <p>{(el.price * el.count).toFixed(2)}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>);
+              <Item key={`${item.name}${item.articule}`} item={item} index={i} startindex={startindex} showShop={showShop} openShop={openShop} />
+            );
           })}
         </div>
-        <div className={styles.pag}>
-          {pag(listPerPage).map((item) => (
-            <span
-              onClick={() => changePage(item)}
-              className={`${activePage === item ? styles.active : null}`}
-              key={item}
-            >
-              {item}
-            </span>
-          ))}
-        </div>
+        <Pag listPerPage={listPerPage} activePage={activePage} changePage={changePage} />
       </div>
     </div>
   );
