@@ -1,0 +1,9 @@
+.header{   
+    background-color:rgba(119, 136, 153, 0.603);
+}
+
+.header li{
+list-style: none;
+padding: 10px;
+}
+

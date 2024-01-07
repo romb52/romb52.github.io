@@ -9,7 +9,7 @@ import {
 import Layout from './components/layout/Layout';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
-import Errorpage from './components/error/ErrorPage';
+// import Errorpage from './components/error/ErrorPage';
 import LoginPage from './components/loginPage/LoginPage';
 
 
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout><App /></Layout>,
-    errorElement:<Layout><Errorpage/></Layout>
+    // errorElement:<Layout><Errorpage/></Layout>
   },
   {
     path: "posts",
