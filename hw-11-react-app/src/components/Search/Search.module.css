@@ -1,0 +1,13 @@
+.wrap {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 40px 0;
+}
+.big {
+  font-size: 100px;
+}
+
+.small {
+  font-size: 40px;
+}

@@ -1,0 +1,49 @@
+.wrap {
+  display: grid;
+}
+.item {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  cursor: pointer;
+}
+.item.open {
+  font-weight: bold;
+  color: #022e3f;
+}
+.itemTitle {
+  font-weight: bold;
+  border-bottom: 2px solid;
+}
+.item > p {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.pag {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  margin-top: 40px;
+}
+.pag span {
+  border: 1px solid;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+.pag span.active {
+  background-color: black;
+  color: white;
+}
+.shop {
+  display: none;
+  background-color: #fcdcdc;
+  max-width: 90%;
+  margin: 0 auto;
+}
+.shop.active {
+  display: block;
+}
+.shop .item {
+  border-bottom: 1px solid #b5b5b5;
+}

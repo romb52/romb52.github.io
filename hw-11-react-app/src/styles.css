@@ -1,0 +1,10 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+input[data-theme='dark'], input[data-theme='dark']:focus {
+  background-color: rgba(0, 0, 0, 0.623);
+  color: white;
+  border-color: white;
+}
+input[data-theme='dark']::placeholder {
+  color: white;
+}
