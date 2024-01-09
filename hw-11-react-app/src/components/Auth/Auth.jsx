@@ -64,9 +64,7 @@ export default function Auth({ isLogin, changeAuth }) {
         setIsError(true);
         if (error.response) {
           const { status, data } = error.response;
-          console.log(status, data);
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
+          console.log(status, data);         
           if (status === 404 || status === 422 && data.statusCode === 422) {
             console.error(' Error:', data.message);
             changeMessage(data.message);
@@ -77,8 +75,7 @@ export default function Auth({ isLogin, changeAuth }) {
             changeMessage(arrError);
           }
         }
-        else {
-          // Something happened in setting up the request that triggered an error
+        else {         
           console.error('Request Error:', error.message);
           changeMessage('Непередбачена помилка. Спробуйте ще раз.');
         }
