@@ -8,6 +8,7 @@ export default function Auth({ isLogin, changeAuth }) {
     ? 'https://nest-try-app.onrender.com/users/login'
     : 'https://nest-try-app.onrender.com/users';
   const [isLoadData, setIsLoadData] = useState(false);
+  const[isError, setIsError]= useState(false);
   const [message, setMessage] = useState('');
   const [countClick, setCountClick] = useState(0);
   const refCountClick = useRef(0);
@@ -29,7 +30,7 @@ export default function Auth({ isLogin, changeAuth }) {
     setMessage(message);
     setTimeout(() => {
       setMessage('');
-    }, 3000);
+    }, 5000);
   };
   const sumbitForm = async (e) => {
     e.preventDefault();
@@ -40,18 +41,48 @@ export default function Auth({ isLogin, changeAuth }) {
       changeMessage('Ви вже відправили свої данні');
     } else {
       setIsLoadData(true);
-      const res = await axios.post(url, {
-        user: { ...form },
-      });
 
-      console.log(res.data);
-      const { token } = res.data.user;
-      if (token) {
+      try {
+        const res = await axios.post(url, {
+          user: { ...form },
+        });
+
+        console.log(res.data);
+        const { token } = res.data.user;
+        const { username } = res.data.user;
+
+        if (token) {
+          setIsLoadData(false);
+          setIsError(false);
+          localStorage.setItem('token', token);
+          localStorage.setItem('username', username);
+          changeAuth(true);
+          changeMessage('Дані відправлені');
+        }
+      } catch (error) {
         setIsLoadData(false);
-        localStorage.setItem('token', token);
-        changeAuth(true);
+        setIsError(true);
+        if (error.response) {
+          const { status, data } = error.response;
+          console.log(status, data);
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          if (status === 404 || status === 422 && data.statusCode === 422) {
+            console.error(' Error:', data.message);
+            changeMessage(data.message);
+          } else if (status === 422 && data.errors) {
+            console.error(' Error:', data.errors.body);
+            const arrErrors = data.errors.body.map(item => item)
+            const arrError = arrErrors.join('\n');
+            changeMessage(arrError);
+          }
+        }
+        else {
+          // Something happened in setting up the request that triggered an error
+          console.error('Request Error:', error.message);
+          changeMessage('Непередбачена помилка. Спробуйте ще раз.');
+        }
       }
-      changeMessage('Дані відправлені');
     }
   };
 
@@ -76,9 +107,11 @@ export default function Auth({ isLogin, changeAuth }) {
     <div className='container mt-5'>
       {isLoadData && <Spinner animation='grow' variant='primary' />}
       {message !== '' && (
-        <p className={`${countClick <= 1 ? styles.success : styles.warning}`}>
-          {message}
-        </p>
+        <div className={`${countClick <= 1 ? styles.success : styles.warning}`}>
+           {message.split('\n').map((msg, index) => (
+    <p key={index}className={isError ? styles.warning : ''}>{msg}</p>
+  ))}
+        </div>
       )}
       {isLogin ? <h1>Login</h1> : <h1>Registration</h1>}
       <Form onSubmit={(e) => sumbitForm(e)} method='POST'>
@@ -90,7 +123,7 @@ export default function Auth({ isLogin, changeAuth }) {
               name='username'
               onChange={(e) => changeInputData(e)}
               ref={refLoginInput}
-              onKeyPress={(e) => handleKeyPress(e, refEmailInput)}
+              onKeyUp={(e) => handleKeyPress(e, refEmailInput)}
             />
           </Form.Group>
         )}
@@ -103,7 +136,7 @@ export default function Auth({ isLogin, changeAuth }) {
             name='email'
             onChange={(e) => changeInputData(e)}
             ref={refEmailInput}
-            onKeyPress={(e) => handleKeyPress(e, refPassInput)}
+            onKeyUp={(e) => handleKeyPress(e, refPassInput)}
           />
           <Form.Text className='text-muted'>
             We'll never share your email with anyone else.
@@ -118,7 +151,7 @@ export default function Auth({ isLogin, changeAuth }) {
             name='password'
             ref={refPassInput}
             onChange={(e) => changeInputData(e)}
-            onKeyPress={(e) => handleKeyPress(e, refBtnInput)}
+            onKeyUp={(e) => handleKeyPress(e, refBtnInput)}
           />
         </Form.Group>
 
