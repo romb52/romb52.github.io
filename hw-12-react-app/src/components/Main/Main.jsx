@@ -101,7 +101,7 @@ export default function Main() {
             />
           </Form.Group>
 
-          <Button variant='primary' type='submit'>
+          <Button className='my-3' variant='primary' type='submit'>
             Submit
           </Button>
         </Form>
