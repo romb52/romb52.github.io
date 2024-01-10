@@ -54,6 +54,10 @@ export default function Main() {
     });
   };
 
+  const getTotalCount = () => {
+    return state.reduce((total, book) => total + book.count, 0);
+  };
+
   return (
     <section>
       <div className='container my-5'>
@@ -155,8 +159,18 @@ export default function Main() {
               <Button variant='warning' onClick={() => changeBook(book.id)}>
                 Change
               </Button>
-            </div>
+            </div>            
           ))}
+            <div key='foot-book' className={styles.item}>
+            <p>#</p>
+            <p></p>
+            <p>Total count:</p>
+            <p>{getTotalCount()}</p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+          </div>
         </div>
       </div>
     </section>
