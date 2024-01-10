@@ -14,11 +14,18 @@ export default function Main() {
   const [sortColumn, setSortColumn] = useState('');
   const [isAZ, setIsAZ] = useState(true);
 
+  const [currentPage, setCurrentPage] = useState(1); 
+  const booksPerPage = 5; 
+
   const changeInput = (e) => {
     setForm((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
+
+  const indexOfLastBook = currentPage * booksPerPage;
+  const indexOfFirstBook = indexOfLastBook - booksPerPage;
+  const currentBooks = state.slice(indexOfFirstBook, indexOfLastBook);
 
   const sumbit = (e) => {
     e.preventDefault();
@@ -27,10 +34,11 @@ export default function Main() {
     if (changedId === 0) {
       const payload = { ...form, id };
       dispatch({ type: 'new_book', payload });
+      setForm(initialForm);   
     } else {
       const payload = { ...form, id: changedId };
       dispatch({ type: 'change_book', payload });
-      setForm(initialForm);
+      setForm(initialForm);  
       setChangedId(0);
     }
   };
@@ -55,7 +63,7 @@ export default function Main() {
   };
 
   const getTotalCount = () => {
-    return state.reduce((total, book) => total + book.count, 0);
+    return state.reduce((total, book) => total + parseInt(book.count), 0);
   };
 
   return (
@@ -132,9 +140,9 @@ export default function Main() {
             <p>Minus</p>
             <p>Change</p>
           </div>
-          {state.map((book, i) => (
+          {currentBooks.map((book, i) => (
             <div key={book.id} className={styles.item}>
-              <p>{i + 1}</p>
+              <p>{indexOfFirstBook + i + 1}</p>
               <p>{book.title}</p>
               <p>{book.author}</p>
               <p>{book.count}</p>
@@ -159,9 +167,9 @@ export default function Main() {
               <Button variant='warning' onClick={() => changeBook(book.id)}>
                 Change
               </Button>
-            </div>            
+            </div>
           ))}
-            <div key='foot-book' className={styles.item}>
+          <div key='foot-book' className={styles.item}>
             <p>#</p>
             <p></p>
             <p>Total count:</p>
@@ -171,6 +179,22 @@ export default function Main() {
             <p></p>
             <p></p>
           </div>
+        </div>
+        <div className={styles.pagination}>
+          {state.length > booksPerPage && (
+            <ul className='pagination'>
+              {Array.from({ length: Math.ceil(state.length / booksPerPage) }).map((_, index) => (
+                <li key={index} className='page-item'>
+                  <button
+                    className='page-link'
+                    onClick={() => setCurrentPage(index + 1)}
+                  >
+                    {index + 1}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </section>
