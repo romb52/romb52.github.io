@@ -1,0 +1,11 @@
+:root {
+    --body: #fff;
+    --dark: #282a36;
+    --dark-bg:#1b1b1d; 
+    --light: #f6f8fa;
+    --summer: #fad168de;
+    --summer-bg: #91c5d354;
+    --summer-btn: #FE7C77;
+    --winter: rgba(173, 216, 230, 0.534);
+    --winter-bg: rgba(87, 177, 207, 0.082);
+  }
