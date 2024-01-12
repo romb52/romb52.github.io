@@ -11,7 +11,7 @@ const Header = () => {
     const handleThemeChange = (theme) => {
         if (theme === 'random') {
             dispatch(random());
-        }
+        } else
         if (theme === 'auto') {
             dispatch(setAutoTheme());
         } 
