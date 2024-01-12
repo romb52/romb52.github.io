@@ -1,5 +1,8 @@
 header{
-    padding: 10px;
+    height: 7vh;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 .headerwrap{

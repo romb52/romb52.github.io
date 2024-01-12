@@ -5,7 +5,8 @@ const themes = ['light', 'dark', 'winter', 'summer'];
 
 const getAutoTheme = () => {
     const currentHour = new Date().getHours();
-    return currentHour >= 8 && currentHour < 17 ? 'light' : 'dark';
+    console.log(currentHour);
+    return currentHour >= 8 && currentHour < 17 ? 'light' : 'dark';    
 };
 
 export const themeSlice = createSlice({

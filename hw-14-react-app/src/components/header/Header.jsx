@@ -1,7 +1,7 @@
 import styles from './Header.module.css'
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTheme, random } from '../../reducers/theme.reducer';
+import { setTheme, random, setAutoTheme  } from '../../reducers/theme.reducer';
 
 
 const Header = () => {
@@ -11,7 +11,11 @@ const Header = () => {
     const handleThemeChange = (theme) => {
         if (theme === 'random') {
             dispatch(random());
-        } else {
+        }
+        if (theme === 'auto') {
+            dispatch(setAutoTheme());
+        } 
+        else {
             dispatch(setTheme(theme));
         }
     };

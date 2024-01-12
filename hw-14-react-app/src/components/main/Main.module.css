@@ -1,8 +1,15 @@
-main{
-    padding-top: 15px;
+main {
+    padding: 5px;
+    min-height: 93vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.mainwrap{    
-    padding: 20px;
-    border-radius: 10px;
+.mainwrap {
+    padding: 4vw;
+    border-radius: 2vmin;
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
 }
