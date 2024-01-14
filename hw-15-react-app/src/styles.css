@@ -13,3 +13,17 @@ input[data-theme='dark']::placeholder {
 p {
   margin-bottom: 0;
 }
+
+section{
+  height: 86vh;
+  min-height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F4F4F4;
+}
+section .container{
+  background-color: #d3e2ff60;
+  padding: 15px 0;
+  border-radius: 20px;
+}

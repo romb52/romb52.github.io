@@ -16,6 +16,7 @@ export const fetchAuth = createAsyncThunk(
       dispatch(auth(res.data.user));
     } catch (e) {
       if (e.response) {
+        console.log(e.response.status);
         dispatch(setError(e.response.data));
         return;
       }
