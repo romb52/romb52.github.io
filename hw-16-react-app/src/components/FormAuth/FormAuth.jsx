@@ -9,14 +9,18 @@ import { useEffect } from 'react';
 import { clearErrors } from '../../share/reducers/errors.reducer';
 
 export default function FormAuth({ title, link, titleLink, isSignUp }) {
+  const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const navigate = useNavigate();
+
   const initalState = isSignUp
     ? { email: '', password: '', username: '' }
     : { email: '', password: '' };
+    
   const [formData, setFormData] = useState(initalState);
-  const error = useSelector((state) => state.error.error);
-  const dispatch = useDispatch();
+  const [message, setMessage] = useState('');
+  const error = useSelector((state) => state.error);
+  
   const handlerSubmit = async (e) => {
     e.preventDefault();
     const path = isSignUp ? '/users' : '/users/login';
@@ -28,8 +32,19 @@ export default function FormAuth({ title, link, titleLink, isSignUp }) {
   };
 
   useEffect(() => {
-    if (error && error.payload !== null) {
+    if (error.error) {
+      console.log(error.error);
+      if (error.error.body) {
+        const arrErrors = error.error.body.map(item => item);
+        const arrError = arrErrors.join('\n');
+        console.log(arrError);
+        setMessage(arrError);
+      } else {
+        setMessage(error.error);
+        console.log(error.error);
+      }
       setTimeout(() => {
+        setMessage('');
         dispatch(clearErrors());
       }, 5000);
     }
@@ -43,48 +58,55 @@ export default function FormAuth({ title, link, titleLink, isSignUp }) {
 
   return (
     <div className={styles.wrap}>
-      <Form
-        className={styles.form}
-        method='POST'
-        onSubmit={(e) => handlerSubmit(e)}
-      >
-        <h1>{title}</h1>
-        {error && (
-          <div className='alert alert-danger' role='alert'>
-            {error}
+      <div>
+        <div>   {message !== '' && (
+          <div className='text-danger'>
+            {message.split('\n').map((msg, index) => (
+              <p key={index} className=''>{msg}</p>
+            ))}
           </div>
-        )}
-        <Link to={link}>{titleLink}</Link>
-        {isSignUp && (
-          <Form.Group className='mb-3' controlId='username'>
-            <Form.Label>User Name</Form.Label>
+        )}</div>
+        <Form
+          className={styles.form}
+          method='POST'
+          onSubmit={(e) => handlerSubmit(e)}
+        >
+          <h1>{title}</h1>       
+          <Link to={link}>{titleLink}</Link>
+          {isSignUp && (
+            <Form.Group className='mb-3' controlId='username'>
+              <Form.Label>User Name</Form.Label>
+              <Form.Control
+                name='username'
+                placeholder='User Name'
+                onChange={(e) => handlerChange(e)}
+              />
+            </Form.Group>
+          )}
+          <Form.Group className='mb-3' controlId='email'>
+            <Form.Label>Email</Form.Label>
             <Form.Control
-              name='username'
-              placeholder='User Name'
+              type='email'
+              name='email'
+              placeholder='name@example.com'
               onChange={(e) => handlerChange(e)}
             />
           </Form.Group>
-        )}
-        <Form.Group className='mb-3' controlId='email'>
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type='email'
-            name='email'
-            placeholder='name@example.com'
-            onChange={(e) => handlerChange(e)}
-          />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='password'>
-          <Form.Label>password</Form.Label>
-          <Form.Control
-            type='password'
-            name='password'
-            placeholder='password'
-            onChange={(e) => handlerChange(e)}
-          />
-        </Form.Group>
-        <Button type='submit'>{title}</Button>
-      </Form>
+          <Form.Group className='mb-3' controlId='password'>
+            <Form.Label>password</Form.Label>
+            <Form.Control
+              type='password'
+              name='password'
+              placeholder='password'
+              onChange={(e) => handlerChange(e)}
+            />
+          </Form.Group>
+          <div className="d-flex justify-content-between">
+            <div></div>
+            <Button type='submit'>{title}</Button>
+          </div>
+        </Form>
+      </div>
     </div>
   );
 }

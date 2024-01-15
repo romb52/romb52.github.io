@@ -9,9 +9,11 @@ import { setError, clearErrors } from '../../share/reducers/errors.reducer';
 
 export default function FormAuth({ title, link, titleLink, isSignUp }) {
   const dispatch = useDispatch();
+
   const initalState = isSignUp
     ? { email: '', password: '', username: '' }
     : { email: '', password: '' };
+
   const [formData, setFormData] = useState(initalState);
   const [message, setMessage] = useState('');
 
@@ -22,6 +24,7 @@ export default function FormAuth({ title, link, titleLink, isSignUp }) {
     const path = isSignUp ? '/users' : '/users/login';
     dispatch(fetchAuth({ body: formData, path }));
   };
+
   useEffect(() => {
     if (error.error) {
       console.log(error.error);
@@ -40,6 +43,7 @@ export default function FormAuth({ title, link, titleLink, isSignUp }) {
       }, 5000);
     }
   }, [error, dispatch]);
+
   const handlerChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });

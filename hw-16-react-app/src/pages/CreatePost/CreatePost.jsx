@@ -32,7 +32,7 @@ function CreatePost() {
   };
   return (
     <section>
-      <div className='container'>
+      <div className='container d-flex justify-content-center'>
         <Form
           className={styles.form}
           method='POST'
@@ -85,7 +85,8 @@ function CreatePost() {
               value={formData.tagList}
             />
           </Form.Group>
-          <Button type='submit'>Створити пост</Button>
+          <div className="d-flex justify-content-between"><div></div><Button type='submit'>Створити пост</Button></div>
+          
         </Form>
       </div>
     </section>
