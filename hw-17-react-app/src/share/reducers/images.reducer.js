@@ -20,11 +20,13 @@ export const imagesSlice = createSlice({
             arr.push(src);
           }
         }
-      }
+      }  
       return [...arr];
     },
   },
 });
+
+
 
 export const { getImagesArr } = imagesSlice.actions;
 export default imagesSlice.reducer;
