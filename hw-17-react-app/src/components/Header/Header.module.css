@@ -1,0 +1,10 @@
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logout {
+  font-weight: bold;
+  color: #0055ff;
+  cursor: pointer;
+}
