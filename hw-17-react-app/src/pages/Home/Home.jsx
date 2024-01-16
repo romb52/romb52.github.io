@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Image from '../../components/Image/Image';
 import { withLayout } from '../../components/Main/Main';
 import { getImagesArr } from '../../share/reducers/images.reducer';
-import { setActiveCards } from '../../share/reducers/activeImages.reducer';
+import { setActiveCards, resetActiveCards } from '../../share/reducers/activeImages.reducer';
 
 function Home() {
   const activeCards = useSelector((state) => state.activeImages);
@@ -11,15 +11,31 @@ function Home() {
   const dispatch = useDispatch();
 
   const changeActiveCard = (image, index) => {
-    dispatch(setActiveCards({image, index}));
+    //console.log(image, index);
+    dispatch(setActiveCards({ image, index }));
   };
 
   useEffect(() => {
     dispatch(getImagesArr());
   }, [dispatch]);
 
-  // console.log(activeCards);
-   //console.log(images);
+  useEffect(() => {   
+    if (activeCards.length >= 2 && activeCards.length % 2 === 0) {
+      const [penultimateCard, lastCard] = activeCards.slice(-2);     
+      if (
+        (penultimateCard.image !== lastCard.image) ||
+        (penultimateCard.image === lastCard.image && penultimateCard.index === lastCard.index)
+      ) {        
+        setTimeout(() => {
+          dispatch(resetActiveCards());
+        }, 1000);
+      }
+    }
+  }, [activeCards, dispatch]);
+
+
+ // console.log(activeCards);
+ // console.log(images);
 
   return (
     <section>
@@ -37,5 +53,7 @@ function Home() {
     </section>
   );
 }
+
+
 
 export default withLayout(Home);

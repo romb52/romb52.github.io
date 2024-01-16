@@ -6,6 +6,6 @@ import imagesReducer from './reducers/images.reducer'
 export const store = configureStore({
   reducer: {
     images: imagesReducer,
-    activeImages: activeImagesReducer
+    activeImages: activeImagesReducer,    
   },
 })
