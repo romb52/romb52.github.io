@@ -4,16 +4,40 @@ import Image from '../../components/Image/Image';
 import { withLayout } from '../../components/Main/Main';
 import { getImagesArr } from '../../share/reducers/images.reducer';
 import { setActiveCards, resetActiveCards } from '../../share/reducers/activeImages.reducer';
+import { updateGameTime, updateClickCount } from '../../share/reducers/game.reducer';
+//import { playSound } from './sound/audiofalse';
 
 function Home() {
   const activeCards = useSelector((state) => state.activeImages);
   const images = useSelector((state) => state.images);
   const dispatch = useDispatch();
+  
+// Add your game time and click count state here
+const gameTime = useSelector((state) => state.game.gameTime);
+const clickCount = useSelector((state) => state.game.clickCount);
 
   const changeActiveCard = (image, index) => {
     //console.log(image, index);
     dispatch(setActiveCards({ image, index }));
+    dispatch(updateClickCount(clickCount + 1));
   };
+
+  
+
+  // Use another useEffect to update the game time
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (activeCards.length === 12) {
+       // playSound('./sound/negative.mp3');
+        clearInterval(interval);
+      } else {
+        dispatch(updateGameTime(gameTime + 1));
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [gameTime, dispatch]);
+  
 
   useEffect(() => {
     dispatch(getImagesArr());
@@ -27,7 +51,7 @@ function Home() {
         (penultimateCard.image === lastCard.image && penultimateCard.index === lastCard.index)
       ) {        
         setTimeout(() => {
-          dispatch(resetActiveCards());
+          dispatch(resetActiveCards());         
         }, 1000);
       }
     }
@@ -35,7 +59,7 @@ function Home() {
 
 
  // console.log(activeCards);
- // console.log(images);
+  console.log(images);
 
   return (
     <section>
