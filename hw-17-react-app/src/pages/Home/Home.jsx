@@ -19,9 +19,7 @@ function Home() {
   }, [dispatch]);
 
   // console.log(activeCards);
-  // console.log(images);
-
-
+   //console.log(images);
 
   return (
     <section>
