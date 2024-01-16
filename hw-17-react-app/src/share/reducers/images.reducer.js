@@ -8,7 +8,7 @@ export const imagesSlice = createSlice({
   name: 'images',
   initialState,
   reducers: {
-    getImagesArr: (state) => {
+    getImagesArr: (state) => {   
       const arr = [];
       while (arr.length < 12) {
         const i = Math.floor(Math.random() * MAX_CARDS_COUNT + MIN_CARDS_COUNT);

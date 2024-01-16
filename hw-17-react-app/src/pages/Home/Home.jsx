@@ -10,16 +10,16 @@ function Home() {
   const images = useSelector((state) => state.images);
   const dispatch = useDispatch();
 
-  const changeActiveCard = (image) => {
-    dispatch(setActiveCards(image));
+  const changeActiveCard = (image, index) => {
+    dispatch(setActiveCards({image, index}));
   };
 
   useEffect(() => {
     dispatch(getImagesArr());
   }, [dispatch]);
 
-  console.log(activeCards);
-  console.log(images);
+  // console.log(activeCards);
+  // console.log(images);
 
 
 
@@ -29,9 +29,9 @@ function Home() {
         {images.map((image, index) => (
           <div key={`${image}-${index}`} className='grid-item'>
             <Image
-              isOpen={activeCards.includes(image) }
+              isOpen={activeCards.some(card => card.image === image && card.index === index)}
               src={image}
-              changeActiveCard={() => changeActiveCard(image)}
+              changeActiveCard={() => changeActiveCard(image, index)}
             />
           </div>
         ))}
