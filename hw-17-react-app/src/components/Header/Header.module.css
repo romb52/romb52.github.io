@@ -26,8 +26,9 @@
 }
 
 .winIndicator{
-  color: #007bff;
+  color: #ff0099;
   font-weight: bold;
+  animation: blink 1s ease-in-out 3;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -42,5 +43,14 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes blink {
+  0%, 50%, 100% {
+    opacity: 1; /* Start, middle, and end: fully visible */
+  }
+  25%, 75% {
+    opacity: 0; /* Middle points: fully transparent */
   }
 }

@@ -5,14 +5,18 @@ import { withLayout } from '../../components/Main/Main';
 import { getImagesArr } from '../../share/reducers/images.reducer';
 import { setActiveCards, resetLastTwoActiveCards } from '../../share/reducers/activeImages.reducer';
 import { updateGameTime, updateClickCount } from '../../share/reducers/game.reducer';
-//import { playSound } from './sound/audiofalse';
+import { playSound } from '../../share/audioUtils';
 
 function Home() {
+  const wrongCard = 'negative.mp3';
+  const startGame = 'shuffle-cards.mp3';
+  const showCard = 'flipcard.mp3';
+  const winGame = 'success-fanfare.mp3';
+
   const activeCards = useSelector((state) => state.activeImages);
   const images = useSelector((state) => state.images);
   const dispatch = useDispatch();
 
-  // Add your game time and click count state here
   const gameTime = useSelector((state) => state.game.gameTime);
   const clickCount = useSelector((state) => state.game.clickCount);
 
@@ -20,16 +24,14 @@ function Home() {
     //console.log(image, index);
     dispatch(setActiveCards({ image, index }));
     dispatch(updateClickCount(clickCount + 1));
+    playSound(showCard);
   };
 
-
-  console.log(clickCount);
-  //  update the game time
-  useEffect(() => {
+  useEffect(() => {                                  //  update the game time
     if (clickCount > 0) {
-      const interval = setInterval(() => {       
+      const interval = setInterval(() => {
         if (activeCards.length === 12) {
-          // playSound('./sound/negative.mp3');
+          playSound(winGame);
           clearInterval(interval);
         } else {
           dispatch(updateGameTime(gameTime + 1));
@@ -41,10 +43,11 @@ function Home() {
   }, [gameTime, activeCards, clickCount, dispatch]);
 
 
-
-  useEffect(() => {
+  useEffect(() => {                          //get random hided img
     dispatch(getImagesArr());
+    playSound(startGame);
   }, [dispatch]);
+
 
   useEffect(() => {
     if (activeCards.length >= 2 && activeCards.length % 2 === 0) {
@@ -55,6 +58,7 @@ function Home() {
       ) {
         setTimeout(() => {
           dispatch(resetLastTwoActiveCards());
+          playSound(wrongCard);
         }, 1000);
       }
     }
@@ -62,7 +66,7 @@ function Home() {
 
 
   // console.log(activeCards);
- // console.log(images);
+  // console.log(images);
 
   return (
     <section>

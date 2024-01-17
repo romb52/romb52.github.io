@@ -5,8 +5,11 @@ import { useDispatch } from 'react-redux';
 import { resetGame } from '../../share/reducers/game.reducer';
 import { resetAllActiveCard } from '../../share/reducers/activeImages.reducer';
 import logo from '../../share/img/logo.svg';
+import {playSound} from '../../share/audioUtils';
 
 export default function Header() {
+
+  const startGame = 'shuffle-cards.mp3';
 
   const activeCards = useSelector((state) => state.activeImages);
   const gameTime = useSelector((state) => state.game.gameTime);
@@ -17,6 +20,7 @@ export default function Header() {
   const handleHomeClick = () => {                     // reset states
     dispatch(resetAllActiveCard());
     dispatch(resetGame());
+    playSound(startGame);
   };
 
   return (
