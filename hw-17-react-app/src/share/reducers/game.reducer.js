@@ -18,8 +18,11 @@ export const gameSlice = createSlice({
     updateClickCount: (state, action) => {
       state.clickCount = action.payload;
     },
+    resetGame: (state) => {
+      return initialState;
+    },
   },
 });
 
-export const { updateGameTime, updateClickCount } = gameSlice.actions;
+export const { updateGameTime, updateClickCount, resetGame } = gameSlice.actions;
 export default gameSlice.reducer;

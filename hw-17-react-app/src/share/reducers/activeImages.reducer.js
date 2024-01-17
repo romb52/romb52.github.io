@@ -27,12 +27,15 @@ export const activeImagesSlice = createSlice({
       }
       return [...arr];
     },
-    resetActiveCards: (state) => {     
+    resetLastTwoActiveCards: (state) => {     
       state.pop();
       state.pop();
-    },      
+    },    
+    resetAllActiveCard: (state) => {
+      return initialState;
+    },
   },
 });
 
-export const { setActiveCards, resetActiveCards } = activeImagesSlice.actions;
+export const { setActiveCards, resetLastTwoActiveCards, resetAllActiveCard } = activeImagesSlice.actions;
 export default activeImagesSlice.reducer;

@@ -1,10 +1,46 @@
 .wrap {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; 
 }
-.logout {
+.link{
+  text-decoration: none;
   font-weight: bold;
-  color: #0055ff;
-  cursor: pointer;
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+.link:hover{
+  border: 1px solid #007bff4b ;
+  background-color: #007bff12;
+}
+
+
+.logo {
+  height: 50px;
+  pointer-events: none;
+}
+
+.gameIndicators{
+  color: #007bff;
+}
+
+.winIndicator{
+  color: #007bff;
+  font-weight: bold;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
