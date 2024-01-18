@@ -1,7 +1,17 @@
 .menu a {
     color: var(--link-menu);
+    padding: 7px 12px;
+    border-radius: 3px;
+    border: 1px solid transparent;
   }
   .menu a.active-link {
-    color: red;
+    color: #F263DA;
+    background-color: #3e848c3d;
+    font-weight: bold;
+    border: 1px solid #3e848c59;
+  }
+
+  .menu a:hover {
+    border: 1px solid #3e848c2a;
   }
   
