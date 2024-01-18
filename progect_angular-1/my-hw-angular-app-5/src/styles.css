@@ -28,7 +28,10 @@
   }
   .d-flex {
     display: flex;
-    align-items: center;
+    align-items: center;   
+  }
+  .jc-center {
+    justify-content: center;
   }
   .gap-1 {
     gap: 16px;
@@ -47,6 +50,7 @@
   }
   main{
     min-height: 84vh;
+    background-color: #fafbfd;
   }
   app-layout {
     display: grid;
