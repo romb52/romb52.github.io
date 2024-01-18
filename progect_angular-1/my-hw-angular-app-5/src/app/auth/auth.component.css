@@ -17,10 +17,15 @@
   }
 
   input {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       padding: 10px;
       font-size: 16px;
+      border: none;
   }
+  input:focus {
+    outline: none;
+  }
+
 
   button {
       background-color: #36BF8D;
@@ -54,8 +59,13 @@
 }
 
 
-.text-danger{
+p.text-danger{
     color: red;
+    border-top: 1px solid red;
+}
+
+.text-regular{
+    border-top: 1px solid lightgrey;
 }
 .icon { 
     font-size: 30px; /* Adjust the font-size as needed */
