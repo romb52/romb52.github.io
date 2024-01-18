@@ -48,9 +48,9 @@
 
 @keyframes blink {
   0%, 50%, 100% {
-    opacity: 1; /* Start, middle, and end: fully visible */
+    opacity: 1; 
   }
   25%, 75% {
-    opacity: 0; /* Middle points: fully transparent */
+    opacity: 0;
   }
 }
