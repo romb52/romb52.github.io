@@ -1,0 +1,7 @@
+.menu a {
+    color: var(--link-menu);
+  }
+  .menu a.active-link {
+    color: red;
+  }
+  

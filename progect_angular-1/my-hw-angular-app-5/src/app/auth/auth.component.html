@@ -1,0 +1,20 @@
+<main>
+    <section>
+      <div class="container">
+        <h1>Логін</h1>
+        <form #loginForm="ngForm" (ngSubmit)="sumbitForm(loginForm)">
+          <input name="email" type="email" ngModel required />
+          <input
+            name="password"
+            ngModel
+            required
+            [type]="hide ? 'password' : 'text'"
+          />
+          <button (click)="hide = !hide">show password</button>
+          <button (click)="changeShowPass($event)">show password2</button>
+          <button type="submit">Send</button>
+        </form>       
+      </div>
+    </section>
+  </main>
+  
