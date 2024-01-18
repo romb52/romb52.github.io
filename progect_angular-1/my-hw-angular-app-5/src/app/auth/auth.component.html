@@ -1,20 +1,26 @@
 <main>
     <section>
-      <div class="container">
-        <h1>Логін</h1>
-        <form #loginForm="ngForm" (ngSubmit)="sumbitForm(loginForm)">
-          <input name="email" type="email" ngModel required />
-          <input
-            name="password"
-            ngModel
-            required
-            [type]="hide ? 'password' : 'text'"
-          />
-          <button (click)="hide = !hide">show password</button>
-          <button (click)="changeShowPass($event)">show password2</button>
-          <button type="submit">Send</button>
-        </form>       
-      </div>
+        <div class="container">
+            <div class="form-wrap">
+                <h1>Auth form</h1>
+                <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+                    <input formControlName="email" type="email" placeholder='name@example.com'/>
+                    <div *ngIf="loginForm.get('email')!.hasError('pattern') && loginForm.get('email') ; else noEmailError">
+                       <p class="text-danger">Please enter a valid email address. </p> 
+                    </div>
+                    <ng-template #noEmailError><p>&nbsp;</p></ng-template> 
+                    <div class="password-input">
+                        <input formControlName="password" [type]="hide ? 'password' : 'text'" placeholder='password'/>
+                        <button class="btn-showPass" (click)="changeShowPass($event)">show password</button>
+                    </div>
+                    <div *ngIf="loginForm.get('password')!.hasError('minlength') && loginForm.get('password'); else noMinLengthError">
+                       <p class="text-danger"> Password must be at least 6 characters long.</p>
+                    </div>   
+                    <ng-template #noMinLengthError><p>&nbsp;</p></ng-template>      
+                  
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
     </section>
-  </main>
-  
+</main>

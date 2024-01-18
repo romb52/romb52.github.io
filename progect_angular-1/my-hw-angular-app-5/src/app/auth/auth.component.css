@@ -1,0 +1,59 @@
+  .form-wrap {
+      max-width: 400px;
+      width: 100%;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+      text-align: center;
+  }
+
+  form {
+      display: flex;
+      flex-direction: column;
+  }
+
+  input {
+      margin-bottom: 15px;
+      padding: 10px;
+      font-size: 16px;
+  }
+
+  button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;      
+  }
+
+  button:hover {
+      background-color: #0056b3;
+  }
+
+  .password-input {
+      position: relative;
+  }
+
+  input[type="password"] {
+      width: calc(100% - 150px);
+      /* Adjust the width as needed */
+      padding-right: 30px;
+  }
+
+  .btn-showPass {
+    position: absolute;
+    top: 40%;
+    right: 5px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+
+.text-danger{
+    color: red;
+}
