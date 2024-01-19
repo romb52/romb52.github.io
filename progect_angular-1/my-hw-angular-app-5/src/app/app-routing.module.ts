@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { AuthComponent } from './auth/auth.component';
 
+
+
 const routes: Routes = [
 { path: '', component: HomeComponent },
 { path: '404', component: ErrorComponent },

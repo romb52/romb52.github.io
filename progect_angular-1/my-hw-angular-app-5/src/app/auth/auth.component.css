@@ -18,7 +18,7 @@
   }
 
   input {
-      margin-bottom: 10px;
+      /* margin-bottom: 10px; */
       padding:0 15px;
       font-size: 16px;
       border: none;
@@ -41,7 +41,7 @@
       background-color: #3e848c;
   }
 
-  .password-input {
+  .password-group {
       position: relative;
   }
 
@@ -53,10 +53,14 @@
 
   .btn-showPass {
     position: absolute;
-    top: 40%;
+    top: 10px;
     right: 5px;
     transform: translateY(-50%);
     cursor: pointer;
+}
+
+.btn-login{
+    margin: 20px;
 }
 
 
@@ -69,6 +73,23 @@ p.text-danger{
     border-top: 1px solid lightgrey;
 }
 .icon { 
-    font-size: 30px; /* Adjust the font-size as needed */
-    color: #55555577; /* Adjust the color as needed */
-  }
+    /* font-size: 30px;  */
+    color: #55555577; 
+}
+.input-group.inFocus .icon {
+    color: #36BF8D;
+}
+.input-group.inFocus .text-regular {
+    border-top: 1px solid #36BF8D;
+}
+
+.password-group.inFocus .icon{
+    color: #36BF8D;
+}
+
+.password-group.inFocus .text-regular {
+    border-top: 1px solid #36BF8D;
+}
+.pb-5{
+    padding-bottom: 5px;
+}

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -9,6 +10,8 @@ import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AuthComponent {
   hide = true;
   loginForm: FormGroup;
+  isEmailInputInFocus: boolean = false;
+  isPassInputInFocus: boolean = false;
 
   constructor(private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
@@ -28,5 +31,21 @@ export class AuthComponent {
   changeShowPass(event: Event): void {
     event.preventDefault();
     this.hide = !this.hide;
+  }
+
+  onEmailInputFocus(): void {
+    this.isEmailInputInFocus = true;
+  }
+
+  onEmailInputBlur(): void {
+    this.isEmailInputInFocus = false;
+  }
+
+  onPassInputFocus(): void {
+    this.isPassInputInFocus = true;
+  }
+
+  onPassInputBlur(): void {
+    this.isPassInputInFocus = false;
   }
 }
