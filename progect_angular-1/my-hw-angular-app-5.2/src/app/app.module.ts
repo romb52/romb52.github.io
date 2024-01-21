@@ -19,6 +19,8 @@ import { ThemeService } from './services/theme.service';
 import { LangService } from './services/lang.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PostService } from './services/post.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { PostService } from './services/post.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [provideClientHydration(), ThemeService, LangService, PostService],
   bootstrap: [AppComponent],
