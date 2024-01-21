@@ -13,18 +13,17 @@ header,
 footer {
   display: flex;
   justify-content: center;
-  background-color: aquamarine;
+  background-color: #6200ee;
+  color: #fff;
   padding: 20px 40px;
 }
 
 header[theme='dark'] {
-  background-color: black;
-  border-bottom: 1px solid #fff;
+  background-color: #393939;  
 }
 
 .wrap[theme='dark'] footer {
-  background-color: black;
-  border-top: 1px solid #fff;
+  background-color: #393939;
 }
 
 section {
@@ -81,7 +80,7 @@ main {
   display: flex;
   justify-content: center;
   min-height: 84vh;
-  background-color: #f0f1f5ce;
+  /* background-color: #f0f1f5ce; */
 }
 
 app-layout {
@@ -90,3 +89,18 @@ app-layout {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.wrap[theme="dark"] .item {  
+  background-color: #393939;
+  color: #fff;
+  border: none;
+  box-shadow: 0px 2px 4px #12121260;
+}
+.wrap[theme="dark"] .btn{
+background-color: #bb86fc;
+border: none;
+color: #000;
+}
+.wrap[theme="dark"] .btn:hover{
+  background-color: #a663f8;
+  }

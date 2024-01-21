@@ -1,14 +1,13 @@
 .wrap {
-  background-color: #fff;
+  background-color: #f0f1f5ce;
 }
 .wrap[theme="dark"] {
-  background-color: black;
+  background-color: #121212;
   color: #fff;
 }
 .wrap[theme="dark"] * {
   color: #fff;
 }
 
-.wrap[theme="dark"] footer {
-  background-color: black;
-}
+
+
