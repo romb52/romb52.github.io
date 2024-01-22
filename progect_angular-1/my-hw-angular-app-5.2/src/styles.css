@@ -15,7 +15,7 @@ footer {
   justify-content: center;
   background-color: #6200ee;
   color: #fff;
-  padding: 20px 40px;
+  padding: 10px 40px;
 }
 
 header[theme='dark'] {
@@ -55,6 +55,9 @@ a {
 .jcsb {
   justify-content: space-between;
 }
+.ai-c{
+  align-items: center;
+}
 
 .gap-1 {
   gap: 16px;
@@ -79,7 +82,7 @@ a {
 main {
   display: flex;
   justify-content: center;
-  min-height: 84vh;
+  min-height: 88vh;
   /* background-color: #f0f1f5ce; */
 }
 
