@@ -3,6 +3,10 @@ let winArrBoxNumbers = [];
 let number = 1;
 let emptyCell_i;
 let emptyCell_j;
+let previousCord = { i: -1, j: -1 };
+const shuffleMaxCount = 40;
+let timer;
+
 const gameField = document.getElementById('gameField');
 
 
@@ -51,17 +55,48 @@ function cellOnclick(event) {
 }
 
 function Resort() {
-	// рандомное перемешивание arrBoxNumbers
-	arrBoxNumbers = shuffleArray(arrBoxNumbers);
-	updateGameField();
-	updateEmptyCellCoordinates();
+	// arrBoxNumbers = shuffleArray(arrBoxNumbers);
+	// updateGameField();
+	// updateEmptyCellCoordinates();
+	let shuffleCount = 0;
+	if (shuffleCount === 0) {
+		timer = setInterval(() => {
+			arrBoxNumbers = shuffleArray(arrBoxNumbers);
+			updateGameField();
+			updateEmptyCellCoordinates();
+			shuffleCount++;
+			if (shuffleCount >= shuffleMaxCount) {			
+				clearInterval(timer);
+			}
+		}, 200);
+	}
+
+
 }
 
 function shuffleArray(array) {
-	array.sort(() => Math.random() - 0.5);
-	for (i = 0; i < 4; ++i) {
-		array[i].sort(() => Math.random() - 0.5);
+	// array.sort(() => Math.random() - 0.5);
+	// for (i = 0; i < 4; ++i) {
+	// 	array[i].sort(() => Math.random() - 0.5);
+	// }	
+	//  array;
+
+	let arrValidCoord = [];      //массив под координаты клеток, которые могут сделать ход
+	for (let i = 0; i < 4; i++) {
+		for (let j = 0; j < 4; j++) {
+			if (i == emptyCell_i && ((j - emptyCell_j) == 1 || (j - emptyCell_j) == -1) || j == emptyCell_j && (i - emptyCell_i == 1 || i - emptyCell_i == -1)) {
+				arrValidCoord.push({ i, j });
+			}
+		}
 	}
+
+	arrValidCoord = arrValidCoord.filter(coord => !(coord.i === previousCord.i && coord.j === previousCord.j));
+
+	let oneRandomValidCoord = arrValidCoord[Math.floor(Math.random() * arrValidCoord.length)];
+
+	array[emptyCell_i][emptyCell_j] = array[oneRandomValidCoord.i][oneRandomValidCoord.j];
+	array[oneRandomValidCoord.i][oneRandomValidCoord.j] = '';
+	previousCord = { i: emptyCell_i, j: emptyCell_j };
 	//console.log(array);
 	return array;
 }
@@ -88,7 +123,7 @@ function updateGameField() {
 		table.appendChild(row);
 	}
 
-	// Remove previous table and append the new one
+
 	if (gameField.childNodes.length == 1) {
 		gameField.removeChild(gameField.firstChild);
 	}
@@ -150,37 +185,37 @@ function findWinningCombo() {
 }
 
 function findWinningComboRecursive(a) {
-	a = a||1;
+	a = a || 1;
 	function recursiveStep() {
-        // Perform some logic to simulate computer moves
-        // For simplicity, let's just perform a random move
-        const randomRow = Math.floor(Math.random() * 4);
-        const randomCol = Math.floor(Math.random() * 4);
+		// Perform some logic to simulate computer moves
+		// For simplicity, let's just perform a random move
+		const randomRow = Math.floor(Math.random() * 4);
+		const randomCol = Math.floor(Math.random() * 4);
 
-        // Simulate a computer move
-        cellOnclick({ target: document.getElementById(randomRow + '' + randomCol) });
+		// Simulate a computer move
+		cellOnclick({ target: document.getElementById(randomRow + '' + randomCol) });
 
-        // Check for the winning condition
-        let winCheck = true;
+		// Check for the winning condition
+		let winCheck = true;
 
-        for (let i = 0; i < 4; i++) {
-            for (let j = 0; j < 4; j++) {
-                if (document.getElementById(i + '' + j).innerHTML != winArrBoxNumbers[i][j])
-                    winCheck = false;
-            }
-        }
+		for (let i = 0; i < 4; i++) {
+			for (let j = 0; j < 4; j++) {
+				if (document.getElementById(i + '' + j).innerHTML != winArrBoxNumbers[i][j])
+					winCheck = false;
+			}
+		}
 
-        // If not a winning condition, continue the recursion
-        if (!winCheck) {
-            setTimeout(() => {
-                recursiveStep();
-            }, 300);
-        } else {
-            alert(a);
-        }
-    }
+		// If not a winning condition, continue the recursion
+		if (!winCheck) {
+			setTimeout(() => {
+				recursiveStep();
+			}, 300);
+		} else {
+			alert(a);
+		}
+	}
 
-    // Start the recursion
-    recursiveStep();
+	// Start the recursion
+	recursiveStep();
 }
 
