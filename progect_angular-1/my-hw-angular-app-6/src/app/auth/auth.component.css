@@ -1,0 +1,19 @@
+form {
+    margin-bottom: 20px;
+  }
+  
+  h1, h2 {
+    margin-top: 20px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
