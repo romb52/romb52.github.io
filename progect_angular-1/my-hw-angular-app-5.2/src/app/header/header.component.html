@@ -11,12 +11,12 @@
         </ul>
       </nav>
 
-      <div class="d-flex gap-1 themes">
+      <div class="d-flex gap-1 themes ai-c">
         <p *ngFor="let item of header_langs" [ngClass]="{'active': lang === item}" (click)="changeLang(item)">
           {{item}}</p>
       </div>
 
-      <div class="d-flex gap-1 themes">
+      <div class="d-flex gap-1 themes ai-c">
         <p *ngFor="let item of header_themes" [ngClass]="{'active': theme === item}" (click)="changeTheme(item)">
           {{item}}</p>
       </div>
