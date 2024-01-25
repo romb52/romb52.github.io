@@ -6,8 +6,8 @@
         <div *ngFor="let item of posts" class="item">
           <h3>{{item.title}}</h3>
           <p>{{item.body.slice(0, 80)}}...</p>
-          <p ><span *ngFor="let tag of item.tags" class="tags">#{{tag}}{{" "}}</span></p>
-          <p class="d-flex "><span class="likes"><mat-icon fontIcon="recommend"></mat-icon></span>{{item.reactions}}</p>
+          <p ><span *ngFor="let tag of item.tagList" class="tags">#{{tag}}{{" "}}</span></p>
+          <!-- <p class="d-flex "><span class="likes"><mat-icon fontIcon="recommend"></mat-icon></span>{{item.reactions}}</p> -->
           <button class="btn">More...</button>
         </div>        
       </div>

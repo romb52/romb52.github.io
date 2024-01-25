@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostService } from './services/post.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {MatIconModule} from '@angular/material/icon';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [provideClientHydration(), ThemeService, LangService, PostService],
   bootstrap: [AppComponent],
