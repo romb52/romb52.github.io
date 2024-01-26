@@ -3,7 +3,9 @@ import { themes } from '../share/themes';
 import { ThemeService } from '../services/theme.service';
 import { LangService } from '../services/lang.service';
 import { headerLinks, langs, links } from '../share/langs';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, of } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { logoutAction } from '../share/store/actions/auth.action';
 
 interface ILink {
   link: string;
@@ -21,12 +23,15 @@ export class HeaderComponent {
   lang = 'uk';
 
   arr_links: ILink[] = [];
+  token: Observable<string> = of('');
   private langSubscription: Subscription;
 
   constructor(
     private themeService: ThemeService,
-    private langService: LangService
+    private langService: LangService,
+    private store: Store<{ auth: { token: string } }>
   ) {
+    this.token = this.store.select((state) => state.auth.token);
     this.theme = this.themeService.getTheme();
     this.langSubscription = this.langService.langChanged$.subscribe(
       (newLang) => {
@@ -45,6 +50,10 @@ export class HeaderComponent {
   changeLang(newLang: string) {
     this.langService.setLang(newLang);
     //this.theme = this.themeService.getTheme();
+  }
+
+  logout() {
+    this.store.dispatch(logoutAction());
   }
 
   ngOnDestroy() {

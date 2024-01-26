@@ -22,6 +22,9 @@ import { PostService } from './services/post.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AuthService } from './services/auth.service';
+import { authReduser } from './share/store/reducers/auth.reducer';
 
 @NgModule({
   declarations: [
@@ -43,9 +46,10 @@ import { StoreModule } from '@ngrx/store';
     HttpClientModule,
     BrowserAnimationsModule,
     MatIconModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({ auth: authReduser }),
+    StoreDevtoolsModule.instrument(),
   ],
-  providers: [provideClientHydration(), ThemeService, LangService, PostService],
+  providers: [provideClientHydration(), ThemeService, LangService, PostService, AuthService,],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

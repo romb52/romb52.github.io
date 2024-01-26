@@ -41,12 +41,7 @@ export class AuthComponent {
         .login(this.reactiveForm.value.email, this.reactiveForm.value.password)
         .subscribe((data) => {
           if ('user' in data) {
-            const { token, username, id } = data.user;
-            // if (typeof window !== 'undefined') {
-            //   localStorage.setItem('token', token);
-            //   localStorage.setItem('username', username);
-            //   localStorage.setItem('id', id + '');
-            // }
+            const { token, username, id } = data.user;           
             this.store.dispatch(loginAction({ token, username, id }));
             this.router.navigate(['/']);
           }
