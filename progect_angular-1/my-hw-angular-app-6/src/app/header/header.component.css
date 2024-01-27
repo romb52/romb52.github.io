@@ -1,5 +1,6 @@
 .menu a {
   color: #fff;
+  font-size: medium;
   padding: 7px 15px;
   border-radius: 5px;
 }
@@ -17,12 +18,16 @@
   border: 1px solid #4901ad;
   cursor: pointer;
 }
-.themes a:hover, .btn-logout {
+.themes a:hover, .btn-logout, .menu a:hover, .themes p:hover {
   background-color: #4901ad;
 }
-.active {
+
+.themes p {
   padding: 7px 15px;
   border-radius: 5px;
+}
+
+.themes p.active {
   background-color: #4901ad;
 }
 .themes p {
@@ -38,10 +43,22 @@ header[theme="dark"] .themes a {
 }
 header[theme="dark"] .themes p.active,
 header[theme="dark"] .menu a.active-link,
-header[theme="dark"] .themes a,
+header[theme="dark"] .themes a.active-link,
 header[theme="dark"] .btn-logout {
   background-color: #6c6868d4;
   border: none;
+}
+header[theme="dark"] .themes p:hover,
+header[theme="dark"] .menu a:hover,
+header[theme="dark"] .themes a:hover,
+header[theme="dark"] .btn-logout:hover {
+  background-color: #6c6868d4;
+}
+
+header[theme="dark"] .themes a, 
+header[theme="dark"] .btn-logout { 
+  border: 1px solid #6c6868d4;
+  cursor: pointer;
 }
 
 .wrap{
