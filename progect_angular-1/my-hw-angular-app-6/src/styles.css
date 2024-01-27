@@ -1,10 +1,10 @@
-:root {
-  --link-menu: #001640;
-}
-
 /*Google Fonts*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Open+Sans:wght@300;400;700&display=swap');
 
+
+:root {
+  --link-menu: #001640;
+}
 
 * {
   box-sizing: border-box;
@@ -23,7 +23,7 @@ footer {
 }
 
 header[theme='dark'] {
-  background-color: #393939;  
+  background-color: #393939;
 }
 
 .wrap[theme='dark'] footer {
@@ -59,7 +59,8 @@ a {
 .jcsb {
   justify-content: space-between;
 }
-.ai-c{
+
+.ai-c {
   align-items: center;
 }
 
@@ -94,26 +95,51 @@ app-layout {
   display: grid;
   grid-template-rows: auto 0 1fr auto;
 }
-html, body { height: 100%; }
 
-body { margin: 0; font-family: "Open Sans", "sans-serif" }
+html,
+body {
+  height: 100%;
+}
 
-h1, h2, h3 {
-	font-family: "Montserrat", "sans-serif";
+body {
+  margin: 0;
+  font-family: "Open Sans", "sans-serif"
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", "sans-serif";
 }
 
 
-.wrap[theme="dark"] .item {  
+.wrap[theme="dark"] .item {
   background-color: #393939;
   color: #fff;
   border: none;
   box-shadow: 0px 2px 4px #12121260;
 }
-.wrap[theme="dark"] .btn{
-background: #bb86fc;
-border: none;
-color: #000;
+
+.wrap[theme="dark"] .btn {
+  background: #bb86fc;
+  border: none;
+  color: #000;
 }
-.wrap[theme="dark"] .btn:hover{
+
+.wrap[theme="dark"] .auth-wrap button {
+  background: #bb86fc;
+  border: none;
+  color: #000;
+}
+
+.wrap[theme="dark"] .mat-mdc-tab .mdc-tab-indicator__content--underline {
+  border-color: #bb86fc;
+}
+
+.wrap[theme="dark"] .btn:hover {
   background: #a663f8;
-  }
+}
+
+.mat-mdc-tab-header {
+  margin-bottom: 22px;
+}

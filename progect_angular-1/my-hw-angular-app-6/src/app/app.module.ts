@@ -12,7 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './post/post.component';
-import { ErrorComponent } from './404/404.component';
+import { ErrorPageComponent } from './404/404.component';
 import { AuthComponent } from './auth/auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ThemeService } from './services/theme.service';
@@ -21,10 +21,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostService } from './services/post.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthService } from './services/auth.service';
 import { authReduser } from './share/store/reducers/auth.reducer';
+import { errorReducer } from './share/store/reducers/error.reducer';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,7 @@ import { authReduser } from './share/store/reducers/auth.reducer';
     PostComponent,
     ErrorComponent,
     AuthComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,10 @@ import { authReduser } from './share/store/reducers/auth.reducer';
     HttpClientModule,
     BrowserAnimationsModule,
     MatIconModule,
-    StoreModule.forRoot({ auth: authReduser }),
+    MatTabsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    StoreModule.forRoot({ auth: authReduser, error: errorReducer }),
     StoreDevtoolsModule.instrument(),
   ],
   providers: [provideClientHydration(), ThemeService, LangService, PostService, AuthService,],
