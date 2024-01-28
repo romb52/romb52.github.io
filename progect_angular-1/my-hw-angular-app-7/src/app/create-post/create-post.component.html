@@ -1,0 +1,28 @@
+<main>
+    <section>
+      <div class="container">
+        <div class="auth-wrap">
+          <app-error></app-error>         
+              <form [formGroup]="addPostForm" (ngSubmit)="sumbitAddPostForm()">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Title</mat-label>
+                  <input matInput formControlName="title" placeholder="Title">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>description</mat-label>
+                    <input  matInput formControlName="description" placeholder="Description">
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Leave a post</mat-label>
+                    <textarea formControlName="body" matInput placeholder="Ex. It makes me feel..."></textarea>
+                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>tagList</mat-label>
+                  <input matInput formControlName="tagList" placeholder="tagList">
+                </mat-form-field>
+                <button type="submit">Send</button>
+              </form>
+        </div>
+      </div>
+    </section>
+  </main>
