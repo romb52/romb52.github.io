@@ -4,11 +4,21 @@
   padding: 7px 15px;
   border-radius: 5px;
 }
+
+.menu a.new-post-link {
+  padding: 4px 10px;
+}
+
 .menu a.active-link {
  background-color: #4901ad;
 }
 .themes a.active-link {
   background-color: #4901ad;
+ }
+
+ .btn-logout{
+  margin-right: 5px;
+  font-size: medium;
  }
 
 .themes a, .btn-logout {
@@ -74,7 +84,7 @@ header[theme="dark"] .btn-logout {
 header[theme="dark"] .new-post-icon:hover {
   color: #A663F8;
 }
-.new-post-icon:hover {
+/* .new-post-icon:hover {
   color: #4901ad;
-}
+} */
 

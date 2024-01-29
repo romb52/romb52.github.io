@@ -32,6 +32,7 @@ import { errorReducer } from './share/store/reducers/error.reducer';
 import { ErrorComponent } from './error/error.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +60,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
     MatFormFieldModule,
     StoreModule.forRoot({ auth: authReduser, error: errorReducer }),
     StoreDevtoolsModule.instrument(),
+
   ],
   providers: [provideClientHydration(), ThemeService, LangService, PostService, AuthService,],
   bootstrap: [AppComponent],
