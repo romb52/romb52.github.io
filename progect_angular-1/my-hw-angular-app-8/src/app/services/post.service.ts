@@ -12,12 +12,60 @@ export class PostService {
   public posts: IPosts = { articles: [], articlesCount: 0 };
   constructor(private http: HttpClient) {
     this.getPosts().subscribe((data) => {
-      this.posts = data;
+      if ('articles' in data) {
+        this.posts = data;
+      }
     })
   }
-  getPosts(): Observable<IPosts> {
+  
+  getPosts(): Observable<IPosts| IError> {
     const url = URL + '/articles';
-    return this.http.get<IPosts>(url);
+    return this.http.get<IPosts>(url).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return of(error.error as IError);
+      })
+    );;
+  }
+
+  getPostsByAuthor(id: number): Observable<IPosts | IError> {
+    const url = URL + '/articles/?authorId=' + id;
+    return this.http.get<IPosts>(url).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return of(error.error as IError);
+      })
+    );
+  }
+
+  getPostsByAuthorAndId(id: number, tag: string): Observable<IPosts | IError> {
+    const url = URL + '/articles/?authorId=' + id + '&tag=' + tag;
+    return this.http.get<IPosts>(url).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return of(error.error as IError);
+      })
+    );
+  }
+
+  getPostsByTag(tag: string): Observable<IPosts | IError> {
+    const url = URL + '/articles/?tag=' + tag;
+    return this.http.get<IPosts>(url).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return of(error.error as IError);
+      })
+    );
+  }
+
+  deleteAuthorPost(slug: string): Observable<IPosts | IError> {
+    const url = URL + '/articles/' + slug;
+    return this.http.delete<IPosts>(url,  {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `token ${localStorage.getItem('token')}`,
+      },
+    }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return of(error.error as IError);
+      })
+    );
   }
 
   createPost(

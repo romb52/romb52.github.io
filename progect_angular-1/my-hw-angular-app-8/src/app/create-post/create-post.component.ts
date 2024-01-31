@@ -27,29 +27,17 @@ export class CreatePostComponent {
     private router: Router,
     private postService: PostService
   ) {
-    this.store.select((state) => state.auth.token);
-    // this.store.subscribe((state) => {
-    //   if (state.auth.token === '') {
-    //     this.router.navigate(['/posts'])
-    //   }
-    // });
+    this.store.select((state) => state.auth.token);    
   }
-  sumbitAddPostForm() {
 
+  sumbitAddPostForm() {
     if (this.addPostForm.status === 'VALID') {
       this.postService
         .createPost(this.addPostForm.value.title, this.addPostForm.value.description, this.addPostForm.value.body, this.addPostForm.value.tagList.replaceAll(' ', '').split(','))
         .subscribe((data: IPostResponce | IError) => {
           if ('article' in data) {
-            console.log(data.article)
-            // this.router.navigate(['/']);
-            this.post_id = true;
-            // this.store.dispatch(
-            //   setErrorAction({
-            //     message: "Пост успішно створено",
-            //     messages: [],
-            //   })
-            // );
+           // console.log(data.article)            
+            this.post_id = true;           
             this.addPostForm.reset();
           } else {
             this.store.dispatch(

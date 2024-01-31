@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Store } from '@ngrx/store';
-import { loginAction, logoutAction } from '../share/store/actions/auth.action';
+import { loginAction, logoutAction, registerAction } from '../share/store/actions/auth.action';
 import { Router } from '@angular/router';
 import { setErrorAction } from '../share/store/actions/eror.action';
 
@@ -44,23 +44,8 @@ export class AuthComponent {
 
   sumbitReactiveForm() {
     if (this.reactiveForm.status === 'VALID') {
-      this.authService
-        .login(this.reactiveForm.value.email, this.reactiveForm.value.password)
-        .subscribe((data) => {
-          if ('user' in data) {
-            const { token, username, id } = data.user;
-            this.store.dispatch(loginAction({ token, username, id }));
-            this.router.navigate(['/']);
-          }else {
-            this.store.dispatch(
-              setErrorAction({
-                message: data.message || '',
-                messages: data?.errors?.body || [],
-              })
-            );
-          }
-        });
-    } else {
+      this.store.dispatch(loginAction({ email: this.reactiveForm.value.email, password: this.reactiveForm.value.password}));
+    }else {
       this.store.dispatch(
         setErrorAction({
           message: "Заповніть обов\'язкові поля",
@@ -78,22 +63,13 @@ export class AuthComponent {
 
   sumbitSignUpForm() {
     if (this.signUpForm.status === 'VALID') {
-      this.authService
-        .signUp(this.signUpForm.value.username, this.signUpForm.value.email, this.signUpForm.value.password)
-        .subscribe((data) => {
-          if ('user' in data) {
-            const { token, username, id } = data.user;
-            this.store.dispatch(loginAction({ token, username, id }));
-            this.router.navigate(['/']);
-          }else {
-            this.store.dispatch(
-              setErrorAction({
-                message: data.message || '',
-                messages: data?.errors?.body || [],
-              })
-            );
-          }
-        });
+      this.store.dispatch(
+        registerAction({
+          username: this.signUpForm.value.username,
+          email: this.signUpForm.value.email,
+          password: this.signUpForm.value.password,
+        })
+      );
     } else {
       this.store.dispatch(
         setErrorAction({

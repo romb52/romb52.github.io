@@ -4,6 +4,7 @@ export interface IPost {
   body: string;  
   tagList: string[];
   description: string;
+  slug: string;
   author: IAuthor;
 }
 

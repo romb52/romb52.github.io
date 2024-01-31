@@ -61,3 +61,7 @@ h3 {
 .btn:hover {
   background: #9147ff;
 }
+
+.icon{
+  cursor: pointer;
+}

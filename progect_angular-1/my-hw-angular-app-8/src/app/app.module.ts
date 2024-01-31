@@ -31,6 +31,8 @@ import { authReduser } from './share/store/reducers/auth.reducer';
 import { errorReducer } from './share/store/reducers/error.reducer';
 import { ErrorComponent } from './error/error.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './share/store/effects/auth.effects';
 
 
 @NgModule({
@@ -60,6 +62,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
     MatFormFieldModule,
     StoreModule.forRoot({ auth: authReduser, error: errorReducer }),
     StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([AuthEffects]),
 
   ],
   providers: [provideClientHydration(), ThemeService, LangService, PostService, AuthService,],

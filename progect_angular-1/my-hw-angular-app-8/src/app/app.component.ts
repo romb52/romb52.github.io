@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from './services/auth.service';
 import { Store } from '@ngrx/store';
-import { loginAction } from './share/store/actions/auth.action';
+import { checkAuthAction} from './share/store/actions/auth.action';
 
 @Component({
   selector: 'app-root',
@@ -9,18 +8,13 @@ import { loginAction } from './share/store/actions/auth.action';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'angular-rounting';
-  constructor(private authService: AuthService, private store: Store) {
+  title = 'HW-8 Angular effects';
+  constructor( private store: Store) {
     if (typeof window !== 'undefined') {
       const token = localStorage.getItem('token') || null;
-      console.log(token);
+      //console.log(token);
       if (token) {
-        this.authService.getCurrentUser().subscribe((data) => {
-          if ('user' in data) {
-            const { token, username, id } = data.user;
-            store.dispatch(loginAction({ token, username, id }));
-          }
-        });
+        this.store.dispatch(checkAuthAction());
       }
     }
   }
