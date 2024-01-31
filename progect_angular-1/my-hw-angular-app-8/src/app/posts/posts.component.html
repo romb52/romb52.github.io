@@ -3,13 +3,14 @@
     <div class="container">
       <app-error></app-error>
       <h1>Сторінка з постами</h1>
-      <div class="d-flex gap-1">
+      <div class="d-flex gap-1 ai-c">
         <div class="icon " *ngIf="isAuth" (click)="getAuthorPosts()">
           <mat-icon class="mat-icon-rtl-mirror" fontIcon="face"></mat-icon>
         </div>
         <div class="icon " *ngIf="isFilter" (click)="cancelFilters()">
           <mat-icon class="mat-icon-rtl-mirror" fontIcon="cancel"></mat-icon>
         </div>
+        <span >{{currentPostsInfo}}</span>
       </div>
 
       <div class="grid">

@@ -65,3 +65,10 @@ h3 {
 .icon{
   cursor: pointer;
 }
+
+.delete-icon{
+  align-self:flex-end;
+}
+.delete-icon:hover{
+  color: red;
+}
