@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
 const App = () => {
-  const shuffleMaxCount = 40; // Максимальна кількість кроків перемішування
-  // let timer;
+  const shuffleMaxCount = 10; // Максимальна кількість кроків перемішування
+  let timer;
 
   const [arrBoxNumbers, setArrBoxNumbers] = useState([]);               // збереження номерів клітинок на полі гри
   const [winArrBoxNumbers, setWinArrBoxNumbers] = useState([]);         // збереження номерів клітинок для виграшу
   const [emptyCell_i, setEmptyCell_i] = useState(3);                    // збереження порожньої клітинки по горизонталі
   const [emptyCell_j, setEmptyCell_j] = useState(3);                    // збереження порожньої клітинки по вертикалі
   const [previousCord, setPreviousCord] = useState({ i: -1, j: -1 });   // збереження попередньої клітинки 
+
 
   useEffect(() => {                     // Ефект для перевірки умови виграшу при зміні стану arrBoxNumbers або winArrBoxNumbers   
     const winCheck = arrBoxNumbers.flat().every((value, index) => value === winArrBoxNumbers.flat()[index]);
@@ -69,9 +70,23 @@ const App = () => {
   };
 
   const handleResortClick = () => {                        // Функція для обробки кліку на кнопці "Перемішати"
-    const shuffledArray = shuffleArray(arrBoxNumbers);
-    setArrBoxNumbers(shuffledArray);
+    
+    setArrBoxNumbers(shuffleArray(arrBoxNumbers));
+
+    // let shuffleCount = 0;
+    // if (shuffleCount === 0) {
+    //   timer = setInterval(() => {       
+    //     setArrBoxNumbers(shuffleArray(arrBoxNumbers));
+    //     shuffleCount++;
+    //     if (shuffleCount >= shuffleMaxCount) {
+    //       console.log('clearInterval');
+    //       clearInterval(timer);
+    //     }
+    //   }, 1000);
+    // }
+
   };
+
 
   function shuffleArray(array) {                     // Функція для перемішування клітинок
 
@@ -93,10 +108,10 @@ const App = () => {
     const newArray = array.map(row => [...row]);                 // Створення нового масиву з перемішаними клітинками
     newArray[emptyCell_i][emptyCell_j] = newArray[oneRandomValidCoord.i][oneRandomValidCoord.j];
     newArray[oneRandomValidCoord.i][oneRandomValidCoord.j] = '';
-    setPreviousCord({ i: emptyCell_i, j: emptyCell_j });          // Оновлення попередньої клітинки та порожньої клітинки
+  setPreviousCord({ i: emptyCell_i, j: emptyCell_j });        // Оновлення попередньої клітинки та порожньої клітинки
     setEmptyCell_i(oneRandomValidCoord.i);
     setEmptyCell_j(oneRandomValidCoord.j);
-    // console.log(newArray, previousCord, oneRandomValidCoord);
+    console.log(newArray, previousCord, oneRandomValidCoord);
     return newArray;
   }
 
