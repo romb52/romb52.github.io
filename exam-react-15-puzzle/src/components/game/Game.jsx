@@ -170,7 +170,7 @@ const App = () => {
                 </div>
                 <div className="btn-wrap">
                     <Button onClick={handleResetClick}>Reset</Button>
-                    <Button onClick={handleStartClick} >Start</Button>
+                    <Button >Start</Button>
                     <Button disabled={disable} onClick={handleResortClick}>Resort</Button>
                 </div>
             </div>
