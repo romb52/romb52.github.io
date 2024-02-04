@@ -1,14 +1,16 @@
 import React, { useEffect, useState, useMemo } from 'react';
 
 const App = () => {
-  const shuffleMaxCount = 10; // Максимальна кількість кроків перемішування
-  let timer;
+  const shuffleMaxCount = 50; // Максимальна кількість кроків перемішування
+  //let timer;
   const sizePuzzle = 4;
   //const sizePuzzle = 3;
 
   const [arrBoxNumbers, setArrBoxNumbers] = useState([]);               // збереження номерів клітинок на полі гри  
   const [previousCord, setPreviousCord] = useState({ i: -1, j: -1 });   // збереження попередньої клітинки 
   const [emptyCell, setEmptyCell] = useState({ i: sizePuzzle-1, j: sizePuzzle-1 });           // збереження порожньої клітинки
+  const [shuffleCount, setShuffleCount] = useState(0);
+  const[isGameStarted, setIsGameStarted] = useState(false);
 
   const winArrBoxNumbers = useMemo(() => {                              // збереження номерів клітинок для виграшу
     const newNumbers = [];
@@ -27,7 +29,7 @@ const App = () => {
   useEffect(() => {                     // Ефект для перевірки умови виграшу при зміні стану arrBoxNumbers або winArrBoxNumbers   
     const winCheck = arrBoxNumbers.flat().every((value, index) => value === winArrBoxNumbers.flat()[index]);
     //console.log({ arrBoxNumbers });
-    if (winCheck) {
+    if (winCheck && isGameStarted) {
       //setTimeout(() => alert('Win combo!!!!'), 300);
       console.log('Win combo!!!!');
     }
@@ -37,6 +39,21 @@ const App = () => {
     Game();
   }, []);
 
+  useEffect(() => {                   //Ефект при компьютерному змішуванні поля
+    if (shuffleCount > 0 && shuffleCount < shuffleMaxCount) {
+      const timer = setInterval(() => {
+        handleResortClick();       
+
+        if (shuffleCount >= shuffleMaxCount - 1) {         
+          clearInterval(timer);
+          setShuffleCount(0); 
+        }
+      }, 200);
+
+      return () => clearInterval(timer); 
+    }
+  }, [shuffleCount]);
+
   const createTableCell = (i, j, content) => (                          // Функція для створення HTML-коду для клітинки таблиці              
     <td key={`${i}${j}`} onClick={() => cellOnclick(i, j)}>
       {content}
@@ -44,6 +61,7 @@ const App = () => {
   );
 
   const cellOnclick = (i, j) => {                                        // Функція, яка відповідає за клік по клітинці
+    setIsGameStarted(true);
     if (
       (i === emptyCell.i && (j - emptyCell.j === 1 || j - emptyCell.j === -1)) ||
       (j === emptyCell.j && (i - emptyCell.i === 1 || i - emptyCell.i === -1))
@@ -88,19 +106,10 @@ const App = () => {
 
   const handleResortClick = () => {                        // Функція для обробки кліку на кнопці "Перемішати"
 
-   // setArrBoxNumbers(shuffleArray(arrBoxNumbers));
+    //setArrBoxNumbers(shuffleArray(arrBoxNumbers));
 
-    let shuffleCount = 0;
-    if (shuffleCount === 0) {
-      timer = setInterval(() => {       
-        setArrBoxNumbers([...shuffleArray(arrBoxNumbers)]);
-        shuffleCount++;
-        if (shuffleCount >= shuffleMaxCount) {
-          console.log('clearInterval');
-          clearInterval(timer);
-        }
-      }, 500);
-    }
+    setArrBoxNumbers((prevArrBoxNumbers) => shuffleArray(prevArrBoxNumbers));
+    setShuffleCount((prevCount) => prevCount + 1);
 
   };
 
@@ -128,7 +137,7 @@ const App = () => {
     newArray[oneRandomValidCoord.i][oneRandomValidCoord.j] = '';
     setPreviousCord({ i: emptyCell.i, j: emptyCell.j });        // Оновлення попередньої клітинки та порожньої клітинки
     setEmptyCell({ i: oneRandomValidCoord.i, j: oneRandomValidCoord.j });
-    console.log(newArray, previousCord, oneRandomValidCoord);
+    //console.log(newArray, previousCord, oneRandomValidCoord);
     return newArray;
   }
 
