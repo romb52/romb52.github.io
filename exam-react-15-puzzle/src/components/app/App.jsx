@@ -11,6 +11,7 @@ const App = () => {
   const [emptyCell, setEmptyCell] = useState({ i: sizePuzzle-1, j: sizePuzzle-1 });           // збереження порожньої клітинки
   const [shuffleCount, setShuffleCount] = useState(0);
   const[isGameStarted, setIsGameStarted] = useState(false);
+  const [disable, setDisable] = useState(false);
 
   const winArrBoxNumbers = useMemo(() => {                              // збереження номерів клітинок для виграшу
     const newNumbers = [];
@@ -41,16 +42,18 @@ const App = () => {
 
   useEffect(() => {                   //Ефект при компьютерному змішуванні поля
     if (shuffleCount > 0 && shuffleCount < shuffleMaxCount) {
+      setDisable(true);      
       const timer = setInterval(() => {
         handleResortClick();       
 
-        if (shuffleCount >= shuffleMaxCount - 1) {         
+        if (shuffleCount >= shuffleMaxCount - 1) {   
+          setDisable(false);      
           clearInterval(timer);
           setShuffleCount(0); 
         }
       }, 200);
-
-      return () => clearInterval(timer); 
+      
+      return () => clearInterval(timer);      
     }
   }, [shuffleCount]);
 
@@ -107,7 +110,6 @@ const App = () => {
   const handleResortClick = () => {                        // Функція для обробки кліку на кнопці "Перемішати"
 
     //setArrBoxNumbers(shuffleArray(arrBoxNumbers));
-
     setArrBoxNumbers((prevArrBoxNumbers) => shuffleArray(prevArrBoxNumbers));
     setShuffleCount((prevCount) => prevCount + 1);
 
@@ -156,7 +158,7 @@ const App = () => {
         </table>
         <div className="btn-wrap">
           <button onClick={handleResetClick}>Reset</button>
-          <button onClick={handleResortClick}>Resort</button>
+          <button disabled={disable} onClick={handleResortClick}>Resort</button>
         </div>
       </div>
     </div>
