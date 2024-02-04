@@ -1,0 +1,13 @@
+header{
+    height: 7vh;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.headerwrap{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
