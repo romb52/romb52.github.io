@@ -1,9 +1,16 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import Button from 'react-bootstrap/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateGameTime, updateClickCount } from '../../share/reducers/game.reducer';
 
 const App = () => {
+    const dispatch = useDispatch();
+    const gameTime = useSelector((state) => state.game.gameTime);
+    const clickCount = useSelector((state) => state.game.clickCount);
+    const boardSize = useSelector((state) => state.game.boardSize);
+    //console.log(boardSize);
     const shuffleMaxCount = 50; // Максимальна кількість кроків перемішування
-    const sizePuzzle = 4;
+    const sizePuzzle = boardSize;
     //const sizePuzzle = 3;
 
     const [arrBoxNumbers, setArrBoxNumbers] = useState([]);               // збереження номерів клітинок на полі гри  
@@ -24,7 +31,7 @@ const App = () => {
         }
         newNumbers[sizePuzzle - 1][sizePuzzle - 1] = '';
         return newNumbers;
-    }, []);
+    }, [boardSize]);
 
 
     useEffect(() => {                     // Ефект для перевірки умови виграшу при зміні стану arrBoxNumbers або winArrBoxNumbers   
@@ -33,12 +40,13 @@ const App = () => {
         if (winCheck && isGameStarted) {
             //setTimeout(() => alert('Win combo!!!!'), 300);
             console.log('Win combo!!!!');
+            setIsGameStarted(false);
         }
     }, [arrBoxNumbers, winArrBoxNumbers, isGameStarted]);
 
     useEffect(() => {                  // Ефект для ініціалізації гри при завантаженні компонента
         Game();
-    }, []);
+    }, [boardSize]);
 
     useEffect(() => {                   //Ефект при компьютерному змішуванні поля
         if (shuffleCount > 0 && shuffleCount < shuffleMaxCount) {
@@ -65,6 +73,7 @@ const App = () => {
 
     const cellOnclick = (i, j) => {                                        // Функція, яка відповідає за клік по клітинці
         setIsGameStarted(true);
+        dispatch(updateClickCount(clickCount + 1));
         if (
             (i === emptyCell.i && (j - emptyCell.j === 1 || j - emptyCell.j === -1)) ||
             (j === emptyCell.j && (i - emptyCell.i === 1 || i - emptyCell.i === -1))
@@ -103,6 +112,7 @@ const App = () => {
 
     const handleResetClick = () => {           // Функція для обробки кліку на кнопці "Reset"
         Game();
+        dispatch(updateClickCount(0));
     };
 
 
@@ -160,6 +170,7 @@ const App = () => {
                 </div>
                 <div className="btn-wrap">
                     <Button onClick={handleResetClick}>Reset</Button>
+                    <Button onClick={handleStartClick} >Start</Button>
                     <Button disabled={disable} onClick={handleResortClick}>Resort</Button>
                 </div>
             </div>
