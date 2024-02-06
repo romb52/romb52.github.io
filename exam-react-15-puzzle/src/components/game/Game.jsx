@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateGameTime, updateClickCount } from '../../share/reducers/game.reducer';
+//import styles from './Game.module.css';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -67,7 +68,7 @@ const App = () => {
 
     const createTableCell = (i, j, content) => (                          // Функція для створення HTML-коду для клітинки таблиці              
         <td key={`${i}${j}`} onClick={() => cellOnclick(i, j)} data-attr={content === '' ? 'emptyCell' : null}>
-            {content}
+           <div className='cell'>{content}</div> 
         </td>
     );
 
@@ -171,7 +172,7 @@ const App = () => {
                 <div className="btn-wrap">
                     <Button onClick={handleResetClick}>Reset</Button>
                     <Button >Start</Button>
-                    <Button disabled={disable} onClick={handleResortClick}>Resort</Button>
+                    <Button disabled={disable} onClick={handleResortClick}>Resort</Button>                   
                 </div>
             </div>
         </main>

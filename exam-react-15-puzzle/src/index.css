@@ -64,6 +64,25 @@ td {
   text-align: center;
   vertical-align: middle;
   transition: transform 0.2s, filter 0.5s;
+  position: relative; 
+}
+
+.cell {
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+}
+
+.cell:not(td[data-attr='emptyCell'] .cell){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: inset -10px -10px 15px rgba(255, 255, 255, 0.1),
+  inset 10px 10px 15px rgba(70, 70, 70, 0.15);
 }
 
 button {
