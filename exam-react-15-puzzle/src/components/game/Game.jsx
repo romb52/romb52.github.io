@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateGameTime, updateClickCount } from '../../share/reducers/game.reducer';
+import { updateGameTime, updateClickCount, updateBestTime, updateMinStep } from '../../share/reducers/game.reducer';
 //import styles from './Game.module.css';
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
     const clickCount = useSelector((state) => state.game.clickCount);
     const boardSize = useSelector((state) => state.game.boardSize);
     //console.log(boardSize);
-    const shuffleMaxCount = 50; // Максимальна кількість кроків перемішування
+    const shuffleMaxCount = 10; // Максимальна кількість кроків перемішування
     const sizePuzzle = boardSize;
     //const sizePuzzle = 3;
 
@@ -42,6 +42,8 @@ const App = () => {
             //setTimeout(() => alert('Win combo!!!!'), 300);
             console.log('Win combo!!!!');
             setIsGameStarted(false);
+            dispatch(updateBestTime(gameTime));
+            dispatch(updateMinStep(clickCount));
         }
     }, [arrBoxNumbers, winArrBoxNumbers, isGameStarted]);
 
@@ -59,6 +61,9 @@ const App = () => {
                     setDisable(false);
                     clearInterval(timer);
                     setShuffleCount(0);
+                    dispatch(updateClickCount(0));
+                    dispatch(updateGameTime(0));
+                    setIsGameStarted(true);
                 }
             }, 200);
 
@@ -66,15 +71,31 @@ const App = () => {
         }
     }, [shuffleCount]);
 
+    useEffect(() => {                                  //  update the game time
+        if (clickCount > 0) {
+            const interval = setInterval(() => {
+                if (!isGameStarted) {
+                    clearInterval(interval);
+                } else {
+                    dispatch(updateGameTime(gameTime + 1));
+                }
+            }, 1000);
+
+            return () => clearInterval(interval);
+        }
+    }, [clickCount, isGameStarted, gameTime]);
+
     const createTableCell = (i, j, content) => (                          // Функція для створення HTML-коду для клітинки таблиці              
         <td key={`${i}${j}`} onClick={() => cellOnclick(i, j)} data-attr={content === '' ? 'emptyCell' : null}>
-           <div className='cell'>{content}</div> 
+            <div className='cell'>{content}</div>
         </td>
     );
 
     const cellOnclick = (i, j) => {                                        // Функція, яка відповідає за клік по клітинці
-        setIsGameStarted(true);
-        dispatch(updateClickCount(clickCount + 1));
+        if (isGameStarted) {
+            dispatch(updateClickCount(clickCount + 1));
+        }
+        else return;
         if (
             (i === emptyCell.i && (j - emptyCell.j === 1 || j - emptyCell.j === -1)) ||
             (j === emptyCell.j && (i - emptyCell.i === 1 || i - emptyCell.i === -1))
@@ -108,12 +129,15 @@ const App = () => {
         setEmptyCell({ i: initEmptyCell.i, j: initEmptyCell.j });
 
         setArrBoxNumbers(newNumbers);
+
+        dispatch(updateClickCount(0));
+
+        dispatch(updateGameTime(0));
     };
 
 
     const handleResetClick = () => {           // Функція для обробки кліку на кнопці "Reset"
         Game();
-        dispatch(updateClickCount(0));
     };
 
 
@@ -172,7 +196,8 @@ const App = () => {
                 <div className="btn-wrap">
                     <Button onClick={handleResetClick}>Reset</Button>
                     <Button >Start</Button>
-                    <Button disabled={disable} onClick={handleResortClick}>Resort</Button>                   
+                    <Button disabled={disable} onClick={handleResortClick}>Resort</Button>
+                    <Button>AI Play</Button>
                 </div>
             </div>
         </main>

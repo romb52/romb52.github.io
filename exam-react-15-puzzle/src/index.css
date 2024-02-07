@@ -99,6 +99,12 @@ button {
   background-color: #ECF0F1;
 } */
 
+.records-block{
+  padding: 0 5px ;
+  border: 1px solid rgba(128, 128, 128, 0.436);
+  border-radius: 5px;
+}
+
 
 
 [data-theme='dark'] header,
