@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = () => { return localStorage.getItem('theme') ? localStorage.getItem('theme') : getAutoTheme() }
-
 
 const getAutoTheme = () => {
     const currentHour = new Date().getHours();
-    console.log(currentHour);
+    //console.log(currentHour);
     return currentHour >= 8 && currentHour < 17 ? 'light' : 'dark';    
 };
+
+const initialState = localStorage.getItem('theme') || getAutoTheme();
 
 export const themeSlice = createSlice({
     name: 'theme',

@@ -2,7 +2,7 @@ import styles from './Header.module.css'
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTheme, setAutoTheme } from '../../share/reducers/theme.reducer';
-import { setBoardSize, updateBestTime, updateMinStep } from '../../share/reducers/game.reducer';
+import { setBoardSize, } from '../../share/reducers/game.reducer';
 import Form from 'react-bootstrap/Form';
 
 
@@ -11,9 +11,10 @@ const Header = () => {
     const theme = useSelector((state) => state.theme);
     const gameTime = useSelector((state) => state.game.gameTime);
     const clickCount = useSelector((state) => state.game.clickCount);
-    const bestTime = useSelector((state) => state.game.bestTime);
-    const minStep = useSelector((state) => state.game.minStep);
-    // const boardSize = useSelector((state) => state.game.boardSize);
+    const boardSize = useSelector((state) => state.game.boardSize);
+    const bestTime = useSelector((state) => state.game[`bestTime${boardSize}`]); // Вибираємо дані з localStorage залежно від розміру дошки
+    const minStep = useSelector((state) => state.game[`minStep${boardSize}`]);
+    
 
     const handleThemeChange = (theme) => {
         if (theme === 'auto') {

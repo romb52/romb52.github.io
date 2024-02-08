@@ -5,8 +5,10 @@ const initialState = {
   gameTime: 0,
   clickCount: 0,
   boardSize: 4,
-  bestTime: localStorage.getItem('bestTime') || null,
-  minStep: localStorage.getItem('minStep') || null,
+  bestTime4: localStorage.getItem('bestTime4') || null,
+  minStep4: localStorage.getItem('minStep4') || null,
+  bestTime3: localStorage.getItem('bestTime3') || null,
+  minStep3: localStorage.getItem('minStep3') || null,
 };
 
 export const gameSlice = createSlice({
@@ -18,24 +20,26 @@ export const gameSlice = createSlice({
       state.gameTime = action.payload;
     },
 
-    updateClickCount: (state, action) => {
+    updateClickCount: (state, action) => {     
       state.clickCount = action.payload;
     },
-    setBoardSize: (state, action) => {
+    setBoardSize: (state, action) => {     
       state.boardSize = action.payload;
     },
-    updateBestTime: (state, action) => {
+    updateBestTime: (state, action) => {      
       const newTime = action.payload;
-      if (!state.bestTime || newTime < state.bestTime) {
-        state.bestTime = newTime;
-        localStorage.setItem('bestTime', newTime);
+      const key = `bestTime${state.boardSize}`; // визначаємо ключ залежно від розміру дошки
+      if (!state[key] || newTime < state[key]) {
+        state[key] = newTime;
+        localStorage.setItem(key, newTime);
       }
     },
     updateMinStep: (state, action) => {
       const newStep = action.payload;
-      if (!state.minStep || newStep < state.minStep) {
-        state.minStep = newStep;
-        localStorage.setItem('minStep', newStep);
+      const key = `minStep${state.boardSize}`; // визначаємо ключ залежно від розміру дошки
+      if (!state[key] || newStep < state[key]) {
+        state[key] = newStep;
+        localStorage.setItem(key, newStep);
       }
     },
   },
