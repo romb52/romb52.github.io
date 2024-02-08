@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import Button from 'react-bootstrap/Button';
+//import Spinner from 'react-bootstrap/Spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateGameTime, updateClickCount, updateBestTime, updateMinStep } from '../../share/reducers/game.reducer';
 //import styles from './Game.module.css';
@@ -374,7 +375,7 @@ const App = () => {
         const interval = setInterval(() => {
             if (index < pathToGoal.length) {
                 const state = pathToGoal[index];
-                setArrBoxNumbers(state);
+                setArrBoxNumbers(state);              
                 console.log(arrBoxNumbers);
                 index++;
             } else {
@@ -408,7 +409,8 @@ const App = () => {
                     <Button onClick={handleResetClick}>Reset</Button>
                     {/* <Button >Start</Button> */}
                     <Button disabled={disable} onClick={handleResortClick}>Resort</Button>
-                    <Button onClick={handleAIPlayClick}>AI Play</Button>
+                    <Button onClick={handleAIPlayClick}>
+                        AI Play</Button>
                 </div>
             </div>
         </main>
