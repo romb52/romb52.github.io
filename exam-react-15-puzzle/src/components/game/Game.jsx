@@ -10,7 +10,7 @@ const App = () => {
     const clickCount = useSelector((state) => state.game.clickCount);
     const boardSize = useSelector((state) => state.game.boardSize);
     //console.log(boardSize);
-    const shuffleMaxCount = 5; // Максимальна кількість кроків перемішування
+    const shuffleMaxCount = 20; // Максимальна кількість кроків перемішування
     const sizePuzzle = boardSize;
     //const sizePuzzle = 3;
 
@@ -37,7 +37,7 @@ const App = () => {
 
     useEffect(() => {                     // Ефект для перевірки умови виграшу при зміні стану arrBoxNumbers або winArrBoxNumbers   
         const winCheck = arrBoxNumbers.flat().every((value, index) => value === winArrBoxNumbers.flat()[index]);
-       
+
         if (winCheck && isGameStarted) {
             //setTimeout(() => alert('Win combo!!!!'), 300);
             console.log('Win combo!!!!');
@@ -63,16 +63,16 @@ const App = () => {
                     setShuffleCount(0);
                     dispatch(updateClickCount(0));
                     dispatch(updateGameTime(0));
-                    setIsGameStarted(true);                    
+                    setIsGameStarted(true);
                 }
-            }, 200);       
+            }, 200);
 
             return () => clearInterval(timer);
         }
     }, [shuffleCount]);
 
     useEffect(() => {                                  //  update the game time
-        if (isGameStarted) {        
+        if (isGameStarted) {
             const interval = setInterval(() => {
                 if (!isGameStarted) {
                     clearInterval(interval);
@@ -106,7 +106,7 @@ const App = () => {
                 });
                 dispatch(updateClickCount(clickCount + 1));
             }
-        } 
+        }
     };
 
     const Game = () => {                                   // Функція для ініціалізації гри
@@ -184,7 +184,7 @@ const App = () => {
         // Очищаємо попередні дані
         const openList = []; // Список відкритих вузлів
         const closedList = []; // Список закритих вузлів
-    
+
         // Початковий вузол
         const startNode = {
             state: arrBoxNumbers,
@@ -193,9 +193,9 @@ const App = () => {
             f: 0, // Сумарна оцінка
             parent: null // Попередній вузол
         };
-    console.log('startNode', startNode);
+        console.log('startNode', startNode);
         // Додаємо початковий вузол до відкритого списку
-        openList.push(startNode);        
+        openList.push(startNode);
         while (openList.length > 0) {
             // Вибираємо вузол з найменшою сумарною оцінкою
             let currentNode = openList[0];
@@ -206,30 +206,30 @@ const App = () => {
                     currentIndex = index;
                 }
             });
-    
+
             // Переміщаємо обраний вузол до закритого списку
             openList.splice(currentIndex, 1);
             closedList.push(currentNode);
-    
+
             // Якщо досягли цільового стану, завершуємо алгоритм
             if (isGoalState(currentNode.state)) {
                 return currentNode;
             }
-    
+
             // Генеруємо наступні можливі стани та перевіряємо їх
-            console.log('currentNode.state', currentNode.state);       
+            console.log('currentNode.state', currentNode.state);
             const possibleMoves = generatePossibleMoves(currentNode.state);
             possibleMoves.forEach((move) => {
                 // Якщо цей стан вже був оброблений, пропускаємо його
                 if (isStateInList(move, closedList)) {
                     return;
                 }
-    
+
                 // Розраховуємо нові значення g та h
                 const g = currentNode.g + 1; // Вартість одного кроку
                 const h = calculateHeuristic(move);
                 const f = g + h;
-    
+
                 // Перевіряємо, чи цей стан вже є у відкритому списку
                 let isInOpenList = false;
                 openList.forEach((node) => {
@@ -243,18 +243,18 @@ const App = () => {
                         }
                     }
                 });
-    
+
                 // Якщо стану немає у відкритому списку, додаємо його
                 if (!isInOpenList) {
                     openList.push({ state: move, g, h, f, parent: currentNode });
                 }
             });
         }
-    
+
         // Якщо відкритий список порожній і ми не досягли цілі, повертаємо null
         return null;
     };
-    
+
     // Функція для розрахунку евристичної відстані (кількість клітин, які не на своєму місці)
     const calculateHeuristic = (state) => {
         let misplacedTiles = 0;
@@ -268,7 +268,7 @@ const App = () => {
         console.log(misplacedTiles);
         return misplacedTiles;
     };
-    
+
     // Перевірка, чи поточний стан є цільовим
     const isGoalState = (state) => {
         for (let i = 0; i < state.length; i++) {
@@ -280,47 +280,48 @@ const App = () => {
         }
         return true;
     };
-    
+
     // Генерує всі можливі ходи для даного стану
     const generatePossibleMoves = (state) => {
         const possibleMoves = [];
-       // Знаходимо координати порожньої клітинки
-    let emptyCellCoord;
-    for (let i = 0; i < state.length; i++) {
-        for (let j = 0; j < state[i].length; j++) {
-            if (state[i][j] === '') {
-                emptyCellCoord = { i, j };
-                console.log(emptyCellCoord);
-                break;
+        // Знаходимо координати порожньої клітинки
+        let emptyCellCoord;
+        for (let i = 0; i < state.length; i++) {
+            for (let j = 0; j < state[i].length; j++) {
+                if (state[i][j] === '') {
+                    emptyCellCoord = { i, j };
+                    console.log(emptyCellCoord);
+                    break;
+                }
             }
         }
-    }
-    
-    // Знаходимо координати усіх можливих ходів
-    const possibleMoveCoords = [];
-    for (let i = 0; i < state.length; i++) {
-        for (let j = 0; j < state[i].length; j++) {
-            if (
-                (i === emptyCellCoord.i && Math.abs(j - emptyCellCoord.j) === 1) ||
-                (j === emptyCellCoord.j && Math.abs(i - emptyCellCoord.i) === 1)
-            ) {
-                possibleMoveCoords.push({ i, j });
+
+        // Знаходимо координати усіх можливих ходів
+        const possibleMoveCoords = [];
+        for (let i = 0; i < state.length; i++) {
+            for (let j = 0; j < state[i].length; j++) {
+                if (
+                    (i === emptyCellCoord.i && Math.abs(j - emptyCellCoord.j) === 1) ||
+                    (j === emptyCellCoord.j && Math.abs(i - emptyCellCoord.i) === 1)
+                ) {
+                    possibleMoveCoords.push({ i, j });
+                }
             }
         }
-    }
-    console.log(possibleMoveCoords);
-    // Генеруємо новий стан поля для кожного доступного ходу
-    for (const coord of possibleMoveCoords) {
-        const newBoardState = JSON.parse(JSON.stringify(state)); // Для копіювання масиву
-        const temp = newBoardState[emptyCellCoord.i][emptyCellCoord.j];
-        newBoardState[emptyCellCoord.i][emptyCellCoord.j] = newBoardState[coord.i][coord.j];
-        newBoardState[coord.i][coord.j] = temp;
-        possibleMoves.push(newBoardState);
-    }
-    console.log(possibleMoves);
-    return possibleMoves;
+        console.log(possibleMoveCoords);
+        // Генеруємо новий стан поля для кожного доступного ходу
+        for (const coord of possibleMoveCoords) {
+            // const newBoardState = JSON.parse(JSON.stringify(state)); // Для копіювання масиву
+            const newBoardState = state.map(row => [...row]);
+            const temp = newBoardState[emptyCellCoord.i][emptyCellCoord.j];
+            newBoardState[emptyCellCoord.i][emptyCellCoord.j] = newBoardState[coord.i][coord.j];
+            newBoardState[coord.i][coord.j] = temp;
+            possibleMoves.push(newBoardState);
+        }
+        console.log(possibleMoves);
+        return possibleMoves;
     };
-    
+
     // Перевіряє, чи даний стан вже є у списку вузлів
     const isStateInList = (state, list) => {
         for (let i = 0; i < list.length; i++) {
@@ -330,7 +331,7 @@ const App = () => {
         }
         return false;
     };
-    
+
     // Порівнює два стани поля
     const compareStates = (state1, state2) => {
         for (let i = 0; i < state1.length; i++) {
@@ -343,10 +344,44 @@ const App = () => {
         return true;
     };
 
+    const reconstructPath = (solvedTrack) => {
+        const path = [];
+        let currentNode = solvedTrack;
 
-    const handleAIPlayClick = ()=>{
-      const solvedTrack = aStarSearch();
-      console.log(solvedTrack);
+        // Продовжуємо переходити до батьківського вузла, поки не досягнемо початкового вузла
+        while (currentNode !== null) {
+            path.unshift(currentNode.state); // Додаємо стан вузла в початок шляху
+            currentNode = currentNode.parent; // Переходимо до батьківського вузла
+        }
+
+        return path;
+    };
+
+
+
+    const handleAIPlayClick = () => {
+        const solvedTrack = aStarSearch();
+        console.log(solvedTrack);
+        if (!solvedTrack) {
+            console.log('No solution found!');
+            return;
+        }
+        // Відтворіть шлях від цільового вузла до початкового вузла
+        const pathToGoal = reconstructPath(solvedTrack);
+        console.log(pathToGoal);
+        // Пройдіть по кожному стану шляху з інтервалом
+        let index = 0;
+        const interval = setInterval(() => {
+            if (index < pathToGoal.length) {
+                const state = pathToGoal[index];
+                setArrBoxNumbers(state);
+                console.log(arrBoxNumbers);
+                index++;
+            } else {
+                clearInterval(interval);
+            }
+        }, 1000); // Інтервал у мілісекундах між кроками
+
     }
 
 
