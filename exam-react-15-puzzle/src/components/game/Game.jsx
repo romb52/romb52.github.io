@@ -408,7 +408,7 @@ const App = () => {
                 <div className="btn-wrap">
                     <Button onClick={handleResetClick}>Reset</Button>
                     {/* <Button >Start</Button> */}
-                    <Button disabled={disable} onClick={handleResortClick}>Resort</Button>
+                    <Button disabled={disable} onClick={handleResortClick}>Mix</Button>
                     <Button onClick={handleAIPlayClick}>
                         AI Play.</Button>
                 </div>

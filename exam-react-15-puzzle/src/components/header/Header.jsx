@@ -53,6 +53,14 @@ const Header = () => {
                         defaultChecked
                         onChange={changeBoardSize}
                     />
+                </div>                
+                <div>
+                    <p className="mb-0">Time: {gameTime}</p>
+                    <p className="mb-0">Step: {clickCount}</p>
+                </div>
+                <div className='records-block'>
+                    <p className="mb-0">Best Time: {bestTime} </p>
+                    <p className="mb-0">Min Step: {minStep}</p>
                 </div>
                 <Dropdown data-bs-theme={theme}>
                     <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
@@ -69,14 +77,6 @@ const Header = () => {
                         <Dropdown.Item onClick={() => handleThemeChange('summer')}>Summer</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                <div>
-                    <p className="mb-0">Time: {gameTime}</p>
-                    <p className="mb-0">Step: {clickCount}</p>
-                </div>
-                <div className='records-block'>
-                    <p className="mb-0">Best Time: {bestTime} </p>
-                    <p className="mb-0">Min Step: {minStep}</p>
-                </div>
             </div>
         </header>
     )
