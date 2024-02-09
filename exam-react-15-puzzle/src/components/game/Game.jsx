@@ -410,7 +410,7 @@ const App = () => {
                     {/* <Button >Start</Button> */}
                     <Button disabled={disable} onClick={handleResortClick}>Resort</Button>
                     <Button onClick={handleAIPlayClick}>
-                        AI Play</Button>
+                        AI Play.</Button>
                 </div>
             </div>
         </main>
