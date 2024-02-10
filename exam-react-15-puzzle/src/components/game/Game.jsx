@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import Button from 'react-bootstrap/Button';
-//import Spinner from 'react-bootstrap/Spinner';
+import Spinner from 'react-bootstrap/Spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateGameTime, updateClickCount, updateBestTime, updateMinStep } from '../../share/reducers/game.reducer';
 //import styles from './Game.module.css';
@@ -20,7 +20,9 @@ const App = () => {
     const [emptyCell, setEmptyCell] = useState({ i: sizePuzzle - 1, j: sizePuzzle - 1 });           // збереження порожньої клітинки
     const [shuffleCount, setShuffleCount] = useState(0);
     const [isGameStarted, setIsGameStarted] = useState(false);
-    const [disable, setDisable] = useState(false);
+    const [disableMixBtn, setDisableMixBtn] = useState(false);
+    const [disableAiBtn, setDisableAiBtn] = useState(false);
+    const [message, setMessage] = useState("");
 
     const winArrBoxNumbers = useMemo(() => {                              // збереження номерів клітинок для виграшу
         const newNumbers = [];
@@ -41,10 +43,11 @@ const App = () => {
 
         if (winCheck && isGameStarted) {
             //setTimeout(() => alert('Win combo!!!!'), 300);
-            console.log('Win combo!!!!');
+            console.log('Win combo!!!!', arrBoxNumbers);
+            setMessage(`Win combo!!!! time: ${gameTime}, make ${clickCount} moves`);
             setIsGameStarted(false);
             dispatch(updateBestTime(gameTime));
-            dispatch(updateMinStep(clickCount));
+            dispatch(updateMinStep(clickCount));           
         }
     }, [arrBoxNumbers, winArrBoxNumbers, isGameStarted]);
 
@@ -54,23 +57,24 @@ const App = () => {
 
     useEffect(() => {                   //Ефект при компьютерному змішуванні поля
         if (shuffleCount > 0 && shuffleCount < shuffleMaxCount) {
-            setDisable(true);
+            setDisableMixBtn(true);
             const timer = setInterval(() => {
                 handleResortClick();
 
                 if (shuffleCount >= shuffleMaxCount - 1) {
-                    setDisable(false);
+                    setDisableMixBtn(false);
                     clearInterval(timer);
                     setShuffleCount(0);
                     dispatch(updateClickCount(0));
                     dispatch(updateGameTime(0));
                     setIsGameStarted(true);
+                    setMessage("Tiles are mixed. Start to play")
                 }
             }, 200);
 
             return () => clearInterval(timer);
         }
-    }, [shuffleCount]);
+    }, [shuffleCount, dispatch]);
 
     useEffect(() => {                                  //  update the game time
         if (isGameStarted) {
@@ -84,7 +88,7 @@ const App = () => {
 
             return () => clearInterval(interval);
         }
-    }, [isGameStarted, gameTime]);
+    }, [isGameStarted, gameTime, dispatch]);
 
     const createTableCell = (i, j, content) => (                          // Функція для створення HTML-коду для клітинки таблиці              
         <td key={`${i}${j}`} onClick={() => cellOnclick(i, j)} data-attr={content === '' ? 'emptyCell' : null}>
@@ -93,7 +97,7 @@ const App = () => {
     );
 
     const cellOnclick = (i, j) => {                                        // Функція, яка відповідає за клік по клітинці
-        if (isGameStarted || !isGameStarted) {
+        if (isGameStarted) {
             if (
                 (i === emptyCell.i && (j - emptyCell.j === 1 || j - emptyCell.j === -1)) ||
                 (j === emptyCell.j && (i - emptyCell.i === 1 || i - emptyCell.i === -1))
@@ -133,22 +137,24 @@ const App = () => {
         dispatch(updateClickCount(0));
 
         dispatch(updateGameTime(0));
+
+        setMessage("Slide the numbered tiles into the correct order by moving them into the empty space. Try to solve the puzzle with the fewest moves possible! Mix to start")
     };
 
 
     const handleResetClick = () => {           // Функція для обробки кліку на кнопці "Reset"
         setIsGameStarted(false);
+        setMessage("Slide the numbered tiles into the correct order by moving them into the empty space. Try to solve the puzzle with the fewest moves possible! Mix to start")
         Game();
     };
 
 
 
     const handleResortClick = () => {                        // Функція для обробки кліку на кнопці "Перемішати"
-
         //setArrBoxNumbers(shuffleArray(arrBoxNumbers));
         setArrBoxNumbers((prevArrBoxNumbers) => shuffleArray(prevArrBoxNumbers));
         setShuffleCount((prevCount) => prevCount + 1);
-
+        setMessage("Tiles are mixing...")
     };
 
 
@@ -259,8 +265,8 @@ const App = () => {
     };
 
     // Функція для розрахунку евристичної відстані (кількість клітин, які не на своєму місці)
-    
- 
+
+
     // const calculateHeuristic = (state) => {
     //     let misplacedTiles = 0;
     //     for (let i = 0; i < state.length; i++) {
@@ -274,30 +280,30 @@ const App = () => {
     //     return misplacedTiles;
     // };
 
-const calculateHeuristic = (state) => {  // Функція для розрахунку евристичної відстані (сума шляхів клітин що не на місці до місця де маєть бути)
-    let totalDistance = 0;
+    const calculateHeuristic = (state) => {  // Функція для розрахунку евристичної відстані (сума шляхів клітин що не на місці до місця де маєть бути)
+        let totalDistance = 0;
 
-    for (let i = 0; i < state.length; i++) {
-        for (let j = 0; j < state[i].length; j++) {
-            const currentTile = state[i][j];
-            if (currentTile !== '') { // Перевіряємо, чи клітина не є порожньою
-                for (let m = 0; m < state.length; m++) {
-                    for (let n = 0; n < state[m].length; n++) {
-                        if (currentTile === winArrBoxNumbers[m][n]) { // Знаходимо координати цільової клітини
-                            totalDistance += Math.abs(i - m) + Math.abs(j - n); // Додавання модулів різниць координат
+        for (let i = 0; i < state.length; i++) {
+            for (let j = 0; j < state[i].length; j++) {
+                const currentTile = state[i][j];
+                if (currentTile !== '') { // Перевіряємо, чи клітина не є порожньою
+                    for (let m = 0; m < state.length; m++) {
+                        for (let n = 0; n < state[m].length; n++) {
+                            if (currentTile === winArrBoxNumbers[m][n]) { // Знаходимо координати цільової клітини
+                                totalDistance += Math.abs(i - m) + Math.abs(j - n); // Додавання модулів різниць координат
+                            }
                         }
                     }
+                } else { // Обробляємо порожню клітину
+                    const targetI = state.length - 1; // Останній рядок
+                    const targetJ = state[i].length - 1; // Останній стовпець
+                    totalDistance += Math.abs(i - targetI) + Math.abs(j - targetJ); // Додавання модулів різниць координат
                 }
-            } else { // Обробляємо порожню клітину
-                const targetI = state.length - 1; // Останній рядок
-                const targetJ = state[i].length - 1; // Останній стовпець
-                totalDistance += Math.abs(i - targetI) + Math.abs(j - targetJ); // Додавання модулів різниць координат
             }
         }
-    }
-    console.log(totalDistance);
-    return totalDistance;
-};
+        console.log(totalDistance);
+        return totalDistance;
+    };
 
 
     // Перевірка, чи поточний стан є цільовим
@@ -391,28 +397,36 @@ const calculateHeuristic = (state) => {  // Функція для розраху
 
 
     const handleAIPlayClick = () => {
-        const solvedTrack = aStarSearch();
-        console.log(solvedTrack);
-        if (!solvedTrack) {
-            console.log('No solution found!');
-            return;
-        }
-        // Відтворіть шлях від цільового вузла до початкового вузла
-        const pathToGoal = reconstructPath(solvedTrack);
-        console.log(pathToGoal);
-        // Пройдіть по кожному стану шляху з інтервалом
-        let index = 0;
-        const interval = setInterval(() => {
-            if (index < pathToGoal.length) {
-                const state = pathToGoal[index];
-                setArrBoxNumbers(state);              
-                console.log(arrBoxNumbers);
-                index++;
-            } else {
-                clearInterval(interval);
+        setDisableAiBtn(true);
+        setMessage("AI thinking...");
+        setTimeout(() => {
+            const solvedTrack = aStarSearch();
+            console.log(solvedTrack);
+            if (!solvedTrack) {
+                setMessage("No solution found!.")
+                console.log('No solution found!');
+                setDisableAiBtn(false); // Потрібно встановити знову, якщо пошук не вдалося
+                return;
             }
-        }, 500); // Інтервал у мілісекундах між кроками
-
+            setMessage("AI moving...");
+            // Відтворіть шлях від цільового вузла до початкового вузла
+            const pathToGoal = reconstructPath(solvedTrack);
+            console.log(pathToGoal);
+            // Пройдіть по кожному стану шляху з інтервалом
+            let index = 0;
+            const interval = setInterval(() => {
+                if (index < pathToGoal.length) {
+                    const state = pathToGoal[index];
+                    setArrBoxNumbers(state);
+                    dispatch(updateClickCount(index));
+                    console.log(arrBoxNumbers);
+                    index++;
+                } else {
+                    clearInterval(interval);
+                    setDisableAiBtn(false);
+                }
+            }, 500);
+        }, 100); // Затримка перед викликом aStarSearch для відпрацювання setDisableAiBtn(true);
     }
 
 
@@ -424,6 +438,7 @@ const calculateHeuristic = (state) => {  // Функція для розраху
     return (
         <main>
             <div className="container">
+                <div className='message'>{message}</div>
                 <div className='table-wrap'>
                     <table>
                         <tbody>
@@ -438,9 +453,31 @@ const calculateHeuristic = (state) => {  // Функція для розраху
                 <div className="btn-wrap">
                     <Button onClick={handleResetClick}>Reset</Button>
                     {/* <Button >Start</Button> */}
-                    <Button disabled={disable} onClick={handleResortClick}>Mix</Button>
-                    <Button onClick={handleAIPlayClick}>
-                        AI Play.</Button>
+                    <Button disabled={disableMixBtn} onClick={handleResortClick}>
+                        {disableMixBtn && (
+                            <Spinner
+                                as="span"
+                                animation="border"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"
+
+                            />
+                        )} Mix
+                    </Button>
+                    <Button style={{ padding: '6px 5px' }} disabled={disableAiBtn || disableMixBtn} onClick={handleAIPlayClick}>
+                        {disableAiBtn && (
+                            <Spinner
+                                as="span"
+                                animation="grow"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"
+
+                            />
+                        )}
+                        AI Play
+                    </Button>
                 </div>
             </div>
         </main>
