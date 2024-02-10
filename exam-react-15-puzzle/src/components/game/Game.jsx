@@ -93,7 +93,7 @@ const App = () => {
     );
 
     const cellOnclick = (i, j) => {                                        // Функція, яка відповідає за клік по клітинці
-        if (isGameStarted) {
+        if (isGameStarted || !isGameStarted) {
             if (
                 (i === emptyCell.i && (j - emptyCell.j === 1 || j - emptyCell.j === -1)) ||
                 (j === emptyCell.j && (i - emptyCell.i === 1 || i - emptyCell.i === -1))
@@ -214,6 +214,8 @@ const App = () => {
 
             // Якщо досягли цільового стану, завершуємо алгоритм
             if (isGoalState(currentNode.state)) {
+                console.log(openList.length);
+                console.log(closedList.length);
                 return currentNode;
             }
 
@@ -257,18 +259,46 @@ const App = () => {
     };
 
     // Функція для розрахунку евристичної відстані (кількість клітин, які не на своєму місці)
-    const calculateHeuristic = (state) => {
-        let misplacedTiles = 0;
-        for (let i = 0; i < state.length; i++) {
-            for (let j = 0; j < state[i].length; j++) {
-                if (state[i][j] !== winArrBoxNumbers[i][j]) {
-                    misplacedTiles++;
+    
+ 
+    // const calculateHeuristic = (state) => {
+    //     let misplacedTiles = 0;
+    //     for (let i = 0; i < state.length; i++) {
+    //         for (let j = 0; j < state[i].length; j++) {
+    //             if (state[i][j] !== winArrBoxNumbers[i][j]) {
+    //                 misplacedTiles++;
+    //             }
+    //         }
+    //     }
+    //     console.log(misplacedTiles);
+    //     return misplacedTiles;
+    // };
+
+const calculateHeuristic = (state) => {  // Функція для розрахунку евристичної відстані (сума шляхів клітин що не на місці до місця де маєть бути)
+    let totalDistance = 0;
+
+    for (let i = 0; i < state.length; i++) {
+        for (let j = 0; j < state[i].length; j++) {
+            const currentTile = state[i][j];
+            if (currentTile !== '') { // Перевіряємо, чи клітина не є порожньою
+                for (let m = 0; m < state.length; m++) {
+                    for (let n = 0; n < state[m].length; n++) {
+                        if (currentTile === winArrBoxNumbers[m][n]) { // Знаходимо координати цільової клітини
+                            totalDistance += Math.abs(i - m) + Math.abs(j - n); // Додавання модулів різниць координат
+                        }
+                    }
                 }
+            } else { // Обробляємо порожню клітину
+                const targetI = state.length - 1; // Останній рядок
+                const targetJ = state[i].length - 1; // Останній стовпець
+                totalDistance += Math.abs(i - targetI) + Math.abs(j - targetJ); // Додавання модулів різниць координат
             }
         }
-        console.log(misplacedTiles);
-        return misplacedTiles;
-    };
+    }
+    console.log(totalDistance);
+    return totalDistance;
+};
+
 
     // Перевірка, чи поточний стан є цільовим
     const isGoalState = (state) => {
@@ -381,7 +411,7 @@ const App = () => {
             } else {
                 clearInterval(interval);
             }
-        }, 1000); // Інтервал у мілісекундах між кроками
+        }, 500); // Інтервал у мілісекундах між кроками
 
     }
 
