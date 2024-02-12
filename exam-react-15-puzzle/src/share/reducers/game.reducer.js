@@ -17,16 +17,16 @@ export const gameSlice = createSlice({
   reducers: {
 
     updateGameTime: (state, action) => {
-      state.gameTime = action.payload;
+      state.gameTime = action.payload;   
     },
 
-    updateClickCount: (state, action) => {     
+    updateClickCount: (state, action) => {
       state.clickCount = action.payload;
     },
-    setBoardSize: (state, action) => {     
+    setBoardSize: (state, action) => {
       state.boardSize = action.payload;
     },
-    updateBestTime: (state, action) => {      
+    updateBestTime: (state, action) => {
       const newTime = action.payload;
       const key = `bestTime${state.boardSize}`; // визначаємо ключ залежно від розміру дошки
       if (!state[key] || newTime < state[key]) {

@@ -14,7 +14,8 @@ const Header = () => {
     const boardSize = useSelector((state) => state.game.boardSize);
     const bestTime = useSelector((state) => state.game[`bestTime${boardSize}`]); // Вибираємо дані з localStorage залежно від розміру дошки
     const minStep = useSelector((state) => state.game[`minStep${boardSize}`]);
-    
+
+
 
     const handleThemeChange = (theme) => {
         if (theme === 'auto') {
@@ -29,54 +30,65 @@ const Header = () => {
         dispatch(setBoardSize(event.target.value));
     };
 
-    
+    const formatTime = (seconds) => {
+        const minutes = Math.floor(seconds / 60); // Отримання хвилин
+        const remainingSeconds = seconds % 60; // Отримання залишкових секунд
+        const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds; // Форматування секунд, щоб завжди було два символи
+        return `${minutes}:${formattedSeconds}`; // Повернення часу у форматі "хвилини:секунди"
+    };
+    const formatedTime = formatTime(gameTime); // Форматування часу
+    const formatedBestTime = formatTime(bestTime); // Форматування кращого часу
+
+
 
     return (
         <header>
-            <div className={styles.headerwrap} >
-                <div key='inline-radio' >
-                    <p className="mb-0">Board Size</p>
-                    <Form.Check
-                        inline
-                        label="3x3"
-                        value="3"
-                        name="boardSize"
-                        type='radio'
-                        onChange={changeBoardSize}
-                    />
-                    <Form.Check
-                        inline
-                        label="4x4"
-                        value="4"
-                        name="boardSize"
-                        type='radio'
-                        defaultChecked
-                        onChange={changeBoardSize}
-                    />
-                </div>                
-                <div>
-                    <p className="mb-0">Time: {gameTime}</p>
-                    <p className="mb-0">Step: {clickCount}</p>
-                </div>
-                <div className='records-block'>
-                    <p className="mb-0">Best Time: {bestTime} </p>
-                    <p className="mb-0">Min Step: {minStep}</p>
-                </div>
-                <Dropdown data-bs-theme={theme}>
-                    <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
-                        Theme
-                    </Dropdown.Toggle>
+            <div className="container">
+                <div className={styles.headerwrap} >
+                    <div key='inline-radio' >
+                        <p className="mb-0">Board Size</p>
+                        <Form.Check
+                            inline
+                            label="3x3"
+                            value="3"
+                            name="boardSize"
+                            type='radio'
+                            onChange={changeBoardSize}
+                        />
+                        <Form.Check
+                            inline
+                            label="4x4"
+                            value="4"
+                            name="boardSize"
+                            type='radio'
+                            defaultChecked
+                            onChange={changeBoardSize}
+                        />
+                    </div>
+                    <div>
+                        <p className="mb-0">Time: {formatedTime}</p>
+                        <p className="mb-0">Step: {clickCount}</p>
+                    </div>
+                    <div className='records-block'>
+                        <p className="mb-0">Best Time: {formatedBestTime} </p>
+                        <p className="mb-0">Min Step: {minStep}</p>
+                    </div>
+                    <Dropdown data-bs-theme={theme}>
+                        <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+                            Theme
+                        </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => handleThemeChange('auto')} active>
-                            Auto
-                        </Dropdown.Item>
-                        <Dropdown.Item onClick={() => handleThemeChange('light')}>Light</Dropdown.Item>
-                        <Dropdown.Item onClick={() => handleThemeChange('dark')}>Dark</Dropdown.Item>
-                        <Dropdown.Item onClick={() => handleThemeChange('winter')}>Winter</Dropdown.Item>
-                        <Dropdown.Item onClick={() => handleThemeChange('summer')}>Summer</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
+                        <Dropdown.Menu>
+                            <Dropdown.Item onClick={() => handleThemeChange('auto')} active>
+                                Auto
+                            </Dropdown.Item>
+                            <Dropdown.Item onClick={() => handleThemeChange('light')}>Light</Dropdown.Item>
+                            <Dropdown.Item onClick={() => handleThemeChange('dark')}>Dark</Dropdown.Item>
+                            <Dropdown.Item onClick={() => handleThemeChange('winter')}>Winter</Dropdown.Item>
+                            <Dropdown.Item onClick={() => handleThemeChange('summer')}>Summer</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </div>
             </div>
         </header>
     )

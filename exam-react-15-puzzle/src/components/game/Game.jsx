@@ -46,6 +46,7 @@ const App = () => {
             console.log('Win combo!!!!', arrBoxNumbers);
             setMessage(`Win combo!!!! time: ${gameTime}, make ${clickCount} moves`);
             setIsGameStarted(false);
+            setEmptyCell({ i: sizePuzzle - 1, j: sizePuzzle - 1 });
             dispatch(updateBestTime(gameTime));
             dispatch(updateMinStep(clickCount));           
         }
@@ -77,7 +78,7 @@ const App = () => {
     }, [shuffleCount, dispatch]);
 
     useEffect(() => {                                  //  update the game time
-        if (isGameStarted) {
+        if (isGameStarted) {         
             const interval = setInterval(() => {
                 if (!isGameStarted) {
                     clearInterval(interval);
