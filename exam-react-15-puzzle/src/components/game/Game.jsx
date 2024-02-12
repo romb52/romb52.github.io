@@ -37,7 +37,11 @@ const App = () => {
         return newNumbers;
     }, [sizePuzzle]);
 
-
+    const handleWinActions = () => {
+        setEmptyCell({ i: sizePuzzle - 1, j: sizePuzzle - 1 });
+        dispatch(updateBestTime(gameTime));
+        dispatch(updateMinStep(clickCount));
+    };
     useEffect(() => {                     // Ефект для перевірки умови виграшу при зміні стану arrBoxNumbers або winArrBoxNumbers   
         const winCheck = arrBoxNumbers.flat().every((value, index) => value === winArrBoxNumbers.flat()[index]);
 
@@ -46,11 +50,10 @@ const App = () => {
             console.log('Win combo!!!!', arrBoxNumbers);
             setMessage(`Win combo!!!! time: ${gameTime}, make ${clickCount} moves`);
             setIsGameStarted(false);
-            setEmptyCell({ i: sizePuzzle - 1, j: sizePuzzle - 1 });
-            dispatch(updateBestTime(gameTime));
-            dispatch(updateMinStep(clickCount));           
+            handleWinActions(); // Викликаємо функцію для виконання додаткових дій при виграші          
         }
     }, [arrBoxNumbers, winArrBoxNumbers, isGameStarted]);
+
 
     useEffect(() => {                  // Ефект для ініціалізації гри при завантаженні компонента
         Game();
@@ -69,7 +72,7 @@ const App = () => {
                     dispatch(updateClickCount(0));
                     dispatch(updateGameTime(0));
                     setIsGameStarted(true);
-                    setMessage("Tiles are mixed. Start to play")
+                    setMessage("Tiles are mixed. Start to play");
                 }
             }, 200);
 
@@ -78,7 +81,7 @@ const App = () => {
     }, [shuffleCount, dispatch]);
 
     useEffect(() => {                                  //  update the game time
-        if (isGameStarted) {         
+        if (isGameStarted) {
             const interval = setInterval(() => {
                 if (!isGameStarted) {
                     clearInterval(interval);
@@ -111,7 +114,17 @@ const App = () => {
                     return newNumbers;
                 });
                 dispatch(updateClickCount(clickCount + 1));
+                setMessage([
+                    "Great move! Keep it up!",
+                    "Well done! You're making progress!",
+                    "Nice choice! You're getting closer to victory!",
+                    "Awesome move! You're on the right track!",
+                    "Impressive! Your puzzle-solving skills are shining!",
+                ][Math.floor(Math.random() * 5)]);
             }
+        }
+        else {
+            setMessage("Mix to start");
         }
     };
 
@@ -398,6 +411,10 @@ const App = () => {
 
 
     const handleAIPlayClick = () => {
+        if (!isGameStarted) {
+            setMessage("Mix to start");
+            return;
+        }
         setDisableAiBtn(true);
         setMessage("AI thinking...");
         setTimeout(() => {
