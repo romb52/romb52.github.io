@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateGameTime, updateClickCount, updateBestTime, updateMinStep } from '../../share/reducers/game.reducer';
+import { playSound } from '../../share/audioUtils';
 //import styles from './Game.module.css';
 
 const App = () => {
@@ -10,10 +11,17 @@ const App = () => {
     const gameTime = useSelector((state) => state.game.gameTime);
     const clickCount = useSelector((state) => state.game.clickCount);
     const boardSize = useSelector((state) => state.game.boardSize);
+    const soundOn = useSelector(state => state.sound.soundOn);
     //console.log(boardSize);
     const shuffleMaxCount = 20; // Максимальна кількість кроків перемішування
     const sizePuzzle = boardSize;
     //const sizePuzzle = 3;
+
+    //sound items
+
+    // const shuffle = 'shuffle-cards.mp3';
+    const makeMove = 'flipcard.mp3';
+    const winGame = 'success-fanfare.mp3';
 
     const [arrBoxNumbers, setArrBoxNumbers] = useState([]);               // збереження номерів клітинок на полі гри  
     const [previousCord, setPreviousCord] = useState({ i: -1, j: -1 });   // збереження попередньої клітинки 
@@ -49,6 +57,7 @@ const App = () => {
             //setTimeout(() => alert('Win combo!!!!'), 300);
             console.log('Win combo!!!!', arrBoxNumbers);
             setMessage(`Win combo!!!! time: ${gameTime}, make ${clickCount} moves`);
+            if (soundOn) { playSound(winGame); }
             setIsGameStarted(false);
             handleWinActions(); // Викликаємо функцію для виконання додаткових дій при виграші          
         }
@@ -62,6 +71,7 @@ const App = () => {
     useEffect(() => {                   //Ефект при компьютерному змішуванні поля
         if (shuffleCount > 0 && shuffleCount < shuffleMaxCount) {
             setDisableMixBtn(true);
+            if (soundOn) { playSound(makeMove); }
             const timer = setInterval(() => {
                 handleResortClick();
 
@@ -102,6 +112,7 @@ const App = () => {
 
     const cellOnclick = (i, j) => {                                        // Функція, яка відповідає за клік по клітинці
         if (isGameStarted) {
+            if (soundOn) { playSound(makeMove); }
             if (
                 (i === emptyCell.i && (j - emptyCell.j === 1 || j - emptyCell.j === -1)) ||
                 (j === emptyCell.j && (i - emptyCell.i === 1 || i - emptyCell.i === -1))
@@ -169,6 +180,7 @@ const App = () => {
         setArrBoxNumbers((prevArrBoxNumbers) => shuffleArray(prevArrBoxNumbers));
         setShuffleCount((prevCount) => prevCount + 1);
         setMessage("Tiles are mixing...")
+
     };
 
 
@@ -437,7 +449,8 @@ const App = () => {
                     const state = pathToGoal[index];
                     setArrBoxNumbers(state);
                     dispatch(updateClickCount(index));
-                    console.log(arrBoxNumbers);
+                    //console.log(arrBoxNumbers);
+                    if (soundOn) { playSound(makeMove); }
                     index++;
                 } else {
                     clearInterval(interval);

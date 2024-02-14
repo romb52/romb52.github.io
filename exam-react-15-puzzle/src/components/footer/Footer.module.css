@@ -1,0 +1,14 @@
+.footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer p{
+margin: 0;
+}
+
+.footer a{
+    font-size: 20px;
+}

@@ -10,25 +10,33 @@
 
 main {
   width: 100%;
-  min-height: 80vh;
+  min-height: calc(100vh - 120px);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto;
 }
 
 header,
 footer {
   width: 100%;
-  height: 10vh;
-  min-height: 60px;
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+footer {
+  height: 50px;
+}
+
+.dropdown-toggle {
+  width: auto;
+  display: flex;
+  align-items: center;
+}
 
 .dropdown-menu {
-  min-width: 6rem;
+ width: 6rem;
+ margin-top: 10px;
 }
 
 .container {
@@ -124,7 +132,7 @@ td {
 
 button {
   height: 40px;
-  width: 80px;
+  width: 90px;
   margin-left: 10px;
 }
 
@@ -233,4 +241,17 @@ box-shadow:  8px 8px 16px #20212bd2,
 
 [data-theme='winter'] td[data-attr='emptyCell'] {
   background-color: rgba(222, 235, 240, 0.733);
+}
+
+
+@media (max-width: 520px) {
+  .hideIfMob{
+    display: none;
+  }
+
+  .dropdown-menu {
+    width: 100vw;
+    background-color: #ffffff73;
+  }
+
 }
