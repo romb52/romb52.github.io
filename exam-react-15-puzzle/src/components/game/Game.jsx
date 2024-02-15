@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateGameTime, updateClickCount, updateBestTime, updateMinStep } from '../../share/reducers/game.reducer';
-import { playSound } from '../../share/audioUtils';
+import { playSound, soundNames } from '../../share/audioUtils';
 //import styles from './Game.module.css';
 
 const App = () => {
@@ -12,16 +12,8 @@ const App = () => {
     const clickCount = useSelector((state) => state.game.clickCount);
     const boardSize = useSelector((state) => state.game.boardSize);
     const soundOn = useSelector(state => state.sound.soundOn);
-    //console.log(boardSize);
     const shuffleMaxCount = 20; // Максимальна кількість кроків перемішування
     const sizePuzzle = boardSize;
-    //const sizePuzzle = 3;
-
-    //sound items
-
-    // const shuffle = 'shuffle-cards.mp3';
-    const makeMove = 'flipcard.mp3';
-    const winGame = 'success-fanfare.mp3';
 
     const [arrBoxNumbers, setArrBoxNumbers] = useState([]);               // збереження номерів клітинок на полі гри  
     const [previousCord, setPreviousCord] = useState({ i: -1, j: -1 });   // збереження попередньої клітинки 
@@ -45,21 +37,16 @@ const App = () => {
         return newNumbers;
     }, [sizePuzzle]);
 
-    const handleWinActions = () => {
-        setEmptyCell({ i: sizePuzzle - 1, j: sizePuzzle - 1 });
-        dispatch(updateBestTime(gameTime));
-        dispatch(updateMinStep(clickCount));
-    };
     useEffect(() => {                     // Ефект для перевірки умови виграшу при зміні стану arrBoxNumbers або winArrBoxNumbers   
         const winCheck = arrBoxNumbers.flat().every((value, index) => value === winArrBoxNumbers.flat()[index]);
 
         if (winCheck && isGameStarted) {
-            //setTimeout(() => alert('Win combo!!!!'), 300);
-            console.log('Win combo!!!!', arrBoxNumbers);
             setMessage(`Win combo!!!! time: ${gameTime}, make ${clickCount} moves`);
-            if (soundOn) { playSound(winGame); }
+            if (soundOn) { playSound(soundNames.winGame); }
             setIsGameStarted(false);
-            handleWinActions(); // Викликаємо функцію для виконання додаткових дій при виграші          
+            setEmptyCell({ i: sizePuzzle - 1, j: sizePuzzle - 1 });
+            dispatch(updateBestTime(gameTime));
+            dispatch(updateMinStep(clickCount));
         }
     }, [arrBoxNumbers, winArrBoxNumbers, isGameStarted]);
 
@@ -71,7 +58,7 @@ const App = () => {
     useEffect(() => {                   //Ефект при компьютерному змішуванні поля
         if (shuffleCount > 0 && shuffleCount < shuffleMaxCount) {
             setDisableMixBtn(true);
-            if (soundOn) { playSound(makeMove); }
+            if (soundOn) { playSound(soundNames.makeMove); }
             const timer = setInterval(() => {
                 handleResortClick();
 
@@ -112,7 +99,7 @@ const App = () => {
 
     const cellOnclick = (i, j) => {                                        // Функція, яка відповідає за клік по клітинці
         if (isGameStarted) {
-            if (soundOn) { playSound(makeMove); }
+            if (soundOn) { playSound(soundNames.makeMove); }
             if (
                 (i === emptyCell.i && (j - emptyCell.j === 1 || j - emptyCell.j === -1)) ||
                 (j === emptyCell.j && (i - emptyCell.i === 1 || i - emptyCell.i === -1))
@@ -195,23 +182,19 @@ const App = () => {
                 }
             }
         }
-        // console.log(arrValidCoord, previousCord.i, previousCord.j );
         arrValidCoord = arrValidCoord.filter(coord => !(coord.i === previousCord.i && coord.j === previousCord.j));  // Видалення попередньої клітинки зі списку валідних координат
-        //console.log(arrValidCoord);
 
         let oneRandomValidCoord = arrValidCoord[Math.floor(Math.random() * arrValidCoord.length)]; // Вибір одної валідної координати 
-        // console.log(oneRandomValidCoord);
 
         const newArray = array.map(row => [...row]);                 // Створення нового масиву з перемішаними клітинками
         newArray[emptyCell.i][emptyCell.j] = newArray[oneRandomValidCoord.i][oneRandomValidCoord.j];
         newArray[oneRandomValidCoord.i][oneRandomValidCoord.j] = '';
         setPreviousCord({ i: emptyCell.i, j: emptyCell.j });        // Оновлення попередньої клітинки та порожньої клітинки
         setEmptyCell({ i: oneRandomValidCoord.i, j: oneRandomValidCoord.j });
-        //console.log(newArray, previousCord, oneRandomValidCoord);
         return newArray;
     }
 
-    ////////////////////////    Astar    //////////////////////////////////////////////////
+    ////////////////////////////////////////////    Astar    //////////////////////////////////////////////////
 
     const aStarSearch = () => {
         // Очищаємо попередні дані
@@ -226,7 +209,6 @@ const App = () => {
             f: 0, // Сумарна оцінка
             parent: null // Попередній вузол
         };
-        console.log('startNode', startNode);
         // Додаємо початковий вузол до відкритого списку
         openList.push(startNode);
         while (openList.length > 0) {
@@ -246,13 +228,10 @@ const App = () => {
 
             // Якщо досягли цільового стану, завершуємо алгоритм
             if (isGoalState(currentNode.state)) {
-                console.log(openList.length);
-                console.log(closedList.length);
                 return currentNode;
             }
 
-            // Генеруємо наступні можливі стани та перевіряємо їх
-            console.log('currentNode.state', currentNode.state);
+            // Генеруємо наступні можливі стани та перевіряємо їх     
             const possibleMoves = generatePossibleMoves(currentNode.state);
             possibleMoves.forEach((move) => {
                 // Якщо цей стан вже був оброблений, пропускаємо його
@@ -277,10 +256,8 @@ const App = () => {
                             node.parent = currentNode;
                         }
                     }
-                });
-
-                // Якщо стану немає у відкритому списку, додаємо його
-                if (!isInOpenList) {
+                });               
+                if (!isInOpenList) {                      // Якщо стану немає у відкритому списку, додаємо його
                     openList.push({ state: move, g, h, f, parent: currentNode });
                 }
             });
@@ -312,28 +289,25 @@ const App = () => {
         for (let i = 0; i < state.length; i++) {
             for (let j = 0; j < state[i].length; j++) {
                 const currentTile = state[i][j];
-                if (currentTile !== '') { // Перевіряємо, чи клітина не є порожньою
+                if (currentTile !== '') {                // Перевіряємо, чи клітина не є порожньою
                     for (let m = 0; m < state.length; m++) {
                         for (let n = 0; n < state[m].length; n++) {
-                            if (currentTile === winArrBoxNumbers[m][n]) { // Знаходимо координати цільової клітини
-                                totalDistance += Math.abs(i - m) + Math.abs(j - n); // Додавання модулів різниць координат
+                            if (currentTile === winArrBoxNumbers[m][n]) {           // Знаходимо координати цільової клітини
+                                totalDistance += Math.abs(i - m) + Math.abs(j - n);         // Додавання модулів різниць координат
                             }
                         }
                     }
-                } else { // Обробляємо порожню клітину
-                    const targetI = state.length - 1; // Останній рядок
-                    const targetJ = state[i].length - 1; // Останній стовпець
+                } else {                                                      // Обробляємо порожню клітину
+                    const targetI = state.length - 1;                         // Останній рядок
+                    const targetJ = state[i].length - 1;                      // Останній стовпець
                     totalDistance += Math.abs(i - targetI) + Math.abs(j - targetJ); // Додавання модулів різниць координат
                 }
             }
         }
-        console.log(totalDistance);
         return totalDistance;
     };
-
-
-    // Перевірка, чи поточний стан є цільовим
-    const isGoalState = (state) => {
+   
+    const isGoalState = (state) => {                          // Перевірка, чи поточний стан є цільовим
         for (let i = 0; i < state.length; i++) {
             for (let j = 0; j < state[i].length; j++) {
                 if (state[i][j] !== winArrBoxNumbers[i][j]) {
@@ -343,24 +317,20 @@ const App = () => {
         }
         return true;
     };
-
-    // Генерує всі можливі ходи для даного стану
-    const generatePossibleMoves = (state) => {
-        const possibleMoves = [];
-        // Знаходимо координати порожньої клітинки
-        let emptyCellCoord;
+  
+    const generatePossibleMoves = (state) => {                   // Генерує всі можливі ходи для даного стану
+        const possibleMoves = [];      
+        let emptyCellCoord;                                     // Знаходимо координати порожньої клітинки
         for (let i = 0; i < state.length; i++) {
             for (let j = 0; j < state[i].length; j++) {
                 if (state[i][j] === '') {
                     emptyCellCoord = { i, j };
-                    console.log(emptyCellCoord);
                     break;
                 }
             }
         }
-
-        // Знаходимо координати усіх можливих ходів
-        const possibleMoveCoords = [];
+      
+        const possibleMoveCoords = [];                                 // Знаходимо координати усіх можливих ходів
         for (let i = 0; i < state.length; i++) {
             for (let j = 0; j < state[i].length; j++) {
                 if (
@@ -371,22 +341,18 @@ const App = () => {
                 }
             }
         }
-        console.log(possibleMoveCoords);
-        // Генеруємо новий стан поля для кожного доступного ходу
-        for (const coord of possibleMoveCoords) {
-            // const newBoardState = JSON.parse(JSON.stringify(state)); // Для копіювання масиву
-            const newBoardState = state.map(row => [...row]);
+     
+        for (const coord of possibleMoveCoords) {                    // Генеруємо новий стан поля для кожного доступного ходу   
+            const newBoardState = state.map(row => [...row]); // Для копіювання масиву
             const temp = newBoardState[emptyCellCoord.i][emptyCellCoord.j];
             newBoardState[emptyCellCoord.i][emptyCellCoord.j] = newBoardState[coord.i][coord.j];
             newBoardState[coord.i][coord.j] = temp;
             possibleMoves.push(newBoardState);
         }
-        console.log(possibleMoves);
         return possibleMoves;
     };
-
-    // Перевіряє, чи даний стан вже є у списку вузлів
-    const isStateInList = (state, list) => {
+   
+    const isStateInList = (state, list) => {                        // Перевіряє, чи даний стан вже є у списку вузлів
         for (let i = 0; i < list.length; i++) {
             if (compareStates(list[i].state, state)) {
                 return true;
@@ -394,9 +360,8 @@ const App = () => {
         }
         return false;
     };
-
-    // Порівнює два стани поля
-    const compareStates = (state1, state2) => {
+  
+    const compareStates = (state1, state2) => {                     // Порівнює два стани поля
         for (let i = 0; i < state1.length; i++) {
             for (let j = 0; j < state1[i].length; j++) {
                 if (state1[i][j] !== state2[i][j]) {
@@ -409,18 +374,13 @@ const App = () => {
 
     const reconstructPath = (solvedTrack) => {
         const path = [];
-        let currentNode = solvedTrack;
-
-        // Продовжуємо переходити до батьківського вузла, поки не досягнемо початкового вузла
-        while (currentNode !== null) {
-            path.unshift(currentNode.state); // Додаємо стан вузла в початок шляху
-            currentNode = currentNode.parent; // Переходимо до батьківського вузла
+        let currentNode = solvedTrack;      
+        while (currentNode !== null) {                  // Продовжуємо переходити до батьківського вузла, поки не досягнемо початкового вузла
+            path.unshift(currentNode.state);            // Додаємо стан вузла в початок шляху
+            currentNode = currentNode.parent;           // Переходимо до батьківського вузла
         }
-
         return path;
     };
-
-
 
     const handleAIPlayClick = () => {
         if (!isGameStarted) {
@@ -431,33 +391,27 @@ const App = () => {
         setMessage("AI thinking...");
         setTimeout(() => {
             const solvedTrack = aStarSearch();
-            console.log(solvedTrack);
             if (!solvedTrack) {
                 setMessage("No solution found!.")
-                console.log('No solution found!');
-                setDisableAiBtn(false); // Потрібно встановити знову, якщо пошук не вдалося
+                setDisableAiBtn(false);                    // Потрібно встановити знову, якщо пошук не вдалося
                 return;
             }
-            setMessage("AI moving...");
-            // Відтворіть шлях від цільового вузла до початкового вузла
-            const pathToGoal = reconstructPath(solvedTrack);
-            console.log(pathToGoal);
-            // Пройдіть по кожному стану шляху з інтервалом
+            setMessage("AI moving...");           
+            const pathToGoal = reconstructPath(solvedTrack);    // шлях від цільового вузла до початкового вузла          
             let index = 0;
-            const interval = setInterval(() => {
+            const interval = setInterval(() => {                  // Прохід по кожному стану шляху з інтервалом
                 if (index < pathToGoal.length) {
                     const state = pathToGoal[index];
                     setArrBoxNumbers(state);
                     dispatch(updateClickCount(index));
-                    //console.log(arrBoxNumbers);
-                    if (soundOn) { playSound(makeMove); }
+                    if (soundOn) { playSound(soundNames.makeMove); }
                     index++;
                 } else {
                     clearInterval(interval);
                     setDisableAiBtn(false);
                 }
             }, 500);
-        }, 100); // Затримка перед викликом aStarSearch для відпрацювання setDisableAiBtn(true);
+        }, 100);                                   // Затримка перед викликом aStarSearch для відпрацювання setDisableAiBtn(true);
     }
 
 
@@ -483,7 +437,6 @@ const App = () => {
                 </div>
                 <div className="btn-wrap">
                     <Button onClick={handleResetClick}>Reset</Button>
-                    {/* <Button >Start</Button> */}
                     <Button disabled={disableMixBtn} onClick={handleResortClick}>
                         {disableMixBtn && (
                             <Spinner
@@ -504,14 +457,13 @@ const App = () => {
                                 size="sm"
                                 role="status"
                                 aria-hidden="true"
-
                             />
                         )}
                         AI Play
                     </Button>
                 </div>
             </div>
-        </main>        
+        </main>
     );
 };
 

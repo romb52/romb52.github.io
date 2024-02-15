@@ -11,12 +11,11 @@ import { FaTrophy } from "react-icons/fa";
 import { themeIcons } from "../../share/theme-icons";
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import { GiSoundOn, GiSoundOff } from "react-icons/gi";
-//import { useState } from 'react';
 
 
 
-const Header = () => {
-    //const [soundOn, setSound] = useState(true);
+
+const Header = () => { 
 
     const dispatch = useDispatch();
     const theme = useSelector((state) => state.theme);
@@ -27,12 +26,7 @@ const Header = () => {
     const minStep = useSelector((state) => state.game[`minStep${boardSize}`]);
     const soundOn = useSelector(state => state.sound.soundOn);
 
-    // const changeSound = () => {
-    //     setSound((prev) => !prev);
-    //     console.log(soundOn);
-    // };
-
-
+   
     const handleThemeChange = (theme) => {
         if (theme === 'auto') {
             dispatch(setAutoTheme());
@@ -94,8 +88,7 @@ const Header = () => {
                         <p className="mb-0 d-flex align-items-center gap-1"><FaTrophy /><span className='hideIfMob'>Min Step:</span> {minStep}</p>
                     </div>
                     <Dropdown data-bs-theme={theme}>
-                        <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
-                            {/* <span className='hideIfMob'>Theme</span> */}
+                        <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">                       
                             {themeIcons[theme]}
                         </Dropdown.Toggle>
 

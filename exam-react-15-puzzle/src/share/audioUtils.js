@@ -4,3 +4,8 @@ export const playSound = (soundFile) => {
       console.error('Failed to play sound:', error);
     });
   };
+
+  export const soundNames = {       //звукові ефекти
+    makeMove: 'flipcard.mp3',
+    winGame: 'success-fanfare.mp3'
+};
