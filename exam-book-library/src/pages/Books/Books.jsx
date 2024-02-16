@@ -1,12 +1,11 @@
 
 import { withLayout } from '../../components/Main/Main';
-
-import { useReducer, useState } from 'react';
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { books } from '../../share/data';
-import Arrows from '../../components/Arrows/Arrows';
+import { addBook, removeBook, updateBook, increaseBookCount, decreaseBookCount, sortBooks, filterBooks, unsortedBooks  } from '../../share/reducers/books.reducer';
 
-import { reducer } from '../../share/reducer';
 
 
 import styles from './Books.module.css';
@@ -15,15 +14,22 @@ import styles from './Books.module.css';
 const initialForm = { title: '', author: '', count: 1 };
 function Books() {
 
-  const [state, dispatch] = useReducer(reducer, books);
+  const books = useSelector(state => state.books.books);
+  const filteredBooks = useSelector(state => state.books.filteredBooks);
+  const dispatch = useDispatch();
   const [form, setForm] = useState(initialForm);
   const [changedId, setChangedId] = useState(0);
 
-  const [sortColumn, setSortColumn] = useState('');
-  const [isAZ, setIsAZ] = useState(true);
+  // const [sortColumn, setSortColumn] = useState('');
+  // const [isAZ, setIsAZ] = useState(true);
 
-  const [currentPage, setCurrentPage] = useState(1); 
-  const booksPerPage = 5; 
+  const [currentPage, setCurrentPage] = useState(1);
+  const booksPerPage = 5;
+
+  const [sortField, setSortField] = useState(''); // Стан для зберігання вибраного поля сортування
+  const [sortDirection, setSortDirection] = useState(true); // Стан для зберігання напрямку сортування
+
+  const [searchQuery, setSearchQuery] = useState(''); // Стан для зберігання пошукового запиту
 
   const changeInput = (e) => {
     setForm((prev) => {
@@ -33,27 +39,25 @@ function Books() {
 
   const indexOfLastBook = currentPage * booksPerPage;
   const indexOfFirstBook = indexOfLastBook - booksPerPage;
-  const currentBooks = state.slice(indexOfFirstBook, indexOfLastBook);
+  const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook);
 
   const sumbit = (e) => {
     e.preventDefault();
     const id = Date.now();
 
     if (changedId === 0) {
-      const payload = { ...form, id };
-      dispatch({ type: 'new_book', payload });
-      setForm(initialForm);   
+      dispatch(addBook({ ...form, id }));
+      setForm(initialForm);
     } else {
-      const payload = { ...form, id: changedId };
-      dispatch({ type: 'change_book', payload });
-      setForm(initialForm);  
+      dispatch(updateBook({ ...form, id: changedId }));
+      setForm(initialForm);
       setChangedId(0);
     }
   };
 
   const changeBook = (id) => {
     setChangedId(id);
-    const book = state.find((item) => item.id === id);
+    const book = books.find((item) => item.id === id);
     if (book) {
       setForm({ ...book });
     } else {
@@ -61,17 +65,27 @@ function Books() {
     }
   };
 
-  const changeSort = (isAZ, name) => {
-    setSortColumn(() => name);
-    setIsAZ(() => isAZ);
-    dispatch({
-      type: 'sort',
-      payload: { isAZ, name, isNumber: name === 'count' ? true : false },
-    });
+  const getTotalCount = () => {
+    return filteredBooks.length > 0 ? filteredBooks.reduce((total, book) => total + parseInt(book.count), 0) : books.reduce((total, book) => total + parseInt(book.count), 0);
   };
 
-  const getTotalCount = () => {
-    return state.reduce((total, book) => total + parseInt(book.count), 0);
+  const sortChange = (e) => {
+    setSortField(e.target.value); // Оновлення поля сортування при зміні вибору
+  };
+
+  const submitSort = (e) => {
+    e.preventDefault();
+    dispatch(sortBooks({ field: sortField, isAscending: sortDirection, isNumber: sortField === 'count' }));
+  };
+
+  const searchInput = (e) => {
+    setSearchQuery(e.target.value); // Оновлення пошукового запиту при введенні користувачем
+  };
+
+  const submitSearch = (e) => {
+    e.preventDefault();
+    dispatch(filterBooks(searchQuery)); // Викликаємо дію для фільтрації книг з введеним пошуковим запитом
+    setSearchQuery('');
   };
 
 
@@ -79,7 +93,40 @@ function Books() {
     <section>
       <div className='container'>
 
-      <Form className='d-flex gap-5 mb-5' onSubmit={(e) => sumbit(e)}>
+        <div className='d-flex justify-content-between'>
+          <h2>ALL BOOKS:</h2>
+          <Button>New book</Button>
+        </div>
+
+        <div className='d-flex justify-content-between'>
+          <Form className='d-flex gap-2 mb-1 align-items-center' onSubmit={(e) => submitSort(e)}>
+            <Form.Label>Sort by:</Form.Label>
+            <Form.Select value={sortField} onChange={sortChange}>
+              <option value="author">author</option>
+              <option value="title">title</option>
+              <option value="count">count</option>
+            </Form.Select>
+            <Button className='my-3' variant='primary' type='submit'>
+              Sort
+            </Button>
+          </Form>
+
+          <Form className='d-flex gap-2 mb-1 align-items-center' onSubmit={(e) => submitSearch(e)}>
+            <Form.Label>Search:</Form.Label>
+            <Form.Control
+              name='search'
+              value={searchQuery}
+              onChange={(e) => searchInput(e)}
+            />
+            <Button className='my-3' variant='primary' type='submit'>
+              Search
+            </Button>
+          </Form>
+
+        </div>
+
+
+        <Form className='d-flex gap-5 mb-5' onSubmit={(e) => sumbit(e)}>
           <Form.Group className='mb-3' controlId='title'>
             <Form.Label>Title</Form.Label>
             <Form.Control
@@ -120,37 +167,23 @@ function Books() {
             <p>#</p>
             <p>
               Title
-              <Arrows
-                name='title'
-                changeSort={changeSort}
-                isAZ={isAZ}
-                sortColumn={sortColumn}
-              />
+
             </p>
             <p>
               Author
-              <Arrows
-                name='author'
-                changeSort={changeSort}
-                isAZ={isAZ}
-                sortColumn={sortColumn}
-              />
+
             </p>
             <p>
               Count
-              <Arrows
-                name='count'
-                changeSort={changeSort}
-                isAZ={isAZ}
-                sortColumn={sortColumn}
-              />
+
             </p>
             <p>Delete</p>
             <p>Add</p>
             <p>Minus</p>
             <p>Change</p>
           </div>
-          {currentBooks.map((book, i) => (
+
+          {filteredBooks.length > 0 ? filteredBooks.map((book, i) => (          
             <div key={book.id} className={styles.item}>
               <p>{indexOfFirstBook + i + 1}</p>
               <p>{book.title}</p>
@@ -158,18 +191,47 @@ function Books() {
               <p>{book.count}</p>
               <Button
                 variant='danger'
-                onClick={() => dispatch({ type: 'delete', payload: book.id })}
+                onClick={() => dispatch(removeBook(book.id))}
               >
                 Del
               </Button>
               <Button
                 variant='success'
-                onClick={() => dispatch({ type: 'add', payload: book.id })}
+                onClick={() => dispatch(increaseBookCount({ id: book.id }))}
               >
                 Add
               </Button>
               <Button
-                onClick={() => dispatch({ type: 'minus', payload: book.id })}
+                onClick={() => dispatch(decreaseBookCount({ id: book.id }))}
+              >
+                Minus
+              </Button>
+
+              <Button variant='warning' onClick={() => changeBook(book.id)}>
+                Change
+              </Button>
+            </div>
+            
+          )) : currentBooks.map((book, i) => (
+            <div key={book.id} className={styles.item}>
+              <p>{indexOfFirstBook + i + 1}</p>
+              <p>{book.title}</p>
+              <p>{book.author}</p>
+              <p>{book.count}</p>
+              <Button
+                variant='danger'
+                onClick={() => dispatch(removeBook(book.id))}
+              >
+                Del
+              </Button>
+              <Button
+                variant='success'
+                onClick={() => dispatch(increaseBookCount({ id: book.id }))}
+              >
+                Add
+              </Button>
+              <Button
+                onClick={() => dispatch(decreaseBookCount({ id: book.id }))}
               >
                 Minus
               </Button>
@@ -179,6 +241,8 @@ function Books() {
               </Button>
             </div>
           ))}
+
+
           <div key='foot-book' className={styles.item}>
             <p>#</p>
             <p></p>
@@ -190,10 +254,11 @@ function Books() {
             <p></p>
           </div>
         </div>
-        <div className={styles.pagination}>
-          {state.length > booksPerPage && (
+
+        {filteredBooks.length > 0 ? (
+          <div className={styles.pagination}>
             <ul className='pagination'>
-              {Array.from({ length: Math.ceil(state.length / booksPerPage) }).map((_, index) => (
+              {Array.from({ length: Math.ceil(filteredBooks.length / booksPerPage) }).map((_, index) => (
                 <li key={index} className='page-item'>
                   <button
                     className='page-link'
@@ -204,9 +269,26 @@ function Books() {
                 </li>
               ))}
             </ul>
-          )}
-        </div>
-        
+          </div>
+        ) : (
+          <div className={styles.pagination}>
+            <ul className='pagination'>
+              {Array.from({ length: Math.ceil(books.length / booksPerPage) }).map((_, index) => (
+                <li key={index} className='page-item'>
+                  <button
+                    className='page-link'
+                    onClick={() => setCurrentPage(index + 1)}
+                  >
+                    {index + 1}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+{filteredBooks.length > 0 && <Button onClick={() => dispatch(unsortedBooks())}>To all books...</Button>}
+
       </div>
     </section>
   );
