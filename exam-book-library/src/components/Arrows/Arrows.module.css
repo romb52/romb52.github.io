@@ -1,0 +1,11 @@
+.sort-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sort-wrap > svg:hover {
+  fill: blue;
+}
+.sort-wrap > svg.active {
+  fill: red;
+}

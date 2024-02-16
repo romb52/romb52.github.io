@@ -1,0 +1,22 @@
+export const books = [
+  { id: 1, title: 'Кобзар', author: 'Тарас Шевченко', count: 5 },
+  { id: 2, title: 'Повість врем\'я народження', author: 'Юрій Андрухович', count: 8 },
+  { id: 3, title: 'Маруся Чурай', author: 'Ліна Костенко', count: 3 },
+  { id: 4, title: 'Життя в забутті', author: 'Марія Матіос', count: 6 },
+  { id: 5, title: 'Смерть постороннього', author: 'Олесь Гончар', count: 7 },
+  { id: 6, title: 'Мама', author: 'Софія Андрухович', count: 4 },
+  { id: 7, title: 'Тіні забутих предків', author: 'Олесь Бердник', count: 9 },
+  { id: 8, title: 'Долина', author: 'Іван Багряний', count: 2 },
+  { id: 9, title: 'Скажене весілля', author: 'Микола Гоголь', count: 5 },
+  { id: 10, title: 'Метелики', author: 'Ігор Мандрик', count: 6 },
+  { id: 11, title: 'Кайдашева сім\'я', author: 'Михайло Коцюбинський', count: 3 },
+  { id: 12, title: 'Захар Беркут', author: 'Іван Франко', count: 8 },
+  { id: 13, title: 'Говорити мовчки', author: 'Юрій Винничук', count: 7 },
+  { id: 14, title: 'Чорна рада', author: 'Панас Мирний', count: 4 },
+  { id: 15, title: 'Камінний хрест', author: 'Юрій Яновський', count: 5 },
+  { id: 16, title: 'Час намиста', author: 'Олесь Донченко', count: 6 },
+  { id: 17, title: 'Біла гарячка', author: 'Василь Стефаник', count: 3 },
+  { id: 18, title: 'Жовтий князь', author: 'Володимир Даля', count: 7 },
+  { id: 19, title: 'Мазепа', author: 'Олесь Герасименко', count: 2 },
+  { id: 20, title: 'Мій Кобзар', author: 'Андрій Кокотюха', count: 5 }
+];
