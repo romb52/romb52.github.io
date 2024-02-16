@@ -1,0 +1,33 @@
+
+header {
+  width: 100%;
+  height: 7vh;
+  min-height: 40px;
+  background: #76767688;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #4174D9;
+}
+
+header a:hover {
+  color: #0034AA;
+}
+header .active {
+  font-weight: bold;
+  color: #0034AA;
+}
+
+
+
