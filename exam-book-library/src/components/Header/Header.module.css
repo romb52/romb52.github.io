@@ -1,5 +1,5 @@
 
-header {
+.headerMenu {
   width: 100%;
   height: 7vh;
   min-height: 40px;
@@ -7,6 +7,11 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.headerTop{
+  padding: 5px 0;
+  color: #0034AA;
 }
 
 .wrap {

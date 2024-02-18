@@ -1,11 +1,11 @@
 
 import { withLayout } from '../../components/Main/Main';
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { addBook, removeBook, updateBook, increaseBookCount, decreaseBookCount, sortBooks, filterBooks, unsortedBooks  } from '../../share/reducers/books.reducer';
-
+import { addBook, removeBook, updateBook,  sortBooks, filterBooks, unsortedBooks } from '../../share/reducers/books.reducer';
+import { MdEdit } from "react-icons/md";
 
 
 import styles from './Books.module.css';
@@ -27,7 +27,7 @@ function Books() {
   const booksPerPage = 5;
 
   const [sortField, setSortField] = useState(''); // Стан для зберігання вибраного поля сортування
-  const [sortDirection, setSortDirection] = useState(true); // Стан для зберігання напрямку сортування
+  //const [sortDirection, setSortDirection] = useState(true); // Стан для зберігання напрямку сортування
 
   const [searchQuery, setSearchQuery] = useState(''); // Стан для зберігання пошукового запиту
 
@@ -40,6 +40,7 @@ function Books() {
   const indexOfLastBook = currentPage * booksPerPage;
   const indexOfFirstBook = indexOfLastBook - booksPerPage;
   const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook);
+  const currentFilteredBooks= filteredBooks.slice(indexOfFirstBook, indexOfLastBook);
 
   const sumbit = (e) => {
     e.preventDefault();
@@ -65,9 +66,9 @@ function Books() {
     }
   };
 
-  const getTotalCount = () => {
-    return filteredBooks.length > 0 ? filteredBooks.reduce((total, book) => total + parseInt(book.count), 0) : books.reduce((total, book) => total + parseInt(book.count), 0);
-  };
+  // const getTotalCount = () => {
+  //   return filteredBooks.length > 0 ? filteredBooks.reduce((total, book) => total + parseInt(book.count), 0) : books.reduce((total, book) => total + parseInt(book.count), 0);
+  // };
 
   const sortChange = (e) => {
     setSortField(e.target.value); // Оновлення поля сортування при зміні вибору
@@ -75,7 +76,7 @@ function Books() {
 
   const submitSort = (e) => {
     e.preventDefault();
-    dispatch(sortBooks({ field: sortField, isAscending: sortDirection, isNumber: sortField === 'count' }));
+    dispatch(sortBooks({ field: sortField, isNumber: sortField === 'copiesAvailable' }));
   };
 
   const searchInput = (e) => {
@@ -93,36 +94,38 @@ function Books() {
     <section>
       <div className='container'>
 
-        <div className='d-flex justify-content-between'>
+        <div className={`d-flex justify-content-between ${styles.titlewrap}`}>
           <h2>ALL BOOKS:</h2>
           <Button>New book</Button>
         </div>
 
-        <div className='d-flex justify-content-between'>
-          <Form className='d-flex gap-2 mb-1 align-items-center' onSubmit={(e) => submitSort(e)}>
-            <Form.Label>Sort by:</Form.Label>
-            <Form.Select value={sortField} onChange={sortChange}>
-              <option value="author">author</option>
-              <option value="title">title</option>
-              <option value="count">count</option>
-            </Form.Select>
-            <Button className='my-3' variant='primary' type='submit'>
-              Sort
-            </Button>
-          </Form>
-
-          <Form className='d-flex gap-2 mb-1 align-items-center' onSubmit={(e) => submitSearch(e)}>
-            <Form.Label>Search:</Form.Label>
-            <Form.Control
-              name='search'
-              value={searchQuery}
-              onChange={(e) => searchInput(e)}
-            />
-            <Button className='my-3' variant='primary' type='submit'>
-              Search
-            </Button>
-          </Form>
-
+        <div className='row justify-content-between'>
+          <div className="col-5 pe-1">
+            <Form className='d-flex gap-2 mb-1 align-items-center' onSubmit={(e) => submitSort(e)}>
+              <Form.Label style={{ width: "80px" }}>Sort by:</Form.Label>
+              <Form.Select value={sortField} onChange={sortChange}>
+                <option value="author">author</option>
+                <option value="title">title</option>
+                <option value="copiesAvailable">count</option>
+              </Form.Select>
+              <Button className='my-3' variant='primary' type='submit'>
+                Sort
+              </Button>
+            </Form>
+          </div>
+          <div className='col-5 ps-1'>
+            <Form className='d-flex gap-2 mb-1 align-items-center' onSubmit={(e) => submitSearch(e)}>
+              <Form.Label>Search:</Form.Label>
+              <Form.Control
+                name='search'
+                value={searchQuery}
+                onChange={(e) => searchInput(e)}
+              />
+              <Button className='my-3' variant='primary' type='submit'>
+                Search
+              </Button>
+            </Form>
+          </div>
         </div>
 
 
@@ -151,7 +154,7 @@ function Books() {
             <Form.Label>Count</Form.Label>
             <Form.Control
               type='number'
-              value={form.count}
+              value={form.copiesAvailable}
               placeholder='count'
               name='count'
               onChange={(e) => changeInput(e)}
@@ -163,33 +166,39 @@ function Books() {
           </Button>
         </Form>
         <div className={styles.grid}>
-          <div key='head-book' className={styles.item}>
+          <div key='head-book' className={`${styles.item} ${styles.tableTitle}`}>
             <p>#</p>
             <p>
               Title
-
             </p>
             <p>
               Author
-
             </p>
             <p>
-              Count
-
+              Publication year
             </p>
-            <p>Delete</p>
-            <p>Add</p>
-            <p>Minus</p>
-            <p>Change</p>
+            <p>
+              Publisher
+            </p>
+            <p>
+              Page count
+            </p>
+            <p>
+              Copies available
+            </p>
+            <p>Edit</p>
           </div>
 
-          {filteredBooks.length > 0 ? filteredBooks.map((book, i) => (          
+          {filteredBooks.length > 0 ? currentFilteredBooks.map((book, i) => (
             <div key={book.id} className={styles.item}>
               <p>{indexOfFirstBook + i + 1}</p>
               <p>{book.title}</p>
               <p>{book.author}</p>
-              <p>{book.count}</p>
-              <Button
+              <p>{book.publicationYear}</p>
+              <p>{book.publisher}</p>
+              <p>{book.pageCount}</p>
+              <p>{book.copiesAvailable}</p>
+              {/* <Button
                 variant='danger'
                 onClick={() => dispatch(removeBook(book.id))}
               >
@@ -205,20 +214,23 @@ function Books() {
                 onClick={() => dispatch(decreaseBookCount({ id: book.id }))}
               >
                 Minus
-              </Button>
+              </Button> */}
 
               <Button variant='warning' onClick={() => changeBook(book.id)}>
-                Change
+              <MdEdit size={24} />
               </Button>
             </div>
-            
+
           )) : currentBooks.map((book, i) => (
             <div key={book.id} className={styles.item}>
               <p>{indexOfFirstBook + i + 1}</p>
               <p>{book.title}</p>
               <p>{book.author}</p>
-              <p>{book.count}</p>
-              <Button
+              <p>{book.publicationYear}</p>
+              <p>{book.publisher}</p>
+              <p>{book.pageCount}</p>
+              <p>{book.copiesAvailable}</p>
+              {/* <Button
                 variant='danger'
                 onClick={() => dispatch(removeBook(book.id))}
               >
@@ -234,16 +246,16 @@ function Books() {
                 onClick={() => dispatch(decreaseBookCount({ id: book.id }))}
               >
                 Minus
-              </Button>
+              </Button> */}
 
               <Button variant='warning' onClick={() => changeBook(book.id)}>
-                Change
+              <MdEdit size={24} />
               </Button>
             </div>
           ))}
 
 
-          <div key='foot-book' className={styles.item}>
+          {/* <div key='foot-book' className={styles.item}>
             <p>#</p>
             <p></p>
             <p>Total count:</p>
@@ -252,7 +264,10 @@ function Books() {
             <p></p>
             <p></p>
             <p></p>
-          </div>
+            <p></p>
+            <p></p>
+            <p></p>
+          </div> */}
         </div>
 
         {filteredBooks.length > 0 ? (
@@ -287,7 +302,7 @@ function Books() {
           </div>
         )}
 
-{filteredBooks.length > 0 && <Button onClick={() => dispatch(unsortedBooks())}>To all books...</Button>}
+        {filteredBooks.length > 0 && <Button onClick={() => dispatch(unsortedBooks())}>To all books...</Button>}
 
       </div>
     </section>
