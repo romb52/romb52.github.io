@@ -4,21 +4,29 @@ import { withLayout } from '../../components/Main/Main';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { addBook, removeBook, updateBook,  sortBooks, filterBooks, unsortedBooks } from '../../share/reducers/books.reducer';
+import { addBook, removeBook, updateBook, sortBooks, filterBooks, unsortedBooks } from '../../share/reducers/books.reducer';
 import { MdEdit } from "react-icons/md";
+import Modal from '../../components/modal/Modal';
+import AddBookForm from '../../components/ModalContent/AddBookForm/AddBookForm';
+import EditBookForm from '../../components/ModalContent/EditBookForm/EditBookForm';
+
 
 
 import styles from './Books.module.css';
 
 
-const initialForm = { title: '', author: '', count: 1 };
+// const initialForm = { title: '', author: '', count: 1 };
+
 function Books() {
 
   const books = useSelector(state => state.books.books);
   const filteredBooks = useSelector(state => state.books.filteredBooks);
   const dispatch = useDispatch();
-  const [form, setForm] = useState(initialForm);
-  const [changedId, setChangedId] = useState(0);
+  // const [form, setForm] = useState(initialForm);
+  // const [changedId, setChangedId] = useState(0);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
 
   // const [sortColumn, setSortColumn] = useState('');
   // const [isAZ, setIsAZ] = useState(true);
@@ -31,40 +39,49 @@ function Books() {
 
   const [searchQuery, setSearchQuery] = useState(''); // Стан для зберігання пошукового запиту
 
-  const changeInput = (e) => {
-    setForm((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  };
+  // const changeInput = (e) => {
+  //   console.log(e.target.name, e.target.value)
+  //   setForm((prev) => {
+  //     return { ...prev, [e.target.name]: e.target.value };
+  //   });
+  // };
 
   const indexOfLastBook = currentPage * booksPerPage;
   const indexOfFirstBook = indexOfLastBook - booksPerPage;
   const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook);
-  const currentFilteredBooks= filteredBooks.slice(indexOfFirstBook, indexOfLastBook);
+  const currentFilteredBooks = filteredBooks.slice(indexOfFirstBook, indexOfLastBook);
 
-  const sumbit = (e) => {
-    e.preventDefault();
-    const id = Date.now();
+  // const sumbit = (e) => {
+  //   e.preventDefault();
+  //   const id = Date.now();
 
-    if (changedId === 0) {
-      dispatch(addBook({ ...form, id }));
-      setForm(initialForm);
-    } else {
-      dispatch(updateBook({ ...form, id: changedId }));
-      setForm(initialForm);
-      setChangedId(0);
-    }
-  };
+  //   if (changedId === 0) {
+  //     dispatch(addBook({ ...form, id }));
+  //     setForm(initialForm);
+  //   } else {
+  //     dispatch(updateBook({ ...form, id: changedId }));
+  //     setForm(initialForm);
+  //     setChangedId(0);
+  //   }
+  // };
+  
+  // const submitAddBook = (e) => {
+  //   console.log(form)
+  //   e.preventDefault();
+  //   const id = Date.now();    
+  //     dispatch(addBook({ ...form, id }));
+  //     setForm(initialForm);       
+  // };
 
-  const changeBook = (id) => {
-    setChangedId(id);
-    const book = books.find((item) => item.id === id);
-    if (book) {
-      setForm({ ...book });
-    } else {
-      setChangedId(0);
-    }
-  };
+  // const changeBook = (id) => {
+  //   setChangedId(id);
+  //   const book = books.find((item) => item.id === id);
+  //   if (book) {
+  //     setForm({ ...book });
+  //   } else {
+  //     setChangedId(0);
+  //   }
+  // };
 
   // const getTotalCount = () => {
   //   return filteredBooks.length > 0 ? filteredBooks.reduce((total, book) => total + parseInt(book.count), 0) : books.reduce((total, book) => total + parseInt(book.count), 0);
@@ -89,6 +106,11 @@ function Books() {
     setSearchQuery('');
   };
 
+  const openModal = (content) => {
+    setModalContent(content);
+    setIsModalOpen((prev) => !prev);
+  };
+
 
   return (
     <section>
@@ -96,8 +118,13 @@ function Books() {
 
         <div className={`d-flex justify-content-between ${styles.titlewrap}`}>
           <h2>ALL BOOKS:</h2>
-          <Button>New book</Button>
+          <Button onClick={() => openModal(<AddBookForm />)}>New book</Button>
         </div>
+
+        <Modal isModalOpen={isModalOpen} openModal={openModal}>
+          {modalContent}
+        </Modal>
+
 
         <div className='row justify-content-between'>
           <div className="col-5 pe-1">
@@ -129,7 +156,7 @@ function Books() {
         </div>
 
 
-        <Form className='d-flex gap-5 mb-5' onSubmit={(e) => sumbit(e)}>
+        {/* <Form className='d-flex gap-5 mb-5' onSubmit={(e) => sumbit(e)}>
           <Form.Group className='mb-3' controlId='title'>
             <Form.Label>Title</Form.Label>
             <Form.Control
@@ -164,7 +191,9 @@ function Books() {
           <Button className='my-3' variant='primary' type='submit'>
             Submit
           </Button>
-        </Form>
+
+        </Form> */}
+
         <div className={styles.grid}>
           <div key='head-book' className={`${styles.item} ${styles.tableTitle}`}>
             <p>#</p>
@@ -216,8 +245,10 @@ function Books() {
                 Minus
               </Button> */}
 
-              <Button variant='warning' onClick={() => changeBook(book.id)}>
-              <MdEdit size={24} />
+              <Button variant='warning'
+                // onClick={() => changeBook(book.id)}
+                onClick={() => openModal(<EditBookForm bookId={book.id}/>)}>
+                <MdEdit size={24} />
               </Button>
             </div>
 
@@ -248,8 +279,10 @@ function Books() {
                 Minus
               </Button> */}
 
-              <Button variant='warning' onClick={() => changeBook(book.id)}>
-              <MdEdit size={24} />
+              <Button variant='warning'
+                // onClick={() => changeBook(book.id)}
+                onClick={() => openModal(<EditBookForm bookId={book.id}/>)}>
+                <MdEdit size={24} />
               </Button>
             </div>
           ))}

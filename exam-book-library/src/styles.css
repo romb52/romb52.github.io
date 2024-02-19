@@ -6,7 +6,9 @@
   box-sizing: border-box;
 }
 
-
+body.no-scroll{
+  overflow-y: hidden;
+}
 
 #root {
   margin: 0;
