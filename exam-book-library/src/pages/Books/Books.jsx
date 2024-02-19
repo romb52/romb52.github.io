@@ -281,7 +281,7 @@ function Books() {
 
               <Button variant='warning'
                 // onClick={() => changeBook(book.id)}
-                onClick={() => openModal(<EditBookForm bookId={book.id}/>)}>
+                onClick={() => openModal(<EditBookForm bookId={book.id} setIsModalOpen={setIsModalOpen}/>)}>
                 <MdEdit size={24} />
               </Button>
             </div>

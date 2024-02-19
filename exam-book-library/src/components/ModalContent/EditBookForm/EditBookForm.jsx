@@ -3,24 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { updateBook, removeBook } from '../../../share/reducers/books.reducer';
 
-export default function EditBookForm({ bookId }) {
+export default function EditBookForm({ bookId, setIsModalOpen }) {
   const books = useSelector(state => state.books.books);
   const book = books.find((item) => item.id === bookId);
-  const initialForm = { title: '', author: '', publicationYear: 0, publisher: '', pageCount: 0,  copiesAvailable: 0 };
+  const initialForm = { title: '', author: '', publicationYear: 0, publisher: '', pageCount: 0, copiesAvailable: 0 };
   const dispatch = useDispatch();
   const [form, setForm] = useState({ ...book });
   const [changedId, setChangedId] = useState(bookId);
-
-
-  // const changeBook = (id) => {
-  //   setChangedId(id);
-  //   const book = books.find((item) => item.id === id);
-  //   if (book) {
-  //     setForm({ ...book });
-  //   } else {
-  //     setChangedId(0);
-  //   }
-  // };
 
   const changeInput = (e) => {
     console.log(e.target.name, e.target.value)
@@ -37,11 +26,14 @@ export default function EditBookForm({ bookId }) {
     setChangedId(0);
   };
 
-  const deleteBook = (id) =>{
-   if(id){
-    dispatch(removeBook(id));
-    setForm(initialForm);
-  }
+  const deleteBook = (id) => {
+    const isConfirmed = window.confirm('Are you sure you want to delete this book?'); // Відображення підтвердження браузера
+
+    if (isConfirmed) {
+      dispatch(removeBook(id));
+      setForm(initialForm);
+      setIsModalOpen(false); // Закриття модального вікна після видалення книги
+    }
   };
 
   return (
