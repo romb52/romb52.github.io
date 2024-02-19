@@ -2,8 +2,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { books } from '../../share/data';
 
+// Перевіряємо, чи є дані книг у локальному сховищі, якщо немає - використовуємо дефолтні дані
+const storedBooks = JSON.parse(localStorage.getItem('books'));
+if (!storedBooks) {
+  localStorage.setItem('books', JSON.stringify(books));
+}
+const defaultBooks = storedBooks || books; 
 const initialState = {
-  books: books,
+  books: defaultBooks,
   filteredBooks: [], // Додали поле для зберігання відфільтрованих книг
 };
 
@@ -13,15 +19,18 @@ export const bookSlice = createSlice({
   reducers: {
     addBook: (state, action) => {
       state.books.push(action.payload);
+      localStorage.setItem('books', JSON.stringify(state.books));
     },
     removeBook: (state, action) => {
       state.books = state.books.filter(book => book.id !== action.payload);
+      localStorage.setItem('books', JSON.stringify(state.books));
     },
     updateBook: (state, action) => {
       const { id, ...updatedBook } = action.payload;
       const index = state.books.findIndex(book => book.id === id);
       if (index !== -1) {
         state.books[index] = { ...state.books[index], ...updatedBook };
+         localStorage.setItem('books', JSON.stringify(state.books));
       }
     },
     // increaseBookCount: (state, action) => {
