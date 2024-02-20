@@ -40,3 +40,12 @@
   top: 10px;
   z-index: 2;
 }
+
+.closeModal{
+  cursor: pointer;
+ 
+}
+
+.closeModal:hover{
+  color: rgb(223, 55, 55);
+}

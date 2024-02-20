@@ -21,9 +21,9 @@ export default function Modal({ isModalOpen, openModal,  children }) {
     >
       <div className={styles.modalInner} onClick={(e) => e.stopPropagation()}>
         <IconContext.Provider
-          value={{ size: '25px', className: `icon ${styles.icon}` }}
+          value={{ size: '35px', className: `icon ${styles.icon}` }}
         >
-          <IoMdClose onClick={() => openModal()} />
+          <IoMdClose className={styles.closeModal} onClick={() => openModal()} />
         </IconContext.Provider>
 
         {children}

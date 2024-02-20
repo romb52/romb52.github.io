@@ -2,6 +2,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { updateBook, removeBook } from '../../../share/reducers/books.reducer';
+import styles from '../AddBookForm/AddBookForm.module.css';
 
 export default function EditBookForm({ bookId, setIsModalOpen }) {
   const books = useSelector(state => state.books.books);
@@ -38,7 +39,7 @@ export default function EditBookForm({ bookId, setIsModalOpen }) {
 
   return (
     <>
-      <h2>Edit book</h2>
+      <h2 className={styles.title}>Edit book</h2>
 
       <Form className='d-flex flex-column gap-1 mb-2' onSubmit={(e) => submiEditBook(e)}>
         <Form.Group className='mb-3' controlId='title'>

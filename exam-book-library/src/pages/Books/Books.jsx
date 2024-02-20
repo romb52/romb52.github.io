@@ -114,7 +114,7 @@ function Books() {
 
   return (
     <section>
-      <div className='container'>
+      <div className='container d-flex flex-column justify-content-between '>
 
         <div className={`d-flex justify-content-between ${styles.titlewrap}`}>
           <h2>ALL BOOKS:</h2>
@@ -196,7 +196,7 @@ function Books() {
 
         <div className={styles.grid}>
           <div key='head-book' className={`${styles.item} ${styles.tableTitle}`}>
-            <p>#</p>
+            <p>id</p>
             <p>
               Title
             </p>
@@ -223,10 +223,10 @@ function Books() {
               <p>{indexOfFirstBook + i + 1}</p>
               <p>{book.title}</p>
               <p>{book.author}</p>
-              <p>{book.publicationYear}</p>
-              <p>{book.publisher}</p>
-              <p>{book.pageCount}</p>
-              <p>{book.copiesAvailable}</p>
+              <p className='justify-content-center'>{book.publicationYear}</p>
+              <p className='justify-content-center text-center'>{book.publisher}</p>
+              <p className='justify-content-center'>{book.pageCount}</p>
+              <p className='justify-content-center'>{book.copiesAvailable}</p>
               {/* <Button
                 variant='danger'
                 onClick={() => dispatch(removeBook(book.id))}
@@ -257,10 +257,10 @@ function Books() {
               <p>{indexOfFirstBook + i + 1}</p>
               <p>{book.title}</p>
               <p>{book.author}</p>
-              <p>{book.publicationYear}</p>
-              <p>{book.publisher}</p>
-              <p>{book.pageCount}</p>
-              <p>{book.copiesAvailable}</p>
+              <p className='justify-content-center'>{book.publicationYear}</p>
+              <p className='justify-content-center text-center'>{book.publisher}</p>
+              <p className='justify-content-center'>{book.pageCount}</p>
+              <p className='justify-content-center'>{book.copiesAvailable}</p>
               {/* <Button
                 variant='danger'
                 onClick={() => dispatch(removeBook(book.id))}

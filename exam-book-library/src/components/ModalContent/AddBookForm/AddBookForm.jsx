@@ -2,6 +2,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { addBook } from '../../../share/reducers/books.reducer';
+import styles from './AddBookForm.module.css';
 
 export default function AddBookForm() {
   const initialForm = { title: '', author: '', publicationYear: 0, publisher: '', pageCount: 0,  copiesAvailable: 0 };
@@ -24,7 +25,7 @@ export default function AddBookForm() {
 
   return (
     <>
-      <h2>Add book</h2>
+      <h2 className={styles.title}>Add book</h2>
 
       <Form className='d-flex flex-column gap-1 mb-2' onSubmit={(e) => submitAddBook(e)}>
         <Form.Group className='mb-3' controlId='title'>
