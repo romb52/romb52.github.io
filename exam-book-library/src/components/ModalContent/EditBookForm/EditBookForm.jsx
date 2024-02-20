@@ -1,6 +1,6 @@
 import { Button, Form } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { updateBook, removeBook } from '../../../share/reducers/books.reducer';
 import styles from '../AddBookForm/AddBookForm.module.css';
 
@@ -11,6 +11,11 @@ export default function EditBookForm({ bookId, setIsModalOpen }) {
   const dispatch = useDispatch();
   const [form, setForm] = useState({ ...book });
   const [changedId, setChangedId] = useState(bookId);
+
+  
+  useEffect(() => {   
+    setForm({ ...book });  
+}, [bookId]);
 
   const changeInput = (e) => {
     console.log(e.target.name, e.target.value)
@@ -25,6 +30,7 @@ export default function EditBookForm({ bookId, setIsModalOpen }) {
     dispatch(updateBook({ ...form, id: changedId }));
     setForm(initialForm);
     setChangedId(0);
+    setIsModalOpen(false); // Закриття модального вікна після редагування книги
   };
 
   const deleteBook = (id) => {

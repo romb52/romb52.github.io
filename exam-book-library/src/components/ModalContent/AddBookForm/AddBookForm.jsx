@@ -20,7 +20,7 @@ export default function AddBookForm() {
     e.preventDefault();
     const id = Date.now();
     dispatch(addBook({ ...form, id }));
-    setForm(initialForm);
+    setForm(initialForm);   
   };
 
   return (
@@ -101,7 +101,7 @@ export default function AddBookForm() {
         </Form.Group>
 
         <Button className='my-3' variant='primary' type='submit'>
-          Add book
+         Add book
         </Button>
 
       </Form>
