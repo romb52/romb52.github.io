@@ -124,7 +124,7 @@ function Visitors() {
             <div key={visitor.id} className={styles.item}>
               <p>{indexOfFirstVisitor + i + 1}</p>
               <p>{visitor.name}</p>
-              <p>{visitor.tel}</p>
+              <p className='justify-content-center'>{visitor.tel}</p>
 
               <Button className='d-flex gap-1 justify-content-center align-items-center' variant="success"
                 onClick={() => openModal(<EditVisitorForm visitorId={visitor.id} />)}>
@@ -136,7 +136,7 @@ function Visitors() {
             <div key={visitor.id} className={styles.item}>
               <p>{indexOfFirstVisitor + i + 1}</p>
               <p>{visitor.name}</p>
-              <p>{visitor.tel}</p>
+              <p className='justify-content-center'>{visitor.tel}</p>
 
               <Button className='d-flex gap-1 justify-content-center align-items-center' variant="success"
                 onClick={() => openModal(<EditVisitorForm visitorId={visitor.id} setIsModalOpen={setIsModalOpen} />)}>
