@@ -1,37 +1,29 @@
 
 import { withLayout } from '../../components/Main/Main';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-
 import { Button, Form } from 'react-bootstrap';
-
 import { sortBooks, filterBooks, unsortedBooks } from '../../share/reducers/books.reducer';
-
 import { MdEdit } from "react-icons/md";
-import { FaPlus, FaSortDown  } from "react-icons/fa";
+import { FaPlus, FaSortDown } from "react-icons/fa";
 import { IoChevronBack, IoSearch } from "react-icons/io5";
-
 import Modal from '../../components/modal/Modal';
 import AddBookForm from '../../components/ModalContent/AddBookForm/AddBookForm';
 import EditBookForm from '../../components/ModalContent/EditBookForm/EditBookForm';
-
 import styles from './Books.module.css';
-
 
 
 function Books() {
 
-  const books = useSelector(state => state.books.books);
+  const books = useSelector(state => state.books.books);                // Отримання списку книг та відфільтрованих книг зі стану
   const filteredBooks = useSelector(state => state.books.filteredBooks);
   const dispatch = useDispatch();
 
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);                // Локальний стан для керування модальним вікном
   const [modalContent, setModalContent] = useState(null);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const booksPerPage = 5;
+  const [currentPage, setCurrentPage] = useState(1);                     // Стан для керування поточною сторінкою та кількістю книг на сторінці
+  const booksPerPage = 7;
 
   const [sortField, setSortField] = useState('author'); // Стан для зберігання вибраного поля сортування
 
@@ -47,7 +39,7 @@ function Books() {
     setSortField(e.target.value); // Оновлення поля сортування при зміні вибору
   };
 
-  const submitSort = (e) => {
+  const submitSort = (e) => {          // Вибір і сортування полів для сортування книг
     e.preventDefault();
     dispatch(sortBooks({ field: sortField, isNumber: sortField === 'copiesAvailable' }));
   };
@@ -56,13 +48,13 @@ function Books() {
     setSearchQuery(e.target.value); // Оновлення пошукового запиту при введенні користувачем
   };
 
-  const submitSearch = (e) => {
+  const submitSearch = (e) => {         // Обробник подання пошукового запиту
     e.preventDefault();
     dispatch(filterBooks(searchQuery)); // Викликаємо дію для фільтрації книг з введеним пошуковим запитом
     setSearchQuery('');
   };
 
-  const openModal = (content) => {
+  const openModal = (content) => {         // Обробник відкриття модального вікна
     setModalContent(content);
     setIsModalOpen((prev) => !prev);
   };
@@ -77,15 +69,16 @@ function Books() {
           <Button className='d-flex gap-1 justify-content-center align-items-center' onClick={() => openModal(<AddBookForm />)}> <FaPlus /> New book</Button>
         </div>
 
+        {/* Модальне вікно для додавання та редагування книг */}
         <Modal isModalOpen={isModalOpen} openModal={openModal}>
           {modalContent}
         </Modal>
 
-
+        {/* Форми для сортування  */}
         <div className='row justify-content-between'>
           <div className="col-5 pe-1">
             <Form className='d-flex gap-2 mb-1 align-items-center' onSubmit={(e) => submitSort(e)}>
-              <Form.Label  style={{ whiteSpace: 'nowrap' }}>Sort by:</Form.Label>
+              <Form.Label style={{ whiteSpace: 'nowrap' }}>Sort by:</Form.Label>
               <Form.Select value={sortField} onChange={sortChange}>
                 <option value="author">author</option>
                 <option value="title">title</option>
@@ -96,6 +89,8 @@ function Books() {
               </Button>
             </Form>
           </div>
+
+          {/* Форми для пошуку */}
           <div className='col-5 ps-1'>
             <Form className='d-flex gap-2 mb-1 align-items-center' onSubmit={(e) => submitSearch(e)}>
               <Form.Label>Search:</Form.Label>
@@ -111,6 +106,7 @@ function Books() {
           </div>
         </div>
 
+        {/* Відображення списку книг */}
         <div className={styles.grid}>
           <div key='head-book' className={`${styles.item} ${styles.tableTitle}`}>
             <p>id</p>
@@ -135,6 +131,7 @@ function Books() {
             <p>Edit</p>
           </div>
 
+          {/* Відображення відфільтрованих або всіх книг */}
           {filteredBooks.length > 0 ? currentFilteredBooks.map((book, i) => (
             <div key={book.id} className={styles.item}>
               <p>{indexOfFirstBook + i + 1}</p>
@@ -170,6 +167,7 @@ function Books() {
 
         </div>
 
+        {/* Пагінація */}
         {filteredBooks.length > 0 ? (
           <div className={styles.pagination}>
             <ul className='pagination'>
@@ -202,6 +200,7 @@ function Books() {
           </div>
         )}
 
+        {/* Кнопка для відображення всіх книг, якщо відфільтровані */}
         {filteredBooks.length > 0 && <Button className='d-flex gap-1 justify-content-center align-items-center' onClick={() => dispatch(unsortedBooks())}><IoChevronBack />Back to all books...</Button>}
 
       </div>
