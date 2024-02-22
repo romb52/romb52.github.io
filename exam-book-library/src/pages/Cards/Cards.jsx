@@ -191,7 +191,7 @@ function Cards() {
         )}
 
         {/* Кнопка для повернення до всіх карток, якщо вони були відфільтровані */}
-        {filteredCards.length > 0 && <Button className='d-flex gap-1 justify-content-center align-items-center' onClick={() => dispatch(unsortedCards())}><IoChevronBack />Back to all cards...</Button>}
+        {filteredCards.length > 0 && <div><Button className='d-flex gap-1 justify-content-center align-items-center' onClick={() => dispatch(unsortedCards())}><IoChevronBack />Back to all cards...</Button></div>}
 
       </div>
     </section>

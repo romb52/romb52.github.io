@@ -201,7 +201,7 @@ function Books() {
         )}
 
         {/* Кнопка для відображення всіх книг, якщо відфільтровані */}
-        {filteredBooks.length > 0 && <Button className='d-flex gap-1 justify-content-center align-items-center' onClick={() => dispatch(unsortedBooks())}><IoChevronBack />Back to all books...</Button>}
+        {filteredBooks.length > 0 && <div><Button className='d-flex gap-1 justify-content-center align-items-center' onClick={() => dispatch(unsortedBooks())}><IoChevronBack />Back to all books...</Button></div>}
 
       </div>
     </section>

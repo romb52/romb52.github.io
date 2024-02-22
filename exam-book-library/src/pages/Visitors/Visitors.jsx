@@ -181,7 +181,7 @@ function Visitors() {
         )}
 
         {/* Кнопка для повернення до всіх відвідувачів, якщо вони були відфільтровані */}
-        {filteredVisitors.length > 0 && <Button className='d-flex gap-1 justify-content-center align-items-center' onClick={() => dispatch(unsortedVisitors())}> <IoChevronBack /> Back to all visitors...</Button>}
+        {filteredVisitors.length > 0 && <div><Button className='d-flex gap-1 justify-content-center align-items-center' onClick={() => dispatch(unsortedVisitors())}> <IoChevronBack /> Back to all visitors...</Button></div>}
 
       </div>
     </section>
