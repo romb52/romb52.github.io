@@ -112,7 +112,7 @@ function submitSeats(event) {
       elem.disabled = true;
     }
   }
-  console.log(ticketsArr);
+  //console.log(ticketsArr);
   localStorage.setItem('myTickets', JSON.stringify(ticketsArr));
   openModal();
 }

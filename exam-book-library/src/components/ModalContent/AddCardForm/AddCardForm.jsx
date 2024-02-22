@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { addCard } from '../../../share/reducers/cards.reducer';
 import { decreaseBookCount } from '../../../share/reducers/books.reducer';
+import { FaRegSave } from "react-icons/fa";
 import styles from '../AddBookForm/AddBookForm.module.css';
 
 export default function AddVisitorForm() {
@@ -59,8 +60,8 @@ export default function AddVisitorForm() {
                     </Form.Select>
                 </Form.Group>
 
-                <Button className='my-3' variant='primary' type='submit'>
-                    Save cards
+                <Button className='d-flex gap-1 justify-content-center align-items-center my-3' variant='primary' type='submit'><FaRegSave />
+                    Save card
                 </Button>
 
             </Form>

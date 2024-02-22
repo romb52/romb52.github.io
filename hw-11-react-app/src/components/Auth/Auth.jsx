@@ -47,7 +47,7 @@ export default function Auth({ isLogin, changeAuth }) {
           user: { ...form },
         });
 
-        console.log(res.data);
+        //console.log(res.data);
         const { token } = res.data.user;
         const { username } = res.data.user;
 
@@ -64,7 +64,7 @@ export default function Auth({ isLogin, changeAuth }) {
         setIsError(true);
         if (error.response) {
           const { status, data } = error.response;
-          console.log(status, data);         
+          //console.log(status, data);         
           if (status === 404 || status === 422 && data.statusCode === 422) {
             console.error(' Error:', data.message);
             changeMessage(data.message);

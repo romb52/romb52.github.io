@@ -22,7 +22,7 @@ function Statistics() {
 
   // Вибір перших п'яти найпопулярніших книг
   const topFiveBooks = sortedBookIssuances.slice(0, 5);
-  console.log(topFiveBooks)
+
 
   // Підрахунок кількості видач для кожного відвідувача
   const visitorIssuancesCount = cards.reduce((acc, card) => {

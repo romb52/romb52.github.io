@@ -36,7 +36,7 @@ function Visitors() {
 
   const sortChange = (e) => {         // Вибір і сортування полів для сортування відвідувачів
     setSortField(e.target.value); // Оновлення поля сортування при зміні вибору
-    console.log(e.target.value)
+    //console.log(e.target.value)
   };
 
   const submitSort = (e) => {          // Обробник подання сортування
