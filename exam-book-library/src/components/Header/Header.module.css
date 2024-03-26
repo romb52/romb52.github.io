@@ -1,17 +1,37 @@
+.headerTop {
+  width: 100%;
+  height: 42px;
+  min-height: 40px;
+}
+
+.headerTop a {
+  padding: 5px 0;
+  color: #0034AA;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: #0033aad7;
+}
+
+.logo>h2 {
+  margin: 0 0 0 5px;
+}
 
 .headerMenu {
   width: 100%;
-  height: 7vh;
+  height: 42px;
   min-height: 40px;
   background: #76767688;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.headerTop{
-  padding: 5px 0;
-  color: #0034AA;
 }
 
 .wrap {
@@ -20,19 +40,17 @@
   align-items: center;
 }
 
-header a {
+.headerMenu a {
   text-decoration: none;
   font-weight: bold;
   color: #4174D9;
 }
 
-header a:hover {
+.headerMenu a:hover {
   color: #0034AA;
 }
-header .active {
+
+.headerMenu .active {
   font-weight: bold;
   color: #0034AA;
 }
-
-
-

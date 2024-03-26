@@ -1,23 +1,24 @@
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, FloatingLabel } from 'react-bootstrap';
+import { MdDelete } from "react-icons/md";
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { updateVisitor, removeVisitor } from '../../../share/reducers/visitor.reducer';
 import styles from '../AddBookForm/AddBookForm.module.css';
 
-export default function EditBookForm({ visitorId, setIsModalOpen }) {
+export default function EditBookForm({ visitorId, setIsModalOpen, openModal }) {
   const visitors = useSelector(state => state.visitors.visitors);
- const visitor = visitors.find((item) => item.id === visitorId);
-  const initialForm = { name: '', tel: ''};
+  const visitor = visitors.find((item) => item.id === visitorId);
+  const initialForm = { name: '', tel: '' };
   const dispatch = useDispatch();
   const [form, setForm] = useState({ ...visitor });
   const [changedId, setChangedId] = useState(visitorId);
 
-  useEffect(() => {   
-    setForm({ ...visitor });  
-}, [visitorId]);
+  useEffect(() => {
+    setForm({ ...visitor });
+    setChangedId(visitorId);
+  }, [visitorId]);
 
   const changeInput = (e) => {
-    //console.log(e.target.name, e.target.value)
     setForm((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
@@ -25,10 +26,7 @@ export default function EditBookForm({ visitorId, setIsModalOpen }) {
 
   const submiEditVisitor = (e) => {
     e.preventDefault();
-    //console.log(form)
     dispatch(updateVisitor({ ...form, id: changedId }));
-    setForm(initialForm);
-    setChangedId(0);
     setIsModalOpen(false); // Закриття модального вікна після редагування книги
   };
 
@@ -47,37 +45,54 @@ export default function EditBookForm({ visitorId, setIsModalOpen }) {
       <h2 className={styles.title}>Edit visitor</h2>
 
       <Form className='d-flex flex-column gap-1 mb-2' onSubmit={(e) => submiEditVisitor(e)}>
-        <Form.Group className='mb-3' controlId='title'>
-          <Form.Label>Name</Form.Label>
+        
+        <FloatingLabel
+          controlId="name"
+          label="Full name"
+          className="mb-3"
+        >
           <Form.Control
-            placeholder='Name'
+            placeholder='name'
             name='name'
             value={form.name}
             onChange={(e) => changeInput(e)}
             required
           />
-        </Form.Group>
+        </FloatingLabel>
 
-        <Form.Group className='mb-3' controlId='author'>
-          <Form.Label>Phone number</Form.Label>
+        <FloatingLabel
+          controlId="tel"
+          label="Phone number"
+          className="mb-3"
+        >
           <Form.Control
             placeholder='Phone number'
             value={form.tel}
             name='tel'
             onChange={(e) => changeInput(e)}
+            pattern="^[0-9 \-]*$"
+            title="Only digits, space, and dash are allowed"
             required
           />
-        </Form.Group>        
-
-        <Button className='my-3' variant='primary' type='submit'>
-          Edit book
-        </Button>
-        <Button
+        </FloatingLabel>
+ 
+        <Button className='d-flex gap-1 justify-content-center align-items-center'
           variant='danger'
           onClick={() => deleteVisitor(visitor.id)}
         >
-          Delete book
+          <MdDelete size={18}/>
+          DELETE VISITOR
         </Button>
+
+        <div className='modalContentBtnGroup'>
+          <Button className='modalContentBtn me-2' variant='outline-secondary' onClick={() => openModal()}>
+            CANCEL
+          </Button>
+
+          <Button className='modalContentBtn' variant='primary' type='submit'>
+            EDIT BOOK
+          </Button>
+        </div>
 
       </Form>
     </>

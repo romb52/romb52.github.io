@@ -31,12 +31,17 @@ export const cardSlice = createSlice({
             const { id } = action.payload;
             const currentDate = new Date();
             const formattedDate = currentDate.toISOString().slice(0, 10);
-            //console.log(formattedDate, id); 
             const index = state.cards.findIndex(card => card.id === id);
             if (index !== -1) {
                 state.cards[index].returnDate = formattedDate;        // Оновити дату повернення
                 localStorage.setItem('cards', JSON.stringify(state.cards));   // Зберегти зміни в локальне сховище
+
+                if (state.filteredCards.length > 0) {
+                    const findex = state.filteredCards.findIndex(card => card.id === id);
+                    state.filteredCards[findex].returnDate = formattedDate;
+                }
             }
+
         },
         sortCards: (state, action) => {                        // Сортування списку карток за вказаним полем
             const { field, isNumber } = action.payload;
@@ -47,7 +52,7 @@ export const cardSlice = createSlice({
                 return valueA > valueB ? 1 : -1;
 
             });
-        },    
+        },
         filterCards: (state, action) => {                       // Фільтрація списку карток за пошуковим запитом
             const searchQuery = action.payload.toLowerCase(); // Конвертуємо пошуковий запит в нижній регістр
             // Фільтруємо книги та оновлюємо стан з відфільтрованим списком книг

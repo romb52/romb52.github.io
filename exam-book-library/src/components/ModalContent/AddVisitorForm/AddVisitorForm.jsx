@@ -1,19 +1,17 @@
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, FloatingLabel } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { addVisitor } from '../../../share/reducers/visitor.reducer';
 import styles from '../AddBookForm/AddBookForm.module.css';
 
-export default function AddVisitorForm() {
+export default function AddVisitorForm({ openModal }) {
     const initialForm = { id: 0, name: '', tel: '' };
     const dispatch = useDispatch();
     const [form, setForm] = useState(initialForm);
 
     const changeInput = (e) => {
-        //console.log(e.target.name, e.target.value);
         if (e.target.name === 'tel') {
             const isValidInput = /^[0-9 -]*$/.test(e.target.value);
-            //console.log(isValidInput);
             if (!isValidInput) {
                 return;
             }
@@ -22,8 +20,8 @@ export default function AddVisitorForm() {
             return { ...prev, [e.target.name]: e.target.value };
         });
     };
+
     const submitAddVisitor = (e) => {
-        //console.log(form)
         e.preventDefault();
         const id = Date.now();
         dispatch(addVisitor({ ...form, id }));
@@ -35,8 +33,12 @@ export default function AddVisitorForm() {
             <h2 className={styles.title}>Add visitor</h2>
 
             <Form className='d-flex flex-column gap-1 mb-2' onSubmit={(e) => submitAddVisitor(e)}>
-                <Form.Group className='mb-3' controlId='name'>
-                    <Form.Label>Full name</Form.Label>
+                
+                <FloatingLabel
+                    controlId="name"
+                    label="Full name"
+                    className="mb-3"
+                >
                     <Form.Control
                         placeholder='name'
                         name='name'
@@ -44,10 +46,13 @@ export default function AddVisitorForm() {
                         onChange={(e) => changeInput(e)}
                         required
                     />
-                </Form.Group>
+                </FloatingLabel>
 
-                <Form.Group className='mb-3' controlId='tel'>
-                    <Form.Label>Phone number</Form.Label>
+                <FloatingLabel
+                    controlId="tel"
+                    label="Phone number"
+                    className="mb-3"
+                >
                     <Form.Control
                         placeholder='Phone number'
                         value={form.tel}
@@ -57,11 +62,17 @@ export default function AddVisitorForm() {
                         title="Only digits, space, and dash are allowed"
                         required
                     />
-                </Form.Group>
+                </FloatingLabel>
+                
+                <div className='modalContentBtnGroup'>
+                    <Button className='modalContentBtn me-2' variant='outline-secondary' onClick={() => openModal()}>
+                        CANCEL
+                    </Button>
 
-                <Button className='my-3' variant='primary' type='submit'>
-                    Add new visitor
-                </Button>
+                    <Button className='modalContentBtn' variant='primary' type='submit'>
+                        ADD NEW VISITOR
+                    </Button>
+                </div>
 
             </Form>
         </>

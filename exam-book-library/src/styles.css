@@ -1,12 +1,13 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-body.no-scroll{
+body.no-scroll {
   overflow-y: hidden;
 }
 
@@ -14,33 +15,142 @@ body.no-scroll{
   margin: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Забезпечує повну висоту екрану */
+  min-height: 100vh;
 }
 
-section{
+section {
   flex: 1;
-  /* height: auto;
-  min-height: 450px; */
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #F4F4F4;
 }
-.container{
-  width: 100%; 
+
+.container {
+  width: 100%;
   max-width: 1200px;
 
 }
 
-section > .container{
-  height: calc(100vh - 120px);
+section>.container {
+  height: calc(100vh - 84px);
 }
 
-.form-label{
-  /* width: 100%; */
+.form-label {
   margin: 0;
 }
 
+.btn-outline-secondary {
+  color: #0d6efd;
+}
+
+.btn {
+  font-weight: 500;
+}
 
 
+/* Header start*/
+.mainMenu {
+  display: flex;
+}
+.mobileMenuIcon {
+  display: none;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 2px;
+  transition: background-color 0.3s ease;
+}
+.mobileMenu {
+ /* display: none; */
+  position: absolute;
+  top: 84px;
+  left: -100%;
+  background-color: #fff;
+  width: 100%;
+  height: calc(100% - 113px);
+  z-index: 1000;
+  transition: left 0.2s ease;
+}
+.mobileMenu>a {
+  padding: 15px 0 0 20px;
+}
+/* Header end*/
 
+/* sortForm and searchForm start*/
+.rowGroupForms{
+  display: flex;
+  justify-content: space-between;
+}
+.sortForm{
+  flex: 0 0 auto;
+  width: 40%;
+  max-width: 40%;
+}
+.searchForm{
+  flex: 0 0 auto;
+  width: 40%;
+  max-width: 40%;
+}
+/* sortForm and searchForm end*/
+
+/* Modal connent start */
+.modalForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1;
+  margin-bottom: 0.5rem;
+}
+.modalContentBtnGroup{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.modalContentBtn{
+  margin-top: 1rem;
+  width: 50%;
+}
+/* Modal connent end */
+
+
+@media (max-width: 768px) {
+  .mainMenu {
+    display: none;
+  }
+
+  .mobileMenuIcon {
+    display: block;
+  }
+
+  .mobileMenuIcon:hover {
+    background-color: #76767646;
+  }
+
+  .mobileMenu.active {
+    display: flex;
+    flex-direction: column;
+    left: 0;
+  }
+
+  .modalContentBtnGroup{
+    flex-direction: column;
+  }
+
+  .modalContentBtn{
+    /* margin-bottom: 1rem;    */
+    width: 100%;
+  }
+  .rowGroupForms{
+    flex-direction: column;
+  }
+  .sortForm{
+   width: 100%;
+   max-width: 100%;
+  }
+  .searchForm{
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+}
