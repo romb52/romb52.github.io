@@ -10,13 +10,13 @@ export default function AddBookForm() {
   const [form, setForm] = useState(initialForm);
 
   const changeInput = (e) => {
-    console.log(e.target.name, e.target.value)
+    //console.log(e.target.name, e.target.value)
     setForm((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
   const submitAddBook = (e) => {
-    console.log(form)
+    //console.log(form)
     e.preventDefault();
     const id = Date.now();
     dispatch(addBook({ ...form, id }));

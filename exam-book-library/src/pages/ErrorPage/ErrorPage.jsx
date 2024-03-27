@@ -10,9 +10,9 @@ import { withLayout } from '../../components/Main/Main';
     useEffect(() => { if (location.pathname !== '/404') {
         navigate ('/404')
      } }, [navigate, location]);
-    return <section>
+    return <section className={styles.bg}>
         <div className="container">
-            <h1> Ooops! Page not found</h1>
+            <h1> Ooops! 404 error</h1>
             <Link className={styles.linkHome} to='/'><FaHome className={styles.homeIcon} />Home</Link>
         </div>
     </section>

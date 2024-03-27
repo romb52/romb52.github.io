@@ -17,6 +17,7 @@ header,
 footer {
   display: flex;
   justify-content: center;
+  height: 55px;
   background-color: #6200ee;
   color: #fff;
   padding: 10px 40px;
@@ -35,8 +36,8 @@ section {
 }
 
 .container {
-  width: 1400px;
-  max-width: 100%;
+  width: 100%;
+  max-width:1400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,7 +88,7 @@ a {
 main {
   display: flex;
   justify-content: center;
-  min-height: 88vh;
+  min-height: calc(100vh - 110px);
   /* background-color: #f0f1f5ce; */
 }
 
@@ -98,7 +99,7 @@ app-layout {
 
 html,
 body {
-  height: 100%;
+  /* height: 100%; */
 }
 
 body {
@@ -142,4 +143,26 @@ h3 {
 
 .mat-mdc-tab-header {
   margin-bottom: 22px;
+}
+
+
+/* Для розмірів екрану до 768px */
+@media only screen and (max-width: 768px) {
+  .container {    
+    padding: 0 20px; /* Змінюємо відступи контейнера */
+  }
+}
+
+/* Для розмірів екрану від 769px до 1024px */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .container {
+   
+  }
+}
+
+/* Для розмірів екрану більше 1024px */
+@media only screen and (min-width: 1025px) {
+  .container {
+    width: 100%; /* Змінюємо ширину контейнера */
+  }
 }

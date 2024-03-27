@@ -1,11 +1,11 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
 .item {
-  min-width: 300px;
+  /* min-width: 300px; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -72,4 +72,18 @@ h3 {
 }
 .delete-icon:hover{
   color: red;
+}
+
+@media only screen and (max-width: 768px) {
+  
+  
+}
+
+@media only screen and (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr; /* Одна колонка на всю ширину на екранах до 480px */
+  }
+  .item {
+    padding: 5px; /* Зменшуємо внутрішні відступи на малих екранах */
+  }
 }

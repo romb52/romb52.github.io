@@ -85,7 +85,7 @@ export const books = [
     title: 'Захар Беркут', 
     author: 'Іван Франко', 
     publicationYear: 1882, 
-    publisher: 'Видавництво "Києво-Могилянська академія"', 
+    publisher: 'Видавництво "КМA"', 
     pageCount: 300, 
     copiesAvailable: 4 
   },

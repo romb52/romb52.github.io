@@ -18,7 +18,7 @@ export default function EditBookForm({ bookId, setIsModalOpen }) {
 }, [bookId]);
 
   const changeInput = (e) => {
-    console.log(e.target.name, e.target.value)
+    //console.log(e.target.name, e.target.value)
     setForm((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
@@ -26,7 +26,7 @@ export default function EditBookForm({ bookId, setIsModalOpen }) {
 
   const submiEditBook = (e) => {
     e.preventDefault();
-    console.log(form)
+   // console.log(form)
     dispatch(updateBook({ ...form, id: changedId }));
     setForm(initialForm);
     setChangedId(0);

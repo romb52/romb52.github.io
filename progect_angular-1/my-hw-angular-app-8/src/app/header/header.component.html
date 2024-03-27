@@ -1,7 +1,10 @@
 <header [attr.theme]="theme">
   <div class="container">
-    <div class="wrap gap-5 ai-c">
-      <nav>
+    <div class="mobile-menu-icon" (click)="toggleMobileMenu()">
+      <mat-icon>menu</mat-icon>
+    </div>
+    <div class="desktop-menu wrap gap-5 ai-c">
+      <nav>        
         <ul class="menu d-flex ">
           <li *ngFor="let item of arr_links">
             <a [routerLink]="item.link" routerLinkActive="active-link"
@@ -29,6 +32,27 @@
         <p *ngFor="let item of header_themes" [ngClass]="{'active': theme === item}" (click)="changeTheme(item)">
           {{item}}</p>
       </div>
+
+    
     </div>
+
+    <nav class="mobile-menu" (click)="toggleMobileMenu()" *ngIf="showMobileMenu" >
+      <ul>
+        <li *ngFor="let item of arr_links">
+          <a [routerLink]="item.link" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">{{item.title}}</a>
+        </li>
+        <li *ngIf="(token | async) !== ''">
+          <a class="new-post-link" routerLink="/create-post" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon fontIcon="edit_square"></mat-icon>
+            Create new post
+          </a>
+        </li>
+        <li *ngIf="(token | async)===''">
+          <a [routerLink]="'auth'" [routerLink]="'auth'" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Login</a>
+        </li>
+        <li *ngFor="let item of header_langs" [ngClass]="{'active': lang === item}" (click)="changeLang(item)"><p>{{item}}</p></li>
+        <li *ngFor="let item of header_themes" [ngClass]="{'active': theme === item}" (click)="changeTheme(item)"><p>{{item}}</p></li>
+      </ul>
+    </nav>
   </div>
 </header>

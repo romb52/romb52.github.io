@@ -17,6 +17,7 @@ interface ILink {
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
+  showMobileMenu: boolean = false;
   header_themes: string[] = themes;
   header_langs = langs;
   theme = 'light';
@@ -35,7 +36,7 @@ export class HeaderComponent {
     this.store.subscribe((state) => {
       this.isAuth = state.auth.token !== '';
     });
-   
+
     this.theme = this.themeService.getTheme();
     this.langSubscription = this.langService.langChanged$.subscribe(
       (newLang) => {
@@ -46,6 +47,12 @@ export class HeaderComponent {
       }
     );
   }
+
+  // Метод для перемикання стану відображення мобільного меню
+  toggleMobileMenu() {
+    this.showMobileMenu = !this.showMobileMenu;
+  }
+
   changeTheme(newTheme: string) {
     this.themeService.setTheme(newTheme);
     this.theme = this.themeService.getTheme();

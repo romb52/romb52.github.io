@@ -10,10 +10,10 @@ export default function AddVisitorForm() {
     const [form, setForm] = useState(initialForm);
 
     const changeInput = (e) => {
-        console.log(e.target.name, e.target.value);
+        //console.log(e.target.name, e.target.value);
         if (e.target.name === 'tel') {
             const isValidInput = /^[0-9 -]*$/.test(e.target.value);
-            console.log(isValidInput);
+            //console.log(isValidInput);
             if (!isValidInput) {
                 return;
             }
@@ -23,7 +23,7 @@ export default function AddVisitorForm() {
         });
     };
     const submitAddVisitor = (e) => {
-        console.log(form)
+        //console.log(form)
         e.preventDefault();
         const id = Date.now();
         dispatch(addVisitor({ ...form, id }));
