@@ -1,11 +1,11 @@
 import { withLayout } from '../../components/Main/Main';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import { Button, Form, InputGroup } from 'react-bootstrap';
 import { sortCards, filterCards, unsortedCards, updateCard } from '../../share/reducers/cards.reducer';
 import { increaseBookCount } from '../../share/reducers/books.reducer';
-import { FaPlus, FaSortDown } from "react-icons/fa";
-import { IoChevronBack, IoSearch } from "react-icons/io5";
+import { FaPlus, FaSortAlphaDown, FaSortNumericDown, FaSearch } from "react-icons/fa";
+import { IoReturnUpBack } from "react-icons/io5";
 import { GiReturnArrow } from "react-icons/gi";
 import Modal from '../../components/modal/Modal';
 import AddCardForm from '../../components/ModalContent/AddCardForm/AddCardForm';
@@ -33,6 +33,11 @@ function Cards() {
   const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
   const currentFilteredCards = filteredCards.slice(indexOfFirstCard, indexOfLastCard);
 
+  // Ефект, який прокручує вікно до гори при зміні currentPage
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
+
   const sortChange = (e) => {         // Обробник зміни сортування
     setSortField(e.target.value); // Оновлення поля сортування при зміні вибору
   };
@@ -48,6 +53,7 @@ function Cards() {
 
   const submitSearch = (e) => {         // Обробник подання пошукового запиту
     e.preventDefault();
+    setCurrentPage(1);
     dispatch(filterCards(searchQuery)); // Викликаємо дію для фільтрації книг з введеним пошуковим запитом
     setSearchQuery('');
   };
@@ -74,7 +80,7 @@ function Cards() {
         {/* Заголовок та кнопка для відкриття модального вікна для додавання нової картки */}
         <div className={`d-flex justify-content-between ${styles.titlewrap}`}>
           <h2>ALL CARDS:</h2>
-          <Button className='d-flex gap-1 justify-content-center align-items-center' onClick={() => openModal(<AddCardForm />)}>
+          <Button className='d-flex gap-1 justify-content-center align-items-center' onClick={() => openModal(<AddCardForm openModal={openModal} />)}>
             <FaPlus /> New card
           </Button>
         </div>
@@ -85,34 +91,38 @@ function Cards() {
         </Modal>
 
         {/* Форми для сортування */}
-        <div className='row justify-content-between'>
-          <div className="col-5 pe-1">
-            <Form className='d-flex gap-2 mb-1 align-items-center' onSubmit={(e) => submitSort(e)}>
-              <Form.Label style={{ whiteSpace: 'nowrap' }}>Sort by:</Form.Label>
-              <Form.Select value={sortField} onChange={sortChange}>
-                <option value="returnDate">return date</option>
-                <option value="borrowDate">borrow Date</option>
-                <option value="visitor">visitor</option>
-                <option value="book">book</option>
-              </Form.Select>
-              <Button className='my-3 d-flex gap-1 align-items-center' variant='primary' type='submit'><FaSortDown />
-                Sort
-              </Button>
+        <div className='rowGroupForms'>
+          <div className="sortForm">
+            <Form className='d-flex gap-2 my-3 align-items-center' onSubmit={(e) => submitSort(e)}>
+              <InputGroup >
+                <InputGroup.Text >Sort by:</InputGroup.Text>
+                <Form.Select value={sortField} onChange={sortChange}>
+                  <option value="returnDate">return date</option>
+                  <option value="borrowDate">borrow Date</option>
+                  <option value="visitor">visitor</option>
+                  <option value="book">book</option>
+                </Form.Select>
+                <Button className='d-flex gap-1 align-items-center' variant='primary' type='submit'>
+                  {sortField === 'returnDate' || sortField === 'borrowDate' ? <FaSortNumericDown /> : <FaSortAlphaDown />}
+                </Button>
+              </InputGroup>
             </Form>
           </div>
 
           {/* Форми для пошуку */}
-          <div className='col-5 ps-1'>
-            <Form className='d-flex gap-2 mb-1 align-items-center' onSubmit={(e) => submitSearch(e)}>
-              <Form.Label>Search:</Form.Label>
-              <Form.Control
-                name='search'
-                value={searchQuery}
-                onChange={(e) => searchInput(e)}
-              />
-              <Button className='my-3 d-flex gap-1 align-items-center' variant='primary' type='submit'><IoSearch />
-                Search
-              </Button>
+          <div className='searchForm'>
+            <Form className='d-flex gap-2 my-3 align-items-center' onSubmit={(e) => submitSearch(e)}>
+              <InputGroup >
+                <InputGroup.Text >Search:</InputGroup.Text>
+                <Form.Control
+                  name='search'
+                  value={searchQuery}
+                  onChange={(e) => searchInput(e)}
+                />
+                <Button className='d-flex gap-1 align-items-center' variant='primary' type='submit'>
+                  <FaSearch />
+                </Button>
+              </InputGroup>
             </Form>
           </div>
         </div>
@@ -121,77 +131,72 @@ function Cards() {
         <div className={styles.grid}>
           <div key='head-book' className={`${styles.item} ${styles.tableTitle}`}>
             <p>id</p>
-            <p>
-              Visitor
-            </p>
-            <p>
-              Book
-            </p>
-            <p>
-              Borrow Date
-            </p>
-            <p>
-              Return Date
-            </p>
+            <p>Visitor</p>
+            <p>Book</p>
+            <p>Borrow Date</p>
+            <p>Return Date</p>
           </div>
 
           {/* Відображення відфільтрованих або всіх карток */}
           {filteredCards.length > 0 ? currentFilteredCards.map((card, i) => (
             <div key={card.id} className={styles.item}>
-              <p>{indexOfFirstCard + i + 1}</p>
-              <p>{card.visitor}</p>
-              <p>{card.book}</p>
-              <p>{card.borrowDate}</p>
-              {card.returnDate ? <p >{card.returnDate}</p> : <Button onClick={() => setReturnDate(card.id)} variant="warning"><GiReturnArrow /> </Button>}
+              <p data-label="ID">{indexOfFirstCard + i + 1}</p>
+              <p data-label="Visitior">{card.visitor}</p>
+              <p data-label="Book">{card.book}</p>
+              <p data-label="Borrow date">{card.borrowDate}</p>
+              {card.returnDate ? <p data-label="Return date">{card.returnDate}</p> : <Button onClick={() => setReturnDate(card.id)} variant="warning"><GiReturnArrow /> Return</Button>}
             </div>
 
           )) : currentCards.map((card, i) => (
             <div key={card.id} className={styles.item}>
-              <p>{indexOfFirstCard + i + 1}</p>
-              <p>{card.visitor}</p>
-              <p>{card.book}</p>
-              <p >{card.borrowDate}</p>
-              {card.returnDate ? <p >{card.returnDate}</p> : <Button onClick={() => setReturnDate(card.id)} variant="warning"><GiReturnArrow /> </Button>}
+              <p data-label="ID">{indexOfFirstCard + i + 1}</p>
+              <p data-label="Visitior">{card.visitor}</p>
+              <p data-label="Book">{card.book}</p>
+              <p data-label="Borrow date">{card.borrowDate}</p>
+              {card.returnDate ? <p data-label="Return date">{card.returnDate}</p> : <Button onClick={() => setReturnDate(card.id)} variant="warning"><GiReturnArrow /> Return</Button>}
             </div>
           ))}
 
         </div>
 
-        {/* Відображення пагінації */}
-        {filteredCards.length > 0 ? (
-          <div className={styles.pagination}>
-            <ul className='pagination'>
-              {Array.from({ length: Math.ceil(filteredCards.length / cardsPerPage) }).map((_, index) => (
-                <li key={index} className='page-item'>
-                  <button
-                    className='page-link'
-                    onClick={() => setCurrentPage(index + 1)}
-                  >
-                    {index + 1}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : (
-          <div className={styles.pagination}>
-            <ul className='pagination'>
-              {Array.from({ length: Math.ceil(cards.length / cardsPerPage) }).map((_, index) => (
-                <li key={index} className='page-item'>
-                  <button
-                    className='page-link'
-                    onClick={() => setCurrentPage(index + 1)}
-                  >
-                    {index + 1}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <div className={styles.footerFlex}>
+          {/* Кнопка для відображення всіх книг, якщо відфільтровані */}
+          {filteredCards.length > 0 && <div className={styles.leftContent}><Button variant="outline-primary" className='d-flex gap-1 justify-content-center align-items-center' onClick={() => dispatch(unsortedCards())}>
+            <IoReturnUpBack />Back to all cards...</Button></div>}
 
-        {/* Кнопка для повернення до всіх карток, якщо вони були відфільтровані */}
-        {filteredCards.length > 0 && <div><Button className='d-flex gap-1 justify-content-center align-items-center' onClick={() => dispatch(unsortedCards())}><IoChevronBack />Back to all cards...</Button></div>}
+          {/* Відображення пагінації */}
+          {filteredCards.length > 0 ? (
+            <div className={styles.pagination}>
+              <ul className='pagination'>
+                {Array.from({ length: Math.ceil(filteredCards.length / cardsPerPage) }).map((_, index) => (
+                  <li key={index} className='page-item'>
+                    <button
+                      className='page-link'
+                      onClick={() => setCurrentPage(index + 1)}
+                    >
+                      {index + 1}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <div className={styles.pagination}>
+              <ul className='pagination'>
+                {Array.from({ length: Math.ceil(cards.length / cardsPerPage) }).map((_, index) => (
+                  <li key={index} className='page-item'>
+                    <button
+                      className='page-link'
+                      onClick={() => setCurrentPage(index + 1)}
+                    >
+                      {index + 1}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
 
       </div>
     </section>

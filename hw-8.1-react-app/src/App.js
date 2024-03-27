@@ -95,14 +95,16 @@ function App() {
                 <li className='parent' key={item.link}>
                   <div className='menyItem'>
                     <NavLink to={item.link}>{item.title}</NavLink>
-                    {item.submenu && <IoMdArrowDropdown className={openSubMenu.link === item.link && openSubMenu.isOpen ? "open" : ""} onClick={() => openMenu(item.link)} style={{
-                      transform: openSubMenu.link === item.link && openSubMenu.isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                      transition: "transform 0.3s ease", fontSize: '20px'
-                    }} />}
+                    {item.submenu && <IoMdArrowDropdown className={openSubMenu.link === item.link && openSubMenu.isOpen ? "open" : ""}
+                      onClick={() => openMenu(item.link)} style={{
+                        transform: openSubMenu.link === item.link && openSubMenu.isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                        transition: "transform 0.3s ease", fontSize: '20px'
+                      }} />}
                   </div>
-                  {item.submenu && <ul datalink={item.link} className={`subMenu ${item.link === openSubMenu.link && openSubMenu.isOpen ? "active" : null}`}>{item.submenu.map(el => (
-                    <li key={el.link}><NavLink to={el.link}>{el.title}</NavLink></li>
-                  ))}</ul>}
+                  {item.submenu && <ul datalink={item.link} className={`subMenu ${item.link === openSubMenu.link && openSubMenu.isOpen ? "active" : null}`}>
+                    {item.submenu.map(el => (
+                      <li key={el.link}><NavLink to={el.link}>{el.title}</NavLink></li>
+                    ))}</ul>}
                 </li>
               ))}
             </ul>
@@ -114,22 +116,24 @@ function App() {
                 <li className='parent' key={item.link}>
                   <div className='menyItem'>
                     <NavLink to={item.link}>{item.title}</NavLink>
-                    {item.submenu && <IoMdArrowDropdown className={openSubMenu.link === item.link && openSubMenu.isOpen ? "open" : ""} onClick={() => openMenu(item.link)} style={{
-                      transform: openSubMenu.link === item.link && openSubMenu.isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                      transition: "transform 0.3s ease", fontSize: '20px'
-                    }} />}
+                    {item.submenu && <IoMdArrowDropdown className={openSubMenu.link === item.link && openSubMenu.isOpen ? "open" : ""}
+                      onClick={() => openMenu(item.link)} style={{
+                        transform: openSubMenu.link === item.link && openSubMenu.isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                        transition: "transform 0.3s ease", fontSize: '20px'
+                      }} />}
                   </div>
-                  {item.submenu && <ul datalink={item.link} className={`subMenu ${item.link === openSubMenu.link && openSubMenu.isOpen ? "active" : null}`}>{item.submenu.map(el => (
-                    <li key={el.link}><NavLink to={el.link}>{el.title}</NavLink></li>
-                  ))}</ul>}
+                  {item.submenu && <ul datalink={item.link} className={`subMenu ${item.link === openSubMenu.link && openSubMenu.isOpen ? "active" : null}`}>
+                    {item.submenu.map(el => (
+                      <li key={el.link}><NavLink to={el.link}>{el.title}</NavLink></li>
+                    ))}</ul>}
                 </li>
               ))}
             </ul>
           </nav>
           <div className="contactItem">
-          <a href="tel:+3 (067) 322-22-33"><strong ><BsTelephoneForwardFill /></strong></a>
-          <a className="contactItemNunber" href="tel:+3 (067) 322-22-33">+38 (067) 3222233</a>
-        </div>
+            <a href="tel:+3 (067) 322-22-33"><strong ><BsTelephoneForwardFill /></strong></a>
+            <a className="contactItemNunber" href="tel:+3 (067) 322-22-33">+38 (067) 3222233</a>
+          </div>
         </div>
       </header>
       <main className="App-main">

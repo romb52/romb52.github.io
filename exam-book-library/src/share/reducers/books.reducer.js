@@ -6,7 +6,7 @@ const storedBooks = JSON.parse(localStorage.getItem('books'));
 if (!storedBooks) {
   localStorage.setItem('books', JSON.stringify(books));
 }
-const defaultBooks = storedBooks || books; 
+const defaultBooks = storedBooks || books;
 const initialState = {
   books: defaultBooks,
   filteredBooks: [], // Додали поле для зберігання відфільтрованих книг
@@ -29,7 +29,12 @@ export const bookSlice = createSlice({
       const index = state.books.findIndex(book => book.id === id);
       if (index !== -1) {
         state.books[index] = { ...state.books[index], ...updatedBook };
-         localStorage.setItem('books', JSON.stringify(state.books));
+        localStorage.setItem('books', JSON.stringify(state.books));
+
+        if (state.filteredBooks.length > 0){
+         const findex = state.filteredBooks.findIndex(book => book.id === id);
+          state.filteredBooks[findex] = { ...state.filteredBooks[findex], ...updatedBook };       
+        }
       }
     },
     increaseBookCount: (state, action) => {         // Збільшення кількості доступних копій книги за її id
@@ -41,22 +46,27 @@ export const bookSlice = createSlice({
       }
     },
     decreaseBookCount: (state, action) => {             // Зменшення кількості доступних копій книги за її id
-      const { id } = action.payload; 
+      const { id } = action.payload;
       const index = state.books.findIndex(book => book.id === parseInt(id));
       if (index !== -1 && state.books[index].copiesAvailable > 0) {
-        state.books[index].copiesAvailable--;      
-        localStorage.setItem('books', JSON.stringify(state.books));        
+        state.books[index].copiesAvailable--;
+        localStorage.setItem('books', JSON.stringify(state.books));
       }
     },
     sortBooks: (state, action) => {                  // Сортування списку книг за вказаним полем
-      const { field,  isNumber } = action.payload;
+      const { field, isNumber } = action.payload;
       state.books.sort((a, b) => {
         const valueA = isNumber ? a[field] : (a[field] && a[field].toLowerCase());
         const valueB = isNumber ? b[field] : (b[field] && b[field].toLowerCase());
-       
-          return valueA > valueB ? 1 : -1;
-       
+        return valueA > valueB ? 1 : -1;
       });
+      if(state.filteredBooks.length > 0){
+        state.filteredBooks.sort((a, b) => {
+          const valueA = isNumber ? a[field] : (a[field] && a[field].toLowerCase());
+          const valueB = isNumber ? b[field] : (b[field] && b[field].toLowerCase());
+          return valueA > valueB ? 1 : -1;
+        });
+      }
     },
     filterBooks: (state, action) => {              // Фільтрація списку книг за пошуковим запитом
       const searchQuery = action.payload.toLowerCase(); // Конвертуємо пошуковий запит в нижній регістр
@@ -81,7 +91,7 @@ export const {
   decreaseBookCount,
   sortBooks,
   filterBooks,
-  unsortedBooks 
+  unsortedBooks
 } = bookSlice.actions;
 
 export default bookSlice.reducer;
